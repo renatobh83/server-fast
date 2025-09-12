@@ -87,6 +87,7 @@ export async function upsertJobScheduler(
   jobOptions: JobsOptions = {}
 ) {
   const queue = queues.find((q) => q.name === queueName);
+
   if (!queue) throw new Error(`Queue "${queueName}" não encontrada`);
 
   await queue.bull.add(

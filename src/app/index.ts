@@ -1,7 +1,8 @@
 import Fastify, { FastifyInstance, FastifyServerOptions } from "fastify";
 import fastifyEnv from "@fastify/env";
-import fastifySocketIO from "fastify-socket.io";
 import jwt from "@fastify/jwt";
+import fastifyExpress from "@fastify/express";
+import fastifySocketIO from "fastify-socket.io";
 import routes from "../routes";
 import fastifyModule from "../lib/fastifyPlugins/fastifyModule";
 import { initIO } from "../lib/socket";
@@ -21,6 +22,7 @@ export async function buildServer(
     dotenv: true, // lê automaticamente do arquivo .env
     schema: configSchema,
   });
+  await server.register(fastifyExpress);
   await server.register(redisPlugin);
   await server.register(fastifyModule);
   await server.register(sequelizePlugin);

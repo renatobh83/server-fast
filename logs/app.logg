@@ -1456,3 +1456,1046 @@
   ],
   timestamp: '2025-09-12T19:04:40.513Z'
 }
+{
+  error: TypeError: app.use is not a function
+      at registerBullMQ (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\app\bull.js:43:9)
+      at Plugin.exec (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\lib\plugin.js:125:28)
+      at Boot._loadPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:432:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21),
+  level: 'error',
+  message: 'uncaughtException: app.use is not a function\n' +
+    'TypeError: app.use is not a function\n' +
+    '    at registerBullMQ (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:43:9)\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  stack: 'TypeError: app.use is not a function\n' +
+    '    at registerBullMQ (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:43:9)\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:08:02 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 9380,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 73256960,
+      heapTotal: 37707776,
+      heapUsed: 22266916,
+      external: 2695270,
+      arrayBuffers: 60463
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 82558.203 },
+  trace: [
+    {
+      column: 9,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js',
+      function: 'registerBullMQ',
+      line: 43,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js',
+      function: 'Plugin.exec',
+      line: 125,
+      method: 'exec',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._loadPlugin',
+      line: 432,
+      method: '_loadPlugin',
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 90,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:08:02.551Z'
+}
+{
+  error: TypeError: app.use is not a function
+      at registerBullMQ (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\app\bull.js:43:9)
+      at Plugin.exec (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\lib\plugin.js:125:28)
+      at Boot._loadPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:432:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21),
+  level: 'error',
+  message: 'uncaughtException: app.use is not a function\n' +
+    'TypeError: app.use is not a function\n' +
+    '    at registerBullMQ (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:43:9)\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  stack: 'TypeError: app.use is not a function\n' +
+    '    at registerBullMQ (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:43:9)\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:08:03 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 3092,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 72519680,
+      heapTotal: 37134336,
+      heapUsed: 26673260,
+      external: 2695270,
+      arrayBuffers: 60463
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 82559.5 },
+  trace: [
+    {
+      column: 9,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js',
+      function: 'registerBullMQ',
+      line: 43,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js',
+      function: 'Plugin.exec',
+      line: 125,
+      method: 'exec',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._loadPlugin',
+      line: 432,
+      method: '_loadPlugin',
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 90,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:08:03.855Z'
+}
+{
+  error: Error: Queue "VerifyTicketsChatBotInactives" não encontrada
+      at upsertJobScheduler (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:99:15)
+      at registerBullMQ (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\app\bull.js:12:42)
+      at Plugin.exec (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\lib\plugin.js:125:28)
+      at Boot._loadPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:432:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21),
+  level: 'error',
+  message: 'uncaughtException: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at registerBullMQ (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:12:42)\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  stack: 'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at registerBullMQ (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:12:42)\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:26:59 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 19148,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 73986048,
+      heapTotal: 38494208,
+      heapUsed: 23805752,
+      external: 2735352,
+      arrayBuffers: 60463
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 83695.156 },
+  trace: [
+    {
+      column: 15,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js',
+      function: 'upsertJobScheduler',
+      line: 99,
+      method: null,
+      native: false
+    },
+    {
+      column: 42,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js',
+      function: 'registerBullMQ',
+      line: 12,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js',
+      function: 'Plugin.exec',
+      line: 125,
+      method: 'exec',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._loadPlugin',
+      line: 432,
+      method: '_loadPlugin',
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 90,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:26:59.528Z'
+}
+{
+  error: Error: Queue "VerifyTicketsChatBotInactives" não encontrada
+      at upsertJobScheduler (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:99:15)
+      at registerBullMQ (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\app\bull.js:12:42)
+      at Plugin.exec (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\lib\plugin.js:125:28)
+      at Boot._loadPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:432:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21),
+  level: 'error',
+  message: 'uncaughtException: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at registerBullMQ (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:12:42)\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  stack: 'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at registerBullMQ (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:12:42)\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:27:05 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 19308,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 74055680,
+      heapTotal: 38494208,
+      heapUsed: 23358016,
+      external: 2735352,
+      arrayBuffers: 60463
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 83701.515 },
+  trace: [
+    {
+      column: 15,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js',
+      function: 'upsertJobScheduler',
+      line: 99,
+      method: null,
+      native: false
+    },
+    {
+      column: 42,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js',
+      function: 'registerBullMQ',
+      line: 12,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js',
+      function: 'Plugin.exec',
+      line: 125,
+      method: 'exec',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._loadPlugin',
+      line: 432,
+      method: '_loadPlugin',
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 90,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:27:05.870Z'
+}
+{
+  error: Error: Queue "VerifyTicketsChatBotInactives" não encontrada
+      at upsertJobScheduler (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:99:15)
+      at registerBullMQ (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\app\bull.js:12:42)
+      at Plugin.exec (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\lib\plugin.js:125:28)
+      at Boot._loadPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:432:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21),
+  level: 'error',
+  message: 'uncaughtException: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at registerBullMQ (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:12:42)\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  stack: 'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at registerBullMQ (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:12:42)\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:27:08 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 20680,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 73994240,
+      heapTotal: 38756352,
+      heapUsed: 23353808,
+      external: 2735352,
+      arrayBuffers: 60463
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 83703.859 },
+  trace: [
+    {
+      column: 15,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js',
+      function: 'upsertJobScheduler',
+      line: 99,
+      method: null,
+      native: false
+    },
+    {
+      column: 42,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js',
+      function: 'registerBullMQ',
+      line: 12,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js',
+      function: 'Plugin.exec',
+      line: 125,
+      method: 'exec',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._loadPlugin',
+      line: 432,
+      method: '_loadPlugin',
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 90,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:27:08.220Z'
+}
+{
+  error: Error: Queue "VerifyTicketsChatBotInactives" não encontrada
+      at addJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:87:15)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\fastifyPlugins\redis.js:28:30
+      at Plugin.exec (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\lib\plugin.js:125:28)
+      at Boot._loadPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:432:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21),
+  level: 'error',
+  message: 'uncaughtException: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at addJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:87:15)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:28:30\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  stack: 'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at addJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:87:15)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:28:30\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:29:49 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 22232,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 73740288,
+      heapTotal: 38494208,
+      heapUsed: 23538240,
+      external: 2733304,
+      arrayBuffers: 60463
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 83865.578 },
+  trace: [
+    {
+      column: 15,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js',
+      function: 'addJob',
+      line: 87,
+      method: null,
+      native: false
+    },
+    {
+      column: 30,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js',
+      function: null,
+      line: 28,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js',
+      function: 'Plugin.exec',
+      line: 125,
+      method: 'exec',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._loadPlugin',
+      line: 432,
+      method: '_loadPlugin',
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 90,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:29:49.929Z'
+}
+{
+  error: Error: Queue "VerifyTicketsChatBotInactives" não encontrada
+      at addJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:87:15)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\fastifyPlugins\redis.js:28:30
+      at Plugin.exec (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\lib\plugin.js:125:28)
+      at Boot._loadPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:432:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21),
+  level: 'error',
+  message: 'uncaughtException: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at addJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:87:15)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:28:30\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  stack: 'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at addJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:87:15)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:28:30\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:30:01 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 11792,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 73682944,
+      heapTotal: 38756352,
+      heapUsed: 23208632,
+      external: 2733304,
+      arrayBuffers: 60463
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 83876.718 },
+  trace: [
+    {
+      column: 15,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js',
+      function: 'addJob',
+      line: 87,
+      method: null,
+      native: false
+    },
+    {
+      column: 30,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js',
+      function: null,
+      line: 28,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js',
+      function: 'Plugin.exec',
+      line: 125,
+      method: 'exec',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._loadPlugin',
+      line: 432,
+      method: '_loadPlugin',
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 90,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:30:01.077Z'
+}
+{
+  error: Error: Queue "VerifyTicketsChatBotInactives" não encontrada
+      at addJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:87:15)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\fastifyPlugins\redis.js:29:30
+      at Plugin.exec (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\lib\plugin.js:125:28)
+      at Boot._loadPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:432:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21),
+  level: 'error',
+  message: 'uncaughtException: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at addJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:87:15)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:29:30\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  stack: 'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at addJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:87:15)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:29:30\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:30:39 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 21028,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 73732096,
+      heapTotal: 38232064,
+      heapUsed: 23414632,
+      external: 2733304,
+      arrayBuffers: 60463
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 83915.171 },
+  trace: [
+    {
+      column: 15,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js',
+      function: 'addJob',
+      line: 87,
+      method: null,
+      native: false
+    },
+    {
+      column: 30,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js',
+      function: null,
+      line: 29,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js',
+      function: 'Plugin.exec',
+      line: 125,
+      method: 'exec',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._loadPlugin',
+      line: 432,
+      method: '_loadPlugin',
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 90,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:30:39.546Z'
+}
+{
+  error: Error: Queue "VerifyTicketsChatBotInactives" não encontrada
+      at upsertJobScheduler (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:99:15)
+      at Immediate.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\app\bull.js:38:40)
+      at process.processImmediate (node:internal/timers:485:21),
+  level: 'error',
+  message: 'uncaughtException: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at Immediate.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:38:40)\n' +
+    '    at process.processImmediate (node:internal/timers:485:21)',
+  stack: 'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at Immediate.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:38:40)\n' +
+    '    at process.processImmediate (node:internal/timers:485:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:32:41 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 15828,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 77295616,
+      heapTotal: 41791488,
+      heapUsed: 24134188,
+      external: 2769572,
+      arrayBuffers: 60463
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 84036.671 },
+  trace: [
+    {
+      column: 15,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js',
+      function: 'upsertJobScheduler',
+      line: 99,
+      method: null,
+      native: false
+    },
+    {
+      column: 40,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js',
+      function: null,
+      line: 38,
+      method: null,
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/timers',
+      function: 'process.processImmediate',
+      line: 485,
+      method: 'processImmediate',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:32:41.012Z'
+}
+{
+  error: Error: Queue "VerifyTicketsChatBotInactives" não encontrada
+      at upsertJobScheduler (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:99:15)
+      at Immediate.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\app\bull.js:38:40)
+      at process.processImmediate (node:internal/timers:485:21),
+  level: 'error',
+  message: 'uncaughtException: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at Immediate.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:38:40)\n' +
+    '    at process.processImmediate (node:internal/timers:485:21)',
+  stack: 'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at Immediate.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:38:40)\n' +
+    '    at process.processImmediate (node:internal/timers:485:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:32:42 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 11348,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 75292672,
+      heapTotal: 39170048,
+      heapUsed: 27260480,
+      external: 2769572,
+      arrayBuffers: 60479
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 84037.968 },
+  trace: [
+    {
+      column: 15,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js',
+      function: 'upsertJobScheduler',
+      line: 99,
+      method: null,
+      native: false
+    },
+    {
+      column: 40,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js',
+      function: null,
+      line: 38,
+      method: null,
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/timers',
+      function: 'process.processImmediate',
+      line: 485,
+      method: 'processImmediate',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:32:42.324Z'
+}
+{
+  error: Error: Queue "VerifyTicketsChatBotInactives" não encontrada
+      at upsertJobScheduler (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:99:15)
+      at Immediate.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\app\bull.js:17:40)
+      at process.processImmediate (node:internal/timers:485:21),
+  level: 'error',
+  message: 'uncaughtException: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at Immediate.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:17:40)\n' +
+    '    at process.processImmediate (node:internal/timers:485:21)',
+  stack: 'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at Immediate.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js:17:40)\n' +
+    '    at process.processImmediate (node:internal/timers:485:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:33:29 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 20456,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 77250560,
+      heapTotal: 41791488,
+      heapUsed: 24103512,
+      external: 2769572,
+      arrayBuffers: 60463
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 84084.906 },
+  trace: [
+    {
+      column: 15,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js',
+      function: 'upsertJobScheduler',
+      line: 99,
+      method: null,
+      native: false
+    },
+    {
+      column: 40,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\app\\bull.js',
+      function: null,
+      line: 17,
+      method: null,
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/timers',
+      function: 'process.processImmediate',
+      line: 485,
+      method: 'processImmediate',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:33:29.271Z'
+}
+{
+  error: Error: Queue "VerifyTicketsChatBotInactives" não encontrada
+      at upsertJobScheduler (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:99:15)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\fastifyPlugins\redis.js:29:36
+      at Plugin.exec (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\lib\plugin.js:125:28)
+      at Boot._loadPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:432:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21),
+  level: 'error',
+  message: 'uncaughtException: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:29:36\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  stack: 'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:29:36\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:34:30 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 4360,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 75038720,
+      heapTotal: 39432192,
+      heapUsed: 26814244,
+      external: 2769572,
+      arrayBuffers: 60479
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 84146.578 },
+  trace: [
+    {
+      column: 15,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js',
+      function: 'upsertJobScheduler',
+      line: 99,
+      method: null,
+      native: false
+    },
+    {
+      column: 36,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js',
+      function: null,
+      line: 29,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js',
+      function: 'Plugin.exec',
+      line: 125,
+      method: 'exec',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._loadPlugin',
+      line: 432,
+      method: '_loadPlugin',
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 90,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:34:30.937Z'
+}
+{
+  error: Error: Queue "VerifyTicketsChatBotInactives" não encontrada
+      at upsertJobScheduler (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:99:15)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\fastifyPlugins\redis.js:29:36
+      at Plugin.exec (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\lib\plugin.js:125:28)
+      at Boot._loadPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:432:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21),
+  level: 'error',
+  message: 'uncaughtException: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:29:36\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  stack: 'Error: Queue "VerifyTicketsChatBotInactives" não encontrada\n' +
+    '    at upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:99:15)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:29:36\n' +
+    '    at Plugin.exec (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  exception: true,
+  date: 'Fri Sep 12 2025 16:34:36 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 1496,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 75210752,
+      heapTotal: 38907904,
+      heapUsed: 27206684,
+      external: 2769572,
+      arrayBuffers: 60479
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 84151.921 },
+  trace: [
+    {
+      column: 15,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js',
+      function: 'upsertJobScheduler',
+      line: 99,
+      method: null,
+      native: false
+    },
+    {
+      column: 36,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js',
+      function: null,
+      line: 29,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\lib\\plugin.js',
+      function: 'Plugin.exec',
+      line: 125,
+      method: 'exec',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._loadPlugin',
+      line: 432,
+      method: '_loadPlugin',
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 90,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-12T19:34:36.276Z'
+}

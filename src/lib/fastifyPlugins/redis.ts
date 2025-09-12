@@ -1,4 +1,3 @@
-// plugins/redis.ts
 import fp from "fastify-plugin";
 import Redis, { RedisOptions } from "ioredis";
 import { FastifyInstance } from "fastify";
@@ -26,6 +25,8 @@ export const redisPlugin = fp(async (fastify: FastifyInstance) => {
     initQueues(fastify); // cria as filas com o Redis do Fastify
     processQueues(5); // inicia os workers
   });
+
+  fastify.register(registerBullMQ);
 
   // fecha a conexão no shutdown
   fastify.addHook("onClose", async (instance) => {
