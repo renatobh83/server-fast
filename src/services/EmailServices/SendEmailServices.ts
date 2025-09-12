@@ -56,7 +56,7 @@ export const SendEmailServices = async ({
         html,
         attachmentUrl,
       };
-      console.log(mailOptions);
+
       //   addJob("SendEmail", mailOptions);
     }
   } catch (error) {

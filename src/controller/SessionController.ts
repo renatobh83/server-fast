@@ -111,7 +111,6 @@ export const forgotPassword = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "E-mail enviado com link de redefinição" });
   } catch (error) {
-    console.log(error);
     return handleServerError(reply, error);
   }
 };
