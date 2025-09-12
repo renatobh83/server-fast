@@ -2,6 +2,7 @@ import {
   gerarTemplateEmail,
   gerarTemplateEmailAnexo,
 } from "../../helpers/emailTemplate.helper";
+import { addJob } from "../../lib/Queue";
 
 interface EmailOptions {
   to: string;
@@ -46,7 +47,7 @@ export const SendEmailServices = async ({
       // Verificar emails gerados corretamente
 
       // Enviar os emails (descomentar para usar)
-      //   emailsParaEnviar.forEach((options) => addJob("SendEmail", options));
+      emailsParaEnviar.forEach((options) => addJob("SendEmail", options));
     } else {
       const mailOptions = {
         tenantId,
@@ -57,7 +58,7 @@ export const SendEmailServices = async ({
         attachmentUrl,
       };
 
-      //   addJob("SendEmail", mailOptions);
+      addJob("SendEmail", mailOptions);
     }
   } catch (error) {
     console.error("Erro ao enviar e-mail:", error);

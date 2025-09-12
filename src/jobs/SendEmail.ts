@@ -1,3 +1,5 @@
+import { createTransporter } from "../providers/mail.provider";
+
 export default {
   key: "SendEmail",
   options: {
@@ -10,7 +12,11 @@ export default {
     // 	delay: 60000 * 3, // 3 min
     // },
   },
-  async handle(data: any) {},
+  async handle(data: any) {
+    const { tenantId } = data;
+    const { transporter, emailConfig } = await createTransporter(tenantId);
+    console.log(emailConfig);
+  },
 };
 
 const getFilenameFromUrl = (url: string): string => {

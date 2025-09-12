@@ -14,7 +14,7 @@ export async function buildServer(
   config: FastifyServerOptions = {}
 ): Promise<FastifyInstance> {
   const server = Fastify({
-    logger: true,
+    logger: false,
     trustProxy: true,
   });
 
@@ -56,7 +56,7 @@ export async function buildServer(
       return;
     }
     // Acessa a instância do Socket.IO através de server.io
-    // initIO(server);
+    initIO(server);
   });
   await server.register(routes);
   return server;

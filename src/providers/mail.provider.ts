@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
-const createTransporter = async (tenantId: number) => {
+export const createTransporter = async (tenantId: number) => {
   try {
     // Buscar as configurações do SMTP no banco de dados
     const emailConfig = {} as any; //Email.findOne({ where: { tenantId } });
