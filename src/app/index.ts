@@ -28,6 +28,7 @@ export async function buildServer(
   await server.register(jwt, {
     secret: "DPHmNRZWZ4isLF9vXkMv1QabvpcA80Rc", // coloque em variável de ambiente no mundo real
   });
+
   // decorador para verificar se o usuário está autenticado
   server.decorate("authenticate", async function (request: any, reply: any) {
     try {

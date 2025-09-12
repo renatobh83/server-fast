@@ -28,4 +28,6 @@ export default async function authRoutes(fastify: FastifyInstance) {
     },
     SessionController.StoreLoginHandler
   );
+  fastify.post("/logout", SessionController.LogoutUser);
+  fastify.post("/forgot-password", SessionController.forgotPassword);
 }

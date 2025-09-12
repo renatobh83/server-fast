@@ -2,23 +2,24 @@ import { Sequelize, DataTypes, Model } from "sequelize";
 import { compare, hash } from "bcryptjs";
 
 export class User extends Model {
-  public id!: number;
-  public name!: string;
-  public email!: string;
-  public status!: string;
-  public password!: string; // VIRTUAL
-  public passwordHash!: string;
-  public tokenVersion!: number;
-  public profile!: string;
-  public createdAt!: Date;
-  public updatedAt!: Date;
-  public ativo!: boolean;
-  public tenantId!: number;
-  public lastLogin!: Date;
-  public lastOnline!: Date;
-  public lastLogout!: Date;
-  public isOnline!: boolean;
-  public configs!: object;
+  declare id: number;
+  declare name: string;
+  declare email: string;
+  declare status: string | null;
+  declare password?: string; // VIRTUAL
+  declare passwordHash?: string;
+  declare tokenVersion: number;
+  declare profile?: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare ativo: boolean;
+  declare tenantId: number;
+  declare lastLogin?: Date;
+  declare lastOnline?: Date;
+  declare lastLogout?: Date;
+  declare isOnline: boolean;
+  declare configs: object;
+
   // Métodos de instância
   public async checkPassword(password: string): Promise<boolean> {
     const passwordHash = this.getDataValue("passwordHash");

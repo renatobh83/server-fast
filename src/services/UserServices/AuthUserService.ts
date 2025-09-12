@@ -1,13 +1,20 @@
 import { FastifyInstance } from "fastify";
-import AppError from "../../errors/AppError";
+import { ERRORS } from "../../errors/errors.helper";
+import { FastifyReply } from "fastify/types/reply";
 
 interface Request {
   email: string;
   password: string;
   server: FastifyInstance;
+  reply: FastifyReply;
 }
 
-export const AuthUserService = async ({ email, password, server }: Request) => {
+export const AuthUserService = async ({
+  email,
+  password,
+  server,
+  reply,
+}: Request) => {
   const { User } = server.models;
   const user = await User.findOne({
     where: {
@@ -16,10 +23,14 @@ export const AuthUserService = async ({ email, password, server }: Request) => {
   });
 
   if (!user) {
-    throw new AppError("ERR_INVALID_CREDENTIALS", 401);
+    return reply
+      .code(ERRORS.userNotExists.statusCode)
+      .send(ERRORS.userNotExists.message);
   }
   if (!(await user.checkPassword(password))) {
-    throw new AppError("ERR_INVALID_CREDENTIALS", 401);
+    return reply
+      .code(ERRORS.userCredError.statusCode)
+      .send(ERRORS.userCredError.message);
   }
   const userJson = user.toJSON();
 
@@ -58,4 +69,3 @@ export const AuthUserService = async ({ email, password, server }: Request) => {
     usuariosOnline,
   };
 };
-// {"message":"Login realizado com sucesso","data":{"id":24,"email":"suporte2@exp.net.br","name":"Renato lucio","status":"offline","tokenVersion":0,"profile":"admin","createdAt":"2024-12-22T20:28:29.832Z","updatedAt":"2025-09-11T20:34:35.062Z"}}
