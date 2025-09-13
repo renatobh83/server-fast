@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { AppError, ERRORS, handleServerError } from "../errors/errors.helper";
+import {  ERRORS, handleServerError } from "../errors/errors.helper";
 import * as Yup from "yup";
 import { isMatch } from "date-fns";
 import { STANDARD } from "../constants/request";
