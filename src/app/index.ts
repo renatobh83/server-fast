@@ -64,6 +64,17 @@ if (!server.hasRequestDecorator("user")) {
     initIO(server);
   });
   await server.register(routes);
+
+  app.setNotFoundHandler((request, reply) => {
+  reply
+    .status(404)
+    .send({
+      statusCode: 404,
+      error: "Not Found",
+      message: `A rota ${request.url} não existe`
+    });
+});
+  
    // Graceful shutdown
   const signals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM'];
   signals.forEach((signal) => {
