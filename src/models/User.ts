@@ -60,7 +60,7 @@ class User extends Model<UserProps> implements UserProps {
     //   foreignKey: "userId",
     //   otherKey: "contactId",
     // });
-    // User.belongsTo(models.Tenant, { foreignKey: "tenantId" });
+    User.belongsTo(models.Tenant, { foreignKey: "tenantId" });
   }
 
   // init separado para seguir o novo padrão

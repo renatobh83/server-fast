@@ -1,4 +1,5 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
+import Tenant from "./Tenant";
 
 export class Email extends Model {
     declare id: number
@@ -46,10 +47,10 @@ export class Email extends Model {
         tenantId: {
           type: DataTypes.INTEGER,
           allowNull: false,
-        //   references: {
-        //     model: Tenant, // ou "Tenants" se precisar só do nome da tabela
-        //     key: "id",
-        //   },
+          references: {
+            model: "Tenant", // ou "Tenants" se precisar só do nome da tabela
+            key: "id",
+          },
         },
         createdAt: {
           type: DataTypes.DATE(6),
@@ -73,12 +74,12 @@ export class Email extends Model {
     return Email;
   }
 
-//   static associate() {
-//     Email.belongsTo(Tenant, {
-//       foreignKey: "tenantId",
-//       as: "tenant",
-//     });
-//   }
+  static associate() {
+    Email.belongsTo(Tenant, {
+      foreignKey: "tenantId",
+      as: "tenant",
+    });
+  }
 }
 
 export default Email;

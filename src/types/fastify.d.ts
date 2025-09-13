@@ -13,5 +13,6 @@ declare module "fastify" {
     redis: Redis;
     sequelize: Sequelize;
     jwt: JWT;
+    user: { id: string; profile: string; tenantId: number };
   }
 }
