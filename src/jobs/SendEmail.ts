@@ -37,7 +37,7 @@ export default {
       };
       //  const info = await transporter.sendMail(mailOptions);
       logger.info("Finalized SendEmail ");
-      return true
+        return { success: true, messageId: 1, accepted: true };
   },
 };
 

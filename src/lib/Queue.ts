@@ -80,7 +80,7 @@ function setupWorkerListeners(worker: Worker, name: string) {
 
   worker.on("completed", (job: Job, result: any) => {
     logger.info(
-      `[Worker ${name}] Job ${job.id} concluído com sucesso. Resultado: ${result}`
+      `[Worker ${name}] Job ${job.id} concluído com sucesso. Resultado: ${JSON.stringify(result, null,2)}`
     );
   });
 
@@ -162,8 +162,9 @@ export function processQueues(concurrency = 10) {
       async (job: Job) => {
         try {
           logger.info(`Processando job ${name} com ID ${job.id}`);
-          await handle(job.data);
+          const result = await handle(job.data);
           logger.info(`Job ${name} processado com sucesso.`);
+          return result; 
         } catch (error) {
           const err = handleError(
             `processamento do job ${name} (ID: ${job.id})`,
