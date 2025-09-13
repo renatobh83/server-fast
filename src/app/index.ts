@@ -65,7 +65,7 @@ if (!server.hasRequestDecorator("user")) {
   });
   await server.register(routes);
 
-  app.setNotFoundHandler((request, reply) => {
+  server.setNotFoundHandler((request, reply) => {
   reply
     .status(404)
     .send({
