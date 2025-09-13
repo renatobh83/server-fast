@@ -57,8 +57,8 @@ export const SendEmailServices = async ({
         html,
         attachmentUrl,
       };
-
-      addJob("SendEmail", mailOptions);
+      
+      await addJob("SendEmail", mailOptions);
     }
   } catch (error) {
     console.error("Erro ao enviar e-mail:", error);

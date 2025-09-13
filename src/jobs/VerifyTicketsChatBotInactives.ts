@@ -1,3 +1,5 @@
+import { logger } from "../utils/logger";
+
 export default {
   key: "VerifyTicketsChatBotInactives",
   options: {
@@ -5,11 +7,11 @@ export default {
     removeOnFail: 5,
   },
   async handle() {
-    console.log("Load");
+    
     // try {
-    //   logger.info("FindUpdateTicketsInactiveChatBot Initiated");
+      logger.info("FindUpdateTicketsInactiveChatBot Initiated");
     //   await FindUpdateTicketsInactiveChatBot();
-    //   logger.info("Finalized FindUpdateTicketsInactiveChatBot");
+      logger.info("Finalized FindUpdateTicketsInactiveChatBot");
     // } catch (error: unknown) {
     //   const errorMessage =
     //     error instanceof Error ? error.message : "Erro desconhecido";

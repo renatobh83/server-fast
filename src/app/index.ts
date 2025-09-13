@@ -1,7 +1,8 @@
+import "dotenv/config"; 
 import Fastify, { FastifyInstance, FastifyServerOptions } from "fastify";
 import fastifyEnv from "@fastify/env";
 import jwt from "@fastify/jwt";
-import fastifyExpress from "@fastify/express";
+
 import fastifySocketIO from "fastify-socket.io";
 import routes from "../routes";
 import fastifyModule from "../lib/fastifyPlugins/fastifyModule";
@@ -10,11 +11,12 @@ import { configSchema } from "./configSchema";
 import { redisPlugin } from "../lib/fastifyPlugins/redis";
 import { sequelizePlugin } from "../lib/fastifyPlugins/sequelize";
 
+
 export async function buildServer(
   config: FastifyServerOptions = {}
 ): Promise<FastifyInstance> {
   const server = Fastify({
-    logger: true,
+    logger: false,
     trustProxy: true,
   });
 
@@ -22,7 +24,7 @@ export async function buildServer(
     dotenv: true, // lê automaticamente do arquivo .env
     schema: configSchema,
   });
-  await server.register(fastifyExpress);
+  
   await server.register(redisPlugin);
   await server.register(fastifyModule);
   await server.register(sequelizePlugin);
@@ -70,7 +72,7 @@ export async function start() {
       },
     },
   });
-
+  
   try {
     await app.listen({ port: 3000, host: "0.0.0.0" });
     console.log("Server listening on http://localhost:3000");

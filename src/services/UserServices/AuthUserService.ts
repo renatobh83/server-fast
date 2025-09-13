@@ -15,7 +15,9 @@ export const AuthUserService = async ({
   server,
   reply,
 }: Request) => {
+  
   const { User } = server.models;
+
   const user = await User.findOne({
     where: {
       email,

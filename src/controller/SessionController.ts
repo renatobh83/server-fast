@@ -5,6 +5,7 @@ import { SendRefreshToken } from "../helpers/SendRefreshToken";
 import { ERRORS, handleServerError } from "../errors/errors.helper";
 import { STANDARD } from "../constants/request";
 import { sendPasswordReset } from "../services/UserServices/SendPasswordResetService";
+import { redisClient } from "../lib/redis";
 
 export const StoreLoginHandler = async (
   request: FastifyRequest,
@@ -30,7 +31,7 @@ export const StoreLoginHandler = async (
     status: user.status,
     userId: user.id,
     tenantId: user.tenantId,
-    queues: user.queues,
+    // queues: user.queues,
     usuariosOnline,
     configs: user.configs,
   };
@@ -94,18 +95,20 @@ export const forgotPassword = async (
   try {
     const { email } = request.body as any;
     const server = request.server;
+    
     const user = await server.models.User.findOne({
       where: {
         email,
       },
     });
+    
     if (!user) {
       return reply
         .code(ERRORS.userNotExists.statusCode)
         .send(ERRORS.userNotExists.message);
     }
 
-    await sendPasswordReset({ user, redis: server.redis });
+    await sendPasswordReset({ user, redis: redisClient });
 
     reply
       .code(STANDARD.OK.statusCode)

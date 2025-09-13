@@ -1,10 +1,14 @@
 import nodemailer from "nodemailer";
+import { models } from "../database/db";
+
 
 export const createTransporter = async (tenantId: number) => {
+  
   try {
     // Buscar as configurações do SMTP no banco de dados
-    const emailConfig = {} as any; //Email.findOne({ where: { tenantId } });
-
+    
+    const emailConfig = await  models.Email.findOne({ where: { tenantId } });
+    
     if (!emailConfig) {
       throw new Error("Configuração de e-mail não encontrada.");
     }
