@@ -5,7 +5,6 @@ import { SendRefreshToken } from "../helpers/SendRefreshToken";
 import { ERRORS, handleServerError } from "../errors/errors.helper";
 import { STANDARD } from "../constants/request";
 import { sendPasswordReset } from "../services/UserServices/SendPasswordResetService";
-import { redisClient } from "../lib/redis";
 
 export const StoreLoginHandler = async (
   request: FastifyRequest,
@@ -108,7 +107,7 @@ export const forgotPassword = async (
         .send(ERRORS.userNotExists.message);
     }
 
-    await sendPasswordReset({ user, redis: redisClient });
+    await sendPasswordReset({ user, redis: server.redis });
 
     reply
       .code(STANDARD.OK.statusCode)

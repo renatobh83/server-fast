@@ -37,6 +37,7 @@ export default {
       };
       //  const info = await transporter.sendMail(mailOptions);
       logger.info("Finalized SendEmail ");
+      return true
   },
 };
 

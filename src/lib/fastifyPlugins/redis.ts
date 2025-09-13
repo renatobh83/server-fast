@@ -7,10 +7,8 @@ import { logger } from "../../utils/logger";
 export const redisPlugin = fp(async (fastify: FastifyInstance) => {
   
     redisClient.on("ready",()=>{
-         logger.info("✅ Redis conectado e pronto");
-         fastify.register(registerBullMQ);
-        //  fastify.register(async (fastify) => { registerBullMQ(fastify)})
-            
+         logger.info("✅ Redis conectado e pronto, registrando Workes");
+         fastify.register(registerBullMQ);    
+        fastify.decorate("redis", redisClient);
     })
-    fastify.decorate("redis", redisClient);
 });

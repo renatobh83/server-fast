@@ -61,6 +61,20 @@ export async function buildServer(
     initIO(server);
   });
   await server.register(routes);
+   // Graceful shutdown
+  const signals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM'];
+  signals.forEach((signal) => {
+    process.on(signal, async () => {
+      try {
+        await server.close();
+        server.log.error(`Closed application on ${signal}`);
+        process.exit(0);
+      } catch (err: any) {
+        server.log.error(`Error closing application on ${signal}`, err);
+        process.exit(1);
+      }
+    });
+  });
   return server;
 }
 export async function start() {
@@ -81,5 +95,11 @@ export async function start() {
     process.exit(1);
   }
 }
+// Handle unhandled rejections
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled Rejection:', err);
+  process.exit(1);
+});
+
 
 export default buildServer;
