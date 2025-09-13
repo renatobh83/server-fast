@@ -13,6 +13,12 @@ declare module "fastify" {
     redis: Redis;
     sequelize: Sequelize;
     jwt: JWT;
-    user: { id: string; profile: string; tenantId: number };
+  }
+    
+}
+
+declare module "fastify" {
+  interface FastifyRequest {
+    user?: { id: string; email: string };
   }
 }

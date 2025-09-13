@@ -11,7 +11,7 @@ export const StoreLoginHandler = async (
   response: FastifyReply
 ) => {
   const { email, password } = request.body as any;
-  const server = request.server;
+  const server = request;
 
   const { token, user, refreshToken, usuariosOnline } = await AuthUserService({
     reply: response,
@@ -34,7 +34,7 @@ export const StoreLoginHandler = async (
     usuariosOnline,
     configs: user.configs,
   };
-  server.io.emit(`${params.tenantId}:users`, {
+  server.server.io.emit(`${params.tenantId}:users`, {
     action: "update",
     data: {
       username: params.username,

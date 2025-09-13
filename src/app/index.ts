@@ -30,7 +30,7 @@ export async function buildServer(
   await server.register(sequelizePlugin);
 
   await server.register(jwt, {
-    secret: "DPHmNRZWZ4isLF9vXkMv1QabvpcA80Rc", // coloque em variável de ambiente no mundo real
+    secret: process.env.JWT_SECRET!, // coloque em variável de ambiente no mundo real
   });
 
   // decorador para verificar se o usuário está autenticado
@@ -41,6 +41,9 @@ export async function buildServer(
       reply.send(err);
     }
   });
+if (!server.hasRequestDecorator("user")) {
+  server.decorateRequest("user", null as any);
+}
   // Registra o plugin fastify-socket.io
   await server.register(fastifySocketIO, {
     cors: {

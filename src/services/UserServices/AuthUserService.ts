@@ -1,11 +1,12 @@
 import { FastifyInstance } from "fastify";
 import { ERRORS } from "../../errors/errors.helper";
 import { FastifyReply } from "fastify/types/reply";
+import { FastifyRequest } from "fastify/types/request";
 
 interface Request {
   email: string;
   password: string;
-  server: FastifyInstance;
+  server: FastifyRequest;
   reply: FastifyReply;
 }
 
@@ -16,7 +17,7 @@ export const AuthUserService = async ({
   reply,
 }: Request) => {
   
-  const { User } = server.models;
+  const { User } = server.server.models;
 
   const user = await User.findOne({
     where: {
@@ -42,8 +43,10 @@ export const AuthUserService = async ({
     profile: userJson.profile,
     id: userJson.id,
   };
-  const accessToken = server.jwt.sign(payload, { expiresIn: "3m" });
-  const refreshToken = server.jwt.sign(payload, { expiresIn: "7d" });
+  const accessToken = server.server.jwt.sign(payload, { expiresIn: "3d" });
+  const refreshToken = server.server.jwt.sign(payload, { expiresIn: "7d" });
+
+   server.user = payload
 
   const { passwordHash, ...userSafe } = userJson;
   await user.update({

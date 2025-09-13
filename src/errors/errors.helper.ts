@@ -19,7 +19,9 @@ export const ERRORS = {
   invalidRequest: new AppError("Invalid Token", 400),
   internalServerError: new AppError("Internal Server Error", 500),
   unauthorizedAccess: new AppError("Unauthorized access", 401),
-  UnprocessableEntity: new AppError("ERRO_VALIDATION", 422)
+  UnprocessableEntity: new AppError("ERRO_VALIDATION", 422),
+  EmpresaNoFound: new AppError("ERR_NO_TENANT_FOUND", 404),
+  MessageNoFound: new AppError("ERR_NO_MESSAGE_INFORMATION", 404),
 };
 
 export function handleServerError(reply: FastifyReply, error: any) {

@@ -3,12 +3,13 @@ import { AppError, ERRORS, handleServerError } from "../errors/errors.helper";
 import * as Yup from "yup";
 import { isMatch } from "date-fns";
 import { STANDARD } from "../constants/request";
+import ShowBusinessHoursAndMessageService from "../services/TenantServices/ShowBusinessHoursAndMessageService";
 
 export const updateBusinessHours = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const { tenantId, profile } = request.server.user;
+  const { tenantId, profile } = request.user as any;
   try {
     if (profile !== "admin") {
       return reply
@@ -72,7 +73,7 @@ export const updateMessageBusinessHours = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const { tenantId, profile } = request.server.user;
+  const { tenantId, profile } = request.user as any;
   try {
     if (profile !== "admin") {
       return reply
@@ -83,7 +84,9 @@ export const updateMessageBusinessHours = async (
     const { messageBusinessHours } = request.body as any;
 
     if (!messageBusinessHours) {
-      throw new AppError("ERR_NO_MESSAGE_INFORMATION", 404);
+      return reply
+        .code(ERRORS.MessageNoFound.statusCode)
+        .send(ERRORS.MessageNoFound.message);
     }
 
     // const newBusinessHours = await UpdateMessageBusinessHoursService({
@@ -103,13 +106,15 @@ export const showBusinessHoursAndMessage = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const { tenantId } = request.server.user;
+  const { tenantId } = request.user as any
+  
   try {
-    // const tenant = await ShowBusinessHoursAndMessageService({ tenantId });
+    const tenant = await ShowBusinessHoursAndMessageService({ tenantId });
+    
 
     reply
       .code(STANDARD.OK.statusCode)
-      .send({ message: "CONFIGURAR UPDATE" });
+      .send({tenant});
   } catch (error) {
     return handleServerError(reply, error);
   }
@@ -119,7 +124,7 @@ export const udpateDadosNf = async (
     request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const { tenantId } = request.server.user;
+  const { tenantId } = request.user as any;
   const { address, dadosNfe, razaoSocial } = request.body as any;
   try {
     // const tenant = await UpdateDadosTenantService({
@@ -141,7 +146,7 @@ export const listInfoTenant = async (
     request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const { tenantId } = request.server.user;
+  const { tenantId } = request.user as any
 
   try {
     // const tenant = await ListDadosTenantService({ tenantId });
