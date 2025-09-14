@@ -1,4 +1,5 @@
 import { Sequelize, DataTypes, Model } from "sequelize";
+
 import { compare, hash } from "bcryptjs";
 interface UserProps {
   id?: number;
@@ -11,7 +12,6 @@ interface UserProps {
   profile?: string;
   createdAt?: Date;
   updatedAt?: Date;
-
   ativo?: boolean;
   tenantId: number;
   lastLogin?: Date | null;
