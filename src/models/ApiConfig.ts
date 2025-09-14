@@ -1,6 +1,7 @@
-import {  DataTypes, Model, Sequelize } from "sequelize";
+import { DataTypes, Model, Sequelize } from "sequelize";
 import Tenant from "./Tenant";
 import { v4 as uuidV4 } from "uuid";
+import User from "./User";
 
 
 
@@ -94,11 +95,21 @@ class ApiConfig extends Model {
         return ApiConfig
     }
 
-    static associate(models: any) {
+    static associate() {
+        //   ApiConfig.belongsTo(Whatsapp, {
+        //     foreignKey: "sessionId",
+        //     as: "session",
+        //   });
+
+        ApiConfig.belongsTo(User, {
+            foreignKey: "userId",
+            as: "user",
+        });
+
         ApiConfig.belongsTo(Tenant, {
             foreignKey: "tenantId",
-            as: "tenant"
-        })
+            as: "tenant",
+        });
     }
 
 }
