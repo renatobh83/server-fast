@@ -7,7 +7,7 @@
     "run-dev": "tsc-watch --onSuccess \"node dist/server.js\"",
     "dev": "./start-tunnel.sh && npm run run-dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:win": "start /B ssh  -p 2290 -f -N -L 6432:localhost:6432 root@109.199.105.36 && node dist/server.js --inspect-brk && taskkill /F /IM ssh.exe"
+    "dev:win": "start /B ssh  -p 2290 -f -N -L 6432:localhost:6432 root@109.199.105.36 && npm run run-dev"
   },
   "keywords": [],
   "author": "",

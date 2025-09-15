@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import {  ERRORS, handleServerError } from "../errors/errors.helper";
+import { ERRORS, handleServerError } from "../errors/errors.helper";
 import * as Yup from "yup";
 import { isMatch } from "date-fns";
 import { STANDARD } from "../constants/request";
@@ -61,9 +61,7 @@ export const updateBusinessHours = async (
     //   tenantId,
     // });
 
-    reply
-      .code(STANDARD.OK.statusCode)
-      .send({ message: "CONFIGURAR UPDATE" });
+    reply.code(STANDARD.OK.statusCode).send({ message: "CONFIGURAR UPDATE" });
   } catch (error) {
     return handleServerError(reply, error);
   }
@@ -94,9 +92,7 @@ export const updateMessageBusinessHours = async (
     //   tenantId,
     // });
 
-    reply
-      .code(STANDARD.OK.statusCode)
-      .send({ message: "CONFIGURAR UPDATE" });
+    reply.code(STANDARD.OK.statusCode).send({ message: "CONFIGURAR UPDATE" });
   } catch (error) {
     return handleServerError(reply, error);
   }
@@ -106,22 +102,20 @@ export const showBusinessHoursAndMessage = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const { tenantId } = request.user as any
-  
+  console.log(request.user);
+  const { tenantId } = request.user as any;
+
   try {
     const tenant = await ShowBusinessHoursAndMessageService({ tenantId });
-    
 
-    reply
-      .code(STANDARD.OK.statusCode)
-      .send({tenant});
+    reply.code(STANDARD.OK.statusCode).send({ tenant });
   } catch (error) {
     return handleServerError(reply, error);
   }
 };
 
 export const udpateDadosNf = async (
-    request: FastifyRequest,
+  request: FastifyRequest,
   reply: FastifyReply
 ) => {
   const { tenantId } = request.user as any;
@@ -134,28 +128,23 @@ export const udpateDadosNf = async (
     //   razaoSocial,
     // });
 
-        reply
-      .code(STANDARD.OK.statusCode)
-      .send({ message: "CONFIGURAR reply" });
+    reply.code(STANDARD.OK.statusCode).send({ message: "CONFIGURAR reply" });
   } catch (error) {
-     return handleServerError(reply, error);
+    return handleServerError(reply, error);
   }
 };
 
 export const listInfoTenant = async (
-    request: FastifyRequest,
+  request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const { tenantId } = request.user as any
+  const { tenantId } = request.user as any;
 
   try {
     // const tenant = await ListDadosTenantService({ tenantId });
 
-    
-        reply
-      .code(STANDARD.OK.statusCode)
-      .send({ message: "CONFIGURAR reply" });
+    reply.code(STANDARD.OK.statusCode).send({ message: "CONFIGURAR reply" });
   } catch (error) {
-     return handleServerError(reply, error);
+    return handleServerError(reply, error);
   }
 };

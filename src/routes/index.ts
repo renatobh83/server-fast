@@ -5,16 +5,12 @@ import authRoutes from "./authRoutes";
 import tenantRoutes from "./tenant";
 
 async function routes(fastify: FastifyInstance) {
-  // /users → rotas de usuários
-
-  fastify.register(userRoutes, { prefix: "/users" });
-
-  // /servers → rotas de servidores
-  fastify.register(serverRoutes, { prefix: "/servers" });
-
   fastify.register(authRoutes, { prefix: "/auth" });
 
-  fastify.register(tenantRoutes, { prefix: "/tenants"})
+  fastify.register(async (privateScope) => {
+    privateScope.addHook("preHandler", fastify.authenticate);
+    fastify.register(tenantRoutes, { prefix: "/tenants" });
+  });
 }
 
 export default routes;
