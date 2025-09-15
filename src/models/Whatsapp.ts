@@ -184,7 +184,7 @@ export class Whatsapp extends Model {
   }
 
   static async CreateTokenWebHook(instance: Whatsapp): Promise<void> {
-    const { secret } = authConfig;
+    const secret = process.env.WEBHOOK_TOKEN!;
 
     if (
       !instance?.tokenHook &&

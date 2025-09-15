@@ -3,6 +3,12 @@ import { format } from "date-fns";
 
 import Tenant from "./Tenant";
 import User from "./User";
+import Message from "./Message";
+import Contact from "./Contact";
+import Whatsapp from "./Whatsapp";
+import ChatFlow from "./ChatFlow";
+import Empresa from "./Empresa";
+import Queue from "./Queue";
 
 export class Ticket extends Model {
   declare id: number;
@@ -155,16 +161,15 @@ export class Ticket extends Model {
 
   static associate() {
     Ticket.belongsTo(User, { foreignKey: "userId", as: "user" });
-    // Ticket.belongsTo(Contact, { foreignKey: "contactId", as: "contact" });
-    // Ticket.belongsTo(Whatsapp, { foreignKey: "whatsappId", as: "whatsapp" });
+    Ticket.belongsTo(Contact, { foreignKey: "contactId", as: "contact" });
+    Ticket.belongsTo(Whatsapp, { foreignKey: "whatsappId", as: "whatsapp" });
+    Ticket.belongsTo(ChatFlow, { foreignKey: "chatFlowId", as: "chatFlow" });
+    Ticket.belongsTo(Empresa, { foreignKey: "empresaId", as: "empresa" });
+    Ticket.belongsTo(Queue, { foreignKey: "queueId", as: "queue" });
+    Ticket.belongsTo(Tenant, { foreignKey: "tenantId", as: "tenant" });
+    Ticket.hasMany(Message, { foreignKey: "ticketId", as: "messages" });
     // Ticket.belongsTo(AutoReply, { foreignKey: "autoReplyId", as: "autoReply" });
     // Ticket.belongsTo(StepsReply, { foreignKey: "stepAutoReplyId", as: "stepsReply" });
-    // Ticket.belongsTo(ChatFlow, { foreignKey: "chatFlowId", as: "chatFlow" });
-    // Ticket.belongsTo(Empresa, { foreignKey: "empresaId", as: "empresa" });
-    // Ticket.belongsTo(Queue, { foreignKey: "queueId", as: "queue" });
-    Ticket.belongsTo(Tenant, { foreignKey: "tenantId", as: "tenant" });
-
-    // Ticket.hasMany(Message, { foreignKey: "ticketId", as: "messages" });
     // Ticket.hasMany(MessagesOffLine, { foreignKey: "ticketId", as: "messagesOffLine" });
   }
 }

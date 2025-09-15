@@ -1,5 +1,9 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 import User from "./User";
+import PauseHistory from "./PauseHistoryChamado";
+import Ticket from "./Ticket";
+import Empresa from "./Empresa";
+import Media from "./Media";
 
 export class Chamado extends Model {
   declare id: number;
@@ -60,7 +64,12 @@ export class Chamado extends Model {
           allowNull: true,
         },
         status: {
-          type: DataTypes.ENUM("ABERTO", "EM_ANDAMENTO", "CONCLUIDO", "PAUSADO"),
+          type: DataTypes.ENUM(
+            "ABERTO",
+            "EM_ANDAMENTO",
+            "CONCLUIDO",
+            "PAUSADO"
+          ),
           allowNull: false,
           defaultValue: "ABERTO",
         },
@@ -121,9 +130,11 @@ export class Chamado extends Model {
               let totalTime = closedAt.getTime() - createdAt.getTime();
 
               // Subtrai o tempo de pausas
-              pauseHistory.forEach((pause: { startTime: string | number | Date; endTime: string | number | Date; }) => {
+              pauseHistory.forEach((pause: PauseHistory) => {
                 const pauseStart = new Date(pause.startTime);
-                const pauseEnd = pause.endTime ? new Date(pause.endTime) : new Date();
+                const pauseEnd = pause.endTime
+                  ? new Date(pause.endTime)
+                  : new Date();
                 totalTime -= pauseEnd.getTime() - pauseStart.getTime();
               });
 
@@ -138,30 +149,30 @@ export class Chamado extends Model {
   }
 
   static associate() {
-    // Chamado.belongsTo(Ticket, {
-    //   foreignKey: "ticketId",
-    //   as: "ticket",
-    // });
+    Chamado.belongsTo(Ticket, {
+      foreignKey: "ticketId",
+      as: "ticket",
+    });
 
-    // Chamado.belongsTo(Empresa, {
-    //   foreignKey: "empresaId",
-    //   as: "empresa",
-    // });
+    Chamado.belongsTo(Empresa, {
+      foreignKey: "empresaId",
+      as: "empresa",
+    });
 
     Chamado.belongsTo(User, {
       foreignKey: "userId",
       as: "usuario",
     });
 
-    // Chamado.hasMany(PauseHistory, {
-    //   foreignKey: "chamadoId",
-    //   as: "pauseHistory",
-    // });
+    Chamado.hasMany(PauseHistory, {
+      foreignKey: "chamadoId",
+      as: "pauseHistory",
+    });
 
-    // Chamado.hasMany(Media, {
-    //   foreignKey: "chamadoId",
-    //   as: "media",
-    // });
+    Chamado.hasMany(Media, {
+      foreignKey: "chamadoId",
+      as: "media",
+    });
   }
 }
 
