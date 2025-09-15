@@ -63,13 +63,13 @@ class Contact extends Model<CreateContactInput> implements CreateContactInput {
 
     Contact.hasMany(models.ContactWallet, { foreignKey: "contactId" });
 
-    Contact.hasMany(models.CampaignContacts, { foreignKey: "contactId" });
+    // Contact.hasMany(models.CampaignContacts, { foreignKey: "contactId" });
 
-    Contact.belongsToMany(models.Campaign, {
-      through: models.CampaignContacts,
-      foreignKey: "contactId",
-      otherKey: "campaignId",
-    });
+    // Contact.belongsToMany(models.Campaign, {
+    //   through: models.CampaignContacts,
+    //   foreignKey: "contactId",
+    //   otherKey: "campaignId",
+    // });
 
     Contact.belongsToMany(models.Empresa, {
       through: models.EmpresaContact,

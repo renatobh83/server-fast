@@ -29,7 +29,7 @@ class ContactTag extends Model<IContactTag> implements IContactTag {
       foreignKey: "contactId",
       as: "contact",
     });
-    ContactTag.belongsTo(models.Tag, { foreignKey: "tagId", as: "tag" });
+    // ContactTag.belongsTo(models.Tag, { foreignKey: "tagId", as: "tag" });
     ContactTag.belongsTo(models.Tenant, {
       foreignKey: "tenantId",
       as: "tenant",
