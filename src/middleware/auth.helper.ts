@@ -36,13 +36,14 @@ export const checkValidUser = async (
       .send(ERRORS.unauthorizedAccess.message);
   }
 
-  console.log(token)
-//   const decoded = request.server.jwt.verify(token);
-//   if (!decoded || !decoded.id) {
-//     return reply
-//       .code(ERRORS.unauthorizedAccess.statusCode)
-//       .send(ERRORS.unauthorizedAccess.message);
-//   }
+
+  const decoded = request.server.jwt.verify(token) as any;
+  console.log(decoded)
+  if (!decoded || !decoded.id) {
+    return reply
+      .code(ERRORS.unauthorizedAccess.statusCode)
+      .send(ERRORS.unauthorizedAccess.message);
+  }
 
   try {
     // const userData = await prisma.user.findUnique({
