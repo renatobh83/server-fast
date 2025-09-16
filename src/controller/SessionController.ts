@@ -95,7 +95,7 @@ export const forgotPassword = async (
     const { email } = request.body as any;
 
     if(!email) {
-      return reply.code(400).send({"email nao informado"})
+      return reply.code(400).send({mesaage:"email nao informado"})
     }
     const server = request.server;
     
