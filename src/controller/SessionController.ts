@@ -5,6 +5,7 @@ import { SendRefreshToken } from "../helpers/SendRefreshToken";
 import { ERRORS, handleServerError } from "../errors/errors.helper";
 import { STANDARD } from "../constants/request";
 import { sendPasswordReset } from "../services/UserServices/SendPasswordResetService";
+import User from "../models/User";
 
 export const StoreLoginHandler = async (
   request: FastifyRequest,
@@ -58,17 +59,11 @@ export const LogoutUser = async (
   const { userId } = request.body as any;
 
   try {
-    if (!userId) {
-      return reply
-        .code(ERRORS.userNotExists.statusCode)
-        .send(ERRORS.userNotExists.message);
-    }
-    const server = request.server;
-    const userLogout = await server.models.User.findByPk(userId);
+    const userLogout = await User.findByPk(userId);
     if (userLogout) {
       userLogout.update({ isOnline: false, lastLogout: new Date() });
     }
-    server.io.emit(`${userLogout?.tenantId}:users`, {
+    request.server.io.emit(`${userLogout?.tenantId}:users`, {
       action: "update",
       data: {
         username: userLogout?.name,
@@ -94,30 +89,29 @@ export const forgotPassword = async (
   try {
     const { email } = request.body as any;
 
-    if(!email) {
-      return reply.code(400).send({mesaage:"email nao informado"})
+    if (!email) {
+      return reply.code(400).send({ mesaage: "email nao informado" });
     }
-    const server = request.server;
-    
-    const user = await server.models.User.findOne({
+
+    const user = await User.findOne({
       where: {
         email,
       },
     });
-    
+
     if (!user) {
       return reply
         .code(ERRORS.userNotExists.statusCode)
         .send(ERRORS.userNotExists.message);
     }
 
-    await sendPasswordReset({ user, redis: server.redis });
+    await sendPasswordReset({ user, redis: request.server.redis });
 
     reply
       .code(STANDARD.OK.statusCode)
       .send({ message: "E-mail enviado com link de redefinição" });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return handleServerError(reply, error);
   }
 };

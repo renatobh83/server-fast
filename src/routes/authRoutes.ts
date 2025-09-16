@@ -28,8 +28,32 @@ export default async function authRoutes(fastify: FastifyInstance) {
     },
     SessionController.StoreLoginHandler
   );
-  fastify.post("/logout", SessionController.LogoutUser);
-  fastify.post("/forgot-password",{
+  fastify.post(
+    "/logout",
+    {
+      schema: {
+        body: {
+          type: "object",
+          required: ["userId"],
+          properties: {
+            userId: { type: "string" },
+          },
+        },
+        response: {
+          200: {
+            type: "object",
+            properties: {
+              message: { type: "string" },
+            },
+          },
+        },
+      },
+    },
+    SessionController.LogoutUser
+  );
+  fastify.post(
+    "/forgot-password",
+    {
       schema: {
         body: {
           type: "object",
@@ -47,5 +71,7 @@ export default async function authRoutes(fastify: FastifyInstance) {
           },
         },
       },
-    }, SessionController.forgotPassword);
+    },
+    SessionController.forgotPassword
+  );
 }

@@ -1,4 +1,4 @@
-import "dotenv/config"; 
+import "dotenv/config";
 import Fastify, { FastifyInstance, FastifyServerOptions } from "fastify";
 import fastifyEnv from "@fastify/env";
 import jwt from "@fastify/jwt";
@@ -10,7 +10,6 @@ import { initIO } from "../lib/socket";
 import { configSchema } from "./configSchema";
 import { redisPlugin } from "../lib/fastifyPlugins/redis";
 import { sequelizePlugin } from "../lib/fastifyPlugins/sequelize";
-
 
 export async function buildServer(
   config: FastifyServerOptions = {}
@@ -24,7 +23,7 @@ export async function buildServer(
     dotenv: true, // lê automaticamente do arquivo .env
     schema: configSchema,
   });
-  
+
   await server.register(redisPlugin);
   await server.register(fastifyModule);
   await server.register(sequelizePlugin);
@@ -32,7 +31,14 @@ export async function buildServer(
   await server.register(jwt, {
     secret: process.env.JWT_SECRET!, // coloque em variável de ambiente no mundo real
   });
-
+  server.setErrorHandler((error, request, reply) => {
+    const statusCode = error.statusCode ?? 500;
+    reply.status(statusCode).send({
+      statusCode,
+      error: error.name || "Internal Server Error",
+      message: error.message,
+    });
+  });
   // decorador para verificar se o usuário está autenticado
   server.decorate("authenticate", async function (request: any, reply: any) {
     try {
@@ -41,9 +47,9 @@ export async function buildServer(
       reply.send(err);
     }
   });
-if (!server.hasRequestDecorator("user")) {
-  server.decorateRequest("user", null as any);
-}
+  if (!server.hasRequestDecorator("user")) {
+    server.decorateRequest("user", null as any);
+  }
   // Registra o plugin fastify-socket.io
   await server.register(fastifySocketIO, {
     cors: {
@@ -66,17 +72,15 @@ if (!server.hasRequestDecorator("user")) {
   await server.register(routes);
 
   server.setNotFoundHandler((request, reply) => {
-  reply
-    .status(404)
-    .send({
+    reply.status(404).send({
       statusCode: 404,
       error: "Not Found",
-      message: `A rota ${request.url} não existe`
+      message: `A rota ${request.url} não existe`,
     });
-});
-  
-   // Graceful shutdown
-  const signals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM'];
+  });
+
+  // Graceful shutdown
+  const signals: NodeJS.Signals[] = ["SIGINT", "SIGTERM"];
   signals.forEach((signal) => {
     process.on(signal, async () => {
       try {
@@ -100,7 +104,7 @@ export async function start() {
       },
     },
   });
-  
+
   try {
     await app.listen({ port: 3000, host: "0.0.0.0" });
     console.log("Server listening on http://localhost:3000");
@@ -110,10 +114,9 @@ export async function start() {
   }
 }
 // Handle unhandled rejections
-process.on('unhandledRejection', (err) => {
-  console.error('Unhandled Rejection:', err);
+process.on("unhandledRejection", (err) => {
+  console.error("Unhandled Rejection:", err);
   process.exit(1);
 });
-
 
 export default buildServer;
