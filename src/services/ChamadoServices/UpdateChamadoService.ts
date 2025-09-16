@@ -18,6 +18,7 @@ interface IUpdateChamadoService {
   assunto?: string;
   conclusao?: string;
   comentarios?: string[];
+  files?: any[]
   status?: "ABERTO" | "EM_ANDAMENTO" | "CONCLUIDO" | "PAUSADO";
   socket: any;
   tenantId: number;
@@ -34,9 +35,12 @@ export const updateChamadoService = async ({
   chamadoId,
   conclusao,
   status,
+  files,
   socket,
   tenantId,
 }: IUpdateChamadoService) => {
+
+  
   let parsedComentarios;
   if (typeof comentarios === "string") {
     try {
@@ -100,6 +104,7 @@ export const updateChamadoService = async ({
     await fecharTicket(findChamado.id, conclusao!);
   }
 
+  console.log(findChamado.comentarios)
   if (typeof contatoId === "string") {
     contatoChamado = JSON.parse(contatoId);
   } else {
@@ -139,7 +144,7 @@ export const updateChamadoService = async ({
     // Busca os contatos associados a esse chamado
     const contatos = await Contact.findAll({
       where: {
-        id: contatoIds, // Usa os IDs para buscar os contatos
+        id: contatoIds, 
       },
       attributes: ["id", "name", "number", "email"],
     });
@@ -148,14 +153,14 @@ export const updateChamadoService = async ({
       tenantId: tenantId,
       type: "chamado:update",
       payload: {
-        ...findChamado.toJSON(), // Converte o modelo para objeto JSON
-        contatos, // Adiciona a propriedade contatos
+        ...findChamado.toJSON(),
+        contatos, 
       },
     });
 
     return {
-      ...findChamado.toJSON(), // Converte o modelo para objeto JSON
-      contatos, // Adiciona a propriedade contatos
+      ...findChamado.toJSON(), 
+      contatos, 
     };
   }
 

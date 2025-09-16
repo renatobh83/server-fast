@@ -2,8 +2,7 @@ import { Op, Sequelize } from "sequelize";
 import Queue from "../../models/Queue";
 import Tenant from "../../models/Tenant";
 import User from "../../models/User";
-import { AppError } from "../../errors/errors.helper";
-import { couldStartTrivia } from "typescript";
+
 
 interface Request {
   searchParam?: string;
