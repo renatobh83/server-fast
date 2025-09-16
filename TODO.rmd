@@ -1,0 +1,3 @@
+Terminar implatacao do service, quando for criado o Whatspp
+-AdminCreateChannelService
+- AdminListChannelsService

@@ -5,6 +5,8 @@ import ListChatFlowService from "../services/AdminServices/AdminListChatFlowServ
 import AdminListUsersService from "../services/AdminServices/AdminListUsersService";
 import { tryCatch } from "bullmq";
 import { handleServerError } from "../errors/errors.helper";
+import AdminUpdateUserService from "../services/AdminServices/AdminUpdateUserService";
+import AdminListTenantsService from "../services/AdminServices/AdminListTenantsService";
 
 type IndexQuery = {
   searchParam: string;
@@ -44,7 +46,33 @@ export const listUsers = async (
     });
     return reply.code(STANDARD.OK.statusCode).send({ users, count, hasMore });
   } catch (error) {
-    console.log(error);
+    return handleServerError(reply, error);
+  }
+};
+
+export const updateUser = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  try {
+    const userData = request.body as any;
+    const { userId } = request.params as any;
+
+    const userUpdated = await AdminUpdateUserService({ userData, userId });
+    return reply.code(200).send(userUpdated);
+  } catch (error) {
+    return handleServerError(reply, error);
+  }
+};
+
+export const TenantList = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  try {
+    const tenants = await AdminListTenantsService();
+    return reply.code(STANDARD.OK.statusCode).send({ tenants });
+  } catch (error) {
     return handleServerError(reply, error);
   }
 };
