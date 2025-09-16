@@ -44,8 +44,6 @@ export const AuthUserService = async ({
   const accessToken = server.server.jwt.sign(payload, { expiresIn: "3d" });
   const refreshToken = server.server.jwt.sign(payload, { expiresIn: "7d" });
 
-  server.user = payload;
-
   const { passwordHash, ...userSafe } = userJson;
   await user.update({
     isOnline: true,

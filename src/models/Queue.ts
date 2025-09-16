@@ -64,7 +64,7 @@ class Queue extends Model<IQueue> implements IQueue {
       },
       {
         sequelize,
-        tableName: "Queue",
+        tableName: "Queues",
         modelName: "Queue",
         freezeTableName: true,
       }

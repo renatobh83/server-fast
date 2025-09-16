@@ -55,9 +55,8 @@ class Setting extends Model<ISetting> implements ISetting {
       },
       {
         sequelize,
-        tableName: "Setting",
+        tableName: "Settings",
         modelName: "Setting",
-        freezeTableName: true,
       }
     );
 

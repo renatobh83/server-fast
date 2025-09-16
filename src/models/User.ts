@@ -48,18 +48,18 @@ class User extends Model<UserProps> implements UserProps {
 
   // associações
   static associate(models: any) {
-    // User.hasMany(models.Ticket, { foreignKey: "userId" });
-    // User.hasMany(models.Chamado, { foreignKey: "userId" });
-    // User.belongsToMany(models.Queue, {
-    //   through: models.UsersQueues,
-    //   foreignKey: "userId",
-    //   otherKey: "queueId",
-    // });
-    // User.belongsToMany(models.Contact, {
-    //   through: models.Ticket,
-    //   foreignKey: "userId",
-    //   otherKey: "contactId",
-    // });
+    User.hasMany(models.Ticket, { foreignKey: "userId" });
+    User.hasMany(models.Chamado, { foreignKey: "userId" });
+    User.belongsToMany(models.Queue, {
+      through: models.UsersQueues,
+      foreignKey: "userId",
+      otherKey: "queueId",
+    });
+    User.belongsToMany(models.Contact, {
+      through: models.Ticket,
+      foreignKey: "userId",
+      otherKey: "contactId",
+    });
     User.belongsTo(models.Tenant, { foreignKey: "tenantId" });
   }
 
