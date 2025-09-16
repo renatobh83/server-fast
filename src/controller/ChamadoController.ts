@@ -7,6 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { saveFile } from "../utils/saveFile";
 import { updateChamadoService } from "../services/ChamadoServices/UpdateChamadoService";
+import { detailsChamadoService } from "../services/ChamadoServices/DetailsChamadoService";
 
 const ATTACHMENTSFOLDER = path.join(__dirname, "public/attachments");
 // Garantir que a pasta existe
@@ -80,7 +81,6 @@ export const updateChamado = async (
     const updatedChamado = await updateChamadoService(payload);
     return reply.code(STANDARD.OK.statusCode).send(updatedChamado);
   } catch (error) {
-    console.log(error);
     return handleServerError(reply, error);
   }
 };
@@ -94,5 +94,19 @@ export const updateAnexoChamado = async (
   for await (const file of files) {
     const filename = await saveFile(file, ATTACHMENTSFOLDER);
     uploadedFiles.push({ filename, path: `/attachments/${filename}` });
+  }
+};
+
+export const detailsChamado = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  const { chamadoId } = request.params as { chamadoId: number };
+  try {
+    const detalhesChamado = await detailsChamadoService(chamadoId);
+    return reply.code(STANDARD.OK.statusCode).send(detalhesChamado);
+  } catch (error) {
+    console.log(error);
+    return handleServerError(reply, error);
   }
 };

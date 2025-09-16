@@ -8,4 +8,5 @@ export default async function chamadoRoutes(fastify: FastifyInstance) {
     ChamadoController.listaTempoChamados
   );
   fastify.put("/chamados/:chamadoId", ChamadoController.updateChamado);
+  fastify.get("/chamados/:chamadoId", ChamadoController.detailsChamado);
 }

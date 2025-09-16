@@ -48,7 +48,6 @@ export const StoreLoginHandler = async (
   response.code(200).send({
     status: "success",
     data: params,
-    message: "Login realizado com sucesso",
   });
 };
 

@@ -30,7 +30,7 @@ const fastifyModule = fp(async (fastify) => {
   });
 
   // 2️⃣ CORS
-  const allowedOrigins = ["http://127.0.0.1:5500", "*"];
+  const allowedOrigins = ["http://127.0.0.1:5500", "http://localhost:5173"];
 
   await fastify.register(cors, {
     origin: (origin, cb) => {

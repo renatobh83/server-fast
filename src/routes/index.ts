@@ -14,7 +14,7 @@ async function routes(fastify: FastifyInstance) {
 
     fastify.register(tenantRoutes, { prefix: "/tenants" });
     fastify.register(adminRoutes, { prefix: "/admin" });
-    fastify.register(userRoutes, { prefix: "/user" });
+    fastify.register(userRoutes, { prefix: "/users" });
     fastify.register(apiConfiRoutes);
     fastify.register(chamadoRoutes);
   });
