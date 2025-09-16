@@ -94,8 +94,9 @@ export const forgotPassword = async (
   try {
     const { email } = request.body as any;
 
-    if(!email) 
+    if(!email) {
       return reply.code(400).send({"email nao informado"})
+    }
     const server = request.server;
     
     const user = await server.models.User.findOne({
