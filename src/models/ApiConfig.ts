@@ -87,7 +87,7 @@ class ApiConfig extends Model {
       },
       {
         sequelize,
-        tableName: "ApiConfig", // ou "ApiConfigs" se seguir plural
+        tableName: "ApiConfigs", // ou "ApiConfigs" se seguir plural
         modelName: "ApiConfig",
         timestamps: true,
         freezeTableName: true,
