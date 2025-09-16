@@ -39,6 +39,7 @@ class Empresa extends Model<IEmpresa> implements IEmpresa {
       through: models.EmpresaContact,
       as: "contacts",
     });
+
     Empresa.belongsTo(models.Contact, {
       foreignKey: "responsavelContactId",
       as: "responsavelContact",

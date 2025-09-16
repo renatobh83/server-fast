@@ -66,11 +66,11 @@ export async function buildServer(
       console.error("Erro ao inicializar servidor:", err);
       return;
     }
+
     // Acessa a instância do Socket.IO através de server.io
     initIO(server);
   });
   await server.register(routes);
-
   server.setNotFoundHandler((request, reply) => {
     reply.status(404).send({
       statusCode: 404,
