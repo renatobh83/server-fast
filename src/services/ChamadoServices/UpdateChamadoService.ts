@@ -118,6 +118,7 @@ export const updateChamadoService = async ({
     include: [
       {
         model: Empresa,
+        as: "empresa",
         attributes: ["name"],
         where: {
           active: true,

@@ -81,6 +81,7 @@ export const updateChamado = async (
     const updatedChamado = await updateChamadoService(payload);
     return reply.code(STANDARD.OK.statusCode).send(updatedChamado);
   } catch (error) {
+    console.log(error);
     return handleServerError(reply, error);
   }
 };

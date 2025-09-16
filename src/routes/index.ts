@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import userRoutes from "./user";
+import userRoutes from "./userRoutes";
 import authRoutes from "./authRoutes";
 import tenantRoutes from "./tenantRoutes";
 import adminRoutes from "./adminRoutes";
