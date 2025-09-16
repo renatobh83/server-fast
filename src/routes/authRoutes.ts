@@ -33,7 +33,7 @@ export default async function authRoutes(fastify: FastifyInstance) {
       schema: {
         body: {
           type: "object",
-          required: "email",
+          required: ["email"],
           properties: {
             email: { type: "string", format: "email" },
           },
