@@ -8,6 +8,16 @@ import path from "node:path";
 import { saveFile } from "../utils/saveFile";
 import { updateChamadoService } from "../services/ChamadoServices/UpdateChamadoService";
 import { detailsChamadoService } from "../services/ChamadoServices/DetailsChamadoService";
+import {
+  CreateChamadoService,
+  dataChamado,
+} from "../services/ChamadoServices/CreateChamadoService";
+import { associarTicketChamadoService } from "../services/ChamadoServices/associarTicketChamadoService";
+import { EditarTempoChamadoService } from "../services/ChamadoServices/EditarTempoChamadoService";
+import { GetMediaChamadoService } from "../services/ChamadoServices/getMediaChamadoServices";
+import { RemoveMidaChamadoService } from "../services/ChamadoServices/RemoveMediaChamadoService";
+import { SendMessageChamadoServices } from "../services/ChamadoServices/SendMessageChamadoServices";
+import { UpdateMediaDadosService } from "../services/ChamadoServices/UpdateMediaDadosService";
 
 const ATTACHMENTSFOLDER = path.join(__dirname, "public/attachments");
 // Garantir que a pasta existe
@@ -17,6 +27,25 @@ if (!fs.existsSync(ATTACHMENTSFOLDER)) {
 
 type IListallRequest = {
   pageNumber: string;
+};
+
+export const createChamado = async (
+  request: FastifyRequest<{ Body: dataChamado }>,
+  reply: FastifyReply
+) => {
+  const { id, tenantId } = request.user as any;
+
+  try {
+    const chamado = await CreateChamadoService({
+      data: request.body,
+      tenantId,
+      userId: id,
+    });
+    return reply.code(STANDARD.OK.statusCode).send(chamado);
+  } catch (error) {
+    console.log(error);
+    return handleServerError(reply, error);
+  }
 };
 
 export const listaTodosChamados = async (
@@ -78,8 +107,8 @@ export const updateChamado = async (
     socket: request.server.io,
   };
   try {
-    const updatedChamado = await updateChamadoService(payload);
-    return reply.code(STANDARD.OK.statusCode).send(updatedChamado);
+    const chamado = await updateChamadoService(payload);
+    return reply.code(STANDARD.OK.statusCode).send(chamado.toJSON());
   } catch (error) {
     console.log(error);
     return handleServerError(reply, error);
@@ -107,7 +136,95 @@ export const detailsChamado = async (
     const detalhesChamado = await detailsChamadoService(chamadoId);
     return reply.code(STANDARD.OK.statusCode).send(detalhesChamado);
   } catch (error) {
-    console.log(error);
+    return handleServerError(reply, error);
+  }
+};
+
+export const associarTicketChamado = async (
+  request: FastifyRequest<{ Body: { ticketId: number; chamadoId: number } }>,
+  reply: FastifyReply
+) => {
+  const { empresaId } = request.params as { empresaId: number };
+  const { ticketId, chamadoId } = request.body;
+  try {
+    const Chamado = await associarTicketChamadoService({
+      empresaId,
+      ticketId,
+      chamadoId,
+    });
+    return reply.code(STANDARD.OK.statusCode).send(Chamado);
+  } catch (error) {
+    return handleServerError(reply, error);
+  }
+};
+
+export const editarTempoChamado = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  const { ticketId } = request.params as { ticketId: number };
+  const { tempoAjusteMinutos, motivo } = request.body as any;
+  if (await EditarTempoChamadoService({ ticketId, tempoAjusteMinutos, motivo }))
+    return reply
+      .code(STANDARD.OK.statusCode)
+      .send({ message: "Tempo chamado ajustado" });
+  try {
+  } catch (error) {
+    return handleServerError(reply, error);
+  }
+};
+export const getMediaChamado = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  try {
+    const { id } = request.params as { id: number };
+    const data = await GetMediaChamadoService(id);
+
+    return reply.code(STANDARD.OK.statusCode).send(data);
+  } catch (error) {
+    return handleServerError(reply, error);
+  }
+};
+
+export const removeMediaChamado = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  try {
+    const { id } = request.params as { id: number };
+    await RemoveMidaChamadoService(id);
+    return reply.code(STANDARD.OK.statusCode).send({ message: "Sucess" });
+  } catch (error) {
+    return handleServerError(reply, error);
+  }
+};
+
+export const sendMessageChamado = async (
+  request: FastifyRequest<{ Body: any }>,
+  reply: FastifyReply
+) => {
+  try {
+    const { tenantId } = request.user as any;
+    const dataBody = request.body as any;
+    const payload = { ...dataBody, tenantId };
+    await SendMessageChamadoServices(payload);
+    return reply.code(STANDARD.OK.statusCode).send({ message: "Sucess" });
+  } catch (error) {
+    return handleServerError(reply, error);
+  }
+};
+
+export const updateFileChamado = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  try {
+    const dataBody = request.body as any;
+
+    await UpdateMediaDadosService(dataBody);
+    return reply.code(STANDARD.OK.statusCode).send({ message: "Sucess" });
+  } catch (error) {
     return handleServerError(reply, error);
   }
 };

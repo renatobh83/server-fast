@@ -29,25 +29,14 @@ export const detailsChamadoService = async (
           model: Media,
           as: "media",
         },
+        {
+          model: Contact,
+          as: "contatos",
+          attributes: ["id", "name", "number", "email"],
+        },
       ],
     });
-    if (chamado) {
-      const contatoIds = chamado.contatoId;
-      if (Array.isArray(contatoIds) && contatoIds.length > 0) {
-        // Busca os contatos associados a esse chamado
-        const contatos = await Contact.findAll({
-          where: {
-            id: contatoIds, // Usa os IDs para buscar os contatos
-          },
-          attributes: ["id", "name", "number", "email"],
-        });
 
-        return {
-          ...chamado.toJSON(), // Converte o modelo para objeto JSON
-          contatos, // Adiciona a propriedade contatos
-        };
-      }
-    }
     return chamado;
   } catch (error: any) {
     if (error instanceof AppError) {

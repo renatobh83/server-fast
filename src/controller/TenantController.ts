@@ -102,7 +102,6 @@ export const showBusinessHoursAndMessage = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  console.log(request.user);
   const { tenantId } = request.user as any;
 
   try {

@@ -1,9 +1,19 @@
-import { DataTypes, Model, Sequelize } from "sequelize";
+import {
+  BelongsToManyAddAssociationMixin,
+  BelongsToManyAddAssociationsMixin,
+  BelongsToManyGetAssociationsMixin,
+  BelongsToManyRemoveAssociationMixin,
+  BelongsToManySetAssociationsMixin,
+  DataTypes,
+  Model,
+  Sequelize,
+} from "sequelize";
 import User from "./User";
 import PauseHistory from "./PauseHistoryChamado";
 import Ticket from "./Ticket";
 import Empresa from "./Empresa";
 import Media from "./Media";
+import Contact from "./Contact";
 
 export class Chamado extends Model {
   declare id: number;
@@ -22,6 +32,12 @@ export class Chamado extends Model {
   declare motivo?: string | null;
   declare createdAt?: Date;
   declare updatedAt?: Date;
+
+  declare addContatos: BelongsToManyAddAssociationsMixin<Contact, string>;
+  declare addContato: BelongsToManyAddAssociationMixin<Contact, string>;
+  declare getContatos: BelongsToManyGetAssociationsMixin<Contact>;
+  declare setContatos: BelongsToManySetAssociationsMixin<Contact, string>;
+  declare removeContato: BelongsToManyRemoveAssociationMixin<Contact, string>;
 
   static initModel(sequelize: Sequelize): typeof Chamado {
     Chamado.init(
@@ -56,10 +72,6 @@ export class Chamado extends Model {
           },
         },
         ticketsAssociados: {
-          type: DataTypes.JSON,
-          allowNull: true,
-        },
-        contatoId: {
           type: DataTypes.JSON,
           allowNull: true,
         },
@@ -172,6 +184,12 @@ export class Chamado extends Model {
     Chamado.hasMany(Media, {
       foreignKey: "chamadoId",
       as: "media",
+    });
+    Chamado.belongsToMany(Contact, {
+      through: "ChamadoContatos",
+      foreignKey: "chamadoId",
+      otherKey: "contatoId",
+      as: "contatos",
     });
   }
 }

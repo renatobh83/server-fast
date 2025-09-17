@@ -18,7 +18,7 @@ interface IUpdateChamadoService {
   assunto?: string;
   conclusao?: string;
   comentarios?: string[];
-  files?: any[]
+  files?: any[];
   status?: "ABERTO" | "EM_ANDAMENTO" | "CONCLUIDO" | "PAUSADO";
   socket: any;
   tenantId: number;
@@ -39,8 +39,6 @@ export const updateChamadoService = async ({
   socket,
   tenantId,
 }: IUpdateChamadoService) => {
-
-  
   let parsedComentarios;
   if (typeof comentarios === "string") {
     try {
@@ -53,7 +51,6 @@ export const updateChamadoService = async ({
   } else {
     parsedComentarios = []; // ou outro valor padrão
   }
-  let contatoChamado;
 
   const findChamado = await Chamado.findOne({
     where: {
@@ -75,10 +72,15 @@ export const updateChamadoService = async ({
       {
         model: User,
         as: "usuario",
+        attributes: ["id", "name"],
+      },
+      {
+        model: Contact,
+        as: "contatos",
+        attributes: ["id", "name", "number", "email"],
       },
     ],
   });
-
   if (!findChamado) {
     throw new AppError("ERR_NO_CHAMADO_FOUND", 404);
   }
@@ -104,19 +106,14 @@ export const updateChamadoService = async ({
     await fecharTicket(findChamado.id, conclusao!);
   }
 
-  console.log(findChamado.comentarios)
-  if (typeof contatoId === "string") {
-    contatoChamado = JSON.parse(contatoId);
-  } else {
-    contatoChamado = contatoId;
-  }
+  findChamado.setContatos(contatoId);
+
   await findChamado.update({
     userId,
     descricao,
     assunto,
     conclusao,
     comentarios: findChamado.comentarios,
-    contatoId: contatoChamado,
   });
 
   await findChamado.reload({
@@ -136,33 +133,15 @@ export const updateChamadoService = async ({
       {
         model: User,
         as: "usuario",
+        attributes: ["id", "name"],
+      },
+      {
+        model: Contact,
+        as: "contatos",
+        attributes: ["id", "name", "number", "email"],
       },
     ],
   });
-  const contatoIds = findChamado.contatoId;
-  if (Array.isArray(contatoIds) && contatoIds.length > 0) {
-    // Busca os contatos associados a esse chamado
-    const contatos = await Contact.findAll({
-      where: {
-        id: contatoIds, 
-      },
-      attributes: ["id", "name", "number", "email"],
-    });
-    socketEmit({
-      socket,
-      tenantId: tenantId,
-      type: "chamado:update",
-      payload: {
-        ...findChamado.toJSON(),
-        contatos, 
-      },
-    });
-
-    return {
-      ...findChamado.toJSON(), 
-      contatos, 
-    };
-  }
 
   socketEmit({
     socket,

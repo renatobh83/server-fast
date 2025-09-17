@@ -2,6 +2,7 @@ import { Sequelize, DataTypes, Model } from "sequelize";
 
 import ContactCustomField from "./ContactCustomField";
 import Empresa from "./Empresa";
+import Chamado from "./Chamado";
 
 export interface CreateContactInput {
   id?: number;
@@ -70,7 +71,12 @@ class Contact extends Model<CreateContactInput> implements CreateContactInput {
     //   foreignKey: "contactId",
     //   otherKey: "campaignId",
     // });
-
+    Contact.belongsToMany(Chamado, {
+      through: "ChamadoContatos",
+      foreignKey: "contatoId",
+      otherKey: "chamadoId",
+      as: "chamados",
+    });
     Contact.belongsToMany(models.Empresa, {
       through: models.EmpresaContact,
       foreignKey: "contactId",
