@@ -54,7 +54,10 @@ class Empresa extends Model<IEmpresa> implements IEmpresa {
       as: "empresaContacts", // mesmo "as" que você usou
       foreignKey: "empresaId",
     });
-    Empresa.hasMany(models.EmpresaContrato, { as: "contratos" });
+    Empresa.hasMany(models.EmpresaContrato, {
+      as: "contratos",
+      foreignKey: "empresaId",
+    });
 
     Empresa.belongsToMany(models.Contact, {
       through: models.EmpresaContact,
