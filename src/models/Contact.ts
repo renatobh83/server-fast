@@ -3,6 +3,7 @@ import { Sequelize, DataTypes, Model } from "sequelize";
 import ContactCustomField from "./ContactCustomField";
 import Empresa from "./Empresa";
 import Chamado from "./Chamado";
+import ContactWallet from "./ContactWallet";
 
 export interface CreateContactInput {
   id?: number;
@@ -71,16 +72,22 @@ class Contact extends Model<CreateContactInput> implements CreateContactInput {
     //   foreignKey: "contactId",
     //   otherKey: "campaignId",
     // });
+    Contact.hasMany(models.EmpresaContact, {
+      as: "empresaContacts",
+      foreignKey: "contactId",
+    });
     Contact.belongsToMany(Chamado, {
       through: "ChamadoContatos",
       foreignKey: "contatoId",
       otherKey: "chamadoId",
       as: "chamados",
     });
+
     Contact.belongsToMany(models.Empresa, {
       through: models.EmpresaContact,
       foreignKey: "contactId",
       otherKey: "empresaId",
+      as: "empresa",
     });
 
     Contact.hasMany(models.Empresa, { foreignKey: "responsavelContactId" });

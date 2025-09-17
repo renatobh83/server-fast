@@ -4,3 +4,9 @@ Terminar implatacao do service, quando for criado o Whatspp
 
 
 Alterar no front rota Settings
+
+ChatClientService - Falta implementar
+BuildSendMessageService
+VerifyStepsChatFlowTicket
+
+wppInitialized ConctacController

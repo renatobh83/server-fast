@@ -1,5 +1,15 @@
-import { Sequelize, DataTypes, Model } from "sequelize";
+import {
+  Sequelize,
+  DataTypes,
+  Model,
+  BelongsToManyAddAssociationsMixin,
+  BelongsToManyAddAssociationMixin,
+  BelongsToManyGetAssociationsMixin,
+  BelongsToManyRemoveAssociationMixin,
+  BelongsToManySetAssociationsMixin,
+} from "sequelize";
 import EmpresaContact from "./EmpresaContact";
+import Contact from "./Contact";
 
 interface IEmpresa {
   id?: number;
@@ -31,12 +41,25 @@ class Empresa extends Model<IEmpresa> implements IEmpresa {
   declare resultadoDDNSId?: number;
   declare createdAt: Date;
   declare updatedAt: Date;
+  declare contacts?: Contact[];
+
+  declare addContacts: BelongsToManyAddAssociationsMixin<Contact, number>;
+  declare addContat: BelongsToManyAddAssociationMixin<Contact, number>;
+  declare getContacts: BelongsToManyGetAssociationsMixin<Contact>;
+  declare setContacts: BelongsToManySetAssociationsMixin<Contact, number>;
+  declare removeContacts: BelongsToManyRemoveAssociationMixin<Contact, string>;
 
   static associate(models: any) {
-    Empresa.hasMany(models.EmpresaContact, { as: "empresaContacts" });
+    Empresa.hasMany(models.EmpresaContact, {
+      as: "empresaContacts", // mesmo "as" que você usou
+      foreignKey: "empresaId",
+    });
     Empresa.hasMany(models.EmpresaContrato, { as: "contratos" });
+
     Empresa.belongsToMany(models.Contact, {
       through: models.EmpresaContact,
+      foreignKey: "empresaId",
+      otherKey: "contactId",
       as: "contacts",
     });
 

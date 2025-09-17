@@ -70,7 +70,7 @@ class ContactWallet extends Model<IContactWallet> implements IContactWallet {
       },
       {
         sequelize,
-        tableName: "ContactWallet",
+        tableName: "ContactWallets",
         modelName: "ContactWallet",
         freezeTableName: true,
       }

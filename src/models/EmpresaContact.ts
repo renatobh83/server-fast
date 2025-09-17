@@ -3,11 +3,15 @@ import { Sequelize, DataTypes, Model } from "sequelize";
 interface IEmpresaContact {
   empresaId: number;
   contactId: number;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 class EmpresaContact extends Model<IEmpresaContact> implements IEmpresaContact {
   declare empresaId: number;
   declare contactId: number;
+  declare createdAt: Date;
+  declare updatedAt: Date;
 
   static associate(models: any) {
     EmpresaContact.belongsTo(models.Empresa, {
@@ -38,6 +42,16 @@ class EmpresaContact extends Model<IEmpresaContact> implements IEmpresaContact {
             model: "Contacts",
             key: "id",
           },
+        },
+        createdAt: {
+          type: DataTypes.DATE,
+          allowNull: false,
+          defaultValue: Sequelize.fn("NOW"), // resolve o erro
+        },
+        updatedAt: {
+          type: DataTypes.DATE,
+          allowNull: false,
+          defaultValue: Sequelize.fn("NOW"),
         },
       },
       {

@@ -5,6 +5,8 @@ import tenantRoutes from "./tenantRoutes";
 import adminRoutes from "./adminRoutes";
 import apiConfiRoutes from "./apiConfigRoutes";
 import chamadoRoutes from "./chamadosRoutes";
+import contactRoutes from "./contactRoutes";
+import empresaRoutes from "./emrpesaRoutes";
 
 async function routes(fastify: FastifyInstance) {
   fastify.register(authRoutes, { prefix: "/auth" });
@@ -17,6 +19,8 @@ async function routes(fastify: FastifyInstance) {
     fastify.register(userRoutes, { prefix: "/users" });
     fastify.register(apiConfiRoutes);
     fastify.register(chamadoRoutes);
+    fastify.register(contactRoutes);
+    fastify.register(empresaRoutes);
   });
 }
 

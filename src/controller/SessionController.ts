@@ -106,7 +106,7 @@ export const forgotPassword = async (
 
     await sendPasswordReset({ user, redis: request.server.redis });
 
-    reply
+    return reply
       .code(STANDARD.OK.statusCode)
       .send({ message: "E-mail enviado com link de redefinição" });
   } catch (error) {
