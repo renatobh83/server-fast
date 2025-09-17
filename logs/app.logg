@@ -1521,3 +1521,423 @@
   ],
   timestamp: '2025-09-17T18:55:03.462Z'
 }
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:19.686Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:19.753Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:19.864Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:20.017Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:20.222Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:20.476Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:20.784Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:21.152Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:21.555Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:22.010Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:22.520Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:23.078Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:23.697Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:24.358Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:25.063Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:25.823Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:26.626Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:27.483Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:28.400Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:29.834Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:29.895Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:30.012Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:30.176Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:30.391Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:30.650Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:30.966Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:31.323Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:31.735Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:32.198Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:32.704Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:33.265Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:33.870Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:34.522Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:35.232Z'
+}
+{
+  errno: -4073,
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect EHOSTUNREACH 109.199.105.36:6379',
+  stack: 'Error: connect EHOSTUNREACH 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1636:16)',
+  timestamp: '2025-09-17T19:14:47.101Z'
+}
