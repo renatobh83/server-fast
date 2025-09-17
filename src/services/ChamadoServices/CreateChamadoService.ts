@@ -1,4 +1,5 @@
 import { AppError } from "../../errors/errors.helper";
+import socketEmit from "../../helpers/socketEmit";
 import Chamado from "../../models/Chamado";
 import Contact from "../../models/Contact";
 import Empresa from "../../models/Empresa";
@@ -89,6 +90,13 @@ export const CreateChamadoService = async ({
         attributes: ["name", "email"],
       },
     ],
+  });
+  socketEmit({
+    tenantId: tenantId,
+    type: "chamado:create",
+    payload: {
+      chamadoCompleto, // Adiciona a propriedade contatos
+    },
   });
   return chamadoCompleto;
 };

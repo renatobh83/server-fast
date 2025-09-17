@@ -1325,3 +1325,199 @@
   ],
   timestamp: '2025-09-16T17:54:09.544Z'
 }
+{
+  error: TypeError: Cannot read properties of undefined (reading 'toString')
+      at Namespace.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\socket.js:44:40)
+      at Namespace.emit (node:events:518:28)
+      at Namespace.emitReserved (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\socket.io\dist\typed-events.js:56:22)
+      at Namespace._doConnect (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\socket.io\dist\namespace.js:276:14)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\socket.io\dist\namespace.js:238:22
+      at process.processTicksAndRejections (node:internal/process/task_queues:85:11),
+  level: 'error',
+  message: "uncaughtException: Cannot read properties of undefined (reading 'toString')\n" +
+    "TypeError: Cannot read properties of undefined (reading 'toString')\n" +
+    '    at Namespace.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\socket.js:44:40)\n' +
+    '    at Namespace.emit (node:events:518:28)\n' +
+    '    at Namespace.emitReserved (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\typed-events.js:56:22)\n' +
+    '    at Namespace._doConnect (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\namespace.js:276:14)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\namespace.js:238:22\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)',
+  stack: "TypeError: Cannot read properties of undefined (reading 'toString')\n" +
+    '    at Namespace.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\socket.js:44:40)\n' +
+    '    at Namespace.emit (node:events:518:28)\n' +
+    '    at Namespace.emitReserved (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\typed-events.js:56:22)\n' +
+    '    at Namespace._doConnect (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\namespace.js:276:14)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\namespace.js:238:22\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)',
+  exception: true,
+  date: 'Wed Sep 17 2025 15:54:31 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 7580,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 114454528,
+      heapTotal: 80015360,
+      heapUsed: 63680244,
+      external: 2893602,
+      arrayBuffers: 141714
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 205923.515 },
+  trace: [
+    {
+      column: 40,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\socket.js',
+      function: null,
+      line: 44,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: 'node:events',
+      function: 'Namespace.emit',
+      line: 518,
+      method: 'emit',
+      native: false
+    },
+    {
+      column: 22,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\typed-events.js',
+      function: 'Namespace.emitReserved',
+      line: 56,
+      method: 'emitReserved',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\namespace.js',
+      function: 'Namespace._doConnect',
+      line: 276,
+      method: '_doConnect',
+      native: false
+    },
+    {
+      column: 22,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\namespace.js',
+      function: null,
+      line: 238,
+      method: null,
+      native: false
+    },
+    {
+      column: 11,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 85,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-17T18:54:31.153Z'
+}
+{
+  error: TypeError: Cannot read properties of undefined (reading 'toString')
+      at Namespace.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\socket.js:45:40)
+      at Namespace.emit (node:events:518:28)
+      at Namespace.emitReserved (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\socket.io\dist\typed-events.js:56:22)
+      at Namespace._doConnect (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\socket.io\dist\namespace.js:276:14)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\socket.io\dist\namespace.js:238:22
+      at process.processTicksAndRejections (node:internal/process/task_queues:85:11),
+  level: 'error',
+  message: "uncaughtException: Cannot read properties of undefined (reading 'toString')\n" +
+    "TypeError: Cannot read properties of undefined (reading 'toString')\n" +
+    '    at Namespace.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\socket.js:45:40)\n' +
+    '    at Namespace.emit (node:events:518:28)\n' +
+    '    at Namespace.emitReserved (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\typed-events.js:56:22)\n' +
+    '    at Namespace._doConnect (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\namespace.js:276:14)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\namespace.js:238:22\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)',
+  stack: "TypeError: Cannot read properties of undefined (reading 'toString')\n" +
+    '    at Namespace.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\socket.js:45:40)\n' +
+    '    at Namespace.emit (node:events:518:28)\n' +
+    '    at Namespace.emitReserved (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\typed-events.js:56:22)\n' +
+    '    at Namespace._doConnect (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\namespace.js:276:14)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\namespace.js:238:22\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)',
+  exception: true,
+  date: 'Wed Sep 17 2025 15:55:03 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 3800,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.16.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 113098752,
+      heapTotal: 79388672,
+      heapUsed: 62761448,
+      external: 2900380,
+      arrayBuffers: 148492
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 205955.828 },
+  trace: [
+    {
+      column: 40,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\socket.js',
+      function: null,
+      line: 45,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: 'node:events',
+      function: 'Namespace.emit',
+      line: 518,
+      method: 'emit',
+      native: false
+    },
+    {
+      column: 22,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\typed-events.js',
+      function: 'Namespace.emitReserved',
+      line: 56,
+      method: 'emitReserved',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\namespace.js',
+      function: 'Namespace._doConnect',
+      line: 276,
+      method: '_doConnect',
+      native: false
+    },
+    {
+      column: 22,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\socket.io\\dist\\namespace.js',
+      function: null,
+      line: 238,
+      method: null,
+      native: false
+    },
+    {
+      column: 11,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 85,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-17T18:55:03.462Z'
+}

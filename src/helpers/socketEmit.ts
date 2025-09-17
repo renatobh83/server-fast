@@ -1,4 +1,4 @@
-import { Socket } from "socket.io";
+import { getIO } from "../lib/socket";
 
 type Events =
   | "chat:create"
@@ -24,11 +24,10 @@ interface ObjEvent {
   tenantId: number | string;
   type: Events;
   payload: object;
-  socket: Socket;
 }
 
-const emitEvent = ({ tenantId, type, payload, socket }: ObjEvent): void => {
-  const io = socket;
+const emitEvent = ({ tenantId, type, payload }: ObjEvent): void => {
+  const io = getIO();
   let eventChannel = `${tenantId}:ticketList`;
 
   if (type.indexOf("contact:") !== -1) {

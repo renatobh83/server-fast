@@ -20,7 +20,6 @@ interface IUpdateChamadoService {
   comentarios?: string[];
   files?: any[];
   status?: "ABERTO" | "EM_ANDAMENTO" | "CONCLUIDO" | "PAUSADO";
-  socket: any;
   tenantId: number;
 }
 
@@ -36,7 +35,6 @@ export const updateChamadoService = async ({
   conclusao,
   status,
   files,
-  socket,
   tenantId,
 }: IUpdateChamadoService) => {
   let parsedComentarios;
@@ -144,7 +142,6 @@ export const updateChamadoService = async ({
   });
 
   socketEmit({
-    socket,
     tenantId: tenantId,
     type: "chamado:update",
     payload: findChamado,

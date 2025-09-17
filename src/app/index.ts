@@ -2,11 +2,9 @@ import "dotenv/config";
 import Fastify, { FastifyInstance, FastifyServerOptions } from "fastify";
 import fastifyEnv from "@fastify/env";
 import jwt from "@fastify/jwt";
-
-import fastifySocketIO from "fastify-socket.io";
 import routes from "../routes";
 import fastifyModule from "../lib/fastifyPlugins/fastifyModule";
-import { initIO } from "../lib/socket";
+import { initSocket, setupSocketListeners } from "../lib/socket";
 import { configSchema } from "./configSchema";
 import { redisPlugin } from "../lib/fastifyPlugins/redis";
 import { sequelizePlugin } from "../lib/fastifyPlugins/sequelize";
@@ -39,6 +37,7 @@ export async function buildServer(
       message: error.message,
     });
   });
+
   // decorador para verificar se o usuário está autenticado
   server.decorate("authenticate", async function (request: any, reply: any) {
     try {
@@ -50,27 +49,9 @@ export async function buildServer(
   if (!server.hasRequestDecorator("user")) {
     server.decorateRequest("user", null as any);
   }
-  // Registra o plugin fastify-socket.io
-  await server.register(fastifySocketIO, {
-    cors: {
-      origin: "*",
-      methods: ["GET", "POST"],
-      credentials: true,
-    },
 
-    transports: ["websocket", "polling"],
-    allowEIO3: true,
-  });
-  server.ready(async (err) => {
-    if (err) {
-      console.error("Erro ao inicializar servidor:", err);
-      return;
-    }
-
-    // Acessa a instância do Socket.IO através de server.io
-    initIO(server);
-  });
   await server.register(routes);
+
   server.setNotFoundHandler((request, reply) => {
     reply.status(404).send({
       statusCode: 404,
@@ -107,6 +88,9 @@ export async function start() {
 
   try {
     await app.listen({ port: 3000, host: "0.0.0.0" });
+
+    initSocket(app.server);
+    setupSocketListeners();
     console.log("Server listening on http://localhost:3000");
   } catch (err) {
     app.log.error(err);

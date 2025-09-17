@@ -9,7 +9,7 @@ const sequelize = new Sequelize({
   database: process.env.POSTGRES_DB,
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
-  logging: console.log,
+  logging: false,
 });
 
 export const models = initModels(sequelize);
