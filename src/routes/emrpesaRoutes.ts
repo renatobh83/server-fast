@@ -13,7 +13,7 @@ export default async function empresaRoutes(fastify: FastifyInstance) {
           type: "object",
           required: ["name", "identifier"],
           properties: {
-            identifier: { type: "number", pattern: "^[0-9]{14}$" },
+            identifier: { type: "string", pattern: "^[0-9]{14}$" },
             name: { type: "string" },
             address: { type: "object" },
             conclusao: { type: "string" },
