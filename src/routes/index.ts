@@ -8,6 +8,7 @@ import chamadoRoutes from "./chamadosRoutes";
 import contactRoutes from "./contactRoutes";
 import empresaRoutes from "./emrpesaRoutes";
 import fastReplyRoutes from "./fastReplyRoutes";
+import settginsRoutes from "./settingsRoutes";
 
 async function routes(fastify: FastifyInstance) {
   fastify.register(authRoutes, { prefix: "/auth" });
@@ -23,6 +24,7 @@ async function routes(fastify: FastifyInstance) {
     fastify.register(contactRoutes);
     fastify.register(empresaRoutes);
     fastify.register(fastReplyRoutes);
+    fastify.register(settginsRoutes);
   });
 }
 
