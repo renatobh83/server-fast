@@ -1,20 +1,20 @@
-import AppError from "../../errors/AppError";
+import { AppError } from "../../errors/errors.helper";
 import Whatsapp from "../../models/Whatsapp";
 
 const DeleteWhatsApprService = async (
-	id: string,
-	tenantId: string | number,
+  id: string,
+  tenantId: string | number
 ): Promise<void> => {
-	const whatsapp = await Whatsapp.findOne({
-		where: { id, tenantId },
-	});
+  const whatsapp = await Whatsapp.findOne({
+    where: { id, tenantId },
+  });
 
-	if (!whatsapp) {
-		throw new AppError("ERR_NO_WAPP_FOUND", 404);
-	}
+  if (!whatsapp) {
+    throw new AppError("ERR_NO_WAPP_FOUND", 404);
+  }
 
-	// await whatsapp.update({ isDeleted: true });
-	await whatsapp.destroy();
+  // await whatsapp.update({ isDeleted: true });
+  await whatsapp.destroy();
 };
 
 export default DeleteWhatsApprService;

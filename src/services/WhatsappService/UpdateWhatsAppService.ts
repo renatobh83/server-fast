@@ -1,9 +1,9 @@
 import { Op } from "sequelize";
 import * as Yup from "yup";
 
-import AppError from "../../errors/AppError";
 import Whatsapp from "../../models/Whatsapp";
-import { getIO } from "../../libs/scoket";
+import { getIO } from "../../lib/socket";
+import { AppError } from "../../errors/errors.helper";
 
 interface WhatsappData {
   name?: string;
