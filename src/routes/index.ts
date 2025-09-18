@@ -11,6 +11,7 @@ import fastReplyRoutes from "./fastReplyRoutes";
 import settginsRoutes from "./settingsRoutes";
 import emailRoutes from "./emilRoutes";
 import queueRoutes from "./queuRoutes";
+import { whastappRoutes } from "./whatsappRoutes";
 
 async function routes(fastify: FastifyInstance) {
   fastify.register(authRoutes, { prefix: "/auth" });
@@ -29,6 +30,7 @@ async function routes(fastify: FastifyInstance) {
     fastify.register(settginsRoutes);
     fastify.register(emailRoutes);
     fastify.register(queueRoutes);
+    fastify.register(whastappRoutes);
   });
 }
 

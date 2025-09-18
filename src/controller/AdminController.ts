@@ -7,6 +7,8 @@ import { tryCatch } from "bullmq";
 import { handleServerError } from "../errors/errors.helper";
 import AdminUpdateUserService from "../services/AdminServices/AdminUpdateUserService";
 import AdminListTenantsService from "../services/AdminServices/AdminListTenantsService";
+import CreateWhatsAppService from "../services/WhatsappService/CreateWhatsAppService";
+import AdminListChannelsService from "../services/AdminServices/AdminListChannelsService";
 
 type IndexQuery = {
   searchParam: string;
@@ -72,6 +74,44 @@ export const TenantList = async (
   try {
     const tenants = await AdminListTenantsService();
     return reply.code(STANDARD.OK.statusCode).send({ tenants });
+  } catch (error) {
+    return handleServerError(reply, error);
+  }
+};
+
+// Canais
+export const createCanal = async (
+  request: FastifyRequest<{
+    Body: {
+      name: string;
+      tokenTelegram: string;
+      instagramUser: string;
+      instagramKey: string;
+      type: "waba" | "instagram" | "telegram" | "whatsapp";
+      wabaBSP: string;
+      tokenAPI: string;
+    };
+  }>,
+  reply: FastifyReply
+) => {
+  try {
+    const { tenantId } = request.user as any;
+    const payload = { ...request.body, status: "DISCONNECTED", tenantId };
+    const createdChannel = await CreateWhatsAppService(payload);
+    return reply.code(STANDARD.OK.statusCode).send(createdChannel);
+  } catch (error) {
+    return handleServerError(reply, error);
+  }
+};
+
+export const listaCanais = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  try {
+    const { tenantId } = request.user as any;
+    const channels = await AdminListChannelsService({ tenantId });
+    return reply.code(STANDARD.OK.statusCode).send(channels);
   } catch (error) {
     return handleServerError(reply, error);
   }

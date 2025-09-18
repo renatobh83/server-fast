@@ -31,16 +31,6 @@ const CreateWhatsAppService = async ({
   wppUser,
   isDefault = false,
 }: Request): Promise<Response> => {
-  // if (type === "waba" && (!tokenAPI || !wabaBSP)) {
-  // 	throw new AppError("WABA: favor informar o Token e a BSP");
-  // }
-
-  // if (type === "instagram" && !instagramUser) {
-  // 	throw new AppError(
-  // 		"Instagram: favor informar o Usuário e senha corretamente.",
-  // 	);
-  // }
-
   if (type === "telegram" && !tokenTelegram) {
     throw new AppError("Telegram: favor informar o Token.", 400);
   }
