@@ -47,10 +47,10 @@ export default async function chamadoRoutes(fastify: FastifyInstance) {
             descricao: { type: "string" },
             contatoId: {
               anyOf: [
-                { type: "number" }, // permite um único número
+                { type: "string" }, // permite um único número
                 {
                   type: "array", // ou um array de números
-                  items: { type: "number" },
+                  items: { type: "string" },
                   minItems: 1,
                 },
               ],

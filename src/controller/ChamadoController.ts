@@ -98,7 +98,7 @@ export const updateChamado = async (
 ) => {
   const { tenantId, id } = request.user as any;
   const { chamadoId } = request.params as { chamadoId: number };
-
+  console.log(request.body);
   const payload = {
     ...request.body,
     chamadoId,
@@ -134,6 +134,7 @@ export const detailsChamado = async (
   const { chamadoId } = request.params as { chamadoId: number };
   try {
     const detalhesChamado = await detailsChamadoService(chamadoId);
+
     return reply.code(STANDARD.OK.statusCode).send(detalhesChamado);
   } catch (error) {
     return handleServerError(reply, error);

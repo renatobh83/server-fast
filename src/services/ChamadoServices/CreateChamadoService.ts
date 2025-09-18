@@ -12,7 +12,7 @@ export type dataChamado = {
   ticket?: any;
   descricao: string;
   assunto: string;
-  contatoId: string[] | string;
+  contatoId: any;
   empresaId: number;
 };
 type CreateChamadoProps = {
@@ -48,11 +48,8 @@ export const CreateChamadoService = async ({
     assunto,
     createdAt: ticket ? new Date(ticket.createdAt) : new Date(),
   });
-  if (Array.isArray(contatoId) && contatoId.length > 0) {
-    created.addContatos(contatoId);
-  } else if (typeof contatoId === "string") {
-    created.addContato(contatoId);
-  }
+  created.setContatos(contatoId);
+
   if (ticket?.id) {
     await Ticket.update(
       { chamadoId: numeroChamado },
@@ -91,6 +88,7 @@ export const CreateChamadoService = async ({
       },
     ],
   });
+
   socketEmit({
     tenantId: tenantId,
     type: "chamado:create",
