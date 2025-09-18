@@ -22,7 +22,7 @@ export const ListEmpresaService = async (
           model: EmpresaContrato,
           as: "contratos",
           attributes: ["id", "dataContrato", "totalHoras"],
-          //   separate: true,
+          // separate: true,
           order: [["dataContrato", "DESC"]],
         },
       ],

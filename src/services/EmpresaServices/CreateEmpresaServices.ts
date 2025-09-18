@@ -19,20 +19,7 @@ export const CreateEmpresaServices = async ({
   acessoExterno,
 }: IRequest): Promise<Empresa> => {
   try {
-    // const schema = Yup.object().shape({
-    //   name: Yup.string().required().min(2),
-    //   identifier: Yup.number()
-    //     .required("ERR_IDENTIFIER_NO_FOUND")
-    //     .test("cnpj", "ERR_IDENTIFIER_INVALID", (value) => {
-    //       const cnpjRegex = /^\d{14}$/;
-    //       return cnpjRegex.test(value?.toString() || "");
-    //     }),
-    // });
-    // try {
-    //   await schema.validate({ name, identifier });
-    // } catch (err: any) {
-    //   throw new AppError("UNPROCESSABLE_CONTENT", 422);
-    // }
+
 
     const isExistsIdentifier = await Empresa.findOne({ where: { identifier } });
 
