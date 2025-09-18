@@ -1,6 +1,7 @@
-import { Sequelize, DataTypes, Model } from "sequelize";
+import { Sequelize, DataTypes, Model, Optional } from "sequelize";
 
 import { compare, hash } from "bcryptjs";
+import Queue from "./Queue";
 interface UserProps {
   id?: number;
   name: string;
@@ -21,7 +22,14 @@ interface UserProps {
   configs?: object;
 }
 
-class User extends Model<UserProps> implements UserProps {
+type UserCreationAttributes = Optional<
+  UserProps,
+  "id" | "createdAt" | "updatedAt" | "passwordHash"
+>;
+class User
+  extends Model<UserProps, UserCreationAttributes>
+  implements UserProps
+{
   declare id: number;
   declare name: string;
   declare email: string;
@@ -38,6 +46,7 @@ class User extends Model<UserProps> implements UserProps {
   declare lastOnline?: Date;
   declare lastLogout?: Date;
   declare isOnline: boolean;
+  declare queues?: Queue[]; // <- adiciona isso
   declare configs: object;
 
   // método de instância
