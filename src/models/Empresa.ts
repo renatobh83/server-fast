@@ -71,7 +71,10 @@ class Empresa extends Model<IEmpresa> implements IEmpresa {
       as: "responsavelContact",
     });
     Empresa.belongsTo(models.Tenant, { foreignKey: "tenantId", as: "tenant" });
-    Empresa.hasMany(models.Ticket, { as: "tickets" });
+    Empresa.hasMany(models.Ticket, {
+      foreignKey: { name: "empresaId", field: "empresaId" },
+      as: "tickets",
+    });
     Empresa.belongsTo(models.ResultadoDDNS, {
       foreignKey: "resultadoDDNSId",
       as: "ResultadoDDNS",

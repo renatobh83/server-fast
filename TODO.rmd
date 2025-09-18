@@ -1,7 +1,3 @@
-Terminar implatacao do service, quando for criado o Whatspp
--AdminCreateChannelService
-- AdminListChannelsService
-
 
 Alterar no front rota Settings
 
@@ -12,3 +8,9 @@ VerifyStepsChatFlowTicket
 wppInitialized ConctacController
 
 utils templateButton
+
+FindOrCreateTicketService: Testar quando tiver mensagem
+
+FindUpdateTicketsInactiveChatBot : Vercomentarios
+
+UpdateTicketService: Campos comentados

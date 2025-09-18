@@ -1,7 +1,7 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { STANDARD } from "../constants/request";
 import ListSettingsService from "../services/SettingServices/ListSettingsService";
-import { AppError } from "../errors/errors.helper";
+import { AppError, handleServerError } from "../errors/errors.helper";
 import UpdateSettingService from "../services/SettingServices/UpdateSettingService";
 
 export const listSettings = async (
@@ -13,7 +13,7 @@ export const listSettings = async (
     const settigns = await ListSettingsService(tenantId);
     return reply.code(STANDARD.OK.statusCode).send(settigns);
   } catch (error) {
-    console.log(error);
+    return handleServerError(reply, error);
   }
 };
 
@@ -34,6 +34,6 @@ export const updateSettings = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(settign);
   } catch (error) {
-    console.log(error);
+    return handleServerError(reply, error);
   }
 };

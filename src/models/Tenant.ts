@@ -26,15 +26,15 @@ class Tenant extends Model<TenantProps> implements TenantProps {
   declare updatedAt: Date;
 
   static associate(models: any) {
-    // Tenant.hasMany(models.EmpresaContrato, {
-    //   foreignKey: "tenantId",
-    //   as: "contratos",
-    // });
+    Tenant.hasMany(models.EmpresaContrato, {
+      foreignKey: "tenantId",
+      as: "contratos",
+    });
 
-    // Tenant.hasMany(models.Empresa, {
-    //   foreignKey: "tenantId",
-    //   as: "empresas",
-    // });
+    Tenant.hasMany(models.Empresa, {
+      foreignKey: "tenantId",
+      as: "empresas",
+    });
 
     Tenant.belongsTo(models.User, {
       foreignKey: "ownerId",

@@ -6,6 +6,7 @@ import { ERRORS, handleServerError } from "../errors/errors.helper";
 import { STANDARD } from "../constants/request";
 import { sendPasswordReset } from "../services/UserServices/SendPasswordResetService";
 import User from "../models/User";
+import { getIO } from "../lib/socket";
 
 export const StoreLoginHandler = async (
   request: FastifyRequest,
@@ -22,7 +23,7 @@ export const StoreLoginHandler = async (
   });
 
   await SendRefreshToken(response, refreshToken);
-
+  const io = getIO();
   const params = {
     token,
     username: user.name,
@@ -35,7 +36,7 @@ export const StoreLoginHandler = async (
     usuariosOnline,
     configs: user.configs,
   };
-  server.server.io.emit(`${params.tenantId}:users`, {
+  io.emit(`${params.tenantId}:users`, {
     action: "update",
     data: {
       username: params.username,

@@ -110,7 +110,9 @@ export class Ticket extends Model {
         chatFlowId: DataTypes.INTEGER,
         chatClient: DataTypes.BOOLEAN,
         socketId: DataTypes.STRING,
-        empresaId: DataTypes.INTEGER,
+        empresaId: {
+          type: DataTypes.INTEGER,
+        },
         stepChatFlow: {
           type: DataTypes.TEXT,
           allowNull: true,
@@ -164,7 +166,13 @@ export class Ticket extends Model {
     Ticket.belongsTo(Contact, { foreignKey: "contactId", as: "contact" });
     Ticket.belongsTo(Whatsapp, { foreignKey: "whatsappId", as: "whatsapp" });
     Ticket.belongsTo(ChatFlow, { foreignKey: "chatFlowId", as: "chatFlow" });
-    Ticket.belongsTo(Empresa, { foreignKey: "empresaId", as: "empresa" });
+    Ticket.belongsTo(Empresa, {
+      foreignKey: {
+        name: "empresaId", // nome usado no Model
+        field: "id", // nome real no banco
+      },
+      as: "empresa",
+    });
     Ticket.belongsTo(Queue, { foreignKey: "queueId", as: "queue" });
     Ticket.belongsTo(Tenant, { foreignKey: "tenantId", as: "tenant" });
     Ticket.hasMany(Message, { foreignKey: "ticketId", as: "messages" });
