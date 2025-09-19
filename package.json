@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && npm run copy-static",
-    "copy-static": "cp -r src/services/IntegracoesServices/NFE/PDF/CodigoTributacao dist/services/IntegracoesServices/NFE/PDF/ && cp src/services/IntegracoesServices/NFE/PDF/template.html dist/services/IntegracoesServices/NFE/PDF/ && cp -r src/services/IntegracoesServices/NFE/mock dist/services/IntegracoesServices/NFE/",
+    "build": "tsc",
     "run-dev": "tsc-watch --onSuccess \"node dist/server.js\"",
     "dev": "./start-tunnel.sh && npm run run-dev",
     "test": "echo \"Error: no test specified\" && exit 1",
