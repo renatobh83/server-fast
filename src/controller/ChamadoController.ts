@@ -18,6 +18,7 @@ import { GetMediaChamadoService } from "../services/ChamadoServices/getMediaCham
 import { RemoveMidaChamadoService } from "../services/ChamadoServices/RemoveMediaChamadoService";
 import { SendMessageChamadoServices } from "../services/ChamadoServices/SendMessageChamadoServices";
 import { UpdateMediaDadosService } from "../services/ChamadoServices/UpdateMediaDadosService";
+import { updateChamadoMediaServices } from "../services/ChamadoServices/updateChamadoMediaServices";
 
 const ATTACHMENTSFOLDER = path.join(__dirname, "public/attachments");
 // Garantir que a pasta existe
@@ -98,7 +99,7 @@ export const updateChamado = async (
 ) => {
   const { tenantId, id } = request.user as any;
   const { chamadoId } = request.params as { chamadoId: number };
-  console.log(request.body);
+
   const payload = {
     ...request.body,
     chamadoId,
@@ -120,10 +121,18 @@ export const updateAnexoChamado = async (
   reply: FastifyReply
 ) => {
   const files = request.files();
-  const uploadedFiles: { filename: string; path: string }[] = [];
-  for await (const file of files) {
-    const filename = await saveFile(file, ATTACHMENTSFOLDER);
-    uploadedFiles.push({ filename, path: `/attachments/${filename}` });
+  const { chamadoId } = request.params as any;
+  try {
+    const uploadedFiles: { filename: string; path: string }[] = [];
+    for await (const file of files) {
+      const filename = await saveFile(file, ATTACHMENTSFOLDER);
+      uploadedFiles.push({ filename, path: `/attachments/${filename}` });
+    }
+    const saved = await updateChamadoMediaServices(uploadedFiles, chamadoId);
+
+    return reply.code(STANDARD.OK.statusCode).send(saved);
+  } catch (error) {
+    return handleServerError(reply, error);
   }
 };
 

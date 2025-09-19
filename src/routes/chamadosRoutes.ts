@@ -36,6 +36,10 @@ export default async function chamadoRoutes(fastify: FastifyInstance) {
     ChamadoController.listaTempoChamados
   );
   fastify.put(
+    "/chamados/:chamadoId/anexo",
+    ChamadoController.updateAnexoChamado
+  );
+  fastify.put(
     "/chamados/:chamadoId",
     {
       schema: {

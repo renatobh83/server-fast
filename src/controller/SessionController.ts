@@ -118,7 +118,7 @@ export const validaToken = async (
   reply: FastifyReply
 ) => {
   try {
-    request.jwtVerify();
+    await request.jwtVerify();
     return reply.code(STANDARD.OK.statusCode).send({ valid: true });
   } catch (error) {
     console.log(error);
