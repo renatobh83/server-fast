@@ -30,12 +30,17 @@ export async function buildServer(
     secret: process.env.JWT_SECRET!, // coloque em variável de ambiente no mundo real
   });
   server.setErrorHandler((error, request, reply) => {
-    const statusCode = error.statusCode ?? 500;
-    reply.status(statusCode).send({
-      statusCode,
-      error: error.name || "Internal Server Error",
-      message: error.message,
-    });
+    request.log.error(error);
+
+    if (error.validation) {
+      reply
+        .status(400)
+        .send({ error: "Requisição inválida", details: error.validation });
+    } else {
+      reply.status(error.statusCode || 500).send({
+        error: error.message || "Erro interno",
+      });
+    }
   });
 
   // decorador para verificar se o usuário está autenticado
@@ -46,9 +51,6 @@ export async function buildServer(
       reply.send(err);
     }
   });
-  if (!server.hasRequestDecorator("user")) {
-    server.decorateRequest("user", null as any);
-  }
 
   await server.register(routes);
 

@@ -14,42 +14,16 @@ export const StoreLoginHandler = async (
 ) => {
   const { email, password } = request.body as any;
   const server = request;
-
-  const { token, user, refreshToken, usuariosOnline } = await AuthUserService({
-    reply: response,
-    email,
-    password,
-    server,
-  });
-
-  await SendRefreshToken(response, refreshToken);
-  const io = getIO();
-  const params = {
-    token,
-    username: user.name,
-    email: user.email,
-    profile: user.profile,
-    status: user.status,
-    userId: user.id,
-    tenantId: user.tenantId,
-    // queues: user.queues,
-    usuariosOnline,
-    configs: user.configs,
-  };
-  io.emit(`${params.tenantId}:users`, {
-    action: "update",
-    data: {
-      username: params.username,
-      email: params.email,
-      isOnline: true,
-      lastLogin: new Date(),
-    },
-  });
-
-  response.code(200).send({
-    status: "success",
-    data: params,
-  });
+  try {
+    await AuthUserService({
+      reply: response,
+      email,
+      password,
+      server,
+    });
+  } catch (error) {
+    return handleServerError(response, error);
+  }
 };
 
 export const LogoutUser = async (
