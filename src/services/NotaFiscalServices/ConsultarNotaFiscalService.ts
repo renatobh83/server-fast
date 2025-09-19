@@ -2,7 +2,7 @@ import NotaFiscal from "../../models/NotaFiscal";
 
 interface Request {
   empresaId: number;
-  notaNumero?: string;
+  numeroNota?: string;
   page?: number;
   limit?: number;
   cancelada?: boolean;
@@ -10,14 +10,14 @@ interface Request {
 
 export const ConsultarNotaFiscalService = async ({
   empresaId,
-  notaNumero,
+  numeroNota,
   page = 1,
   limit = 10,
   cancelada,
 }: Request): Promise<any> => {
   const where: any = {
     empresaId,
-    ...(notaNumero && { rps: notaNumero }),
+    ...(numeroNota && { rps: numeroNota }),
     ...(cancelada !== undefined && { cancelada }),
   };
 

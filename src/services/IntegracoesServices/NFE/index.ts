@@ -93,6 +93,7 @@ export async function GerarNFE(dadosNota: any) {
       };
     }
   } catch (error: any) {
+    console.log(error);
     throw new AppError(error.message, 900);
   }
 }

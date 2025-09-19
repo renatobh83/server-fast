@@ -1,22 +1,28 @@
 import { FastifyReply } from "fastify";
 import { addJob } from "../../lib/Queue";
 import { ConsultaNfseRpsEnvio } from "../IntegracoesServices/NFE";
+import { handleServerError } from "../../errors/errors.helper";
 
 export const QueueNotaFiscalService = async (
   rps: string,
   res: FastifyReply
 ) => {
-  const nota = await ConsultaNfseRpsEnvio(+rps);
-  const jobId = `pdf_${rps}`;
+  try {
+    const nota = await ConsultaNfseRpsEnvio(+rps);
+    const jobId = `pdf_${rps}`;
 
-  await addJob("pdfQueue", {
-    payload: nota.mensagens,
-    jobId: jobId,
-  });
+    await addJob("pdfQueue", {
+      payload: nota.mensagens,
+      jobId: jobId,
+    });
 
-  // Retorna immediateamente com ID do job
-  res.code(202).send({
-    message: "PDF em processamento",
-    jobId,
-  });
+    // Retorna immediateamente com ID do job
+    res.code(202).send({
+      message: "PDF em processamento",
+      jobId,
+    });
+  } catch (error) {
+    console.log(error);
+    return handleServerError(res, error);
+  }
 };

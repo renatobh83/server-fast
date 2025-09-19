@@ -15,6 +15,7 @@ import { whastappRoutes } from "./whatsappRoutes";
 import ticketRoutes from "./ticketRoutes";
 import statisticsRoutes from "./statisticsRoutes";
 import integtracaoRoutes from "./integracaoRoutes";
+import notaFiscalRoutes from "./notafiscalRoutes";
 
 async function routes(fastify: FastifyInstance) {
   fastify.register(authRoutes, { prefix: "/auth" });
@@ -37,6 +38,7 @@ async function routes(fastify: FastifyInstance) {
     fastify.register(ticketRoutes);
     fastify.register(statisticsRoutes);
     fastify.register(integtracaoRoutes);
+    fastify.register(notaFiscalRoutes);
   });
 }
 

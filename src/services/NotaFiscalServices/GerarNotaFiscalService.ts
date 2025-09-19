@@ -7,10 +7,12 @@ import { DadosNota } from "../IntegracoesServices/NFE/XML/gerarXmlGinfes";
 import { pupa } from "../../utils/pupa";
 import { addJob } from "../../lib/Queue";
 import NotaFiscalLog from "../../models/NotafiscalLog";
+import { FastifyReply } from "fastify";
+
 interface NotaFiscalRequest {
   tenantId: number;
   data: any;
-  res: any;
+  reply: FastifyReply;
 }
 
 function convertToNumbers(obj: any) {
@@ -26,7 +28,7 @@ function convertToNumbers(obj: any) {
 export const GerarNotaFiscalService = async ({
   tenantId,
   data,
-  res,
+  reply,
 }: NotaFiscalRequest) => {
   const {
     empresa,
@@ -136,31 +138,35 @@ export const GerarNotaFiscalService = async ({
   const response = await GerarNFE(dadosParaXML);
 
   if (response?.sucesso) {
-    await NotaFiscal.findOrCreate({
-      where: {
-        tenantId,
-        rps: response.mensagens.lote,
-      },
-      defaults: {
-        tenantId,
-        empresaId: empresa,
-        rps: response.mensagens.lote,
-        codVerificacao: response.mensagens.codVerificacao,
-        numeroNota: response.mensagens.numeroNota,
-        protocolo: response.mensagens.protocolo,
-      },
-    });
-    const jobId = `pdf_${response.mensagens.lote}`;
+    try {
+      await NotaFiscal.findOrCreate({
+        where: {
+          tenantId,
+          rps: response.mensagens.lote,
+        },
+        defaults: {
+          tenantId,
+          empresaId: empresa,
+          rps: response.mensagens.lote,
+          codVerificacao: response.mensagens.codVerificacao,
+          numeroNota: response.mensagens.numeroNota,
+          protocolo: response.mensagens.protocolo,
+        },
+      });
+      const jobId = `pdf_${response.mensagens.lote}`;
 
-    await addJob("pdfQueue", {
-      payload: response.mensagens.link,
-      jobId: jobId,
-    });
-    res.status(202).json({
-      message: "PDF em processamento",
-      jobId,
-      rps: response.mensagens.lote,
-    });
+      await addJob("pdfQueue", {
+        payload: response.mensagens.link,
+        jobId: jobId,
+      });
+      return reply.code(202).send({
+        message: "PDF em processamento",
+        jobId,
+        rps: response.mensagens.lote,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   } else {
     try {
       for (const erro of response?.mensagens) {
@@ -182,13 +188,13 @@ export const GerarNotaFiscalService = async ({
 
         if (!criado) {
           console.log("Erro já registrado:", codigoErro, numeroRps);
-          return res.status(500).send({ message: response });
+          return reply.status(500).send({ message: response });
         }
       }
     } catch (error) {
-      return res.status(500).send({ message: response });
+      return reply.status(500).send({ message: response });
     }
-    return res.status(500).send({ message: response });
+    return reply.status(500).send({ message: response });
   }
 };
 
