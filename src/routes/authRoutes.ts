@@ -14,16 +14,6 @@ export default async function authRoutes(fastify: FastifyInstance) {
             password: { type: "string", minLength: 6 },
           },
         },
-        response: {
-          200: {
-            type: "object",
-            properties: {
-              message: { type: "string" },
-              data: { type: "object", additionalProperties: true },
-              token: { type: "string" },
-            },
-          },
-        },
       },
     },
     SessionController.StoreLoginHandler
@@ -74,4 +64,5 @@ export default async function authRoutes(fastify: FastifyInstance) {
     },
     SessionController.forgotPassword
   );
+  fastify.post("/valid_token", SessionController.validaToken);
 }

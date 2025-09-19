@@ -3,9 +3,6 @@ import { ERRORS } from "../../errors/errors.helper";
 import { FastifyReply } from "fastify/types/reply";
 import { FastifyRequest } from "fastify/types/request";
 import User from "../../models/User";
-import { SendRefreshToken } from "../../helpers/SendRefreshToken";
-import { getIO } from "../../lib/socket";
-import { STANDARD } from "../../constants/request";
 
 interface Request {
   email: string;
@@ -66,35 +63,10 @@ export const AuthUserService = async ({
     ],
   });
 
-  // return {
-  //   user: userSafe,
-  //   token: accessToken,
-  //   refreshToken,
-  //   usuariosOnline,
-  // };
-  await SendRefreshToken(reply, refreshToken);
-  const io = getIO();
-  const params = {
+  return {
+    user: userSafe,
     token: accessToken,
-    username: userSafe.name,
-    email: userSafe.email,
-    profile: userSafe.profile,
-    status: userSafe.status,
-    userId: userSafe.id,
-    tenantId: userSafe.tenantId,
-    // queues: user.queues,
+    refreshToken,
     usuariosOnline,
-    configs: userSafe.configs,
   };
-  io.emit(`${params.tenantId}:users`, {
-    action: "update",
-    data: {
-      username: params.username,
-      email: params.email,
-      isOnline: true,
-      lastLogin: new Date(),
-    },
-  });
-
-  return reply.code(STANDARD.OK.statusCode).send(params);
 };

@@ -45,9 +45,12 @@ export async function buildServer(
   // decorador para verificar se o usuário está autenticado
   server.decorate("authenticate", async function (request: any, reply: any) {
     try {
+      console.log("HEADERS:", request.headers);
+      console.log("COOKIES:", request.cookies);
       await request.jwtVerify(); // verifica o token
     } catch (err) {
-      reply.send(err);
+      console.error("JWT ERROR:", err);
+      reply.status(401).send({ error: "Token inválido", details: err });
     }
   });
 
