@@ -1,0 +1,110 @@
+<GerarNfseResposta xmlns="http://www.abrasf.org.br/nfse.xsd">
+    <NumeroLote>2</NumeroLote>
+    <DataRecebimento>2025-07-02T15:18:22</DataRecebimento>
+    <Protocolo>SA0214588D25B183MrsICd3T</Protocolo>
+    <ListaNfse>
+        <CompNfse>
+            <Nfse xmlns="http://www.abrasf.org.br/nfse.xsd" versao="1.00">
+                <InfNfse Id="nfse">
+                    <Numero>202500000000002</Numero>
+                    <CodigoVerificacao>00000000</CodigoVerificacao>
+                    <DataEmissao>2025-07-02T15:18:22</DataEmissao>
+                    <IdentificacaoRps>
+                        <Numero>2</Numero>
+                        <Serie>1</Serie>
+                        <Tipo>1</Tipo>
+                    </IdentificacaoRps>
+                    <DataEmissaoRps>2025-07-02</DataEmissaoRps>
+                    <NaturezaOperacao>1</NaturezaOperacao>
+                    <OptanteSimplesNacional>2</OptanteSimplesNacional>
+                    <IncentivadorCultural>2</IncentivadorCultural>
+                    <Competencia>2025-07-02T18:16:57</Competencia>
+                    <OutrasInformacoes>NFS-e gerada em ambiente de teste. NÃO TEM VALOR JURÍDICO NEM
+                        FISCAL.</OutrasInformacoes>
+                    <Servico>
+                        <Valores>
+                            <ValorServicos>300.00</ValorServicos>
+                            <IssRetido>2</IssRetido>
+                            <ValorIss>9.00</ValorIss>
+                            <BaseCalculo>300.00</BaseCalculo>
+                            <Aliquota>0.03</Aliquota>
+                            <ValorLiquidoNfse>300.00</ValorLiquidoNfse>
+                        </Valores>
+                        <ItemListaServico>4.02</ItemListaServico>
+                        <CodigoTributacaoMunicipio>40200388</CodigoTributacaoMunicipio>
+                        <Discriminacao>PRESTACAO DE SERVICO DA SAUDE Paciente: DAMARIS GUERRA VIEIRA
+                            SANTOS, Data de Nascimento: 16/12/1995, CPF: 125.289.536-40, Exame:
+                            CONSULTA NUTROLOGIA realizado no dia: 28/06/2025</Discriminacao>
+                        <CodigoMunicipio>3106200</CodigoMunicipio>
+                    </Servico>
+                    <PrestadorServico>
+                        <IdentificacaoPrestador>
+                            <Cnpj>21693445000174</Cnpj>
+                            <InscricaoMunicipal>03116040011</InscricaoMunicipal>
+                        </IdentificacaoPrestador>
+                        <RazaoSocial>SERMIG SERV. RADIOLOGIA E ULTRA-SONOGRAFIA DE MINAS GERAIS LTDA</RazaoSocial>
+                        <Endereco>
+                            <Endereco>RUA DOS OTONI</Endereco>
+                            <Numero>711</Numero>
+                            <Complemento>.</Complemento>
+                            <Bairro>Santa Efigênia</Bairro>
+                            <CodigoMunicipio>3106200</CodigoMunicipio>
+                            <Uf>MG</Uf>
+                            <Cep>30150274</Cep>
+                        </Endereco>
+                    </PrestadorServico>
+                    <TomadorServico>
+                        <IdentificacaoTomador>
+                            <CpfCnpj>
+                                <Cpf>01330415655</Cpf>
+                            </CpfCnpj>
+                        </IdentificacaoTomador>
+                        <RazaoSocial>TESTE MOCK NOTA</RazaoSocial>
+                        <Endereco>
+                            <Endereco>Rua 1</Endereco>
+                            <Numero>137</Numero>
+                            <Complemento>N/a</Complemento>
+                            <Bairro>Centro</Bairro>
+                            <CodigoMunicipio>3106200</CodigoMunicipio>
+                            <Uf>MG</Uf>
+                            <Cep>31155170</Cep>
+                        </Endereco>
+                        <Contato>
+                            <Telefone>3194251692</Telefone>
+                            <Email>nao@email.com</Email>
+                        </Contato>
+                    </TomadorServico>
+                    <OrgaoGerador>
+                        <CodigoMunicipio>3106200</CodigoMunicipio>
+                        <Uf>MG</Uf>
+                    </OrgaoGerador>
+                </InfNfse>
+                <Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="NfseAssSMF_nfse">
+                    <SignedInfo>
+                        <CanonicalizationMethod
+                            Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+                        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+                        <Reference URI="#nfse">
+                            <Transforms>
+                                <Transform
+                                    Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                                <Transform
+                                    Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+                            </Transforms>
+                            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                            <DigestValue>CR5Oq8aLRWf9jpeL1cAFYrRUOUc=</DigestValue>
+                        </Reference>
+                    </SignedInfo>
+                    <SignatureValue>
+                        j8pY1YRiV8lp+DPWtq9+hotaBZS3EED5DFzYoduKdTjjVCGXar4DjVK1YdgCbDuaAUv7UBBgrV8Eo1K/BGdJI1g72Gu5yswqUC/sEmZXEvNhAEym2OKDv+lO4d9qOgFU2Y0lK0BN+jlVucm63Z3BrVMLxERMofFu2731O3jIZ67X/M3tP2TVgYMg+tlATMU6NucU48epMHaTJaw0ThIg8p8FS0W637No+r7EkFsj2aaBnOxlpfBNtVuwuTnm6odeuu01r0L+uvQ8c5L4I07eIsv16A7L2RNsJY2G9PZ9NOZsobp3oBzKi9ZfAtLjni6E99sVM8VD/jQgBh53zdUAyw==</SignatureValue>
+                    <KeyInfo>
+                        <X509Data>
+                            <X509Certificate>
+                                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</X509Certificate>
+                        </X509Data>
+                    </KeyInfo>
+                </Signature>
+            </Nfse>
+        </CompNfse>
+    </ListaNfse>
+</GerarNfseResposta>

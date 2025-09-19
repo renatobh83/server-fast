@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+	<S:Body>
+		<ns2:ConsultarNfseRequest xmlns:ns2="http://ws.bhiss.pbh.gov.br">
+			<nfseCabecMsg><?xml version="1.0" encoding="UTF-8"?>
+				<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"
+					versao="1.00">
+					<versaoDados>1.00</versaoDados>
+				</cabecalho>
+			</nfseCabecMsg>
+			<nfseDadosMsg><?xml version='1.0' encoding='UTF-8'?>
+				<ConsultarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+					<Prestador>
+						<Cnpj>99999999000191</Cnpj>
+						<InscricaoMunicipal>1733160024</InscricaoMunicipal>
+					</Prestador>
+					<PeriodoEmissao>
+						<DataInicial>2009-09-28</DataInicial>
+						<DataFinal>2009-09-28</DataFinal>
+					</PeriodoEmissao>
+					<Tomador>
+						<CpfCnpj>
+							<Cnpj>99999999000191</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>1733160032</InscricaoMunicipal>
+					</Tomador>
+				</ConsultarNfseEnvio>
+			</nfseDadosMsg>
+		</ns2:ConsultarNfseRequest>
+	</S:Body>
+</S:Envelope>
+

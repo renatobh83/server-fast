@@ -1,0 +1,664 @@
+<!--?xml version="1.0" encoding="ISO-8859-1"?-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            text-align: left;
+            margin: 0px auto;
+            border: 1px solid #BEDCE2;
+            position: relative;
+            width: 646px;
+            position: relative;
+        }
+
+
+        #moldura {
+            position: relative;
+            /* ESSENCIAL */
+            width: 646px;
+            margin: 0 auto;
+            min-height: 900px;
+            /* opcional: aumenta a área útil para centralizar */
+
+        }
+
+        .hh1 {
+            font: 18px "Trebuchet MS", Verdana, Arial;
+            color: #175366;
+            background: #F2F2F2;
+            text-align: center;
+            padding: 2px 0px;
+            font-weight: normal
+        }
+
+        .bordaInferior {
+            border-bottom: 1px solid #AFD1D8;
+        }
+
+        .teste {
+            font: 11px "Trebuchet MS", Verdana, Arial;
+            color: #175366;
+        }
+
+        .bordaInferior {
+            border-right: 1px solid #AFD1D8;
+        }
+
+        .numeroDestaque {
+            font-size: 24px;
+            color: #c32b16;
+        }
+
+        .observacoes {
+            color: #c32b16;
+            padding: 18;
+            margin: 2;
+        }
+
+        .subTitulo,
+        .cnpjPrincipal {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .dataEmissao {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .tb {
+            width: 100%;
+
+        }
+
+        .hh3 {
+            font: 12px "Trebuchet MS", Verdana, Arial;
+            color: #175366;
+            margin: 3px 0px 0px;
+            font-weight: bold;
+        }
+
+        .linhaDivisao {
+            display: none;
+        }
+
+        .box02 {
+            width: 646px;
+            background: url("data:image/gif;base64,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") no-repeat;
+            text-align: center;
+            margin: 0px 5px 0px 0px;
+
+        }
+
+        .box02 table {
+            width: 636px;
+
+            text-align: left;
+            margin: 2px auto 0px;
+        }
+
+        .hh2 {
+            font: bold 13px "Trebuchet MS", Verdana, Arial;
+            color: #175366;
+            border-bottom: 1px solid #65A0C0;
+            margin: 3px 0 0 2px;
+        }
+
+        .servicos {
+            padding: 0 2px;
+            font-size: 11px;
+        }
+
+        .box04 {
+            font: 11px "Trebuchet MS", Verdana, Arial;
+            color: #175366;
+            margin: 2px 3px;
+            padding: 2px;
+            background: #f3f3f3;
+        }
+
+        .box05 {
+            width: 314px;
+            background: url('data:image/gif;base64,R0lGODlhOgEsAcQAALXd3+Tz9M/p6v7//7fe4P3+/vP6+uXz9M7p6szn6dbs7fD4+NLr7Of09cTk5rbd38Xk5t7w8ez39/v+/d3w8fT6+/r9/bnf4L/i4/b6+73g4r7i48Di5P///wAAAAAAACH5BAAAAAAALAAAAAA6ASwBAAX/YCeOZGmeaKqubOu+cCzPdG3feK7vfO//wKBwWBo0BI4HYMlsOp/QqHRKrVqv2Kx2y+16v+DrwyFoDFoGSCKwOBPf8Lh8TocNFoEExLCiECJ1gYKDhIU5EQQUKQoMFYaPkJGSghUMCicHCBOTnJ2enzYTCAclBRoSoKmqq6sSGAUkAQKstLW2hQIBJLm3vb6/QLIkHHzAxsfILxkbJBcWydDR0gUEJADS2NnA1yPc2t/gqd4d4+Hm54bj5ejs7XHq7vHyQ/Dz9vc59fj7/C/6/QADlvgnsGA/ggYT2kOosGE7hg4jhoMosSI2ihYzIsOosaMvjh5D0gIpsiQokiZT/05CqbJlOmsuY56EKbPmSpo2c77sprMnIZY+g/IAKrToDaJGk8pAqrRpC6ZOo6KAKrUqz6tWs8agqjUq165Nv4JNKnZs0bJmg6JN23Mt25xu39aMKzcm3bot7+JNqXdvyb5+QwIO3HEw4YyGD1dMrDgi48YNH0NOKHlywcqWA2LOfBAnZ7KeP58NLVot6dJtT6OGq3r13Nau7cKOnXc2bb62b//NrVsw796FfwNHLHz44uLGHSNPHnk5c8rOn1+OLl0z9eqdsWL3rX178O7eiYMPf3w8eeXmzzdPrx46+/bT38O3Ln9+dhHr7BvcrN8W//4jXQfgRAIO+M1/BopTYP+CFy3IYDQIPthJhBLeVF+F6FCIISQabrgTfh7u02GIg4xIYiAmnkhHiirKwWKLcLwIIxEyzihEjTYCgWOOPuzI41AO/jjThUJuE2SREx6JpIUgLqmNj07WAGWUM0xJ5VZKXlmIlVq6wGWXLHwJpgpijjlVlmauiGaaLq7JZoxuvkljnHLeSGedOt6JZ4967gkkkX4+Uiaeg9ZZqJyHvpkom4um2aiZj44ZKZiTdlmplpdemSmVm0bZqZOfLhkqkqMWWaqQp/6YKo+r5tiqja/OGCuMs7ZYq4q3npgribuG2KuHv24YLIbDVlishMc+mCyDyybYrIHPDhgtgNP2V63/ftfal+1828LXbXvfqhfueeOSV25453qX7nbrYtdude9KF+9z8zJXb3L3GpfvcPsC129v/+oW8G0D01ZwbAe7lvBqC6PWcGkPixbxZxNzVnFmF1uW8WQbQ9ZxYx8rFvJhIxNWcmAn+5XyXivj1XJdL8sV81szs1VzWjeblfNYO4PVc1c/axV0VkNbVXRVR0uVtFd9BppP004fBXXUUk5NdZVWX40loFrXsbRTX4eVdddejk12mGafTWbaap/JddtvhK2U3KC9DTc9bN/tWX56o5h33+T83TfdRhE+mt2A84l44n82ybgghgsVuWmLP/505ZZLjXnmVW/OOdaef761U+Oiwxl66WWfjjraqq++duuuu0167HnCTvtAgus9uU+7p2b77drxDfzlsw+/Q+86Ic/a78Mrb5PzrzEPPPQyUS+b9Ldb75L2tWFPO/cqgY9bByEAADs=') no-repeat;
+            text-align: center;
+            margin: 6px 5px 0px 0px;
+
+        }
+
+        .box05 table {
+            width: 296px;
+            text-align: left;
+            margin: 2px auto 2px;
+        }
+
+        .box05 table td {
+            padding: 2px 0;
+        }
+
+        .tableValores {
+            font-size: 12px;
+            padding: 2px 0 4px;
+        }
+
+        .valorLiquido {
+            font-size: 13px;
+            color: #c32b16;
+            padding: 5px 5px 2px;
+        }
+
+        footer {
+            margin-top: 10px;
+            font-size: 10px;
+            position: relative;
+        }
+
+        .cancelada {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 50px;
+            color: rgba(235, 17, 17, 0.70);
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            /* para garantir centralização do texto longo */
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="moldura">
+        {{#cancelamento}}
+        <div class="cancelada">CANCELADA<br>EM {{cancelamento}} - SERVIÇO NÃO CONCLUÍDO</div>
+        {{/cancelamento}}
+        <table id="container">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="hh1">
+                            NFS-e - NOTA FISCAL DE SERVIÇOS ELETRÔNICA
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bordaInferior">
+                        <table width="100%" cellspacing="2" cellpadding="0">
+                            <tbody>
+                                <tr class="teste">
+                                    <td width="25%" class="bordaLateral">
+                                        <span class="numeroDestaque">Nº: {{Numero}}</span>
+                                    </td>
+                                    <td width="31%" class="bordaLateral">
+                                        <span class="subTitulo">Emitida em: <br> </span>
+                                        {{DataEmissaoFormatada}}<span class="dataEmissao">
+                                        </span>às {{HoraEmissaoFormatada}}
+                                    </td>
+                                    <td width="17%" class="bordaLateral">
+                                        <span class="subTitulo">Competência:</span>
+                                        <br><span class="dataEmissao">{{DataEmissaoRps}}</span>
+                                    </td>
+                                    <td width="27%">
+                                        <span class="subTitulo">Código de Verificação:<br>
+                                        </span><span class="dataEmissao">{{CodigoVerificacao}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td valign="top">
+                                        <table cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="160"><img id="form:imgLogo"
+                                                            src="/nfse/a4j/s/3_3_0.GAorg.ajax4jsf.resource.UserResource/n/n/100313435/DATA/eAF9kk1rFEEQhiuDwfgFwQ1-HAJxFQXRHoQVhRgI0fgBk0QyRjCeamdqZ3vpme5092wmBr158eLBox4Er3ryXwhe8g88iYgg!gK7e4OaHOxbNW-!71NV!f4HjBsNF6UuGA6w6QxMj2kystYZsTVDenW3OLem-S20CP60rn6P4EACxzJNaOmmrCxV1sLxZIBDjAVWRbzSHVBmZxM4SI3iznMDnsFYAhOlzHmPU75bjw9R1BSKRjmW896iYT3MyLBMlkpWzpul1gXdlSInneKQ9KNPH-devfm8FEGUwKFMoDHLWNJehtRqXhWO4bBxb!LgYeHEiJLLOCXNUfAn2BU02ygff8FFMlNXAUCQNYwEe4DFEtm-zBcb5ToxXFZhDgBjRwEaDadH0E66X7eRnDyy!vLLzyjoWn90f53ePX-R!lrfueEVnqAdlqEw65PP3m94r1Ricet1Mnnq7ZYP95Ob2DwD02e3qeFdnqFcvp3SAmHFFPLKJrKQTwFqDa3HoXPm9-MGGmbzYefh12!T23dCumsqsjDlIRmXbKW2qrZOSFhamAzX4e1ot0o1m6twP1ZYkIn!Cb9MrOnbUszMX-lcu3S9M7Pnm8y1!0vadntQvwEMUuKc.jsf;jsessionid=D756416CE83E4531C9BEBF2A7CC84F4C.nfse04?time=1751457217740"
+                                                            align="middle">
+                                                    </td>
+                                                    <td width="491">
+                                                        <div class="hh3">
+                                                            {{PrestadorServico.RazaoSocial}}
+                                                        </div>
+                                                        <table width="100%" cellspacing="1" class="teste">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="52%">
+                                                                        <span class="cnpjPrincipal" id="j_id">
+                                                                            CPF/CNPJ:
+                                                                            {{PrestadorServico.IdentificacaoPrestador.Cnpj}}
+                                                                        </span>
+                                                                    </td>
+                                                                    <td width="48%">
+                                                                        <span class="cnpjPrincipal" id="j_id2">
+                                                                            Inscrição Municipal:
+                                                                            {{PrestadorServico.IdentificacaoPrestador.InscricaoMunicipal}}
+                                                                        </span>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        {{PrestadorServico.Endereco.Endereco}},{{PrestadorServico.Endereco.Numero}},{{PrestadorServico.Endereco.Complemento}},{{PrestadorServico.Endereco.Bairro}}
+                                                                        - CEP: {{PrestadorServico.Endereco.Cep}},
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span id="j_id3">
+                                                                            {{PrestadorServico.Endereco.NomeCidade}}
+                                                                        </span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span id="j_id5">
+                                                                            {{PrestadorServico.Endereco.Uf}} </span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Telefone:
+                                                                    </td>
+                                                                    <td>
+                                                                        Email:
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <hr class="linhaDivisao">
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="box02">
+                                                            <table>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td colspan="2">
+                                                                            <div class="hh2">
+                                                                                Tomador do(s) Serviço(s)
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="teste">
+                                                                        <td width="52%">
+                                                                            <span class="cnpjPrincipal" id="j_id27">
+                                                                                <span id="form:j_id64">
+                                                                                    CPF/CNPJ:
+                                                                                    {{TomadorServico.IdentificacaoTomador.CpfCnpj.Documento}}
+                                                                                </span> </span>
+                                                                        </td>
+                                                                        <td width="48%">
+                                                                            <span class="cnpjPrincipal"
+                                                                                id="j_id33"><span id="form:j_id70">
+                                                                                    Inscrição Municipal:
+                                                                                    {{TomadorServico.IdentificacaoTomador.InscricaoMunicipal}}
+                                                                                </span>
+                                                                            </span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="teste">
+                                                                        <td colspan="2">
+                                                                            <span class="cnpjPrincipal">
+                                                                                {{TomadorServico.IdentificacaoTomador.RazaoSocial}}
+                                                                            </span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="teste">
+                                                                        <td colspan="2">
+                                                                            {{TomadorServico.Endereco.Endereco}},{{TomadorServico.Endereco.Numero}},
+                                                                            {{TomadorServico.Endereco.Bairro}},CEP
+                                                                            :{{TomadorServico.Endereco.Cep}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="teste">
+                                                                        <td>
+                                                                            <span id="j_id41"><span
+                                                                                    id="form:j_id78">{{TomadorServico.Endereco.NomeCidade}}</span>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span id="j_id44"><span
+                                                                                    id="form:j_id81">{{TomadorServico.Endereco.Uf}}</span>
+                                                                            </span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="teste">
+                                                                        <td>
+                                                                            Telefone:
+                                                                            {{TomadorServico.Contato.Telefone}}
+                                                                        </td>
+                                                                        <td>
+                                                                            Email: {{TomadorServico.Contato.email}}
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <img src="data:image/gif;base64,R0lGODlhhgIKAMQAAOj18v7//9Ts5v3+/ur18tbs5tXs5un18vX7+dru6cnm38zo4cHj2u/49uDx7c3o4fL599zv6vj8++Py7vT6+cjm3uTz78fm3r/i2f///wAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAACGAgoAAAXHYJYpiGieaKqubOu+cCzPdG3feK7vfO//wKBwSCwaWwiFqQA4Op/QqHRKrVqv2Ky2CiiYutuweEwum8/otLrINA0qjbV8Tq/b7/i8uHEZnA4GfnqDhIWGh4iJVwMGBykRCRKKk5SVlpeYdhIJESoBDgwTmaOkpaanqDIWDA4BLAgPAgcQqbW2t7i5aBAEAg8UJwSeBAYLGMfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+MLAgSuJwK68PHy8/RUIQA7"
+                                                                alt="." class="noprint">
+                                                        </div>
+                                                        <hr class="linhaDivisao">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr class="teste">
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="box02">
+                            <table cellpadding="4" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td width="100%">
+                                            <div class="hh2">
+                                                Discriminação do(s) Serviço(s)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="servicos">
+                                            {{Servico.Discriminacao}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <img src="data:image/gif;base64,R0lGODlhhgIKAMQAAOj18v7//9Ts5v3+/ur18tbs5tXs5un18vX7+dru6cnm38zo4cHj2u/49uDx7c3o4fL599zv6vj8++Py7vT6+cjm3uTz78fm3r/i2f///wAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAACGAgoAAAXHYJYpiGieaKqubOu+cCzPdG3feK7vfO//wKBwSCwaWwiFqQA4Op/QqHRKrVqv2Ky2CiiYutuweEwum8/otLrINA0qjbV8Tq/b7/i8uHEZnA4GfnqDhIWGh4iJVwMGBykRCRKKk5SVlpeYdhIJESoBDgwTmaOkpaanqDIWDA4BLAgPAgcQqbW2t7i5aBAEAg8UJwSeBAYLGMfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+MLAgSuJwK68PHy8/RUIQA7"
+                                alt="." class="noprint">
+                            <hr class="linhaDivisao">
+                        </div>
+
+                        <div class="box04">
+                            <table cellpadding="2" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span class="subTitulo">Código de Tributação Municipal</span>
+                                            <p class="teste">
+                                                {{Servico.DescricaoCodigoTributacao}}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <hr class="linhaDivisao">
+                        </div>
+
+                        <div class="box04">
+                            <table cellpadding="2" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td>
+
+                                            <span class="subTitulo">Subitem Lista de Serviços LC
+                                                116/03 / Descrição: </span>
+
+                                            <p class="teste">
+                                                {{Servico.DescricaoCodigoItem}}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <hr class="linhaDivisao">
+                        </div>
+
+                        <div class="box04">
+                            <span id="j_id106"> </span>
+                            <table cellpadding="2" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td valign="top" width="50%">
+
+                                            <span class="subTitulo">Cod/Município da incidência do ISSQN:</span>
+
+                                            <p class="teste">
+                                                {{OrgaoGerador.CodigoMunicipio}} /
+                                                {{PrestadorServico.Endereco.NomeCidade}}
+                                            </p>
+                                        </td>
+                                        <td valign="top" width="50%">
+                                            <span class="subTitulo">Natureza da Operação:</span>
+                                            <p class="teste">
+                                                {{descricaoNaturezaOperacao}}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr class="linhaDivisao">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="100%" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td valign="top" class="bordaInferior">
+                                        <div class="box05">
+                                            <table cellpadding="4" cellspacing="0" width="100%">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="hh2" width="44%">
+                                                            Valor dos serviços:
+                                                        </td>
+                                                        <td class="hh2" width="56%" align="right">
+                                                            {{Servico.Valores.ValorServicos}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <table width="100%" cellpadding="0" cellspacing="0"
+                                                                class="teste">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td width="131" class="bordaInferior">
+                                                                            (-) Descontos:
+                                                                        </td>
+                                                                        <td width="165" align="right"
+                                                                            class="bordaInferior">
+                                                                            {{Servico.Valores.DescontoCondicionado}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="bordaInferior">
+                                                                            (-) Retenções Federais:
+                                                                        </td>
+                                                                        <td align="right" class="bordaInferior">
+                                                                            {{Servico.Valores.impostosFederais}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="bordaInferior">
+                                                                            (-) ISS Retido na Fonte:
+                                                                        </td>
+                                                                        <td align="right" class="bordaInferior">
+                                                                            {{Servico.Valores.ValorIssRetido}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="valorLiquido">
+                                                                            <b>Valor Líquido:</b>
+                                                                        </td>
+                                                                        <td align="right" class="valorLiquido">
+                                                                            <b>
+                                                                                {{Servico.Valores.ValorServicos}}
+                                                                            </b>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <img src="data:image/gif;base64,R0lGODlhOgELAMQAAOTz9P7//8/p6v3+/ubz9M3p6s7p6uXz9PP6+sXk5uz397fe4NTr7MDi5MTk5tvu8PD4+Nbs7ff7/PL5+t/x8b7i497w8b/i47Xd3////wAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAA6AQsAAAWcYJY1iGieaKqubOu+cCzPdG3feK7vKtKcAgBvSCwaj8ikcukCCE5OpnRKrVqv1uBpcFFgv+CweDxVVAaogwFNbrvf8PfAcFBFGJK4fs/v8yQMESsBDwsWfoiJiokUCw8BLQgJBQcQi5eYmVQQBAUJEzABBAYOGKanqKmqq6ytrq+wsbKztLW2t7i5uru0DgUEkJrCw8TFxsfIySchADs="
+                                                alt="." class="noprint">
+                                        </div>
+                                    </td>
+                                    <td class="bordaInferior">
+                                        <div class="box05">
+                                            <table cellpadding="4" cellspacing="0" width="100%">
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="42%" class="hh2">
+                                                            Valor dos serviços:
+                                                        </td>
+                                                        <td width="58%" align="right" class="hh2">
+                                                            {{Servico.Valores.ValorServicos}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <table width="100%" cellspacing="0" cellpadding="0"
+                                                                class="teste">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td width="152" class="bordaInferior">
+                                                                            (-) Deduções:
+                                                                        </td>
+                                                                        <td width="144" align="right"
+                                                                            class="bordaInferior">
+                                                                            {{Servico.Valores.ValorDeducoes}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="bordaInferior">
+                                                                            (-) Desconto Incondicionado:
+                                                                        </td>
+                                                                        <td align="right" class="bordaInferior">
+                                                                            {{Servico.Valores.DescontoIncondicionado}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="bordaInferior"
+                                                                            style="font-size: 12px;">
+                                                                            <strong>(=) Base de Cálculo:</strong>
+                                                                        </td>
+                                                                        <td align="right" class="bordaInferior"
+                                                                            style="font-size: 12px;">
+                                                                            <strong> {{Servico.Valores.ValorServicos}}
+                                                                            </strong>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="bordaInferior">
+                                                                            (x) Alíquota:
+                                                                        </td>
+                                                                        <td align="right" class="bordaInferior">
+                                                                            {{Servico.Valores.Aliquota}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="valorLiquido">
+                                                                            <b>(=)Valor do ISS:</b>
+                                                                        </td>
+                                                                        <td align="right" class="valorLiquido">
+                                                                            <b>
+                                                                                {{Servico.Valores.ValorIss}}
+                                                                            </b>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <img src="data:image/gif;base64,R0lGODlhOgELAMQAAOTz9P7//8/p6v3+/ubz9M3p6s7p6uXz9PP6+sXk5uz397fe4NTr7MDi5MTk5tvu8PD4+Nbs7ff7/PL5+t/x8b7i497w8b/i47Xd3////wAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAA6AQsAAAWcYJY1iGieaKqubOu+cCzPdG3feK7vKtKcAgBvSCwaj8ikcukCCE5OpnRKrVqv1uBpcFFgv+CweDxVVAaogwFNbrvf8PfAcFBFGJK4fs/v8yQMESsBDwsWfoiJiokUCw8BLQgJBQcQi5eYmVQQBAUJEzABBAYOGKanqKmqq6ytrq+wsbKztLW2t7i5uru0DgUEkJrCw8TFxsfIySchADs="
+                                                alt="." class="noprint">
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tb">
+                            <tbody>
+                                <tr>
+                                    <td valign="top" width="100%" class="bordaInferior">
+                                        <span class="subTitulo" style="margin-left: 5px;">Outras Informações:</span>
+                                        <p class="teste observacoes">
+                                            {{OutrasInformacoes}}
+                                        </p>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <table class="tableNoBorder" cellpadding="4" cellspacing="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td width="9%">
+                                        <img src="data:image/gif;base64,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"
+                                            alt="Brasão Prefeitura">
+                                    </td>
+                                    <td width="82%">
+                                        <span class="subTitulo">Prefeitura de Belo Horizonte - Secretaria Municipal de
+                                            Fazenda</span>
+                                        <p class="teste">
+                                            Rua Espírito Santo, 605 - 3º andar - Centro - CEP: 30160-919 - Belo
+                                            Horizonte MG.
+                                            <br>
+                                            Dúvidas: SIGESP
+                                            <br>
+                                        </p>
+                                    </td>
+                                    <td width="9%">
+                                        <img src="data:image/jpeg;base64,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"
+                                            alt="Brasão Prefeitura">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</body>
+
+</html>

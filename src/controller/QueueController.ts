@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { STANDARD } from "../constants/request";
-import { AppError } from "../errors/errors.helper";
+import { AppError, handleServerError } from "../errors/errors.helper";
 import CreateQueueService from "../services/QueueServices/CreateQueueService";
 import ListQueueService from "../services/QueueServices/ListQueueService";
 import UpdateQueueService from "../services/QueueServices/UpdateQueueService";
@@ -81,6 +81,6 @@ export const deleteFila = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "Fila apagada." });
   } catch (error) {
-    console.log(error);
+    return handleServerError(reply, error);
   }
 };

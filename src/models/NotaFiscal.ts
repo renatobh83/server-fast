@@ -23,6 +23,7 @@ class NotaFiscal extends Model<NotaFiscalProps> implements NotaFiscalProps {
   declare cancelada: boolean;
   declare datacancelamento: Date | null;
   declare tenantId: number;
+  declare tenant: any;
   declare empresaId: number;
   declare createdAt: Date;
   declare updatedAt: Date;
