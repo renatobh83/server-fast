@@ -11,8 +11,8 @@ function generateFileName(originalname: string) {
 
 export async function saveFile(file: any, folder: string): Promise<string> {
   const filename = generateFileName(file.filename || file.file?.name || "file");
-  const filePath = path.join(folder, filename);
 
+  const filePath = path.join(folder, filename);
   const writeStream = fs.createWriteStream(filePath);
   await file.file.pipe(writeStream); // `file.file` é o ReadableStream
   await new Promise<void>((resolve, reject) => {

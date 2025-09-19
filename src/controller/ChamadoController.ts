@@ -20,7 +20,7 @@ import { SendMessageChamadoServices } from "../services/ChamadoServices/SendMess
 import { UpdateMediaDadosService } from "../services/ChamadoServices/UpdateMediaDadosService";
 import { updateChamadoMediaServices } from "../services/ChamadoServices/updateChamadoMediaServices";
 
-const ATTACHMENTSFOLDER = path.join(__dirname, "public/attachments");
+const ATTACHMENTSFOLDER = path.join(process.cwd(), "public", "attachments");
 // Garantir que a pasta existe
 if (!fs.existsSync(ATTACHMENTSFOLDER)) {
   fs.mkdirSync(ATTACHMENTSFOLDER, { recursive: true });
@@ -125,8 +125,13 @@ export const updateAnexoChamado = async (
   try {
     const uploadedFiles: { filename: string; path: string }[] = [];
     for await (const file of files) {
-      const filename = await saveFile(file, ATTACHMENTSFOLDER);
-      uploadedFiles.push({ filename, path: `/attachments/${filename}` });
+      try {
+        const filename = await saveFile(file, ATTACHMENTSFOLDER);
+        console.log(filename);
+        uploadedFiles.push({ filename, path: `/attachments/${filename}` });
+      } catch (error) {
+        console.log(error);
+      }
     }
     const saved = await updateChamadoMediaServices(uploadedFiles, chamadoId);
 

@@ -7,7 +7,9 @@ import compress from "@fastify/compress";
 import formbody from "@fastify/formbody";
 import multipart from "@fastify/multipart";
 import rateLimit from "@fastify/rate-limit";
+import fastifyStatic from "@fastify/static";
 
+import path from "node:path";
 import xss from "xss";
 
 const fastifyModule = fp(async (fastify) => {
@@ -51,11 +53,16 @@ const fastifyModule = fp(async (fastify) => {
       "X-Requested-With",
       "x-csrf-token",
     ],
+
     exposedHeaders: ["Content-Length", "Content-Type"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   });
 
+  await fastify.register(fastifyStatic, {
+    root: path.join(__dirname, "..", "..", "..", "public"),
+    prefix: "/public/",
+  });
   // 3️⃣ Redis para rate limit
   await fastify.register(rateLimit, {
     max: 1000,
