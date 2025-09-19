@@ -1,4 +1,4 @@
-import AppError from "../../errors/AppError";
+import { AppError } from "../../errors/errors.helper";
 import Integracoes from "../../models/Integracoes";
 
 interface Request {

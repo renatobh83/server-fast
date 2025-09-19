@@ -14,7 +14,7 @@ export const ConsultarNotaFiscalService = async ({
   page = 1,
   limit = 10,
   cancelada,
-}: Request) => {
+}: Request): Promise<any> => {
   const where: any = {
     empresaId,
     ...(notaNumero && { rps: notaNumero }),

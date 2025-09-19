@@ -10,11 +10,10 @@
     "lib": ["esnext"],
     "resolveJsonModule": true, // Permite importar arquivos JSON
     "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
+    // "declaration": true,
+    // "declarationMap": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
-    "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": false,
     "verbatimModuleSyntax": false,
     "strict": true,

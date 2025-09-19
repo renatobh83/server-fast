@@ -27,6 +27,7 @@ import UserMessagesLog from "./UserMessagesLog";
 import Whatsapp from "./Whatsapp";
 import Empresa from "./Empresa";
 import FastReply from "./FastReply";
+import NotaFiscalLog from "./NotafiscalLog";
 
 // recebe a instância do sequelize
 export function initModels(sequelize: Sequelize) {
@@ -58,6 +59,7 @@ export function initModels(sequelize: Sequelize) {
     EmpresaContrato: EmpresaContrato.initModel(sequelize),
     ResultadoDDNS: ResultadoDDNS.initModel(sequelize),
     FastReply: FastReply.initModel(sequelize),
+    NotaFiscalLog: NotaFiscalLog.initModel(sequelize),
   };
 
   // associações

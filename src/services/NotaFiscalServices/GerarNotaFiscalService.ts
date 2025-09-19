@@ -1,12 +1,12 @@
 import Empresa from "../../models/Empresa";
 import NotaFiscal from "../../models/NotaFiscal";
-// import NotaFiscalLog from "../../models/NotaFiscalLog";
 import Tenant from "../../models/Tenant";
 import { GerarNFE } from "../IntegracoesServices/NFE";
 import { DadosNota } from "../IntegracoesServices/NFE/XML/gerarXmlGinfes";
 
 import { pupa } from "../../utils/pupa";
 import { addJob } from "../../lib/Queue";
+import NotaFiscalLog from "../../models/NotafiscalLog";
 interface NotaFiscalRequest {
   tenantId: number;
   data: any;

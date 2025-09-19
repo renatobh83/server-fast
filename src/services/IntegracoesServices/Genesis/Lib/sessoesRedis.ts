@@ -16,7 +16,7 @@ export async function obterSessaoUsuarioRedis(
     unidadeSelecionada: null,
     planoSelecionado: null,
     examesParaAgendar: [],
-    ultimaDataConsulta = format(new Date(), "dd/MM/yyyy"),
+    ultimaDataConsulta: format(new Date(), "dd/MM/yyyy"),
     horarioSelecionado: null,
     cadastro: null,
     cdHorario: null,

@@ -615,7 +615,7 @@ Caso contrário, esse exame pode não estar disponível para agendamento no mome
 Favor digitar novamente o exame que deseja agendar.\n\n`;
     return message;
   }
-  PREVIOUS_STEPID = ticket.stepChatFlow;
+  PREVIOUS_STEPID = ticket.stepChatFlow as string;
   ticket.update({
     botRetries: 0,
     lastInteractionBot: new Date(),
