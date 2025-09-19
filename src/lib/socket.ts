@@ -13,7 +13,7 @@ let io: SocketIOServer | null = null;
 export const initSocket = (httpServer: HttpServer): SocketIOServer => {
   io = new SocketIOServer(httpServer, {
     cors: {
-      origin: ["http://localhost:5173"],
+      origin: ["http://localhost:5173", "*"],
       credentials: true,
       methods: ["GET", "POST"],
     },
@@ -43,16 +43,34 @@ export const setupSocketListeners = (): void => {
   const ioInstance = getIO(); // Pega a instância já criada
 
   ioInstance.on("connection", (socket) => {
-    const decode = verify(
-      socket.handshake.auth.token,
-      process.env.JWT_SECRET!
-    ) as any;
+    try {
+      const token =
+        socket.handshake.auth?.token ||
+        socket.handshake.headers?.authorization?.split(" ")[1];
 
-    if (decode && decode.tenantId) {
-      socket.join(decode.tenantId.toString());
-      console.log(
-        `Cliente ${socket.id} entrou na sala do tenant ${decode.tenantId}`
-      );
+      if (!token) {
+        console.warn(`Socket ${socket.id} tentou conectar sem token`);
+        socket.disconnect(true);
+        return;
+      }
+
+      const decoded = verify(token, process.env.JWT_SECRET!) as any;
+
+      if (decoded && decoded.tenantId) {
+        socket.join(decoded.tenantId.toString());
+        console.log(
+          `Cliente ${socket.id} entrou na sala do tenant ${decoded.tenantId}`
+        );
+      }
+    } catch (err) {
+      if (err instanceof JsonWebTokenError) {
+        console.warn(
+          `Socket ${socket.id} forneceu token inválido: ${err.message}`
+        );
+      } else {
+        console.error(`Erro inesperado no socket ${socket.id}:`, err);
+      }
+      socket.disconnect(true); // garante que não fique conectado
     }
 
     socket.on("disconnect", (reason) => {
