@@ -1,0 +1,63 @@
+{
+  message: 'Erro em processamento do job pdfQueue (ID: 1)',
+  error: "Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'",
+  stack: "Error: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\PdfNotaFiscal.js:50:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-19T19:02:41.333Z'
+}
+{
+  error: Error: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\IntegracoesServices\NFE\PDF\CodigoTributacao\item.json'
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\PdfNotaFiscal.js:50:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker pdfQueue] Job 1 falhou. Erro: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'",
+  timestamp: '2025-09-19T19:02:41.569Z'
+}
+{
+  message: 'Erro em processamento do job pdfQueue (ID: 1)',
+  error: "Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'",
+  stack: "Error: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\PdfNotaFiscal.js:50:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-19T19:02:47.955Z'
+}
+{
+  error: Error: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\IntegracoesServices\NFE\PDF\CodigoTributacao\item.json'
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\PdfNotaFiscal.js:50:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker pdfQueue] Job 1 falhou. Erro: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'",
+  timestamp: '2025-09-19T19:02:48.187Z'
+}
+{
+  message: 'Erro em processamento do job pdfQueue (ID: 1)',
+  error: "Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'",
+  stack: "Error: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\PdfNotaFiscal.js:50:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-19T19:02:59.162Z'
+}
+{
+  error: Error: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\IntegracoesServices\NFE\PDF\CodigoTributacao\item.json'
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\PdfNotaFiscal.js:50:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker pdfQueue] Job 1 falhou. Erro: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'",
+  timestamp: '2025-09-19T19:02:59.398Z'
+}
