@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { STANDARD } from "../constants/request";
-import { AppError, handleServerError } from "../errors/errors.helper";
+import { AppError, ERRORS, handleServerError } from "../errors/errors.helper";
 import { ListEmpresaService } from "../services/EmpresaServices/ListEmpresaService";
 import { CreateEmpresaServices } from "../services/EmpresaServices/CreateEmpresaServices";
 import { DeleteEmpresaService } from "../services/EmpresaServices/DeleteEmpresaService";
@@ -33,7 +33,9 @@ export const createEmpresa = async (
 ) => {
   const { tenantId, profile } = request.user as any;
   if (profile !== "admin") {
-    throw new AppError("ERR_NO_PERMISSION", 403);
+    return reply
+      .code(ERRORS.unauthorizedAccess.statusCode)
+      .send(ERRORS.unauthorizedAccess.message);
   }
   const { name, identifier, address, acessoExterno } = request.body;
   try {
@@ -56,7 +58,9 @@ export const deleteEmpresa = async (
 ) => {
   const { tenantId, profile } = request.user as any;
   if (profile !== "admin") {
-    throw new AppError("ERR_NO_PERMISSION", 403);
+    return reply
+      .code(ERRORS.unauthorizedAccess.statusCode)
+      .send(ERRORS.unauthorizedAccess.message);
   }
   const { empresaId } = request.params as any;
   try {
@@ -80,7 +84,9 @@ export const updateEmpresa = async (
 ) => {
   const { profile } = request.user as any;
   if (profile !== "admin") {
-    throw new AppError("ERR_NO_PERMISSION", 403);
+    return reply
+      .code(ERRORS.unauthorizedAccess.statusCode)
+      .send(ERRORS.unauthorizedAccess.message);
   }
   const { empresaId } = request.params as any;
   const { name, address, active, identifier, acessoExterno } =
@@ -106,7 +112,9 @@ export const insertOrUpdateContrato = async (
 ) => {
   const { profile, tenantId } = request.user as any;
   if (profile !== "admin") {
-    throw new AppError("ERR_NO_PERMISSION", 403);
+    return reply
+      .code(ERRORS.unauthorizedAccess.statusCode)
+      .send(ERRORS.unauthorizedAccess.message);
   }
   const { empresaId } = request.params as any;
   const { totalHoras, dataContrato } = request.body as any;

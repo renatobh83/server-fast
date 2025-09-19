@@ -25,7 +25,9 @@ export const createApiConfig = async (
   const { tenantId, id, profile } = request.user as any;
 
   if (profile !== "admin") {
-    throw new AppError("ERR_NO_PERMISSION", 403);
+    return reply
+      .code(ERRORS.unauthorizedAccess.statusCode)
+      .send(ERRORS.unauthorizedAccess.message);
   }
   const payload = { ...request.body, userId: id, tenantId };
   try {

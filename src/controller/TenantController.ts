@@ -4,6 +4,9 @@ import * as Yup from "yup";
 import { isMatch } from "date-fns";
 import { STANDARD } from "../constants/request";
 import ShowBusinessHoursAndMessageService from "../services/TenantServices/ShowBusinessHoursAndMessageService";
+import ListDadosTenantService from "../services/TenantServices/ListDadosTenantService";
+import UpdateDadosTenantService from "../services/TenantServices/UpdateDadosTenantService";
+import UpdateBusinessHoursService from "../services/TenantServices/UpdateBusinessHoursService";
 
 export const updateBusinessHours = async (
   request: FastifyRequest,
@@ -17,7 +20,7 @@ export const updateBusinessHours = async (
         .send(ERRORS.unauthorizedAccess.message);
     }
 
-    const businessHours = request.body;
+    const businessHours = request.body as [];
 
     const schema = Yup.array().of(
       Yup.object().shape({
@@ -56,12 +59,12 @@ export const updateBusinessHours = async (
         .send(ERRORS.UnprocessableEntity.message);
     }
 
-    // const newBusinessHours = await UpdateBusinessHoursService({
-    //   businessHours,
-    //   tenantId,
-    // });
+    const newBusinessHours = await UpdateBusinessHoursService({
+      businessHours,
+      tenantId,
+    });
 
-    reply.code(STANDARD.OK.statusCode).send({ message: "CONFIGURAR UPDATE" });
+    reply.code(STANDARD.OK.statusCode).send(newBusinessHours);
   } catch (error) {
     return handleServerError(reply, error);
   }
@@ -120,14 +123,14 @@ export const udpateDadosNf = async (
   const { tenantId } = request.user as any;
   const { address, dadosNfe, razaoSocial } = request.body as any;
   try {
-    // const tenant = await UpdateDadosTenantService({
-    //   tenantId,
-    //   address,
-    //   dadosNfe,
-    //   razaoSocial,
-    // });
+    const tenant = await UpdateDadosTenantService({
+      tenantId,
+      address,
+      dadosNfe,
+      razaoSocial,
+    });
 
-    reply.code(STANDARD.OK.statusCode).send({ message: "CONFIGURAR reply" });
+    reply.code(STANDARD.OK.statusCode).send(tenant);
   } catch (error) {
     return handleServerError(reply, error);
   }
@@ -140,9 +143,9 @@ export const listInfoTenant = async (
   const { tenantId } = request.user as any;
 
   try {
-    // const tenant = await ListDadosTenantService({ tenantId });
+    const tenant = await ListDadosTenantService({ tenantId });
 
-    reply.code(STANDARD.OK.statusCode).send({ message: "CONFIGURAR reply" });
+    reply.code(STANDARD.OK.statusCode).send(tenant);
   } catch (error) {
     return handleServerError(reply, error);
   }
