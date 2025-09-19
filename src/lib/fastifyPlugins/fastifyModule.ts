@@ -39,8 +39,11 @@ const fastifyModule = fp(async (fastify) => {
   await fastify.register(cors, {
     origin: (origin, cb) => {
       if (!origin) return cb(null, true);
-      if (allowedOrigins.includes(origin)) cb(null, true);
-      else cb(new Error("Not allowed by CORS"), false);
+      if (allowedOrigins.includes(origin)) {
+        cb(null, true);
+      } else {
+        cb(null, false); // simplesmente bloqueia sem throw
+      }
     },
     allowedHeaders: [
       "Content-Type",
