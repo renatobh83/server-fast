@@ -13,7 +13,7 @@ export async function buildServer(
   config: FastifyServerOptions = {}
 ): Promise<FastifyInstance> {
   const server = Fastify({
-    logger: false,
+    logger: true,
     trustProxy: true,
   });
 
