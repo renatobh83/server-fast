@@ -32,15 +32,14 @@ export async function buildServer(
   server.setErrorHandler((error, request, reply) => {
     request.log.error(error);
 
-    if (error.validation) {
-      reply
-        .status(400)
-        .send({ error: "Requisição inválida", details: error.validation });
-    } else {
-      reply.status(error.statusCode || 500).send({
-        error: error.message || "Erro interno",
-      });
+    // Se for erro de CORS ou validação, não mata o servidor
+    if (error.code === "FST_CORS_ERROR") {
+      return reply.status(400).send({ error: "CORS não permitido" });
     }
+
+    reply.status(error.statusCode || 500).send({
+      error: error.message || "Erro interno no servidor",
+    });
   });
 
   // decorador para verificar se o usuário está autenticado
@@ -99,10 +98,13 @@ export async function start() {
     process.exit(1);
   }
 }
-// Handle unhandled rejections
-process.on("unhandledRejection", (err) => {
-  console.error("Unhandled Rejection:", err);
-  process.exit(1);
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection:", reason);
+  // não encerra a aplicação, só loga
 });
 
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught Exception:", err);
+  // em prod pode logar em arquivo/monitoramento
+});
 export default buildServer;
