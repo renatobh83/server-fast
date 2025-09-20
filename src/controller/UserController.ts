@@ -6,7 +6,6 @@ import CreateUserService from "../services/UserServices/CreateUserService";
 import UpdateUserService from "../services/UserServices/UpdateUserService";
 import { getIO } from "../lib/socket";
 import DeleteUserService from "../services/UserServices/DeleteUserService";
-import UpdateDeletedUserOpenTicketsStatus from "../helpers/UpdateDeletedUserOpenTicketsStatus";
 import { UpdateUserIsOnlineService } from "../helpers/UpdateUserIsOnlineService";
 
 type IndexQuery = {

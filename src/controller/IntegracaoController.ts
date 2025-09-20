@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { STANDARD } from "../constants/request";
-import { AppError, ERRORS, handleServerError } from "../errors/errors.helper";
+import { ERRORS, handleServerError } from "../errors/errors.helper";
 import CreateIntegracoesService from "../services/IntegracoesServices/CreateIntegracoesService";
 import ListIntegracoesService from "../services/IntegracoesServices/ListIntegracoesServices";
 import UpdateIntegracoesServices from "../services/IntegracoesServices/UpdateIntegracoesServices";

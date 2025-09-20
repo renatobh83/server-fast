@@ -3,16 +3,14 @@
 // import socketEmit from "../../helpers/socketEmit";
 // import Message from "../../models/Message";
 // import Ticket from "../../models/Ticket";
-// import { logger } from "../../utils/logger";
 // import { pupa } from "../../utils/pupa";
-// import AppError from "../../errors/AppError";
 // import { actionsChatFlow } from "./Helpers/Interno/actionsChatFlow";
-
-// import { SendWhatsMessageList } from "../WbotServices/SendWhatsAppMessageList";
 // import { v4 as uuidV4 } from "uuid";
-// import { SendTbotAppMessageList } from "../WbotServices/SendTbotAppMessageList";
 // import GetIntegracao from "../../helpers/GetIntegracao";
 // import { actionsIntegracaoGenesis } from "../IntegracoesServices/Genesis/actionsIntegracaoGenesis";
+// import { SendWhatsMessageList } from "../WbotServices/SendWhatsAppMessageList";
+// import { SendTbotAppMessageList } from "../WbotServices/SendTbotAppMessageList";
+// import { AppError } from "../../errors/errors.helper";
 
 // export interface MessageData {
 //   id?: string;
@@ -89,7 +87,7 @@
 //       status: "pending",
 //       tenantId,
 //     };
-//     const modelAttributes = Object.keys(Message.rawAttributes);
+//     const modelAttributes = Object.keys(Message.getAttributes);
 
 //     const filterValidAttributes = (data: any) => {
 //       return Object.fromEntries(
@@ -440,10 +438,7 @@
 //       });
 //     }
 //   } catch (error: any) {
-//     throw new AppError("ERR_BUILD_SEND_MESSAGE_SERVICE", 502, {
-//       origin: "BuildSendMessageService",
-//       cause: error,
-//     });
+//     throw new AppError("ERR_BUILD_SEND_MESSAGE_SERVICE", 502);
 //   }
 // };
 

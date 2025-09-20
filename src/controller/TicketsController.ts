@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { STANDARD } from "../constants/request";
-import { AppError, handleServerError } from "../errors/errors.helper";
+import {  handleServerError } from "../errors/errors.helper";
 import CreateTicketService from "../services/TicketServices/CreateTicketService";
 import DeleteTicketService from "../services/TicketServices/DeleteTicketService";
 import { getIO } from "../lib/socket";

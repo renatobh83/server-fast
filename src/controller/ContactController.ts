@@ -3,7 +3,6 @@ import { CreateContactService } from "../services/ContactServices/CreateContactS
 import { handleServerError } from "../errors/errors.helper";
 import { STANDARD } from "../constants/request";
 import ListContactsService from "../services/ContactServices/ListContactsService";
-import { number } from "yup";
 import UpdateContactService, {
   ContactDataUpdate,
 } from "../services/ContactServices/UpdateContactService";

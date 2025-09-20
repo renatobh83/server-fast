@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { STANDARD } from "../constants/request";
-import { AppError, ERRORS, handleServerError } from "../errors/errors.helper";
+import { ERRORS, handleServerError } from "../errors/errors.helper";
 import { ListEmpresaService } from "../services/EmpresaServices/ListEmpresaService";
 import { CreateEmpresaServices } from "../services/EmpresaServices/CreateEmpresaServices";
 import { DeleteEmpresaService } from "../services/EmpresaServices/DeleteEmpresaService";

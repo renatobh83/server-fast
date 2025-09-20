@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { AppError, ERRORS, handleServerError } from "../errors/errors.helper";
+import {  ERRORS, handleServerError } from "../errors/errors.helper";
 import CreateApiConfigService from "../services/ApiConfigServices/CreateApiConfigService";
 import { STANDARD } from "../constants/request";
 import ListApiConfigService from "../services/ApiConfigServices/ListApiConfigService";
