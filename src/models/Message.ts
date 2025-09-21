@@ -5,7 +5,7 @@ import { isEncrypted } from "../helpers/isEncrypted";
 
 interface IMessage {
   id?: string;
-  messageId: string;
+  messageId?: string ;
   ack?: number;
   status?: "pending" | "sended" | "received" | "canceled";
   wabaMediaId?: string | null;

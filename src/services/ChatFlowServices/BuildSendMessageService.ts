@@ -1,5 +1,4 @@
 // import { join } from "node:path";
-// import SendMessageSystemProxy from "../../helpers/SendMessageSystemProxy";
 // import socketEmit from "../../helpers/socketEmit";
 // import Message from "../../models/Message";
 // import Ticket from "../../models/Ticket";
@@ -8,6 +7,7 @@
 // import { v4 as uuidV4 } from "uuid";
 // import GetIntegracao from "../../helpers/GetIntegracao";
 // import { actionsIntegracaoGenesis } from "../IntegracoesServices/Genesis/actionsIntegracaoGenesis";
+// import SendMessageSystemProxy from "../../helpers/SendMessageSystemProxy";
 // import { SendWhatsMessageList } from "../WbotServices/SendWhatsAppMessageList";
 // import { SendTbotAppMessageList } from "../WbotServices/SendTbotAppMessageList";
 // import { AppError } from "../../errors/errors.helper";
@@ -87,7 +87,7 @@
 //       status: "pending",
 //       tenantId,
 //     };
-//     const modelAttributes = Object.keys(Message.getAttributes);
+//     const modelAttributes = Object.keys(Message.rawAttributes);
 
 //     const filterValidAttributes = (data: any) => {
 //       return Object.fromEntries(
@@ -259,28 +259,6 @@
 //           userId: null,
 //         });
 //       }
-//       // let message: Message;
-//       // let created: boolean;
-
-//       // let existingMessage = await Message.findOne({
-//       //   where: { messageId: messageSent.id || messageSent.messageId || null },
-//       // });
-
-//       // if (existingMessage) {
-//       //   await existingMessage.update({
-//       //     ...messageData,
-//       //     ...messageSent,
-//       //     mediaType: "bot",
-//       //   });
-//       // } else {
-//       //   existingMessage = await Message.create({
-//       //     ...messageData,
-//       //     ...messageSent,
-//       //     id: uuidV4(),
-//       //     messageId: messageSent.id || messageSent.messageId || null,
-//       //     mediaType: "bot",
-//       //   });
-//       // }
 
 //       const [existingMessage] = await Message.findOrCreate({
 //         where: {

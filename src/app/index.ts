@@ -8,6 +8,8 @@ import { initSocket, setupSocketListeners } from "../lib/socket";
 import { configSchema } from "./configSchema";
 import { redisPlugin } from "../lib/fastifyPlugins/redis";
 import { sequelizePlugin } from "../lib/fastifyPlugins/sequelize";
+import Message from "../models/Message";
+import { initWbot } from "../lib/wbot";
 
 export async function buildServer(
   config: FastifyServerOptions = {}
@@ -41,7 +43,6 @@ export async function buildServer(
       error: error.message || "Erro interno no servidor",
     });
   });
-
   // decorador para verificar se o usuário está autenticado
   server.decorate("authenticate", async function (request: any, reply: any) {
     try {
@@ -91,9 +92,13 @@ export async function start() {
   try {
     await app.listen({ port: 3000, host: "0.0.0.0" });
 
-    initSocket(app.server);
-    setupSocketListeners();
     console.log("Server listening on http://localhost:3000");
+     initSocket(app.server);
+
+    // await initWbot({
+    //   pairingCodeEnabled: false
+    // })
+    setupSocketListeners();
   } catch (err) {
     app.log.error(err);
     process.exit(1);

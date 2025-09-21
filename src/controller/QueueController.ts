@@ -25,6 +25,7 @@ export const createFila = async (
     return reply.code(STANDARD.OK.statusCode).send(queue);
   } catch (error) {
     console.log(error);
+    return handleServerError(reply, error);
   }
 };
 
@@ -40,6 +41,8 @@ export const listFilas = async (
     return reply.code(STANDARD.OK.statusCode).send(queues);
   } catch (error) {
     console.log(error);
+    return handleServerError(reply, error);
+    
   }
 };
 
@@ -62,6 +65,7 @@ export const updateFila = async (
     return reply.code(STANDARD.OK.statusCode).send(queueUpdated);
   } catch (error) {
     console.log(error);
+    return handleServerError(reply, error);
   }
 };
 
