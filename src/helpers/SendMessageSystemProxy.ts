@@ -1,6 +1,8 @@
 import type { Message as WbotMessage } from "wbotconnect";
 import SendWhatsAppMessage from "../services/WbotServices/Helpers/SendWhatsAppMessage";
 import SendWhatsAppMedia from "../services/WbotServices/Helpers/SendWhatsAppMedia";
+import TelegramSendMessagesSystem from "../services/TbotServices/TelegramSendMessagesSystem";
+import { getTbot } from "../lib/tbot";
 
 type Payload = {
   ticket: any;
@@ -23,13 +25,13 @@ const SendMessageSystemProxy = async ({
   let message: any | null = null;
 
   switch (ticket.channel) {
-    // case "telegram":
-    //   message = await TelegramSendMessagesSystem(
-    //     getTbot(ticket.whatsappId),
-    //     ticket,
-    //     hasMedia ? { ...messageData, media } : messageData
-    //   );
-    //   break;
+    case "telegram":
+      message = await TelegramSendMessagesSystem(
+        getTbot(ticket.whatsappId),
+        ticket,
+        hasMedia ? { ...messageData, media } : messageData
+      );
+      break;
 
     case "whatsapp":
       if (hasMedia) {

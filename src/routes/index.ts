@@ -17,6 +17,7 @@ import statisticsRoutes from "./statisticsRoutes";
 import integtracaoRoutes from "./integracaoRoutes";
 import notaFiscalRoutes from "./notafiscalRoutes";
 import messageRoutes from "./messageRoutes";
+import channelRoutes from "./channelSessionRoutes";
 
 async function routes(fastify: FastifyInstance) {
   fastify.register(authRoutes, { prefix: "/auth" });
@@ -40,6 +41,7 @@ async function routes(fastify: FastifyInstance) {
     fastify.register(statisticsRoutes);
     fastify.register(integtracaoRoutes);
     fastify.register(notaFiscalRoutes);
+    fastify.register(channelRoutes);
     fastify.register(messageRoutes, { prefix: "/messages" });
   });
 }

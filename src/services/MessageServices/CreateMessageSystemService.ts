@@ -60,7 +60,7 @@ export const CreateMessageSystemService = async ({
       idFront: message.idFront,
       buffer: undefined,
     };
-
+    console.log(messageData);
     if (decryptedMessage && !Array.isArray(decryptedMessage)) {
       messageData.body = buildMessageBody(decryptedMessage, ticket);
     }

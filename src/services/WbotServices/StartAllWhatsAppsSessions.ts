@@ -1,6 +1,7 @@
 import { Op } from "sequelize";
 import Whatsapp from "../../models/Whatsapp";
 import { StartWhatsAppSession } from "../StartWhatsAppSession";
+import { StartTbotSession } from "../TbotServices/StartTbotSession";
 
 export const StartAllWhatsAppsSessions = async (): Promise<void> => {
   // Busca apenas os campos necessários com filtros otimizados
@@ -30,11 +31,11 @@ export const StartAllWhatsAppsSessions = async (): Promise<void> => {
 
   // Executa todas as sessões em paralelo com tratamento de errors individual
   await Promise.all([
-    // ...telegramSessions.map((whatsapp) =>
-    //   StartTbotSession(whatsapp).catch((error) =>
-    //     console.error(`Telegram session error (ID: ${whatsapp.id}):`, error)
-    //   )
-    // ),
+    ...telegramSessions.map((whatsapp) =>
+      StartTbotSession(whatsapp).catch((error) =>
+        console.error(`Telegram session error (ID: ${whatsapp.id}):`, error)
+      )
+    ),
     ...whatsappSessions.map((whatsapp) =>
       StartWhatsAppSession(whatsapp).catch((error) =>
         console.error(`WhatsApp session error (ID: ${whatsapp.id}):`, error)

@@ -1,5 +1,6 @@
 import { getIO } from "../lib/socket";
 import { initWbot } from "../lib/wbot";
+import { StartTbotSession } from "./TbotServices/StartTbotSession";
 
 export const StartWhatsAppSession = async (whatsapp: any): Promise<void> => {
   await whatsapp.update({ status: "OPENING" });
@@ -14,8 +15,8 @@ export const StartWhatsAppSession = async (whatsapp: any): Promise<void> => {
       await initWbot(whatsapp);
       // wbotMonitor(wbot, whatsapp);
     }
-    // if (whatsapp.type === "telegram") {
-    //   StartTbotSession(whatsapp);
-    // }
+    if (whatsapp.type === "telegram") {
+      StartTbotSession(whatsapp);
+    }
   } catch (error) {}
 };
