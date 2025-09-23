@@ -1,7 +1,8 @@
 import { Ack, IncomingCall, Message, Whatsapp } from "wbotconnect";
 import { logger } from "../../utils/logger";
 import { blockedMessages } from "../../helpers/BlockedMessages";
-import { HandleMessageSend } from "./HandleMessageSend";
+import { HandleMessageSend } from "./Helpers/HandleMessageSend";
+import { HandleMessageReceived } from "./Helpers/HandleMessageReceived";
 
 interface Session extends Whatsapp {
   id: number;
@@ -25,8 +26,8 @@ export const wbotMessageListener = async (wbot: any): Promise<void> => {
   setTimeout(() => {
     isSyncing = false;
     logger.warn(`Sync ${new Date().toLocaleTimeString()}`);
-  }, 5000); // Aguarda 10 segundos para evitar salvar mensagens sincronizadas
-  // tratar mensagem enviada
+  }, 5000);
+
   wbot.onAnyMessage(async (msg: Message) => {
     if (isSyncing) {
       return;
@@ -43,11 +44,10 @@ export const wbotMessageListener = async (wbot: any): Promise<void> => {
   });
   // tratar mensagem recebida
   wbot.onMessage(async (msg: Message) => {
-    console.log("onMessage", msg);
-    // if (isSyncing) {
-    //   return;
-    // }
-    // await HandleMessageReceived(msg, wbot);
+    if (isSyncing) {
+      return;
+    }
+    await HandleMessageReceived(msg, wbot);
   });
 
   wbot.onIncomingCall(async (call: IncomingCall) => {

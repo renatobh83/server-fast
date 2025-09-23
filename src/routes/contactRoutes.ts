@@ -13,8 +13,14 @@ export default async function contactRoutes(fastify: FastifyInstance) {
           type: "object",
           required: ["name", "number"],
           properties: {
-            number: { type: "number" },
+            number: { type: "string" },
             name: { type: "string" },
+            email: {
+              anyOf: [
+                { type: "string", format: "email" },
+                { type: "string", maxLength: 0 }, // permite vazio
+              ],
+            },
             dtaniversario: { type: "string" },
             identifier: { type: "string" },
             telegramId: { type: "number" },
@@ -22,7 +28,12 @@ export default async function contactRoutes(fastify: FastifyInstance) {
             profilePicUrl: { type: "string" },
             isWAContact: { type: "boolean" },
             serializednumber: { type: "string" },
-            id: { type: "object", items: { type: "number" } },
+            id: {
+              anyOf: [
+                { type: "object", items: { type: "number" } },
+                { type: "string" }, // permite vazio
+              ],
+            },
           },
         },
       },
@@ -37,7 +48,7 @@ export default async function contactRoutes(fastify: FastifyInstance) {
           type: "object",
           required: ["name", "number"],
           properties: {
-            number: { type: "number" },
+            number: { type: "string" },
             name: { type: "string" },
             email: {
               anyOf: [
@@ -67,9 +78,14 @@ export default async function contactRoutes(fastify: FastifyInstance) {
           type: "object",
           required: ["name", "number"],
           properties: {
-            number: { type: "number" },
+            number: { type: "string" },
             name: { type: "string" },
-            email: { type: "string", format: "email" },
+            email: {
+              anyOf: [
+                { type: "string", format: "email" },
+                { type: "string", maxLength: 0 }, // permite vazio
+              ],
+            },
             dtaniversario: { type: "string" },
             identifier: { type: "string" },
             telegramId: { type: "number" },
@@ -78,7 +94,12 @@ export default async function contactRoutes(fastify: FastifyInstance) {
             profilePicUrl: { type: "string" },
             isWAContact: { type: "boolean" },
             serializednumber: { type: "string" },
-            id: { type: "object", items: { type: "number" } },
+            id: {
+              anyOf: [
+                { type: "object", items: { type: "number" } },
+                { type: "string" }, // permite vazio
+              ],
+            },
           },
         },
       },

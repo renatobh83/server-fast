@@ -1,10 +1,11 @@
 import { Chat, Message, Whatsapp } from "wbotconnect";
-import ShowWhatsAppService from "../WhatsappService/ShowWhatsAppService";
-import { isValidMsg } from "./Helpers/isValidMsg";
-import Setting from "../../models/Setting";
-import VerifyContact from "./Helpers/VerifyContact";
-import FindOrCreateTicketService from "../TicketServices/FindOrCreateTicketService";
-import VerifyMessage from "./VerifyMessage";
+import ShowWhatsAppService from "../../WhatsappService/ShowWhatsAppService";
+import { isValidMsg } from "./isValidMsg";
+import Setting from "../../../models/Setting";
+import VerifyContact from "./VerifyContact";
+import FindOrCreateTicketService from "../../TicketServices/FindOrCreateTicketService";
+import VerifyMessage from "../VerifyMessage";
+import VerifyMediaMessage from "./VerifyMediaMessage";
 
 interface Session extends Whatsapp {
   id: number;
@@ -41,8 +42,9 @@ export const HandleMessageSend = async (
     msg: message,
     channel: "whatsapp",
   });
+
   if (message.filehash) {
-    // await VerifyMediaMessage(msg, ticket, contact, wbot);
+    await VerifyMediaMessage(message, ticket, contact, wbot);
   } else {
     await VerifyMessage(message, ticket, contact);
   }

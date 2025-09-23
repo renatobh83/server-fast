@@ -111,7 +111,20 @@ export const detalhesContato = async (
 };
 
 export const updateContatoSocket = async (
-  request: FastifyRequest<{ Body: ContactData }>,
+  request: FastifyRequest<{
+    Body: {
+      name: string;
+      number: string;
+      email: string;
+      profilePicUrl: string;
+      pushname: string;
+      telegramId: number;
+      identifier: string;
+      serializednumber: string;
+      isWAContact: boolean;
+      isGroup: boolean;
+    };
+  }>,
   reply: FastifyReply
 ) => {
   const { tenantId } = request.user as any;
@@ -121,6 +134,7 @@ export const updateContatoSocket = async (
     const contato = await UpdateContactSocketService(payload);
     return reply.code(STANDARD.OK.statusCode).send(contato);
   } catch (error) {
+    console.log(error);
     return handleServerError(reply, error);
   }
 };

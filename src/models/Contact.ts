@@ -201,20 +201,22 @@ class Contact extends Model<CreateContactInput> implements CreateContactInput {
 }
 
 // 🔧 Função auxiliar (normalização do telefone)
-function normalizePhoneNumber(phone?: string): string | undefined {
-  if (!phone) return phone;
+function normalizePhoneNumber(phone: unknown): string {
+  if (!phone) return "";
 
-  if (phone.endsWith("@g.us")) return phone;
+  let normalized = String(phone);
 
-  phone = phone.replace(/@c\.us$/, "");
+  if (normalized.endsWith("@g.us")) return normalized;
 
-  if (phone.startsWith("55")) {
-    const ddd = phone.substring(2, 4);
-    const numberWithoutDDD = phone.substring(4);
-    phone = ddd + numberWithoutDDD;
+  normalized = normalized.replace(/@c\.us$/, "");
+
+  if (normalized.startsWith("55")) {
+    const ddd = normalized.substring(2, 4);
+    const numberWithoutDDD = normalized.substring(4);
+    normalized = ddd + numberWithoutDDD;
   }
 
-  return phone;
+  return normalized;
 }
 
 export default Contact;

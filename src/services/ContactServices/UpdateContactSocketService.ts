@@ -1,24 +1,19 @@
 import { AppError } from "../../errors/errors.helper";
 import Contact from "../../models/Contact";
-import Empresa from "../../models/Empresa";
 import CheckIsValidContact from "../WbotServices/Helpers/CheckIsValidContact";
 import { CheckWappInitialized } from "../WbotServices/Helpers/CheckWappInitialized";
 
 interface ContactData {
   name: string;
   number: string;
-  email?: string;
-  dtaniversario?: Date | undefined;
-  identifier?: string;
-  telegramId?: number;
-  isGroup?: boolean;
-  empresas?: string;
-  profilePicUrl?: any;
-  isWAContact?: boolean;
-  serializednumber?: string;
-  id?: {
-    user: string;
-  };
+  email: string;
+  profilePicUrl: string;
+  pushname: string;
+  telegramId: number;
+  identifier: string;
+  serializednumber: string;
+  isWAContact: boolean;
+  isGroup: boolean;
 }
 
 interface Request {
@@ -34,13 +29,14 @@ const UpdateContactSocketService = async ({
 }: Request): Promise<Contact> => {
   try {
     let {
-      email,
       name,
       number,
-      empresas,
-      dtaniversario,
-      identifier,
+      email,
       profilePicUrl,
+      pushname,
+      telegramId,
+      identifier,
+      serializednumber,
       isWAContact,
       isGroup,
     } = contactData;
@@ -48,7 +44,10 @@ const UpdateContactSocketService = async ({
     const wppInitialized = await CheckWappInitialized(tenantId);
     if (wppInitialized && !isGroup && isWAContact) {
       try {
-        const dataContato = await CheckIsValidContact(number!, tenantId);
+        const dataContato = await CheckIsValidContact(
+          serializednumber,
+          tenantId
+        );
 
         if (dataContato.isWAContact) {
           name = dataContato.pushname;
@@ -74,8 +73,6 @@ const UpdateContactSocketService = async ({
       name,
       number,
       email,
-      //   empresas: empresas,
-      dtaniversario: dtaniversario,
       identifier,
       profilePicUrl,
       isWAContact,
@@ -87,6 +84,7 @@ const UpdateContactSocketService = async ({
 
     return contact;
   } catch (error: any) {
+    console.log(error);
     throw new AppError("ERR_CONTACT", 500);
   }
 };

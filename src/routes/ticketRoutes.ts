@@ -29,7 +29,6 @@ export default async function ticketRoutes(fastify: FastifyInstance) {
       schema: {
         body: {
           type: "object",
-          required: ["contactId", "channel"],
           properties: {
             contactId: { type: "string" },
             channel: { type: "string" },
