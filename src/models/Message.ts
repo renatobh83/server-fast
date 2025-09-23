@@ -5,7 +5,7 @@ import { isEncrypted } from "../helpers/isEncrypted";
 
 interface IMessage {
   id?: string;
-  messageId?: string ;
+  messageId?: string;
   ack?: number;
   status?: "pending" | "sended" | "received" | "canceled";
   wabaMediaId?: string | null;
@@ -140,6 +140,24 @@ class Message extends Model<IMessage> implements IMessage {
         ticketId: {
           type: DataTypes.INTEGER,
           allowNull: true,
+        },
+        mediaUrl: {
+          type: DataTypes.STRING,
+          get() {
+            const { BACKEND_URL, NODE_ENV, PROXY_PORT } = process.env;
+            const filename = this.getDataValue("mediaUrl");
+            if (!filename) return null;
+
+            // Condicional para verificar se estamos em ambiente de desenvolvimento
+            if (NODE_ENV === "development" && PROXY_PORT) {
+              // Se estiver em dev e houver uma porta, inclua-a na URL
+              return `${BACKEND_URL}:${PROXY_PORT}/public/${filename}`;
+            } else {
+              // Caso contrário, retorne a URL sem a porta
+
+              return `${BACKEND_URL}/public/${filename}`;
+            }
+          },
         },
         tenantId: {
           type: DataTypes.INTEGER,

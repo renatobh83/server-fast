@@ -1,63 +1,283 @@
 {
-  message: 'Erro em processamento do job pdfQueue (ID: 1)',
-  error: "Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'",
-  stack: "Error: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'\n" +
-    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\PdfNotaFiscal.js:50:19)\n' +
-    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
-    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
-    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
   level: 'error',
-  timestamp: '2025-09-19T19:02:41.333Z'
+  message: '[Worker pdfQueue] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-09-22T14:36:31.513Z'
 }
 {
-  error: Error: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\IntegracoesServices\NFE\PDF\CodigoTributacao\item.json'
-      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\PdfNotaFiscal.js:50:19)
-      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
-      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
-      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
   level: 'error',
-  message: "[Worker pdfQueue] Job 1 falhou. Erro: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'",
-  timestamp: '2025-09-19T19:02:41.569Z'
+  message: '[Worker SendEmail] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-09-22T15:15:05.106Z'
 }
 {
-  message: 'Erro em processamento do job pdfQueue (ID: 1)',
-  error: "Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'",
-  stack: "Error: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'\n" +
-    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\PdfNotaFiscal.js:50:19)\n' +
-    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
-    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
-    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
   level: 'error',
-  timestamp: '2025-09-19T19:02:47.955Z'
+  message: '[Worker VerifyTicketsChatBotInactives] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-09-22T15:15:06.361Z'
 }
 {
-  error: Error: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\IntegracoesServices\NFE\PDF\CodigoTributacao\item.json'
-      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\PdfNotaFiscal.js:50:19)
-      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
-      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
-      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read',
   level: 'error',
-  message: "[Worker pdfQueue] Job 1 falhou. Erro: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'",
-  timestamp: '2025-09-19T19:02:48.187Z'
+  message: 'Erro na conexão Redis (redisForWorkers): read ECONNRESET',
+  stack: 'Error: read ECONNRESET\n' +
+    '    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)',
+  timestamp: '2025-09-22T15:15:11.929Z'
 }
 {
-  message: 'Erro em processamento do job pdfQueue (ID: 1)',
-  error: "Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'",
-  stack: "Error: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'\n" +
-    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\PdfNotaFiscal.js:50:19)\n' +
-    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
-    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
-    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
   level: 'error',
-  timestamp: '2025-09-19T19:02:59.162Z'
+  message: '[Worker SendEmail] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-09-22T15:15:11.940Z'
 }
 {
-  error: Error: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\IntegracoesServices\NFE\PDF\CodigoTributacao\item.json'
-      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\PdfNotaFiscal.js:50:19)
-      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
-      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
-      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
   level: 'error',
-  message: "[Worker pdfQueue] Job 1 falhou. Erro: Falha na geração do PDF [pdf_2]: ENOENT: no such file or directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\PDF\\CodigoTributacao\\item.json'",
-  timestamp: '2025-09-19T19:02:59.398Z'
+  message: '[Worker VerifyTicketsChatBotInactives] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-09-22T15:15:11.941Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-09-22T15:15:11.947Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker VerifyTicketsChatBotInactives] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-09-22T15:15:16.485Z'
+}
+{
+  error: FastifyError [Error]: Root plugin has already booted
+      at Boot._addPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:170:11)
+      at Boot.use (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:139:25)
+      at server.<computed> [as register] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:213:14)
+      at EventEmitter.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\fastifyPlugins\redis.js:14:17)
+      at EventEmitter.emit (node:events:531:35)
+      at process.processTicksAndRejections (node:internal/process/task_queues:85:11) {
+    code: 'AVV_ERR_ROOT_PLG_BOOTED',
+    statusCode: 500
+  },
+  level: 'error',
+  message: 'uncaughtException: Root plugin has already booted\n' +
+    'FastifyError: Root plugin has already booted\n' +
+    '    at Boot._addPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:170:11)\n' +
+    '    at Boot.use (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:139:25)\n' +
+    '    at server.<computed> [as register] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:213:14)\n' +
+    '    at EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:14:17)\n' +
+    '    at EventEmitter.emit (node:events:531:35)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)',
+  stack: 'FastifyError: Root plugin has already booted\n' +
+    '    at Boot._addPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:170:11)\n' +
+    '    at Boot.use (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:139:25)\n' +
+    '    at server.<computed> [as register] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:213:14)\n' +
+    '    at EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:14:17)\n' +
+    '    at EventEmitter.emit (node:events:531:35)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)',
+  exception: true,
+  date: 'Mon Sep 22 2025 12:15:17 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 4260,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.19.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 33615872,
+      heapTotal: 71249920,
+      heapUsed: 67611656,
+      external: 4893012,
+      arrayBuffers: 1010554
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 624774.171 },
+  trace: [
+    {
+      column: 11,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._addPlugin',
+      line: 170,
+      method: '_addPlugin',
+      native: false
+    },
+    {
+      column: 25,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot.use',
+      line: 139,
+      method: 'use',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'server.<computed> [as register]',
+      line: 213,
+      method: '<computed> [as register]',
+      native: false
+    },
+    {
+      column: 17,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js',
+      function: null,
+      line: 14,
+      method: null,
+      native: false
+    },
+    {
+      column: 35,
+      file: 'node:events',
+      function: 'EventEmitter.emit',
+      line: 531,
+      method: 'emit',
+      native: false
+    },
+    {
+      column: 11,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 85,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-09-22T15:15:17.323Z'
+}
+{
+  errorno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  syscall: 'connect',
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect ETIMEDOUT',
+  stack: 'Error: connect ETIMEDOUT\n' +
+    '    at Socket.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\ioredis\\built\\Redis.js:171:41)\n' +
+    '    at Object.onceWrapper (node:events:633:28)\n' +
+    '    at Socket.emit (node:events:519:28)\n' +
+    '    at Socket._onTimeout (node:net:604:8)\n' +
+    '    at listOnTimeout (node:internal/timers:588:17)\n' +
+    '    at process.processTimers (node:internal/timers:523:7)',
+  timestamp: '2025-09-22T15:18:41.005Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {}',
+  level: 'error',
+  timestamp: '2025-09-22T18:34:40.571Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {}',
+  level: 'error',
+  timestamp: '2025-09-22T18:39:03.306Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {}',
+  level: 'error',
+  timestamp: '2025-09-22T18:44:12.393Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {}',
+  level: 'error',
+  timestamp: '2025-09-22T18:46:13.647Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {"code":"empty_file"}',
+  level: 'error',
+  timestamp: '2025-09-22T18:47:39.254Z'
+}
+{
+  message: `SendWhatsAppMedia | Error: {"name":"ProtocolError","message":"Runtime.callFunctionOn timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed."}`,
+  level: 'error',
+  timestamp: '2025-09-22T18:54:55.200Z'
+}
+{
+  message: `SendWhatsAppMedia | Error: {"name":"ProtocolError","message":"Runtime.callFunctionOn timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed."}`,
+  level: 'error',
+  timestamp: '2025-09-22T18:55:09.647Z'
+}
+{
+  message: `SendWhatsAppMedia | Error: {"name":"ProtocolError","message":"Runtime.callFunctionOn timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed."}`,
+  level: 'error',
+  timestamp: '2025-09-22T19:01:28.176Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {"erro":true,"to":"553185683733@c.us","text":"No such file or directory, open \\"data:image/jpg;base64,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\\""}',
+  level: 'error',
+  timestamp: '2025-09-22T19:05:22.344Z'
+}
+{
+  message: `SendWhatsAppMedia | Error: {"name":"ProtocolError","message":"Runtime.callFunctionOn timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed."}`,
+  level: 'error',
+  timestamp: '2025-09-22T19:18:54.061Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {"erro":true,"to":"553185683733@c.us","text":"Not an image, allowed formats png, jpeg and webp"}',
+  level: 'error',
+  timestamp: '2025-09-23T10:17:42.866Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {"code":"ERR_INVALID_ARG_TYPE"}',
+  level: 'error',
+  timestamp: '2025-09-23T11:34:16.770Z'
 }

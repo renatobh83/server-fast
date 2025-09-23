@@ -236,7 +236,7 @@ export const updateFileChamado = async (
 ) => {
   try {
     const dataBody = request.body as any;
-
+    console.log(dataBody);
     await UpdateMediaDadosService(dataBody);
     return reply.code(STANDARD.OK.statusCode).send({ message: "Sucess" });
   } catch (error) {

@@ -31,6 +31,7 @@ export class Ticket extends Model {
   declare chamadoId: number;
   declare userId: number | null;
   declare contactId: number;
+  declare contact: Contact;
   declare lastAbsenceMessageAt: Date;
   declare whatsappId: number;
   // declare autoReplyId: number;
@@ -46,6 +47,7 @@ export class Ticket extends Model {
   declare isCreated: boolean | null;
   declare scheduledMessages: Message[];
   declare apiConfig: object | null;
+  declare user: User;
 
   // getter virtual
   get protocol(): string {

@@ -1,12 +1,16 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { CreateContactService } from "../services/ContactServices/CreateContactService";
-import { handleServerError } from "../errors/errors.helper";
+import { AppError, handleServerError } from "../errors/errors.helper";
 import { STANDARD } from "../constants/request";
 import ListContactsService from "../services/ContactServices/ListContactsService";
 import UpdateContactService, {
   ContactDataUpdate,
 } from "../services/ContactServices/UpdateContactService";
 import ShowContactService from "../services/ContactServices/ShowContactService";
+import { CheckWappInitialized } from "../services/WbotServices/Helpers/CheckWappInitialized";
+import CheckIsValidContact from "../services/WbotServices/Helpers/CheckIsValidContact";
+import UpdateContactSocketService from "../services/ContactServices/UpdateContactSocketService";
+
 interface ContactData {
   name: string;
   number: string;
@@ -59,31 +63,13 @@ export const store = async (
 
   newContato.number = newContato.number.toString();
   try {
-    //     const wppInitialized = await CheckWappInitialized(tenantId);
-    //   if (wppInitialized) {
-    //     const dataContato = await CheckIsValidContact(
-    //       newContact.number,
-    //       tenantId
-    //     );
-
-    //   if (dataContato.isWAContact) {
-    //     newContact.name =
-    //       dataContato.pushname ||
-    //       dataContato.verifiedName ||
-    //       dataContato.name ||
-    //       dataContato.formattedName;
-    //     newContact.profilePicUrl = dataContato.profilePicThumbObj.eurl;
-    //     newContact.isWAContact = dataContato.isWAContact;
-    //   } else {
-    //     newContact.profilePicUrl = dataContato.eurl;
-    //   }
-    // }
     const contact = await CreateContactService({
       ...newContato,
       tenantId,
     });
     return reply.code(STANDARD.OK.statusCode).send(contact);
   } catch (error) {
+    console.log(error);
     return handleServerError(reply, error);
   }
 };
@@ -98,25 +84,6 @@ export const updateContato = async (
 
   newContato.number = newContato.number?.toString();
   try {
-    //     const wppInitialized = await CheckWappInitialized(tenantId);
-    //   if (wppInitialized) {
-    //     const dataContato = await CheckIsValidContact(
-    //       newContact.number,
-    //       tenantId
-    //     );
-
-    //   if (dataContato.isWAContact) {
-    //     newContact.name =
-    //       dataContato.pushname ||
-    //       dataContato.verifiedName ||
-    //       dataContato.name ||
-    //       dataContato.formattedName;
-    //     newContact.profilePicUrl = dataContato.profilePicThumbObj.eurl;
-    //     newContact.isWAContact = dataContato.isWAContact;
-    //   } else {
-    //     newContact.profilePicUrl = dataContato.eurl;
-    //   }
-    // }
     const contact = await UpdateContactService({
       contactData: newContato,
       contactId,
@@ -124,6 +91,7 @@ export const updateContato = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(contact);
   } catch (error) {
+    console.log(error);
     return handleServerError(reply, error);
   }
 };
@@ -136,6 +104,21 @@ export const detalhesContato = async (
   const { tenantId } = request.user as any;
   try {
     const contato = await ShowContactService({ id: contactId, tenantId });
+    return reply.code(STANDARD.OK.statusCode).send(contato);
+  } catch (error) {
+    return handleServerError(reply, error);
+  }
+};
+
+export const updateContatoSocket = async (
+  request: FastifyRequest<{ Body: ContactData }>,
+  reply: FastifyReply
+) => {
+  const { tenantId } = request.user as any;
+  const { contactId: contato } = request.params as any;
+  const payload = { contactData: request.body, tenantId, contactId: contato };
+  try {
+    const contato = await UpdateContactSocketService(payload);
     return reply.code(STANDARD.OK.statusCode).send(contato);
   } catch (error) {
     return handleServerError(reply, error);

@@ -1,6 +1,9 @@
 import { AppError } from "../../errors/errors.helper";
+import socketEmit from "../../helpers/socketEmit";
 import Contact from "../../models/Contact";
 import Empresa from "../../models/Empresa";
+import CheckIsValidContact from "../WbotServices/Helpers/CheckIsValidContact";
+import { CheckWappInitialized } from "../WbotServices/Helpers/CheckWappInitialized";
 
 export interface ContactDataUpdate {
   email?: string;
@@ -25,7 +28,7 @@ const UpdateContactService = async ({
   contactId,
   tenantId,
 }: Request): Promise<Contact> => {
-  const {
+  let {
     email,
     name,
     number,
@@ -38,6 +41,23 @@ const UpdateContactService = async ({
   } = contactData;
 
   try {
+    const wppInitialized = await CheckWappInitialized(tenantId);
+    if (wppInitialized) {
+      const dataContato = await CheckIsValidContact(number!, tenantId);
+
+      if (dataContato.isWAContact) {
+        name =
+          dataContato.pushname ||
+          dataContato.verifiedName ||
+          dataContato.name ||
+          dataContato.formattedName;
+        profilePicUrl = dataContato.profilePicThumbObj.eurl;
+        isWAContact = dataContato.isWAContact;
+      } else {
+        profilePicUrl = dataContato.eurl;
+      }
+    }
+
     const contact = await Contact.findOne({
       where: { id: contactId, tenantId },
       attributes: [
@@ -58,7 +78,7 @@ const UpdateContactService = async ({
       number,
       email,
       empresas: empresa,
-      dtaniversario: dtaniversario,
+      dtaniversario: dtaniversario ? dtaniversario : undefined,
       identifier,
       profilePicUrl,
       isWAContact,
@@ -69,14 +89,15 @@ const UpdateContactService = async ({
       attributes: ["id", "name", "number", "email", "profilePicUrl"],
     });
 
-    // socketEmit({
-    // 	tenantId,
-    // 	type: "contact:update",
-    // 	payload: contact,
-    // });
+    socketEmit({
+      tenantId,
+      type: "contact:update",
+      payload: contact,
+    });
 
     return contact;
   } catch (error: any) {
+    console.log(error);
     throw new AppError("ERR_CONTACT", 500);
   }
 };

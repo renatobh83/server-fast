@@ -32,36 +32,36 @@ const FindOrCreateTicketService = async ({
   // se for uma mensagem de campanha, não abrir tícke
 
   try {
+    // // if (msg?.fromMe) {
+    // //   const msgCampaign = await CampaignContacts.findOne({
+    // //     where: {
+    // //       contactId: contact.id,
+    // //       messageId: msg.id || msg.message_id || msg.item_id,
+    // //     },
+    // //   });
+
+    // //   if (msgCampaign?.id) {
+    // //     return { isCampaignMessage: true };
+    // //   }
+    // // }
+
     // if (msg?.fromMe) {
-    //   const msgCampaign = await CampaignContacts.findOne({
-    //     where: {
-    //       contactId: contact.id,
-    //       messageId: msg.id || msg.message_id || msg.item_id,
-    //     },
-    //   });
-
-    //   if (msgCampaign?.id) {
-    //     return { isCampaignMessage: true };
-    //   }
+    //   // const farewellMessage = await Message.findOne({
+    //   //   where: { messageId: msg.id || msg.message_id || msg.item_id },
+    //   //   include: {
+    //   //     model: Ticket,
+    //   //     as: "ticket",
+    //   //   },
+    //   // });
+    //   // if (
+    //   //   farewellMessage?.toJSON().ticket?.status === "closed" &&
+    //   //   farewellMessage?.toJSON().ticket.lastMessage === msg.body
+    //   // ) {
+    //   //   const ticket = farewellMessage.ticket as any;
+    //   //   ticket.isFarewellMessage = true;
+    //   //   return ticket;
+    //   // }
     // }
-
-    if (msg?.fromMe) {
-      // const farewellMessage = await Message.findOne({
-      //   where: { messageId: msg.id || msg.message_id || msg.item_id },
-      //   include: {
-      //     model: Ticket,
-      //     as: "ticket",
-      //   },
-      // });
-      // if (
-      //   farewellMessage?.toJSON().ticket?.status === "closed" &&
-      //   farewellMessage?.toJSON().ticket.lastMessage === msg.body
-      // ) {
-      //   const ticket = farewellMessage.ticket as any;
-      //   ticket.isFarewellMessage = true;
-      //   return ticket;
-      // }
-    }
 
     let ticket = await Ticket.findOne({
       where: {
@@ -164,14 +164,6 @@ const FindOrCreateTicketService = async ({
           {
             model: Contact,
             as: "contact",
-            include: [
-              "extraInfo",
-              "tags",
-              {
-                association: "wallets",
-                attributes: ["id", "name"],
-              },
-            ],
           },
           {
             model: User,
@@ -257,6 +249,7 @@ const FindOrCreateTicketService = async ({
     if (error instanceof AppError) {
       throw error;
     }
+    console.log(error);
     throw new AppError("ERR_FIND_OR_CREATE_TICKET_SERICE", 500);
   }
 };
