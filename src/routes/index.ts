@@ -18,10 +18,11 @@ import integtracaoRoutes from "./integracaoRoutes";
 import notaFiscalRoutes from "./notafiscalRoutes";
 import messageRoutes from "./messageRoutes";
 import channelRoutes from "./channelSessionRoutes";
+import chatRoutes from "./chatClientRoutes";
 
 async function routes(fastify: FastifyInstance) {
   fastify.register(authRoutes, { prefix: "/auth" });
-
+  fastify.register(chatRoutes, { prefix: "/api" });
   fastify.register(async (privateScope) => {
     privateScope.addHook("preHandler", fastify.authenticate);
 

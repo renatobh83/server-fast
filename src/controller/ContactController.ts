@@ -10,6 +10,7 @@ import ShowContactService from "../services/ContactServices/ShowContactService";
 import { CheckWappInitialized } from "../services/WbotServices/Helpers/CheckWappInitialized";
 import CheckIsValidContact from "../services/WbotServices/Helpers/CheckIsValidContact";
 import UpdateContactSocketService from "../services/ContactServices/UpdateContactSocketService";
+import DeleteContactService from "../services/ContactServices/DeleteContactService";
 
 interface ContactData {
   name: string;
@@ -135,6 +136,24 @@ export const updateContatoSocket = async (
     return reply.code(STANDARD.OK.statusCode).send(contato);
   } catch (error) {
     console.log(error);
+    return handleServerError(reply, error);
+  }
+};
+
+export const removeContato = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  const { tenantId } = request.user as any;
+  const { contactId } = request.params as any;
+  try {
+    await DeleteContactService({ id: contactId, tenantId });
+    return reply
+      .code(STANDARD.OK.statusCode)
+      .send({ message: "Contact deleted" });
+  } catch (error) {
+    console.log(error);
+
     return handleServerError(reply, error);
   }
 };

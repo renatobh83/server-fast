@@ -107,4 +107,6 @@ export default async function contactRoutes(fastify: FastifyInstance) {
     ContactController.updateContatoSocket
   );
   //   fastify.put("/users/:userId", AdminController.updateUser);
+  //   fastify.put("/users/:userId", AdminController.updateUser);
+  fastify.delete("/contacts/:contactId", ContactController.removeContato);
 }

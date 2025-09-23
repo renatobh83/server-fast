@@ -12,6 +12,7 @@ import { StartAllWhatsAppsSessions } from "../services/WbotServices/StartAllWhat
 import { getWhatsAppDisconnect } from "../services/WbotServices/TESTESTART";
 import ShowWhatsAppService from "../services/WhatsappService/ShowWhatsAppService";
 import { StartWhatsAppSession } from "../services/StartWhatsAppSession";
+import { FindEmpresaByIdentifierServices } from "../services/EmpresaServices/FindEmpresaByIdentifierServices";
 
 export async function buildServer(
   config: FastifyServerOptions = {}

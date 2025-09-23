@@ -16,7 +16,7 @@ const DeleteContactService = async ({
   try {
     const contact = await Contact.findOne({
       where: { id, tenantId },
-      include: { model: Empresa, as: "empresas" },
+      include: { model: Empresa, as: "empresa" },
     });
 
     if (!contact) {
@@ -34,6 +34,7 @@ const DeleteContactService = async ({
       payload: contact,
     });
   } catch (error: any) {
+    console.log(error);
     throw new AppError("ERR_DELETE_CONTACT", 502);
   }
 };
