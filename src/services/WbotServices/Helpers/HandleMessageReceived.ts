@@ -54,7 +54,6 @@ export const HandleMessageReceived = async (
     return;
   }
   const contact = await VerifyContact(chat, tenantId);
-  console.log(msg);
   // const integracaoMessage = await IntegracaoGenesisConfirmacao.findOne({
   //   where: { contato: chat.id._serialized, closedAt: { [Op.is]: null } },
   // });
