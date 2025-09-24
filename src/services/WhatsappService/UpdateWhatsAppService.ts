@@ -16,7 +16,7 @@ interface WhatsappData {
   type?: "waba" | "instagram" | "telegram" | "whatsapp" | "messenger";
   wabaBSP?: string;
   tokenAPI?: string;
-  chatFlowId?: number;
+  chatFlowId?: number | null;
   wppUser?: string;
   qrcode?: string;
   retries?: number;
@@ -39,11 +39,6 @@ const UpdateWhatsAppService = async ({
   whatsappId,
   tenantId,
 }: Request): Promise<Response> => {
-  const schema = Yup.object().shape({
-    name: Yup.string().min(2),
-    isDefault: Yup.boolean(),
-  });
-
   const {
     name,
     status,
@@ -62,8 +57,6 @@ const UpdateWhatsAppService = async ({
   const io = getIO();
 
   try {
-    await schema.validate({ name, status, isDefault });
-
     let oldDefaultWhatsapp: Whatsapp | null = null;
 
     if (isDefault) {
@@ -96,9 +89,10 @@ const UpdateWhatsAppService = async ({
       type,
       wabaBSP,
       tokenAPI,
-      chatFlowId,
+      chatFlowId: chatFlowId === 0 ? null : chatFlowId,
       qrcode,
     };
+
     await whatsapp.update(data);
     await whatsapp.reload();
     io.emit(`${tenantId}:whatsappSession`, {

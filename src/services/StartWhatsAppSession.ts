@@ -18,5 +18,7 @@ export const StartWhatsAppSession = async (whatsapp: any): Promise<void> => {
     if (whatsapp.type === "telegram") {
       StartTbotSession(whatsapp);
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
