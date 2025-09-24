@@ -31,7 +31,7 @@ export const createTokenChatClient = async (
   });
 
   try {
-    return reply.code(STANDARD.OK.statusCode).send(token);
+    return reply.code(STANDARD.OK.statusCode).send({ token });
   } catch (error) {
     console.log(error);
     return handleServerError(reply, error);

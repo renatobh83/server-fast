@@ -26,7 +26,6 @@ async function routes(fastify: FastifyInstance) {
   fastify.register(chatRoutes, { prefix: "/api" });
   fastify.register(async (privateScope) => {
     privateScope.addHook("preHandler", fastify.authenticate);
-
     fastify.register(tenantRoutes, { prefix: "/tenants" });
     fastify.register(adminRoutes, { prefix: "/admin" });
     fastify.register(userRoutes, { prefix: "/users" });

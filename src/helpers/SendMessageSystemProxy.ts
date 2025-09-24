@@ -3,6 +3,8 @@ import SendWhatsAppMessage from "../services/WbotServices/Helpers/SendWhatsAppMe
 import SendWhatsAppMedia from "../services/WbotServices/Helpers/SendWhatsAppMedia";
 import TelegramSendMessagesSystem from "../services/TbotServices/TelegramSendMessagesSystem";
 import { getTbot } from "../lib/tbot";
+import { SendMessageMediaChatClient } from "../services/ChatClientService/SendMessageMediaChatClient";
+import { SendMessageChatClient } from "../services/ChatClientService/SendMessageChatClient";
 
 type Payload = {
   ticket: any;
@@ -46,10 +48,9 @@ const SendMessageSystemProxy = async ({
       break;
 
     default:
-      break;
-    //   message = hasMedia
-    //     ? await SendMessageMediaChatClient(media, ticket)
-    //     : await SendMessageChatClient(messageData, ticket);
+      message = hasMedia
+        ? await SendMessageMediaChatClient(media, ticket)
+        : await SendMessageChatClient(messageData, ticket);
   }
 
   // Se a mensagem foi enviada mas ainda está "pendente"
