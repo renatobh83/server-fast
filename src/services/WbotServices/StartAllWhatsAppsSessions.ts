@@ -20,7 +20,7 @@ export const StartAllWhatsAppsSessions = async (): Promise<void> => {
       ],
     },
     attributes: ["id", "type", "status", "tokenTelegram", "tenantId", "name"], // Apenas campos necessários
-    logging: console.log,
+    // logging: console.log,
   });
 
   // Filtra sessões durante a query para evitar processamento adicional

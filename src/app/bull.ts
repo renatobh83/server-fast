@@ -15,18 +15,17 @@ export async function registerBullMQ(app: ReturnType<typeof fastify>) {
   serverAdapter.setBasePath("/ui");
   app.register(serverAdapter.registerPlugin(), { prefix: "/ui" });
 
-
   setImmediate(() => {
-    // upsertJobScheduler(
-    //   "VerifyTicketsChatBotInactives",
-    //   { every: 5_60_000 },
-    //   {
-    //     removeOnComplete: true,
-    //     removeOnFail: 10,
-    //     attempts: 3,
-    //     backoff: { type: "fixed", delay: 1000 },
-    //   }
-    // );
+    upsertJobScheduler(
+      "VerifyTicketsChatBotInactives",
+      { every: 5_60_000 },
+      {
+        removeOnComplete: true,
+        removeOnFail: 10,
+        attempts: 3,
+        backoff: { type: "fixed", delay: 1000 },
+      }
+    );
 
     // upsertJobScheduler(
     //   "VerifyTicketsConfirmacaoInactives",

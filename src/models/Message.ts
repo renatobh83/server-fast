@@ -2,6 +2,7 @@ import { Sequelize, DataTypes, Model } from "sequelize";
 import CryptoJS from "crypto-js";
 import { v4 as uuidV4 } from "uuid";
 import { isEncrypted } from "../helpers/isEncrypted";
+import Ticket from "./Ticket";
 
 interface IMessage {
   id?: string;
@@ -48,6 +49,7 @@ class Message extends Model<IMessage> implements IMessage {
   declare contactId: number;
   declare userId: number;
   declare ticketId: number;
+  declare ticket: Ticket;
   declare tenantId: number;
   declare timestamp: number;
   declare scheduleDate: Date;
@@ -59,6 +61,7 @@ class Message extends Model<IMessage> implements IMessage {
     | "bot"
     | "sync";
   declare quotedMsgId: string;
+  declare quotedMsg: Message;
   declare idFront: string;
   declare isDeleted: boolean;
   declare createdAt: Date;

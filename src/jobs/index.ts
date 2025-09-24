@@ -1,3 +1,11 @@
-export { default as sendEmail } from "./SendEmail";
+export { default as SendMessageWhatsappBusinessHours } from "./SendMessageWhatsappBusinessHours";
+export { default as SendMessageAPI } from "./SendMessageAPI";
+export { default as SendMessages } from "./SendMessages";
+export { default as WebHooksAPI } from "./WebHooksAPI";
 export { default as VerifyTicketsChatBotInactives } from "./VerifyTicketsChatBotInactives";
+export { default as SendMessageSchenduled } from "./SendMessageSchenduled";
+export { default as WebHooksAPIConfirmacao } from "./WebHooksAPIConfirmacao";
+export { default as SendMessageLaudoPronto } from "./SendMessageLaudoPronto";
+export { default as sendEmail } from "./SendEmail";
+export { default as SendMessageChamado } from "./SendMessageChamado";
 export { default as pdfQeues } from "./PdfNotaFiscal";
