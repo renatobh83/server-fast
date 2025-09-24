@@ -9,10 +9,6 @@ import { configSchema } from "./configSchema";
 import { redisPlugin } from "../lib/fastifyPlugins/redis";
 import { sequelizePlugin } from "../lib/fastifyPlugins/sequelize";
 import { StartAllWhatsAppsSessions } from "../services/WbotServices/StartAllWhatsAppsSessions";
-import { getWhatsAppDisconnect } from "../services/WbotServices/TESTESTART";
-import ShowWhatsAppService from "../services/WhatsappService/ShowWhatsAppService";
-import { StartWhatsAppSession } from "../services/StartWhatsAppSession";
-import { FindEmpresaByIdentifierServices } from "../services/EmpresaServices/FindEmpresaByIdentifierServices";
 
 export async function buildServer(
   config: FastifyServerOptions = {}
@@ -99,11 +95,6 @@ export async function start() {
     initSocket(app.server);
     setupSocketListeners();
     await StartAllWhatsAppsSessions();
-
-    // dev testes apagar
-    // const whastapps = await getWhatsAppDisconnect();
-    // const whatsapp = await ShowWhatsAppService(whastapps[0]);
-    // StartWhatsAppSession(whatsapp);
   } catch (err) {
     app.log.error(err);
     process.exit(1);

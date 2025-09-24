@@ -127,7 +127,6 @@ export const updateAnexoChamado = async (
     for await (const file of files) {
       try {
         const filename = await saveFile(file, ATTACHMENTSFOLDER);
-        console.log(filename);
         uploadedFiles.push({ filename, path: `/attachments/${filename}` });
       } catch (error) {
         console.log(error);
@@ -236,7 +235,6 @@ export const updateFileChamado = async (
 ) => {
   try {
     const dataBody = request.body as any;
-    console.log(dataBody);
     await UpdateMediaDadosService(dataBody);
     return reply.code(STANDARD.OK.statusCode).send({ message: "Sucess" });
   } catch (error) {

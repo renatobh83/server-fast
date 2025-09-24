@@ -25,7 +25,7 @@ interface Request {
   message: MessageRequest | any;
   status: string;
   tenantId: string | number;
-  filesArray: any[] | [];
+  filesArray?: any[] | [];
   ticket: Ticket;
   userId?: number | string;
 }
@@ -60,7 +60,6 @@ export const CreateMessageSystemService = async ({
       idFront: message.idFront,
       buffer: undefined,
     };
-    console.log(messageData);
     if (decryptedMessage && !Array.isArray(decryptedMessage)) {
       messageData.body = buildMessageBody(decryptedMessage, ticket);
     }
@@ -72,77 +71,80 @@ export const CreateMessageSystemService = async ({
       );
     };
     await Promise.all(
-      (filesArray.length ? filesArray : [null]).map(async (media) => {
-        if (!media) {
-          messageData.mediaType = "chat";
-          messageData.mediaName = undefined;
-          messageData.buffer = undefined;
-        } else {
-          messageData.mediaType = media.mimetype.split("/")[0];
-          messageData.mediaName = media.filename;
-          messageData.buffer = media.buffer;
-          const filepath = `./public/${media.filename}`;
-          const readable = Readable.from(media.buffer);
-          await pipeline(readable, createWriteStream(filepath));
-        }
-        const messageSent = await SendMessageSystemProxy({
-          ticket,
-          messageData,
-          media,
-          userId,
-        });
-
-        const [msgCreated, created] = await Message.findOrCreate({
-          where: {
-            messageId: String(messageSent.id) || messageSent.messageId || null,
-            tenantId,
-          },
-          defaults: filterValidAttributes({
-            ...messageData,
-            ...messageSent,
-            id: uuidv4(),
-            userId,
-            tenantId,
-            body: media?.originalname || messageData.body,
-            mediaUrl: media?.filename,
-            mediaType:
-              media?.mimetype || media?.mimetype?.split("/")?.[0] || "chat",
-          }),
-        });
-
-        if (created) {
-          const reloadedMessage = await Message.findByPk(msgCreated.id, {
-            include: [
-              {
-                model: Ticket,
-                as: "ticket",
-                where: { tenantId },
-                include: ["contact"],
-              },
-              {
-                model: Message,
-                as: "quotedMsg",
-                include: ["contact"],
-              },
-              {
-                model: Contact,
-                as: "contact",
-              },
-            ],
-          });
-
-          if (!reloadedMessage) {
-            // Isso é um caso improvável, mas é bom ter uma verificação.
-            throw new AppError("ERR_RELOAD_MESSAGE", 501);
+      (filesArray && filesArray.length ? filesArray : [null]).map(
+        async (media) => {
+          if (!media) {
+            messageData.mediaType = "chat";
+            messageData.mediaName = undefined;
+            messageData.buffer = undefined;
+          } else {
+            messageData.mediaType = media.mimetype.split("/")[0];
+            messageData.mediaName = media.filename;
+            messageData.buffer = media.buffer;
+            const filepath = `./public/${media.filename}`;
+            const readable = Readable.from(media.buffer);
+            await pipeline(readable, createWriteStream(filepath));
           }
-
-          socketEmit({
-            tenantId,
-            type: "chat:create",
-            payload: reloadedMessage,
+          const messageSent = await SendMessageSystemProxy({
+            ticket,
+            messageData,
+            media,
+            userId,
           });
+
+          const [msgCreated, created] = await Message.findOrCreate({
+            where: {
+              messageId:
+                String(messageSent.id) || messageSent.messageId || null,
+              tenantId,
+            },
+            defaults: filterValidAttributes({
+              ...messageData,
+              ...messageSent,
+              id: uuidv4(),
+              userId,
+              tenantId,
+              body: media?.originalname || messageData.body,
+              mediaUrl: media?.filename,
+              mediaType:
+                media?.mimetype || media?.mimetype?.split("/")?.[0] || "chat",
+            }),
+          });
+
+          if (created) {
+            const reloadedMessage = await Message.findByPk(msgCreated.id, {
+              include: [
+                {
+                  model: Ticket,
+                  as: "ticket",
+                  where: { tenantId },
+                  include: ["contact"],
+                },
+                {
+                  model: Message,
+                  as: "quotedMsg",
+                  include: ["contact"],
+                },
+                {
+                  model: Contact,
+                  as: "contact",
+                },
+              ],
+            });
+
+            if (!reloadedMessage) {
+              // Isso é um caso improvável, mas é bom ter uma verificação.
+              throw new AppError("ERR_RELOAD_MESSAGE", 501);
+            }
+
+            socketEmit({
+              tenantId,
+              type: "chat:create",
+              payload: reloadedMessage,
+            });
+          }
         }
-      })
+      )
     );
   } catch (error) {
     console.log(error);

@@ -4,6 +4,8 @@ import VerifyContact from "./TelegramVerifyContact";
 import FindOrCreateTicketService from "../TicketServices/FindOrCreateTicketService";
 import VerifyMediaMessage from "./TelegramVerifyMediaMessage";
 import VerifyMessage from "./TelegramVerifyMessage";
+// import verifyBusinessHours from "../WbotServices/Helpers/VerifyBusinessHours";
+import VerifyStepsChatFlowTicket from "../ChatFlowServices/VerifyStepsChatFlowTicket";
 
 interface Session extends Telegraf {
   id: number;
@@ -53,21 +55,24 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
     await VerifyMessage(ctx, fromMe, ticket, contact);
   }
 
-  // const isBusinessHours = await verifyBusinessHours({
-  //   fromMe,
-  //   timestamp: messageData.timestamp
-  // }, ticket);
-
-  // await VerifyStepsChatFlowTicket(
+  // const isBusinessHours = await verifyBusinessHours(
   //   {
   //     fromMe,
-  //     body: message.reply_markup
-  //       ? ctx.update.callback_query.data
-  //       : message.text,
-  //     type: "reply_markup",
+  //     timestamp: messageData.timestamp,
   //   },
   //   ticket
   // );
+
+  await VerifyStepsChatFlowTicket(
+    {
+      fromMe,
+      body: message.reply_markup
+        ? ctx.update.callback_query.data
+        : message.text,
+      type: "reply_markup",
+    },
+    ticket
+  );
 };
 
 export default HandleMessage;

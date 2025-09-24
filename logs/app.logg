@@ -1,0 +1,108 @@
+{
+  name: 'SequelizeForeignKeyConstraintError',
+  parent: error: insert or update on table "Tickets" violates foreign key constraint "Tickets_queueId_fkey"
+      at Parser.parseErrorMessage (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\pg-protocol\dist\parser.js:285:98)
+      at Parser.handlePacket (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\pg-protocol\dist\parser.js:122:29)
+      at Parser.parse (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\pg-protocol\dist\parser.js:35:38)
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\pg-protocol\dist\index.js:11:42)
+      at Socket.emit (node:events:519:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Readable.push (node:internal/streams/readable:392:5)
+      at TCP.onStreamRead (node:internal/stream_base_commons:189:23) {
+    length: 252,
+    severity: 'ERROR',
+    code: '23503',
+    detail: 'Key (queueId)=(13) is not present in table "Queues".',
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'public',
+    table: 'Tickets',
+    column: undefined,
+    dataType: undefined,
+    constraint: 'Tickets_queueId_fkey',
+    file: 'ri_triggers.c',
+    line: '2599',
+    routine: 'ri_ReportViolation',
+    sql: 'UPDATE "Tickets" SET "queueId"=$1,"chatFlowId"=$2,"stepChatFlow"=$3,"botRetries"=$4,"lastInteractionBot"=$5,"updatedAt"=$6 WHERE "id" = $7',
+    parameters: [
+      13,
+      null,
+      null,
+      0,
+      '2025-09-24 16:39:43.442 +00:00',
+      '2025-09-24 16:39:43.442 +00:00',
+      28
+    ]
+  },
+  original: error: insert or update on table "Tickets" violates foreign key constraint "Tickets_queueId_fkey"
+      at Parser.parseErrorMessage (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\pg-protocol\dist\parser.js:285:98)
+      at Parser.handlePacket (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\pg-protocol\dist\parser.js:122:29)
+      at Parser.parse (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\pg-protocol\dist\parser.js:35:38)
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\pg-protocol\dist\index.js:11:42)
+      at Socket.emit (node:events:519:28)
+      at addChunk (node:internal/streams/readable:561:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+      at Readable.push (node:internal/streams/readable:392:5)
+      at TCP.onStreamRead (node:internal/stream_base_commons:189:23) {
+    length: 252,
+    severity: 'ERROR',
+    code: '23503',
+    detail: 'Key (queueId)=(13) is not present in table "Queues".',
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'public',
+    table: 'Tickets',
+    column: undefined,
+    dataType: undefined,
+    constraint: 'Tickets_queueId_fkey',
+    file: 'ri_triggers.c',
+    line: '2599',
+    routine: 'ri_ReportViolation',
+    sql: 'UPDATE "Tickets" SET "queueId"=$1,"chatFlowId"=$2,"stepChatFlow"=$3,"botRetries"=$4,"lastInteractionBot"=$5,"updatedAt"=$6 WHERE "id" = $7',
+    parameters: [
+      13,
+      null,
+      null,
+      0,
+      '2025-09-24 16:39:43.442 +00:00',
+      '2025-09-24 16:39:43.442 +00:00',
+      28
+    ]
+  },
+  sql: 'UPDATE "Tickets" SET "queueId"=$1,"chatFlowId"=$2,"stepChatFlow"=$3,"botRetries"=$4,"lastInteractionBot"=$5,"updatedAt"=$6 WHERE "id" = $7',
+  parameters: [
+    13,
+    null,
+    null,
+    0,
+    '2025-09-24 16:39:43.442 +00:00',
+    '2025-09-24 16:39:43.442 +00:00',
+    28
+  ],
+  table: 'Tickets',
+  fields: null,
+  value: undefined,
+  index: 'Tickets_queueId_fkey',
+  reltype: undefined,
+  level: 'error',
+  message: 'Erro em VerifyStepsChatFlowTicket para o ticket 28: insert or update on table "Tickets" violates foreign key constraint "Tickets_queueId_fkey"',
+  stack: 'Error\n' +
+    '    at Query.run (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\sequelize\\lib\\dialects\\postgres\\query.js:50:25)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\sequelize\\lib\\sequelize.js:315:28\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async PostgresQueryInterface.update (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\sequelize\\lib\\dialects\\abstract\\query-interface.js:355:12)\n' +
+    '    at async Ticket.save (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\sequelize\\lib\\model.js:2490:35)\n' +
+    '    at async Ticket.update (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\sequelize\\lib\\model.js:2598:12)\n' +
+    '    at async updateTicketAndEmit (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:23:5)\n' +
+    '    at async handleQueueAssignment (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:108:9)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:282:13)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:55:5)',
+  timestamp: '2025-09-24T16:39:43.933Z'
+}

@@ -61,7 +61,7 @@ export const updateFastReply = async (
       userId: id,
       tenantId,
     };
-    console.log(fastReplyData);
+
     const { fastReplyId } = request.params as { fastReplyId: string };
     const respostaRapida = await UpdateFastReplyService({
       fastReplyData,

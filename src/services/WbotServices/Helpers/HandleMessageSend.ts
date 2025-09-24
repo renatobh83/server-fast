@@ -6,6 +6,8 @@ import VerifyContact from "./VerifyContact";
 import FindOrCreateTicketService from "../../TicketServices/FindOrCreateTicketService";
 import VerifyMessage from "../VerifyMessage";
 import VerifyMediaMessage from "./VerifyMediaMessage";
+import VerifyStepsChatFlowTicket from "../../ChatFlowServices/VerifyStepsChatFlowTicket";
+import verifyBusinessHours from "./VerifyBusinessHours";
 
 interface Session extends Whatsapp {
   id: number;
@@ -48,7 +50,7 @@ export const HandleMessageSend = async (
   } else {
     await VerifyMessage(message, ticket, contact);
   }
-  //     const isBusinessHours = await verifyBusinessHours(msg, ticket);
+  const isBusinessHours = await verifyBusinessHours(message, ticket);
 
-  //   if (isBusinessHours) await VerifyStepsChatFlowTicket(msg, ticket);
+  if (isBusinessHours) await VerifyStepsChatFlowTicket(message, ticket);
 };

@@ -76,16 +76,6 @@ const CreateUserService = async ({
       include: [{ model: Queue, attributes: ["id", "queue"] }],
     });
 
-    const serializedUser = {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      profile: user.profile,
-      ativo: user.ativo,
-      queues: user.queues,
-    };
-    console.log(serializedUser);
-    console.log(user.toJSON());
     return user.toJSON();
   } catch (error: any) {
     if (error instanceof AppError) {

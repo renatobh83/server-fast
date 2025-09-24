@@ -7,6 +7,7 @@ import FindOrCreateTicketService from "../../TicketServices/FindOrCreateTicketSe
 import VerifyMessage from "../VerifyMessage";
 import VerifyContact from "./VerifyContact";
 import VerifyMediaMessage from "./VerifyMediaMessage";
+import VerifyStepsChatFlowTicket from "../../ChatFlowServices/VerifyStepsChatFlowTicket";
 
 interface Session extends Whatsapp {
   id: number;
@@ -100,30 +101,30 @@ export const HandleMessageReceived = async (
     await VerifyMessage(msg, ticket, contact);
   }
 
-  //   await VerifyStepsChatFlowTicket(msg, ticket);
+  await VerifyStepsChatFlowTicket(msg, ticket);
 
-  //   const apiConfig: any = ticket.apiConfig || {};
+  const apiConfig: any = ticket.apiConfig || {};
 
-  //   if (
-  //     !msg.fromMe &&
-  //     !ticket.isGroup &&
-  //     !ticket.answered &&
-  //     apiConfig?.externalKey &&
-  //     apiConfig?.urlMessageStatus
-  //   ) {
-  //     const payload = {
-  //       timestamp: Date.now(),
-  //       msg,
-  //       messageId: msg.id,
-  //       ticketId: ticket.id,
-  //       externalKey: apiConfig?.externalKey,
-  //       authToken: apiConfig?.authToken,
-  //       type: "hookMessage",
-  //     };
-  //     // addJob("WebHooksAPI", {
-  //     //     url: apiConfig.urlMessageStatus,
-  //     //     type: payload.type,
-  //     //     payload,
-  //     // });
-  //   }
+  if (
+    !msg.fromMe &&
+    !ticket.isGroup &&
+    !ticket.answered &&
+    apiConfig?.externalKey &&
+    apiConfig?.urlMessageStatus
+  ) {
+    const payload = {
+      timestamp: Date.now(),
+      msg,
+      messageId: msg.id,
+      ticketId: ticket.id,
+      externalKey: apiConfig?.externalKey,
+      authToken: apiConfig?.authToken,
+      type: "hookMessage",
+    };
+    // addJob("WebHooksAPI", {
+    //     url: apiConfig.urlMessageStatus,
+    //     type: payload.type,
+    //     payload,
+    // });
+  }
 };

@@ -7,6 +7,7 @@ import ListSettingsService from "../SettingServices/ListSettingsService";
 import ShowTicketService from "./ShowTicketService";
 import Ticket from "../../models/Ticket";
 import Message from "../../models/Message";
+import CheckChatBotFlowWelcome from "../WbotServices/Helpers/CheckChatBotFlowWelcome";
 
 interface Data {
   contact: Contact;
@@ -231,7 +232,7 @@ const FindOrCreateTicketService = async ({
       (!ticketCreated.userId && !msg.author) ||
       isSync
     ) {
-      // await CheckChatBotFlowWelcome(ticketCreated);
+      await CheckChatBotFlowWelcome(ticketCreated);
     }
 
     ticket = await ShowTicketService({ id: ticketCreated.id, tenantId });

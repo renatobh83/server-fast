@@ -58,7 +58,6 @@ const VerifyMessage = async (
     answered: fromMe || false,
   });
 
-  console.log(messageData);
   try {
     await CreateMessageService({
       messageData,
