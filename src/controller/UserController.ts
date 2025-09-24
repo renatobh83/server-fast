@@ -38,6 +38,10 @@ export const createUser = async (
       password: string;
       name: string;
       profile: string;
+      queues: {
+        id?: number;
+        queue?: number;
+      }[];
     };
   }>,
   reply: FastifyReply

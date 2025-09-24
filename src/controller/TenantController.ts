@@ -110,7 +110,7 @@ export const showBusinessHoursAndMessage = async (
   try {
     const tenant = await ShowBusinessHoursAndMessageService({ tenantId });
 
-    reply.code(STANDARD.OK.statusCode).send({ tenant });
+    reply.code(STANDARD.OK.statusCode).send(tenant);
   } catch (error) {
     return handleServerError(reply, error);
   }

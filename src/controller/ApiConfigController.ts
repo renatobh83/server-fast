@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import {  ERRORS, handleServerError } from "../errors/errors.helper";
+import { ERRORS, handleServerError } from "../errors/errors.helper";
 import CreateApiConfigService from "../services/ApiConfigServices/CreateApiConfigService";
 import { STANDARD } from "../constants/request";
 import ListApiConfigService from "../services/ApiConfigServices/ListApiConfigService";
@@ -34,6 +34,7 @@ export const createApiConfig = async (
     const api = await CreateApiConfigService(payload);
     return reply.code(STANDARD.OK.statusCode).send(api);
   } catch (error) {
+    console.log(error);
     return handleServerError(reply, error);
   }
 };

@@ -1,21 +1,20 @@
 import * as Yup from "yup";
 import User from "../../models/User";
 import { AppError } from "../../errors/errors.helper";
+import UsersQueues from "../../models/UsersQueues";
+import Queue from "../../models/Queue";
 
+interface UserQueues {
+  id?: number;
+  queue?: number;
+}
 interface Request {
   email: string;
   password: string;
   name: string;
   tenantId: number;
   profile?: string;
-}
-
-interface Response {
-  email: string;
-  name: string;
-  id: number;
-  profile: string | undefined;
-  ativo: boolean;
+  queues?: UserQueues[];
 }
 
 const CreateUserService = async ({
@@ -24,7 +23,8 @@ const CreateUserService = async ({
   name,
   tenantId,
   profile = "admin",
-}: Request): Promise<Response> => {
+  queues,
+}: Request): Promise<any> => {
   try {
     const schema = Yup.object().shape({
       name: Yup.string().required().min(2),
@@ -61,6 +61,20 @@ const CreateUserService = async ({
       tenantId,
       ativo: true,
     });
+    if (queues) {
+      await UsersQueues.destroy({ where: { userId: user.id } });
+
+      await Promise.all(
+        queues.map(async (queue: any) => {
+          const queueId: number = queue.id;
+          await UsersQueues.upsert({ queueId, userId: user.id });
+        })
+      );
+    }
+    await user.reload({
+      attributes: ["id", "name", "email", "profile", "ativo"],
+      include: [{ model: Queue, attributes: ["id", "queue"] }],
+    });
 
     const serializedUser = {
       id: user.id,
@@ -68,9 +82,11 @@ const CreateUserService = async ({
       email: user.email,
       profile: user.profile,
       ativo: user.ativo,
+      queues: user.queues,
     };
-
-    return serializedUser;
+    console.log(serializedUser);
+    console.log(user.toJSON());
+    return user.toJSON();
   } catch (error: any) {
     if (error instanceof AppError) {
       throw error;

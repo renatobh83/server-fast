@@ -18,16 +18,6 @@ export default async function apiConfiRoutes(fastify: FastifyInstance) {
             isActive: { type: "boolean" },
           },
         },
-        response: {
-          200: {
-            type: "object",
-            properties: {
-              message: { type: "string" },
-              data: { type: "object", additionalProperties: true },
-              token: { type: "string" },
-            },
-          },
-        },
       },
     },
     ApiConfigController.createApiConfig
@@ -47,16 +37,6 @@ export default async function apiConfiRoutes(fastify: FastifyInstance) {
             urlMessageStatus: { type: "string" },
             sessionId: { type: "number" },
             isActive: { type: "boolean" },
-          },
-        },
-        response: {
-          200: {
-            type: "object",
-            properties: {
-              message: { type: "string" },
-              data: { type: "object", additionalProperties: true },
-              token: { type: "string" },
-            },
           },
         },
       },

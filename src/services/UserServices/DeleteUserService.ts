@@ -19,7 +19,7 @@ const DeleteUserService = async (
   }
 
   const userOpenTickets: Ticket[] = await Ticket.findAll({
-    where: { status: "open", tenantId, userid: user.id },
+    where: { status: "open", tenantId, userId: user.id },
   });
 
   const chamados: Chamado[] = await Chamado.findAll({

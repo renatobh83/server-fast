@@ -19,6 +19,7 @@ import notaFiscalRoutes from "./notafiscalRoutes";
 import messageRoutes from "./messageRoutes";
 import channelRoutes from "./channelSessionRoutes";
 import chatRoutes from "./chatClientRoutes";
+import chatFlowRoutes from "./ChatFlowRoutes";
 
 async function routes(fastify: FastifyInstance) {
   fastify.register(authRoutes, { prefix: "/auth" });
@@ -43,6 +44,7 @@ async function routes(fastify: FastifyInstance) {
     fastify.register(integtracaoRoutes);
     fastify.register(notaFiscalRoutes);
     fastify.register(channelRoutes);
+    fastify.register(chatFlowRoutes);
     fastify.register(messageRoutes, { prefix: "/messages" });
   });
 }

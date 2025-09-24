@@ -20,6 +20,7 @@ interface UserProps {
   lastLogout?: Date | null;
   isOnline?: boolean;
   configs?: object;
+  queues?: any[]; // <- adiciona isso
 }
 
 type UserCreationAttributes = Optional<

@@ -23,27 +23,6 @@ const CreateApiConfigService = async ({
   tenantId,
 }: Request): Promise<ApiConfig> => {
   try {
-    const newApi: Request = {
-      name,
-      sessionId,
-      urlServiceStatus,
-      urlMessageStatus,
-      userId,
-      authToken,
-      tenantId,
-    };
-
-    const schema = Yup.object().shape({
-      name: Yup.string().required(),
-      sessionId: Yup.number().required(),
-      urlServiceStatus: Yup.string().url().nullable(),
-      urlMessageStatus: Yup.string().url().nullable(),
-      userId: Yup.number().required(),
-      tenantId: Yup.number().required(),
-    });
-
-    await schema.validate(newApi);
-
     const secret = process.env.JWT_API_CONFIG!;
     const token = sign(
       {
@@ -70,6 +49,7 @@ const CreateApiConfigService = async ({
 
     return api;
   } catch (error: any) {
+    console.log(error);
     throw new AppError("ERROR_CREATE_API_CONIG", 500);
   }
 };
