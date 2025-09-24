@@ -121,12 +121,12 @@ export const setupSocketListeners = (): void => {
         return;
       }
 
-      const decoded = verify(token, process.env.CHAT_SECRET!) as any;
-
-      if (decoded && decoded.tenantId) {
-        socket.join(decoded.tenantId.toString());
+      const decoded = decodeTokenSocket(token) as any;
+      console.log(decoded);
+      if (decoded && decoded.data.tenantId) {
+        socket.join(decoded.data.tenantId.toString());
         console.log(
-          `Cliente ${socket.id} entrou na sala do tenant ${decoded.tenantId}`
+          `Cliente ${socket.id} entrou na sala do tenant ${decoded.data.tenantId}`
         );
       }
     } catch (err) {
