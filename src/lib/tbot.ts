@@ -145,14 +145,3 @@ function registerProcessHandlers() {
     logger.error(`Uncaught Exception: ${err}`);
   });
 }
-/**
- * Retorna uma sessão obrigatória.
- * Lança erro se não encontrar.
- */
-export const requireTbot = (whatsappId: number): Session => {
-  const tbot = getTbot(whatsappId);
-  if (!tbot) {
-    throw new Error(`Telegram bot da sessão ${whatsappId} não encontrado`);
-  }
-  return tbot;
-};
