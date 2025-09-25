@@ -6,7 +6,9 @@ interface Request {
   tenantId: number;
 }
 const ListQueueService = async ({ tenantId }: Request): Promise<Queue[]> => {
+  
   let queueData = (await getCache(RedisKeys.queues(tenantId))) as Queue[];
+  
   if (!queueData) {
     queueData = await Queue.findAll({
       where: {
@@ -14,6 +16,7 @@ const ListQueueService = async ({ tenantId }: Request): Promise<Queue[]> => {
       },
       order: [["queue", "ASC"]],
     });
+    console.log("Gravando Queue Cache")
     await setCache(RedisKeys.settings(tenantId), queueData);
   }
 

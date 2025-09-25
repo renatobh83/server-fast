@@ -48,11 +48,12 @@ const CreateOrUpdateContactService = async ({
     let contact: Contact | null = null;
    
     const uniqueValue = originFieldMap[origem];
+    
    
     if (!uniqueValue) throw new AppError("ERR_INVALID_ORIGEM_VALUE", 400);
    
     contact = (await getCache(
-      RedisKeys.contact(tenantId, uniqueValue, rawNumber)
+      RedisKeys.contact(tenantId, uniqueValue.field, rawNumber)
     )) as unknown as Contact;
 
     if (contact) {
@@ -101,7 +102,7 @@ const CreateOrUpdateContactService = async ({
     });
     console.log("gravando contato cache");
     await setCache(
-      RedisKeys.contact(tenantId, uniqueValue, rawNumber),
+      RedisKeys.contact(tenantId, uniqueValue.field, rawNumber),
       contact,
       360
     ); // cache por 60s

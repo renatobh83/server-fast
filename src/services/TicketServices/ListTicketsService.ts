@@ -54,6 +54,7 @@ const ListTicketsService = async ({
   const NotQueueDefinedTicket = includeNotQueueDefined === "true" ? "S" : "N";
   const isSearchParam = searchParam ? "S" : "N";
   // tratar as configurações do sistema
+  
   const settings = await ListSettingsService(tenantId);
 
   // // Nao visualizar ticket ja associado a um usuario
