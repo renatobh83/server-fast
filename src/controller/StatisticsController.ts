@@ -38,6 +38,7 @@ export const DashTicketsQueues = async (
       showAll: profile === "admin" ? true : false,
     };
     const tickets = await TicketsQueuesService(payload);
+
     return reply.code(STANDARD.OK.statusCode).send(tickets);
   } catch (error) {
     console.log(error);

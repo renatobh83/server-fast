@@ -15,7 +15,6 @@ const SetTicketMessagesAsRead = async (ticket: Ticket): Promise<void> => {
       },
     }
   );
-
   await ticket.update({ unreadMessages: 0 });
 
   try {

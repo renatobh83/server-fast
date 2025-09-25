@@ -34,7 +34,7 @@ const CreateMessageService = async ({
       Object.entries(data).filter(([key]) => modelAttributes.includes(key))
     );
   };
-
+  console.log("Enviada CreateMessageService");
   try {
     // Tenta encontrar a mensagem; se não encontrar, a cria.
     // O 'include' aqui só é aplicado se a mensagem for ENCONTRADA.

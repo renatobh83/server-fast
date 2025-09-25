@@ -4,12 +4,7 @@ import VerifyContact from "./TelegramVerifyContact";
 import FindOrCreateTicketService from "../TicketServices/FindOrCreateTicketService";
 import VerifyMediaMessage from "./TelegramVerifyMediaMessage";
 import VerifyMessage from "./TelegramVerifyMessage";
-// import verifyBusinessHours from "../WbotServices/Helpers/VerifyBusinessHours";
 import VerifyStepsChatFlowTicket from "../ChatFlowServices/VerifyStepsChatFlowTicket";
-import { getCache, setCache } from "../../utils/cacheRedis";
-import { RedisKeys } from "../../constants/redisKeys";
-import Whatsapp from "../../models/Whatsapp";
-import Contact from "../../models/Contact";
 
 interface Session extends Telegraf {
   id: number;

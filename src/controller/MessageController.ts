@@ -76,6 +76,7 @@ export const createMessages = async (
   }
   try {
     const ticket = await ShowTicketService({ id: ticketId, tenantId });
+
     await SetTicketMessagesAsRead(ticket);
 
     const messageData = {

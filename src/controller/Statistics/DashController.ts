@@ -7,6 +7,8 @@ import DashTicketsEvolutionChannels from "../../services/Statistics/DashTicketsE
 import DashTicketsEvolutionByPeriod from "../../services/Statistics/DashTicketsEvolutionByPeriod";
 import DashTicketsPerUsersDetail from "../../services/Statistics/DashTicketsPerUsersDetail";
 import DashTicketsQueue from "../../services/Statistics/DashTicketsQueue";
+import { getCache, setCache } from "../../utils/cacheRedis";
+import { RedisKeys } from "../../constants/redisKeys";
 
 type IndexQuery = {
   startDate: string;
@@ -27,8 +29,18 @@ export const getDashTicketsAndTimes = async (
     userProfile: profile,
   };
   try {
-    const data = await DashTicketsAndTimes(payload);
-    return reply.code(STANDARD.OK.statusCode).send(data);
+    let dataDash = await getCache(
+      RedisKeys.DashTicketsAndTimes(startDate, endDate, profile)
+    );
+    if (!dataDash) {
+      dataDash = await DashTicketsAndTimes(payload);
+      await setCache(
+        RedisKeys.DashTicketsAndTimes(startDate, endDate, profile),
+        dataDash,
+        360
+      );
+    }
+    return reply.code(STANDARD.OK.statusCode).send(dataDash);
   } catch (error) {
     console.log(error);
     return handleServerError(reply, error);
@@ -49,8 +61,17 @@ export const getDashTicketsChannels = async (
     userProfile: profile,
   };
   try {
-    const data = await DashTicketsChannels(payload);
-    return reply.code(STANDARD.OK.statusCode).send(data);
+    let dataDash = await getCache(
+      RedisKeys.DashTicketsChannel(startDate, endDate, profile)
+    );
+    if (!dataDash) {
+      dataDash = await DashTicketsChannels(payload);
+      await setCache(
+        RedisKeys.DashTicketsChannel(startDate, endDate, profile),
+        dataDash
+      );
+    }
+    return reply.code(STANDARD.OK.statusCode).send(dataDash);
   } catch (error) {
     console.log(error);
     return handleServerError(reply, error);
@@ -71,8 +92,17 @@ export const getDashTicketsEvolutionChannels = async (
     userProfile: profile,
   };
   try {
-    const data = await DashTicketsEvolutionChannels(payload);
-    return reply.code(STANDARD.OK.statusCode).send(data);
+    let dataDash = await getCache(
+      RedisKeys.DashTicketsEvolutionChannels(startDate, endDate, profile)
+    );
+    if (!dataDash) {
+      dataDash = await DashTicketsEvolutionChannels(payload);
+      await setCache(
+        RedisKeys.DashTicketsEvolutionChannels(startDate, endDate, profile),
+        dataDash
+      );
+    }
+    return reply.code(STANDARD.OK.statusCode).send(dataDash);
   } catch (error) {
     console.log(error);
     return handleServerError(reply, error);
@@ -93,8 +123,17 @@ export const getDashTicketsEvolutionByPeriod = async (
     userProfile: profile,
   };
   try {
-    const data = await DashTicketsEvolutionByPeriod(payload);
-    return reply.code(STANDARD.OK.statusCode).send(data);
+    let dataDash = await getCache(
+      RedisKeys.DashTicketsEvolutionByPeriod(startDate, endDate, profile)
+    );
+    if (!dataDash) {
+      dataDash = await DashTicketsEvolutionByPeriod(payload);
+      await setCache(
+        RedisKeys.DashTicketsEvolutionByPeriod(startDate, endDate, profile),
+        dataDash
+      );
+    }
+    return reply.code(STANDARD.OK.statusCode).send(dataDash);
   } catch (error) {
     console.log(error);
     return handleServerError(reply, error);
@@ -115,8 +154,17 @@ export const getDashTicketsPerUsersDetail = async (
     userProfile: profile,
   };
   try {
-    const data = await DashTicketsPerUsersDetail(payload);
-    return reply.code(STANDARD.OK.statusCode).send(data);
+    let dataDash = await getCache(
+      RedisKeys.DashTicketsPerUsersDetail(startDate, endDate, profile)
+    );
+    if (!dataDash) {
+      dataDash = await DashTicketsPerUsersDetail(payload);
+      await setCache(
+        RedisKeys.DashTicketsPerUsersDetail(startDate, endDate, profile),
+        dataDash
+      );
+    }
+    return reply.code(STANDARD.OK.statusCode).send(dataDash);
   } catch (error) {
     console.log(error);
     return handleServerError(reply, error);
@@ -137,8 +185,17 @@ export const getDashTicketsQueue = async (
     userProfile: profile,
   };
   try {
-    const data = await DashTicketsQueue(payload);
-    return reply.code(STANDARD.OK.statusCode).send(data);
+    let dataDash = await getCache(
+      RedisKeys.DashTicketsQueue(startDate, endDate, profile)
+    );
+    if (!dataDash) {
+      dataDash = await DashTicketsQueue(payload);
+      await setCache(
+        RedisKeys.DashTicketsQueue(startDate, endDate, profile),
+        dataDash
+      );
+    }
+    return reply.code(STANDARD.OK.statusCode).send(dataDash);
   } catch (error) {
     console.log(error);
     return handleServerError(reply, error);
