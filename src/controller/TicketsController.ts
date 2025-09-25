@@ -98,7 +98,9 @@ export const mostrarTicket = async (
   try {
     const { tenantId } = request.user as any;
     const { ticketId } = request.params as { ticketId: number };
+   
     const ticket = await ShowTicketService({ id: ticketId, tenantId });
+   
     const where = {
       contactId: ticket.contactId,
       scheduleDate: { [Op.not]: null },

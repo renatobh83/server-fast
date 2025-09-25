@@ -62,6 +62,7 @@ export const initTbot = async (connection: Whatsapp): Promise<Session> => {
   });
 };
 
+
 export const getTbot = (whatsappId: number, checkState = true): Session => {
 
   logger.info(`whatsappId: ${whatsappId} | checkState: ${checkState}`);

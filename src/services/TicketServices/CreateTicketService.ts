@@ -1,8 +1,10 @@
+import { RedisKeys } from "../../constants/redisKeys";
 import { AppError } from "../../errors/errors.helper";
 import CheckContactOpenTickets from "../../helpers/CheckContactOpenTickets";
 import GetDefaultWhatsApp from "../../helpers/GetDefaultWhatsApp";
 import socketEmit from "../../helpers/socketEmit";
 import Ticket from "../../models/Ticket";
+import { getCache } from "../../utils/cacheRedis";
 
 import ShowContactService from "../ContactServices/ShowContactService";
 import ShowTicketService from "./ShowTicketService";
@@ -52,7 +54,10 @@ const CreateTicketService = async ({
     }
     // --- FIM DA MODIFICAÇÃO ---
 
-    const { isGroup } = await ShowContactService({ id: contactId, tenantId });
+    // let isGroup = await getCache(RedisKeys.contact(tenantId, contactId))
+    const { isGroup } =
+     await ShowContactService({ id: contactId, tenantId });
+
 
     const { id }: Ticket = await Ticket.create({
       contactId,
@@ -66,6 +71,7 @@ const CreateTicketService = async ({
     });
 
     const ticket = await ShowTicketService({ id, tenantId });
+   
     const jsonTicket = ticket.toJSON();
 
     if (!ticket) {

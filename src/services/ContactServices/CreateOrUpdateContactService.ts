@@ -46,8 +46,11 @@ const CreateOrUpdateContactService = async ({
       messenger: { field: "messengerId", value: messengerId },
     };
     let contact: Contact | null = null;
+   
     const uniqueValue = originFieldMap[origem];
+   
     if (!uniqueValue) throw new AppError("ERR_INVALID_ORIGEM_VALUE", 400);
+   
     contact = (await getCache(
       RedisKeys.contact(tenantId, uniqueValue, rawNumber)
     )) as unknown as Contact;

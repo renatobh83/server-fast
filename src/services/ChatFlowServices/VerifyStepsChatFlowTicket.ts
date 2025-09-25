@@ -35,7 +35,7 @@ const updateTicketAndEmit = async (
   socketType: "ticket:update" | "ticket:update_chatflow" = "ticket:update"
 ): Promise<void> => {
   try {
-    console.log(data);
+    
     await ticket.update(data);
     socketEmit({
       tenantId: ticket.tenantId,
@@ -50,7 +50,7 @@ const updateTicketAndEmit = async (
 // Função auxiliar para verificar horário comercial e fechar ticket se fora do horário
 const handleBusinessHoursCheck = async (ticket: Ticket): Promise<boolean> => {
   const isBusinessHours = await VerifyBusinessHoursFlow(ticket);
-  console.log(isBusinessHours);
+  
   if (!isBusinessHours) {
     await updateTicketAndEmit(ticket, {
       status: "closed",
@@ -424,7 +424,7 @@ const VerifyStepsChatFlowTicket = async (
         stepCondition.action === ChatFlowAction.UserDefine
       ) {
         const isBusinessHours = await VerifyBusinessHoursFlow(ticket);
-        console.log(isBusinessHours);
+
         if (isBusinessHours) await sendWelcomeMessage(ticket, flowConfig);
       }
     } else {
