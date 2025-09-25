@@ -1,4 +1,5 @@
-import { Chat, Message, Whatsapp } from "wbotconnect";
+import { Chat, Message, Whatsapp as wbot } from "wbotconnect";
+
 import ShowWhatsAppService from "../../WhatsappService/ShowWhatsAppService";
 import { isValidMsg } from "./isValidMsg";
 import Setting from "../../../models/Setting";
@@ -8,8 +9,11 @@ import VerifyMessage from "../VerifyMessage";
 import VerifyContact from "./VerifyContact";
 import VerifyMediaMessage from "./VerifyMediaMessage";
 import VerifyStepsChatFlowTicket from "../../ChatFlowServices/VerifyStepsChatFlowTicket";
+import { getCache, setCache } from "../../../utils/cacheRedis";
+import { RedisKeys } from "../../../constants/redisKeys";
+import Whatsapp from "../../../models/Whatsapp";
 
-interface Session extends Whatsapp {
+interface Session extends wbot {
   id: number;
 }
 // Guarda último horário de mensagem por ticket
@@ -34,7 +38,12 @@ export const HandleMessageReceived = async (
   wbot: Session
 ): Promise<void> => {
   // console.log("Recebido", new Date().toLocaleTimeString())
-  const whatsapp = await ShowWhatsAppService({ id: wbot.id });
+
+  let whatsapp = (await getCache(RedisKeys.canalService(wbot.id))) as Whatsapp;
+  if (!whatsapp) {
+    whatsapp = await ShowWhatsAppService({ id: wbot.id });
+    await setCache(RedisKeys.canalService(wbot.id), whatsapp);
+  }
 
   const { tenantId } = whatsapp;
 

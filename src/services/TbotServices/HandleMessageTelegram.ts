@@ -5,13 +5,20 @@ import FindOrCreateTicketService from "../TicketServices/FindOrCreateTicketServi
 import VerifyMediaMessage from "./TelegramVerifyMediaMessage";
 import VerifyMessage from "./TelegramVerifyMessage";
 import VerifyStepsChatFlowTicket from "../ChatFlowServices/VerifyStepsChatFlowTicket";
+import { getCache, setCache } from "../../utils/cacheRedis";
+import { RedisKeys } from "../../constants/redisKeys";
+import Whatsapp from "../../models/Whatsapp";
 
 interface Session extends Telegraf {
   id: number;
 }
 
 const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
-  const channel = await ShowWhatsAppService({ id: tbot.id });
+  let channel = (await getCache(RedisKeys.canalService(tbot.id))) as Whatsapp;
+  if (!channel) {
+    channel = await ShowWhatsAppService({ id: tbot.id });
+    await setCache(RedisKeys.canalService(tbot.id), channel);
+  }
 
   let message;
   let updateMessage: any = {};

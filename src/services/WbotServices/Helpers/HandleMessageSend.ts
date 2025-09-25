@@ -1,4 +1,4 @@
-import { Chat, Message, Whatsapp } from "wbotconnect";
+import { Chat, Message, Whatsapp as wbot } from "wbotconnect";
 import ShowWhatsAppService from "../../WhatsappService/ShowWhatsAppService";
 import { isValidMsg } from "./isValidMsg";
 import Setting from "../../../models/Setting";
@@ -8,8 +8,11 @@ import VerifyMessage from "../VerifyMessage";
 import VerifyMediaMessage from "./VerifyMediaMessage";
 import VerifyStepsChatFlowTicket from "../../ChatFlowServices/VerifyStepsChatFlowTicket";
 import verifyBusinessHours from "./VerifyBusinessHours";
+import { RedisKeys } from "../../../constants/redisKeys";
+import { getCache, setCache } from "../../../utils/cacheRedis";
+import Whatsapp from "../../../models/Whatsapp";
 
-interface Session extends Whatsapp {
+interface Session extends wbot {
   id: number;
 }
 
@@ -17,7 +20,11 @@ export const HandleMessageSend = async (
   message: Message,
   wbot: Session
 ): Promise<void> => {
-  const whatsapp = await ShowWhatsAppService({ id: wbot.id });
+  let whatsapp = (await getCache(RedisKeys.canalService(wbot.id))) as Whatsapp;
+  if (!whatsapp) {
+    whatsapp = await ShowWhatsAppService({ id: wbot.id });
+    await setCache(RedisKeys.canalService(wbot.id), whatsapp);
+  }
 
   const { tenantId } = whatsapp;
 

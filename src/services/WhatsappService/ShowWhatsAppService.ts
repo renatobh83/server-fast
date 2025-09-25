@@ -36,10 +36,9 @@ const ShowWhatsAppService = async ({
     "wppUser",
   ];
 
-  const whatsapp = (await Whatsapp.findByPk(id, {
+  const whatsapp = await Whatsapp.findByPk(id, {
     attributes: attr,
-  })) as Whatsapp;
-
+  });
   if (!whatsapp || (tenantId && whatsapp.tenantId !== tenantId)) {
     throw new AppError("ERR_NO_WAPP_FOUND", 404);
   }

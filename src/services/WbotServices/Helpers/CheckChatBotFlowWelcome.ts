@@ -1,7 +1,10 @@
+import { RedisKeys } from "../../../constants/redisKeys";
 import ChatFlow from "../../../models/ChatFlow";
 import Contact from "../../../models/Contact";
 import Setting from "../../../models/Setting";
 import Ticket from "../../../models/Ticket";
+import Whatsapp from "../../../models/Whatsapp";
+import { getCache, setCache } from "../../../utils/cacheRedis";
 import IsContactTest from "../../ChatFlowServices/IsContactTest";
 import ShowWhatsAppService from "../../WhatsappService/ShowWhatsAppService";
 
@@ -14,11 +17,16 @@ const CheckChatBotFlowWelcome = async (instance: Ticket): Promise<void> => {
       tenantId: instance.tenantId,
     },
   });
-
-  const channel = await ShowWhatsAppService({
-    id: instance.whatsappId,
-    tenantId: instance.tenantId,
-  });
+  let channel = (await getCache(
+    RedisKeys.canalService(instance.whatsappId)
+  )) as Whatsapp;
+  if (!channel) {
+    channel = await ShowWhatsAppService({
+      id: instance.whatsappId,
+      tenantId: instance.tenantId,
+    });
+    await setCache(RedisKeys.canalService(instance.whatsappId), channel);
+  }
 
   const chatFlowId = channel?.chatFlowId || setting?.value;
   if (!chatFlowId) return;
