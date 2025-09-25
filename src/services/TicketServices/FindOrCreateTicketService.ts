@@ -172,14 +172,6 @@ const FindOrCreateTicketService = async ({
         {
           model: Contact,
           as: "contact",
-          include: [
-            "extraInfo",
-            "tags",
-            {
-              association: "wallets",
-              attributes: ["id", "name"],
-            },
-          ],
         },
         {
           model: User,
@@ -220,14 +212,6 @@ const FindOrCreateTicketService = async ({
           {
             model: Contact,
             as: "contact",
-            include: [
-              "extraInfo",
-              "tags",
-              {
-                association: "wallets",
-                attributes: ["id", "name"],
-              },
-            ],
           },
           {
             model: User,
@@ -274,14 +258,6 @@ const FindOrCreateTicketService = async ({
           {
             model: Contact,
             as: "contact",
-            include: [
-              "extraInfo",
-              "tags",
-              {
-                association: "wallets",
-                attributes: ["id", "name"],
-              },
-            ],
           },
           {
             model: User,
@@ -361,6 +337,7 @@ const FindOrCreateTicketService = async ({
     if (error instanceof AppError) {
       throw error;
     }
+    console.log(error);
     throw new AppError("ERR_FIND_OR_CREATE_TICKET_SERICE", 500);
   }
 };

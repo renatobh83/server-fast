@@ -1,45 +1,58 @@
+// lib/fastifyPlugins/sequelize.ts
 import fp from "fastify-plugin";
 import { Sequelize } from "sequelize";
 import { initModels } from "../../models";
 import { models, sequelize } from "../../database/db";
 import { FastifyInstance } from "fastify";
 
-// Função de retry isolada
+// retry inicial sem bloquear o boot do Fastify
 async function connectWithRetry(fastify: FastifyInstance, delay = 5000) {
-  while (true) {
+  let connected = false;
+
+  while (!connected) {
     try {
       await sequelize.authenticate();
       fastify.log.info("✅ Conexão com Sequelize estabelecida!");
-      break;
+      connected = true;
     } catch (err: any) {
-      fastify.log.error("❌ Erro ao conectar no Sequelize:", err.message);
+      fastify.log.error("❌ Erro ao conectar no Sequelize:", err);
       fastify.log.info(`🔄 Tentando novamente em ${delay / 1000}s...`);
       await new Promise((resolve) => setTimeout(resolve, delay));
     }
   }
 }
 
-export const sequelizePlugin = fp(
-  async (fastify, opts) => {
-    // conecta antes de continuar o fluxo do Fastify
-    await connectWithRetry(fastify, 5000);
+// health-check em background (não bloqueia o boot)
+function monitorConnection(fastify: FastifyInstance, interval = 10000) {
+  setInterval(async () => {
+    try {
+      await sequelize.authenticate();
+      fastify.log.debug("DB check OK");
+    } catch (err: any) {
+      fastify.log.error("⚠️ DB check falhou, tentando reconectar:", err);
+      await connectWithRetry(fastify, 5000);
+    }
+  }, interval);
+}
 
-    // adiciona instâncias no fastify
-    fastify.decorate("sequelize", sequelize);
-    fastify.decorate("models", models);
+export const sequelizePlugin = fp(async (fastify) => {
+  // inicia conexão (com retry até dar certo)
+  await connectWithRetry(fastify, 5000);
 
-    // encerra conexão quando o servidor fechar
-    fastify.addHook("onClose", async () => {
-      await sequelize.close();
-      fastify.log.info("🔌 Conexão com Sequelize fechada.");
-    });
-  },
-  {
-    name: "sequelize-auto-2", // nome do plugin (importante para logs e erros)
-  }
-);
+  // inicia monitoramento em background
+  monitorConnection(fastify, 10000);
 
-// tipagem para fastify
+  // adiciona no fastify
+  fastify.decorate("sequelize", sequelize);
+  fastify.decorate("models", models);
+
+  // fecha no shutdown
+  fastify.addHook("onClose", async () => {
+    await sequelize.close();
+    fastify.log.info("🔌 Conexão com Sequelize fechada.");
+  });
+});
+
 declare module "fastify" {
   interface FastifyInstance {
     sequelize: Sequelize;
