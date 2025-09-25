@@ -6,6 +6,10 @@ import VerifyMediaMessage from "./TelegramVerifyMediaMessage";
 import VerifyMessage from "./TelegramVerifyMessage";
 // import verifyBusinessHours from "../WbotServices/Helpers/VerifyBusinessHours";
 import VerifyStepsChatFlowTicket from "../ChatFlowServices/VerifyStepsChatFlowTicket";
+import { getCache, setCache } from "../../utils/cacheRedis";
+import { RedisKeys } from "../../constants/redisKeys";
+import Whatsapp from "../../models/Whatsapp";
+import Contact from "../../models/Contact";
 
 interface Session extends Telegraf {
   id: number;
@@ -34,8 +38,7 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
     // compatibilizar timestamp com js
     timestamp: +message.date * 1000,
   };
-
-  const contact = await VerifyContact(ctx, channel.tenantId);
+  let contact = await VerifyContact(ctx, channel.tenantId);
 
   const ticket = await FindOrCreateTicketService({
     contact,
@@ -45,6 +48,7 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
     msg: { ...messageData, fromMe },
     channel: "telegram",
   });
+
   if (ticket?.isFarewellMessage) {
     return;
   }
@@ -54,14 +58,6 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
   } else {
     await VerifyMessage(ctx, fromMe, ticket, contact);
   }
-
-  // const isBusinessHours = await verifyBusinessHours(
-  //   {
-  //     fromMe,
-  //     timestamp: messageData.timestamp,
-  //   },
-  //   ticket
-  // );
 
   await VerifyStepsChatFlowTicket(
     {

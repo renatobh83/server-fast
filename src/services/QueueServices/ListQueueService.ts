@@ -1,17 +1,23 @@
+import { RedisKeys } from "../../constants/redisKeys";
 import Queue from "../../models/Queue";
+import { getCache, setCache } from "../../utils/cacheRedis";
 
 interface Request {
-	tenantId: number;
+  tenantId: number;
 }
 const ListQueueService = async ({ tenantId }: Request): Promise<Queue[]> => {
-	const queueData = await Queue.findAll({
-		where: {
-			tenantId,
-		},
-		order: [["queue", "ASC"]],
-	});
+  let queueData = (await getCache(RedisKeys.queues(tenantId))) as Queue[];
+  if (!queueData) {
+    queueData = await Queue.findAll({
+      where: {
+        tenantId,
+      },
+      order: [["queue", "ASC"]],
+    });
+    await setCache(RedisKeys.settings(tenantId), queueData);
+  }
 
-	return queueData;
+  return queueData;
 };
 
 export default ListQueueService;

@@ -1,5 +1,7 @@
+import { RedisKeys } from "../../constants/redisKeys";
 import { AppError } from "../../errors/errors.helper";
 import socketEmit from "../../helpers/socketEmit";
+import { redisClient } from "../../lib/redis";
 import Chamado from "../../models/Chamado";
 import Contact from "../../models/Contact";
 import Empresa from "../../models/Empresa";
@@ -206,14 +208,15 @@ async function fecharTicket(chamadoId: number, conclusao: string) {
   if (ticket.status === "PAUSADO") {
     await retomarTicket(chamadoId); // Retoma o ticket para finalizar corretamente
   }
+
   const settings = await Setting.findAll();
   const sendEmail = settings.find(
     (s: { key: string }) => s.key === "sendEmailOpenClose"
   )?.value;
   ticket.status = "CONCLUIDO";
   ticket.closedAt = new Date();
-  //   if (sendEmail !== "disabled") {
-  //     sendEmailOpenClose(ticket, conclusao);
-  //   }
+  // if (sendEmail !== "disabled") {
+  //   sendEmailOpenClose(ticket, conclusao);
+  // }
   await ticket.save();
 }

@@ -1,5 +1,7 @@
+import { RedisKeys } from "../../constants/redisKeys";
 import { AppError } from "../../errors/errors.helper";
 import Whatsapp from "../../models/Whatsapp";
+import { getCache, setCache } from "../../utils/cacheRedis";
 
 interface Data {
   id: string | number;
@@ -33,10 +35,13 @@ const ShowWhatsAppService = async ({
     "pairingCodeEnabled",
     "wppUser",
   ];
-
-  const whatsapp = await Whatsapp.findByPk(id, {
-    attributes: attr,
-  });
+  let whatsapp = (await getCache(RedisKeys.canalService(id))) as Whatsapp;
+  if (!whatsapp) {
+    whatsapp = (await Whatsapp.findByPk(id, {
+      attributes: attr,
+    })) as Whatsapp;
+    await setCache(RedisKeys.canalService(id), whatsapp); // cache por 60s
+  }
 
   if (!whatsapp || (tenantId && whatsapp.tenantId !== tenantId)) {
     throw new AppError("ERR_NO_WAPP_FOUND", 404);

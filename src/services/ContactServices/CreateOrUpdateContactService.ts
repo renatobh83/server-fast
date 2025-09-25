@@ -1,6 +1,8 @@
+import { RedisKeys } from "../../constants/redisKeys";
 import { AppError } from "../../errors/errors.helper";
 import socketEmit from "../../helpers/socketEmit";
 import Contact from "../../models/Contact";
+import { getCache, setCache } from "../../utils/cacheRedis";
 
 interface Request {
   name: string;
@@ -43,9 +45,18 @@ const CreateOrUpdateContactService = async ({
       instagram: { field: "instagramPK", value: instagramPK },
       messenger: { field: "messengerId", value: messengerId },
     };
+    let contact: Contact | null = null;
+    const uniqueValue = originFieldMap[origem];
+    if (!uniqueValue) throw new AppError("ERR_INVALID_ORIGEM_VALUE", 400);
+    contact = (await getCache(
+      RedisKeys.contact(tenantId, uniqueValue, rawNumber)
+    )) as unknown as Contact;
+
+    if (contact) {
+      return contact;
+    }
 
     const { field, value } = originFieldMap[origem] || {};
-    let contact: Contact | null = null;
 
     if (field && value) {
       contact = await Contact.findOne({ where: { [field]: value, tenantId } });
@@ -85,7 +96,12 @@ const CreateOrUpdateContactService = async ({
       type: "contact:update",
       payload: contact,
     });
-
+    console.log("gravando contato cache");
+    await setCache(
+      RedisKeys.contact(tenantId, uniqueValue, rawNumber),
+      contact,
+      60
+    ); // cache por 60s
     return contact;
   } catch (err) {
     throw new AppError("ERR_CREATE_CONTACT", 500);

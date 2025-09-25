@@ -9,7 +9,13 @@ const sequelize = new Sequelize({
   database: process.env.POSTGRES_DB,
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
-  logging: false,
+  // logging: console.log,
+  pool: {
+    max: 10, // máximo de conexões
+    min: 0, // mínimo
+    acquire: 30000, // tempo máximo para tentar pegar conexão (ms)
+    idle: 10000, // tempo para fechar conexão ociosa (ms)
+  },
 });
 
 export const models = initModels(sequelize);

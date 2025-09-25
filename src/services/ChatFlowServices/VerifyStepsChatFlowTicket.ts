@@ -34,17 +34,23 @@ const updateTicketAndEmit = async (
   data: Partial<any>,
   socketType: "ticket:update" | "ticket:update_chatflow" = "ticket:update"
 ): Promise<void> => {
-  await ticket.update(data);
-  socketEmit({
-    tenantId: ticket.tenantId,
-    type: socketType,
-    payload: ticket,
-  });
+  try {
+    console.log(data);
+    await ticket.update(data);
+    socketEmit({
+      tenantId: ticket.tenantId,
+      type: socketType,
+      payload: ticket,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // Função auxiliar para verificar horário comercial e fechar ticket se fora do horário
 const handleBusinessHoursCheck = async (ticket: Ticket): Promise<boolean> => {
   const isBusinessHours = await VerifyBusinessHoursFlow(ticket);
+  console.log(isBusinessHours);
   if (!isBusinessHours) {
     await updateTicketAndEmit(ticket, {
       status: "closed",
@@ -148,30 +154,34 @@ export const handleQueueAssignment = async (
   flowConfig: any,
   stepCondition: any
 ): Promise<void> => {
-  if (stepCondition.action === ChatFlowAction.QueueDefine) {
-    if (!(await handleBusinessHoursCheck(ticket))) return;
+  try {
+    if (stepCondition.action === ChatFlowAction.QueueDefine) {
+      if (!(await handleBusinessHoursCheck(ticket))) return;
 
-    await updateTicketAndEmit(
-      ticket,
-      {
-        queueId: stepCondition.queueId,
-        chatFlowId: null,
-        stepChatFlow: null,
-        botRetries: 0,
-        lastInteractionBot: new Date(),
-      },
-      "ticket:update_chatflow"
-    );
-
-    if (flowConfig?.data?.autoDistributeTickets) {
-      await DefinedUserBotService(
+      await updateTicketAndEmit(
         ticket,
-        stepCondition.queueId,
-        ticket.tenantId,
-        flowConfig.data.autoDistributeTickets
+        {
+          queueId: stepCondition.queueId,
+          chatFlowId: null,
+          stepChatFlow: null,
+          botRetries: 0,
+          lastInteractionBot: new Date(),
+        },
+        "ticket:update_chatflow"
       );
-      await ticket.reload();
+
+      if (flowConfig?.data?.autoDistributeTickets) {
+        await DefinedUserBotService(
+          ticket,
+          stepCondition.queueId,
+          ticket.tenantId,
+          flowConfig.data.autoDistributeTickets
+        );
+        await ticket.reload();
+      }
     }
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -414,6 +424,7 @@ const VerifyStepsChatFlowTicket = async (
         stepCondition.action === ChatFlowAction.UserDefine
       ) {
         const isBusinessHours = await VerifyBusinessHoursFlow(ticket);
+        console.log(isBusinessHours);
         if (isBusinessHours) await sendWelcomeMessage(ticket, flowConfig);
       }
     } else {

@@ -1,3 +1,4 @@
+import { RedisKeys } from "../../constants/redisKeys";
 import { AppError } from "../../errors/errors.helper";
 import socketEmit from "../../helpers/socketEmit";
 import Chamado from "../../models/Chamado";
@@ -7,6 +8,7 @@ import Media from "../../models/Media";
 import Setting from "../../models/Setting";
 import Ticket from "../../models/Ticket";
 import User from "../../models/User";
+import { getCache, setCache } from "../../utils/cacheRedis";
 
 export type dataChamado = {
   ticket?: any;
@@ -56,7 +58,12 @@ export const CreateChamadoService = async ({
       { where: { id: ticket.id } }
     );
   }
-  const settings = await Setting.findAll();
+
+  let settings = (await getCache(RedisKeys.settings(tenantId))) as Setting[];
+  if (!settings) {
+    settings = await Setting.findAll();
+    await setCache(RedisKeys.settings(tenantId), settings);
+  }
   const sendEmail = settings.find(
     (s: { key: string }) => s.key === "sendEmailOpenClose"
   )?.value;

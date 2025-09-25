@@ -1,22 +1,21 @@
 import ChatFlow from "../../models/ChatFlow";
 
 interface Response {
-	chatFlow: ChatFlow[];
+  chatFlow: ChatFlow[];
 }
 
 interface Request {
-	tenantId: number | string;
+  tenantId: number | string;
 }
 
 const ListChatFlowService = async ({
-	tenantId,
+  tenantId,
 }: Request): Promise<Response> => {
-	const chatFlow = await ChatFlow.findAll({
-		where: { tenantId, isDeleted: false },
-		// order: [[{ model: StepsReply, as: "stepsReply" }, "id", "ASC"]]
-	});
+  const chatFlow = await ChatFlow.findAll({
+    where: { tenantId, isDeleted: false },
+  });
 
-	return { chatFlow };
+  return { chatFlow };
 };
 
 export default ListChatFlowService;

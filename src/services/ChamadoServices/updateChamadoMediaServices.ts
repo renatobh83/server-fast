@@ -15,7 +15,7 @@ export const updateChamadoMediaServices = async (
         const { url, type } = prepareMediaFile(file);
         return { url, type, chamadoId };
       }) as unknown as Media[];
-      await Media.bulkCreate(mediaData);
+      await Media.bulkCreate(mediaData, { ignoreDuplicates: true });
     }
     const chamado = await Chamado.findByPk(chamadoId, {
       include: [

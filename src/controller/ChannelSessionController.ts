@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { handleServerError } from "../errors/errors.helper";
 import ShowWhatsAppService from "../services/WhatsappService/ShowWhatsAppService";
 import { STANDARD } from "../constants/request";
-import { StartWhatsAppSession } from "../services/StartWhatsAppSession";
+import { StartWhatsAppSession } from "../services/WbotServices/StartWhatsAppSession";
 import { removeWbot } from "../lib/wbot";
 import UpdateWhatsAppService from "../services/WhatsappService/UpdateWhatsAppService";
 import { getIO } from "../lib/socket";

@@ -15,6 +15,7 @@ export const initTbot = async (connection: Whatsapp): Promise<Session> => {
     try {
       const io = getIO();
       const sessionName = connection.name;
+
       const { tenantId } = connection;
       const tbot = new Telegraf(connection.tokenTelegram, {}) as Session;
       tbot.id = connection.id;

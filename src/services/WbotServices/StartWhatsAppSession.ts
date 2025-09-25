@@ -1,6 +1,6 @@
-import { getIO } from "../lib/socket";
-import { initWbot } from "../lib/wbot";
-import { StartTbotSession } from "./TbotServices/StartTbotSession";
+import { getIO } from "../../lib/socket";
+import { initWbot } from "../../lib/wbot";
+import { StartTbotSession } from "../TbotServices/StartTbotSession";
 
 export const StartWhatsAppSession = async (whatsapp: any): Promise<void> => {
   await whatsapp.update({ status: "OPENING" });
