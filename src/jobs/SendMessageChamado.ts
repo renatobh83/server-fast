@@ -5,7 +5,7 @@ import GetDefaultWhatsApp from "../helpers/GetDefaultWhatsApp";
 import path from "node:path";
 import fs from "node:fs";
 import { AppError } from "../errors/errors.helper";
-import { getTbot } from "../lib/tbot";
+import { getTbot ,requireTbot} from "../lib/tbot";
 import { getWbot } from "../lib/wbot";
 export default {
   key: "SendMessageChamado",
@@ -53,7 +53,7 @@ export default {
           undefined,
           "telegram"
         );
-        const tbot = getTbot(defaultTelegram.id);
+        const tbot = requireTbot(defaultTelegram.id);
         if (mediaUrl) {
           const pastaPublic = path.join(process.cwd(), "public", "attachments");
           const url = path.basename(mediaUrl.url);
