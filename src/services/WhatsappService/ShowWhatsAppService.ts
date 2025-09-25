@@ -35,13 +35,10 @@ const ShowWhatsAppService = async ({
     "pairingCodeEnabled",
     "wppUser",
   ];
-  let whatsapp = (await getCache(RedisKeys.canalService(id))) as Whatsapp;
-  if (!whatsapp) {
-    whatsapp = (await Whatsapp.findByPk(id, {
-      attributes: attr,
-    })) as Whatsapp;
-    await setCache(RedisKeys.canalService(id), whatsapp); // cache por 60s
-  }
+
+  const whatsapp = (await Whatsapp.findByPk(id, {
+    attributes: attr,
+  })) as Whatsapp;
 
   if (!whatsapp || (tenantId && whatsapp.tenantId !== tenantId)) {
     throw new AppError("ERR_NO_WAPP_FOUND", 404);
