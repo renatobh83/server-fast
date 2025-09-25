@@ -59,7 +59,7 @@ export const ListaTodosChamadosService = async ({
         },
       ],
     });
-    await setCache(RedisKeys.chamados(pageNumber), chamados, 360);
+    await setCache(RedisKeys.chamados(pageNumber), chamados, 60);
   }
 
   let count = 0;

@@ -1,4 +1,6 @@
+import { RedisKeys } from "../../constants/redisKeys";
 import { AppError } from "../../errors/errors.helper";
+import { redisClient } from "../../lib/redis";
 import Tenant from "../../models/Tenant";
 
 interface Request {
@@ -27,7 +29,7 @@ const UpdateDadosTenantService = async ({
     dadosNfe,
     name: razaoSocial,
   });
-
+  redisClient.del(RedisKeys.tentantServices());
   return tenantModel;
 };
 

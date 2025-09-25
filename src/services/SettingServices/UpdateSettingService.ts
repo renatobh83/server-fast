@@ -1,4 +1,6 @@
+import { RedisKeys } from "../../constants/redisKeys";
 import { AppError } from "../../errors/errors.helper";
+import { redisClient } from "../../lib/redis";
 import Setting from "../../models/Setting";
 
 interface Request {
@@ -22,7 +24,7 @@ const UpdateSettingService = async ({
     }
 
     await setting.update({ value });
-
+    redisClient.del(RedisKeys.settings(tenantId));
     return setting;
   } catch (error: any) {
     if (error instanceof AppError) {
