@@ -40,6 +40,101 @@ export const initTbot = async (connection: Whatsapp): Promise<Session> => {
       const tbot = new Telegraf(connection.tokenTelegram) as Session;
       tbot.id = connection.id;
 
+      // --- Tratamento de erros globais do Telegraf ---
+      tbot.catch((err, ctx) => {
+        logger.error(`Erro no bot ${sessionName} | ctx: ${ctx.updateType} | err: ${err}`);
+      });
+
+      // --- Armazena a sessão ---
+      const sessionIndex = TelegramSessions.findIndex(s => s.id === connection.id);
+      if (sessionIndex === -1) {
+        TelegramSessions.push(tbot);
+      } else {
+        TelegramSessions[sessionIndex] = tbot;
+      }
+
+      // --- Lança o bot ---
+      await safeLaunch(tbot, sessionName);
+
+      await connection.update({
+        status: "CONNECTED",
+        qrcode: "",
+        retries: 0,
+      });
+
+      io.emit(`${tenantId}:whatsappSession`, {
+        action: "update",
+        session: connection,
+      });
+
+      logger.info(`✅ Session TELEGRAM: ${sessionName} - READY`);
+      resolve(tbot);
+    } catch (error) {
+      await connection.update({
+        status: "DISCONNECTED",
+        qrcode: "",
+        retries: 0,
+      });
+      logger.error(`initTbot error | Error: ${error}`);
+      reject(new Error("Error starting telegram session."));
+    }
+  });
+};
+
+/**
+ * Retorna uma sessão ativa pelo ID
+ */
+export const getTbot = (whatsappId: number): Session | undefined => {
+  const sessionIndex = TelegramSessions.findIndex((s) => s.id === whatsappId);
+  return sessionIndex !== -1 ? TelegramSessions[sessionIndex] : undefined;
+};
+
+/**
+ * Remove e para uma sessão
+ */
+export const removeTbot = (whatsappId: number): void => {
+  try {
+    const sessionIndex = TelegramSessions.findIndex((s) => s.id === whatsappId);
+    if (sessionIndex !== -1) {
+      const sessionSet = TelegramSessions[sessionIndex];
+      sessionSet.stop("manual remove");
+      TelegramSessions.splice(sessionIndex, 1);
+      logger.info(`🛑 Telegram session ${whatsappId} removida com sucesso`);
+    }
+  } catch (err) {
+    logger.error(`removeTbot | Error: ${err}`);
+  }
+};
+
+/**
+ * Encerramento gracioso das sessões ao matar o processo
+ */
+function registerProcessHandlers() {
+  const shutdown = (signal: string) => {
+    logger.warn(`⚠️ Recebido sinal ${signal}, encerrando sessões Telegram...`);
+    TelegramSessions.forEach(bot => bot.stop(signal));
+    process.exit(0);
+  };
+
+  process.once("SIGINT", () => shutdown("SIGINT"));
+  process.once("SIGTERM", () => shutdown("SIGTERM"));
+}
+
+// Registra apenas uma vez
+registerProcessHandlers();
+
+// Captura erros globais do Node
+process.on("unhandledRejection", (reason) => {
+  logger.error(`Unhandled Rejection: ${reason}`);
+});
+process.on("uncaughtException", (err) => {
+  logger.error(`Uncaught Exception: ${err}`);
+});      const sessionName = connection.name;
+      const { tenantId } = connection;
+
+      const tbot = new Telegraf(connection.tokenTelegram) as Session;
+      tbot.id = connection.id;
+
       // --- Tratamento de erros globais ---
       tbot.catch((err, ctx) => {
         logger.error(`Erro no bot ${sessionName} | ctx: ${ctx.updateType} | err: ${err}`);
@@ -92,7 +187,17 @@ export const getTbot = (whatsappId: number): Session | undefined => {
   const sessionIndex = TelegramSessions.findIndex((s) => s.id === whatsappId);
   return sessionIndex !== -1 ? TelegramSessions[sessionIndex] : undefined;
 };
-
+/**
+ * Retorna uma sessão obrigatória.
+ * Lança erro se não encontrar.
+ */
+export const requireTbot = (whatsappId: number): Session => {
+  const tbot = getTbot(whatsappId);
+  if (!tbot) {
+    throw new Error(`Telegram bot da sessão ${whatsappId} não encontrado`);
+  }
+  return tbot;
+};
 /**
  * Remove e para uma sessão
  */
