@@ -21,7 +21,6 @@ const CheckChatBotFlowWelcome = async (instance: Ticket): Promise<void> => {
   });
 
   const chatFlowId = channel?.chatFlowId || setting?.value;
-
   if (!chatFlowId) return;
 
   const chatFlow = await ChatFlow.findOne({

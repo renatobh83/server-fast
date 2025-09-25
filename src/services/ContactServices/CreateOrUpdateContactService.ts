@@ -100,7 +100,7 @@ const CreateOrUpdateContactService = async ({
     await setCache(
       RedisKeys.contact(tenantId, uniqueValue, rawNumber),
       contact,
-      60
+      360
     ); // cache por 60s
     return contact;
   } catch (err) {

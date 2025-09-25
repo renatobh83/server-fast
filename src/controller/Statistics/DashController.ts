@@ -68,7 +68,8 @@ export const getDashTicketsChannels = async (
       dataDash = await DashTicketsChannels(payload);
       await setCache(
         RedisKeys.DashTicketsChannel(startDate, endDate, profile),
-        dataDash
+        dataDash,
+        360
       );
     }
     return reply.code(STANDARD.OK.statusCode).send(dataDash);
@@ -130,7 +131,8 @@ export const getDashTicketsEvolutionByPeriod = async (
       dataDash = await DashTicketsEvolutionByPeriod(payload);
       await setCache(
         RedisKeys.DashTicketsEvolutionByPeriod(startDate, endDate, profile),
-        dataDash
+        dataDash,
+        360
       );
     }
     return reply.code(STANDARD.OK.statusCode).send(dataDash);
@@ -161,7 +163,8 @@ export const getDashTicketsPerUsersDetail = async (
       dataDash = await DashTicketsPerUsersDetail(payload);
       await setCache(
         RedisKeys.DashTicketsPerUsersDetail(startDate, endDate, profile),
-        dataDash
+        dataDash,
+        360
       );
     }
     return reply.code(STANDARD.OK.statusCode).send(dataDash);
@@ -192,7 +195,8 @@ export const getDashTicketsQueue = async (
       dataDash = await DashTicketsQueue(payload);
       await setCache(
         RedisKeys.DashTicketsQueue(startDate, endDate, profile),
-        dataDash
+        dataDash,
+        360
       );
     }
     return reply.code(STANDARD.OK.statusCode).send(dataDash);
