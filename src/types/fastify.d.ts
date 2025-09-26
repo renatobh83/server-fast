@@ -14,7 +14,6 @@ declare module "fastify" {
     sequelize: Sequelize;
     jwt: JWT;
   }
-    
 }
 
 declare module "fastify" {

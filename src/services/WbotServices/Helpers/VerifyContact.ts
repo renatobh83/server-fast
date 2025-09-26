@@ -9,14 +9,18 @@ const VerifyContact = async (
   const { contact: contactChat } = chat;
 
   const contactData: any = {
-    name: contactChat.name || contactChat.pushname || null,
+    name:
+      contactChat?.name ||
+      contactChat?.pushname ||
+      contactChat?.shortName ||
+      null,
     number: chat.id._serialized,
     tenantId,
-    pushname: contactChat.pushname,
-    isUser: contactChat.isUser,
-    isWAContact: contactChat.isWAContact,
-    isGroup: !contactChat.isUser,
-    profilePicUrl: contactChat.profilePicThumbObj.eurl,
+    pushname: contactChat?.pushname,
+    isUser: contactChat?.isUser,
+    isWAContact: contactChat?.isWAContact,
+    isGroup: !contactChat?.isUser,
+    profilePicUrl: contactChat?.profilePicThumbObj.eurl,
   };
 
   const contact = await CreateOrUpdateContactService(contactData);

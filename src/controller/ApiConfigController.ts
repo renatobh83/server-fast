@@ -19,7 +19,7 @@ interface ApiData {
 }
 
 export const createApiConfig = async (
-  request: FastifyRequest<{ Body: ApiData }>,
+  request: FastifyRequest,
   reply: FastifyReply
 ) => {
   const { tenantId, id, profile } = request.user as any;
@@ -29,7 +29,7 @@ export const createApiConfig = async (
       .code(ERRORS.unauthorizedAccess.statusCode)
       .send(ERRORS.unauthorizedAccess.message);
   }
-  const payload = { ...request.body, userId: id, tenantId };
+  const payload = { request, userId: id, tenantId };
   try {
     const api = await CreateApiConfigService(payload);
     return reply.code(STANDARD.OK.statusCode).send(api);

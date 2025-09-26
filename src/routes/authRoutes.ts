@@ -65,4 +65,5 @@ export default async function authRoutes(fastify: FastifyInstance) {
     SessionController.forgotPassword
   );
   fastify.post("/valid_token", SessionController.validaToken);
+  fastify.post("/refresh_token", SessionController.refreshToken);
 }

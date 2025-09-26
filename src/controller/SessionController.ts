@@ -126,21 +126,16 @@ export const validaToken = async (
   }
 };
 
-// export const resetPassword = async (
-//   request: FastifyRequest,
-//   reply: FastifyReply
-// ) => {
-//   const { token, newPassword } = request.body as any;
-//   if (!token) {
-//     return reply
-//       .code(ERRORS.invalidToken.statusCode)
-//       .send(ERRORS.invalidToken.message);
-//   }
-//   try {
-//     // const payload = await ValidateTokenResetService(token);
-//     // const user = await UpdateUserResetPassword(payload, newPassword);
-//     reply.code(STANDARD.OK.statusCode).send("teste");
-//   } catch (error) {
-//     return handleServerError(reply, error);
-//   }
-// };
+export const refreshToken = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  console.log(request);
+  try {
+    // const payload = await ValidateTokenResetService(token);
+    // const user = await UpdateUserResetPassword(payload, newPassword);
+    reply.code(STANDARD.OK.statusCode).send("teste");
+  } catch (error) {
+    return handleServerError(reply, error);
+  }
+};

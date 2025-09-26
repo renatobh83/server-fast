@@ -28,7 +28,7 @@ export async function buildServer(
   await server.register(sequelizePlugin);
 
   await server.register(jwt, {
-    secret: process.env.JWT_SECRET!, // coloque em variável de ambiente no mundo real
+    secret: process.env.JWT_SECRET!,
   });
   server.setErrorHandler((error, request, reply) => {
     request.log.error(error);

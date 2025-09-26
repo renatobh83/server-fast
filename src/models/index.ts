@@ -28,6 +28,7 @@ import Whatsapp from "./Whatsapp";
 import Empresa from "./Empresa";
 import FastReply from "./FastReply";
 import NotaFiscalLog from "./NotafiscalLog";
+import IntegracaoGenesisConfirmacao from "./IntegracaoGenesisConfirmacao";
 
 // recebe a instância do sequelize
 export function initModels(sequelize: Sequelize) {
@@ -48,6 +49,8 @@ export function initModels(sequelize: Sequelize) {
     User: User.initModel(sequelize),
     Email: Email.initModel(sequelize),
     Tenant: Tenant.initModel(sequelize),
+    IntegracaoGenesisConfirmacao:
+      IntegracaoGenesisConfirmacao.initModel(sequelize),
     EmpresaContact: EmpresaContact.initModel(sequelize),
     Ticket: Ticket.initModel(sequelize),
     Chamado: Chamado.initModel(sequelize),

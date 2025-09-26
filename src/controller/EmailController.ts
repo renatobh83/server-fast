@@ -5,6 +5,7 @@ import { ListEmailService } from "../services/EmailServices/ListEmailService";
 import { CreateEmailService } from "../services/EmailServices/CreateEmailService";
 import { detailsChamadoService } from "../services/ChamadoServices/DetailsChamadoService";
 import { sendEmailOpenClose } from "../services/EmailServices/SendEmailOpenClose";
+import { SendEmailServices } from "../services/EmailServices/SendEmailServices";
 
 export const listEmailConfiguracao = async (
   request: FastifyRequest,
@@ -52,6 +53,52 @@ export const sendEmailChamadoClose = async (
   }
   try {
     await sendEmailOpenClose(chamado, chamado.conclusao);
+    return reply
+      .code(STANDARD.OK.statusCode)
+      .send({ message: "E-mail enviado" });
+  } catch (error) {
+    return handleServerError(reply, error);
+  }
+};
+
+export const sendEmailController = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  const { tenantId } = request.user as any;
+  const { to, subject, html, attachmentUrl } = request.body as any;
+
+  SendEmailServices({
+    to,
+    tenantId,
+    subject,
+    html,
+    attachmentUrl,
+  });
+  try {
+    return reply
+      .code(STANDARD.OK.statusCode)
+      .send({ message: "E-mail enviado" });
+  } catch (error) {
+    return handleServerError(reply, error);
+  }
+};
+
+export const sendEmailControllerTest = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  const { tenantId } = request.user as any;
+  const { html, text } = request.body as any;
+
+  SendEmailServices({
+    tenantId,
+    to: "suporte2@exp.net.br",
+    subject: "Teste envio de email",
+    html,
+    text,
+  });
+  try {
     return reply
       .code(STANDARD.OK.statusCode)
       .send({ message: "E-mail enviado" });

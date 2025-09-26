@@ -1,78 +1,76 @@
-// import Notificacao from "../../../../controllers/APIExternalController";
-// import AppError from "../../../../errors/AppError";
-// import GetIntegracaoById from "../../../../helpers/GetIntegracaoById";
-// import { addJob } from "../../../../lib/Queue";
-// import { getWbot } from "../../../../libs/wbot";
-// import ApiConfig from "../../../../models/ApiConfig";
-// import ProcessBodyData from "../../../../utils/ProcessBodyData";
-// import ShowWhatsAppService from "../../../WhatsappService/ShowWhatsAppService";
-// import { FindOrCreateConfirmacaoservice } from "./FindOrCreateConfirmacaoservice";
+import { AppError } from "../../../../errors/errors.helper";
+import GetIntegracaoById from "../../../../helpers/GetIntegracaoById";
+import { addJob } from "../../../../lib/Queue";
+import { getWbot } from "../../../../lib/wbot";
+import ApiConfig from "../../../../models/ApiConfig";
+import ProcessBodyData from "../../../../utils/ProcessBodyData";
+import ShowWhatsAppService from "../../../WhatsappService/ShowWhatsAppService";
+import { FindOrCreateConfirmacaoservice } from "./FindOrCreateConfirmacaoservice";
 
-// interface Contato {
-//   contato: string;
-//   cliente: string;
-//   idExterno: number;
-//   notificacao: Notificacao;
-// }
+interface ConfirmacaoProps {
+  contato: string;
+  cliente: string;
+  idExterno: number;
+  notificacao: object;
+  apiId: string;
+  idIntegracao: string;
+  authToken: string;
+}
 
-// interface ConfirmacaoProps {
-//   apiId: string;
-//   authToken: string;
-//   idIntegracao: string;
-//   contatos: Contato[];
-// }
-// export const ConfirmacaoIntegracaoService = async ({
-//   apiId,
-//   authToken,
-//   contatos,
-//   idIntegracao,
-// }: ConfirmacaoProps) => {
-//   const integracao = await GetIntegracaoById(idIntegracao);
+export const ConfirmacaoIntegracaoService = async ({
+  apiId,
 
-//   const apiConfig = await ApiConfig.findOne({
-//     where: {
-//       id: apiId,
-//       tenantId: integracao.tenantId,
-//     },
-//   });
-//   if (!apiConfig) {
-//     throw new AppError("ERR_SESSION_NOT_FOUND", 404);
-//   }
+  contato,
+  notificacao,
+  idIntegracao,
+}: ConfirmacaoProps) => {
+  const integracao = await GetIntegracaoById(idIntegracao);
+  const apiConfig = await ApiConfig.findOne({
+    where: {
+      id: apiId,
+      tenantId: integracao.tenantId,
+    },
+  });
+  if (!apiConfig) {
+    throw new AppError("ERR_SESSION_NOT_FOUND", 404);
+  }
 
-//   const whatsapp = await ShowWhatsAppService({
-//     id: apiConfig.get("sessionId"),
-//     tenantId: apiConfig.get("tenantId"),
-//     isInternal: true,
-//   });
+  const whatsapp = await ShowWhatsAppService({
+    id: apiConfig.get("sessionId"),
+    tenantId: apiConfig.get("tenantId"),
+    isInternal: true,
+  });
 
-//   if (whatsapp.status === "DISCONNECTED") {
-//     throw new AppError("ERR_SENDING_WAPP_MSG", 404);
-//   }
+  if (whatsapp.status === "DISCONNECTED") {
+    throw new AppError("ERR_SENDING_WAPP_MSG", 404);
+  }
 
-//   const wbot = getWbot(apiConfig.get("sessionId"));
-//   const bodyProcessed = ProcessBodyData(contatos[0]);
-//   const idNumber = await wbot.checkNumberStatus(bodyProcessed.contato);
+  const wbot = getWbot(apiConfig.get("sessionId"));
+  const bodyProcessed = ProcessBodyData(notificacao);
 
-//   if (!idNumber.numberExists) {
-//     return;
-//   }
-//   const ticketConfirmacao = await FindOrCreateConfirmacaoservice({
-//     contato: bodyProcessed.contato,
-//     bodyProcessed,
-//     tenantId: integracao.tenantId,
-//     idNumber,
-//     integracaoId: integracao.id,
-//   });
+  const idNumber = await wbot.checkNumberStatus(contato);
 
-//   if (ticketConfirmacao.enviada) {
-//     return;
-//   }
+  if (!idNumber.numberExists) {
+    return;
+  }
 
-//   const dataToJob = {
-//     sessionId: apiConfig.get("sessionId"),
-//     ticketConfirmacao,
-//     bodyProcessed,
-//   };
+  const ticket = await FindOrCreateConfirmacaoservice({
+    bodyProcessed,
+    tenantId: integracao.tenantId,
+    contato,
+    idNumber,
+    integracaoId: idIntegracao,
+  });
 
-//   addJob("SendMessageConfirmar", dataToJob);
-// };
+  if (ticket.enviada) {
+    return;
+  }
+
+  const dataToJob = {
+    sessionId: apiConfig.get("sessionId"),
+    ticket,
+    bodyProcessed,
+  };
+
+  addJob("SendMessageConfirmar", dataToJob);
+};

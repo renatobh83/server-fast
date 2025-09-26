@@ -38,3 +38,837 @@
   level: 'error',
   timestamp: '2025-09-25T22:42:29.740Z'
 }
+{
+  message: 'Error send message api',
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:109:23)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T10:59:16.084Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 3)',
+  error: "Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T10:59:16.086Z'
+}
+{
+  error: Error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 3 falhou. Erro: Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T10:59:16.312Z'
+}
+{
+  message: 'Error send message api',
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:109:23)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:02:16.804Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 3)',
+  error: "Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:02:16.808Z'
+}
+{
+  error: Error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 3 falhou. Erro: Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:02:17.034Z'
+}
+{
+  message: 'Error send message api',
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:109:23)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:05:17.512Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 3)',
+  error: "Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:05:17.514Z'
+}
+{
+  error: Error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 3 falhou. Erro: Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:05:17.750Z'
+}
+{
+  message: 'Error send message api',
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:109:23)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:08:18.241Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 3)',
+  error: "Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:08:18.243Z'
+}
+{
+  error: Error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 3 falhou. Erro: Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:08:18.469Z'
+}
+{
+  message: 'Error send message api',
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:109:23)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:11:18.985Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 3)',
+  error: "Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:11:18.986Z'
+}
+{
+  error: Error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 3 falhou. Erro: Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:11:19.212Z'
+}
+{
+  message: 'Error send message api',
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:109:23)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:14:19.721Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 3)',
+  error: "Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:14:19.723Z'
+}
+{
+  error: Error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 3 falhou. Erro: Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:14:19.959Z'
+}
+{
+  message: 'Error send message api',
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:109:23)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:17:20.466Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 3)',
+  error: "Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:17:20.467Z'
+}
+{
+  error: Error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 3 falhou. Erro: Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:17:20.702Z'
+}
+{
+  message: 'Error send message api',
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:109:23)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:20:21.146Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 3)',
+  error: "Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:20:21.147Z'
+}
+{
+  error: Error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 3 falhou. Erro: Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:20:21.374Z'
+}
+{
+  message: 'Error send message api',
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:109:23)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:23:21.851Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 3)',
+  error: "Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:23:21.852Z'
+}
+{
+  error: Error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 3 falhou. Erro: Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:23:22.079Z'
+}
+{
+  message: 'Error send message api',
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:109:23)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:25:14.395Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 1)',
+  error: "Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:25:14.396Z'
+}
+{
+  error: Error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 1 falhou. Erro: Error: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:25:14.617Z'
+}
+{
+  message: 'Error send message api',
+  error: Error: ERR_WAPP_NOT_INITIALIZED
+      at getWbot (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\wbot.js:301:15)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:20:45)
+      at bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:38)
+      at Worker.callProcessJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:139:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:43
+      at trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\utils\index.js:258:16)
+      at Worker.trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\queue-base.js:153:34)
+      at Worker.processJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:481:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:66
+      at Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:30),
+  level: 'error',
+  timestamp: '2025-09-26T11:28:15.066Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 1)',
+  error: 'Error: ERR_WAPP_NOT_INITIALIZED',
+  stack: 'Error: Error: ERR_WAPP_NOT_INITIALIZED\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:105:19)\n' +
+    '    at bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:38)\n' +
+    '    at Worker.callProcessJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:139:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:43\n' +
+    '    at trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\utils\\index.js:258:16)\n' +
+    '    at Worker.trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue-base.js:153:34)\n' +
+    '    at Worker.processJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:481:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:66\n' +
+    '    at Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:30)\n' +
+    '    at Worker.mainLoop (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:41)',
+  level: 'error',
+  timestamp: '2025-09-26T11:28:15.071Z'
+}
+{
+  error: Error: Error: ERR_WAPP_NOT_INITIALIZED
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:105:19)
+      at bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:38)
+      at Worker.callProcessJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:139:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:43
+      at trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\utils\index.js:258:16)
+      at Worker.trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\queue-base.js:153:34)
+      at Worker.processJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:481:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:66
+      at Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:30)
+      at Worker.mainLoop (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:41),
+  level: 'error',
+  message: '[Worker SendMessageAPI] Job 1 falhou. Erro: Error: ERR_WAPP_NOT_INITIALIZED',
+  timestamp: '2025-09-26T11:28:15.313Z'
+}
+{
+  message: 'Error send message api',
+  error: TypeError: Cannot read properties of undefined (reading 'name')
+      at VerifyContact (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:10:27)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:62:63)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:39:41.178Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 5)',
+  error: "TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:110:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:39:41.180Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:110:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 5 falhou. Erro: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:39:41.396Z'
+}
+{
+  message: 'Error send message api',
+  error: TypeError: Cannot read properties of undefined (reading 'pushname')
+      at VerifyContact (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:13:31)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:61:63)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:41:36.979Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 7)',
+  error: "TypeError: Cannot read properties of undefined (reading 'pushname')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading 'pushname')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:109:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:41:36.981Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading 'pushname')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:109:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 7 falhou. Erro: TypeError: Cannot read properties of undefined (reading 'pushname')",
+  timestamp: '2025-09-26T11:41:37.201Z'
+}
+{
+  message: 'Error send message api',
+  error: TypeError: Cannot read properties of undefined (reading 'pushname')
+      at VerifyContact (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:13:31)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:62:63)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:42:31.413Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 8)',
+  error: "TypeError: Cannot read properties of undefined (reading 'pushname')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading 'pushname')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:110:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:42:31.416Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading 'pushname')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:110:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 8 falhou. Erro: TypeError: Cannot read properties of undefined (reading 'pushname')",
+  timestamp: '2025-09-26T11:42:31.638Z'
+}
+{
+  message: 'Error send message api',
+  error: TypeError: Cannot read properties of undefined (reading 'pushname')
+      at VerifyContact (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:13:31)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:62:63)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:42:41.897Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 5)',
+  error: "TypeError: Cannot read properties of undefined (reading 'pushname')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading 'pushname')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:110:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:42:41.899Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading 'pushname')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:110:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 5 falhou. Erro: TypeError: Cannot read properties of undefined (reading 'pushname')",
+  timestamp: '2025-09-26T11:42:42.119Z'
+}
+{
+  message: 'Error send message api',
+  error: TypeError: Cannot read properties of undefined (reading 'name')
+      at getContactName (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:8:21)
+      at VerifyContact (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:17:15)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:62:63)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:46:36.967Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 10)',
+  error: "TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:110:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:46:36.969Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:110:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 10 falhou. Erro: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:46:37.197Z'
+}
+{
+  message: 'Error send message api',
+  error: TypeError: Cannot read properties of undefined (reading 'name')
+      at getContactName (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:8:21)
+      at VerifyContact (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:18:15)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:62:63)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:48:23.080Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 11)',
+  error: "TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:110:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:48:23.082Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:110:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 11 falhou. Erro: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:48:23.309Z'
+}
+{
+  message: 'Error send message api',
+  error: TypeError: Cannot read properties of undefined (reading 'name')
+      at getContactName (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:8:21)
+      at VerifyContact (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:18:15)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:62:63)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:49:37.496Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 10)',
+  error: "TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:110:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:49:37.498Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:110:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 10 falhou. Erro: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:49:37.727Z'
+}
+{
+  message: 'Error send message api',
+  error: TypeError: Cannot read properties of undefined (reading 'name')
+      at getContactName (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:8:21)
+      at VerifyContact (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:17:15)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:62:63)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T11:50:19.192Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 12)',
+  error: "TypeError: Cannot read properties of undefined (reading 'name')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading 'name')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:110:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T11:50:19.195Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading 'name')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:110:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 12 falhou. Erro: TypeError: Cannot read properties of undefined (reading 'name')",
+  timestamp: '2025-09-26T11:50:19.417Z'
+}
+{
+  message: 'Error send message api',
+  error: Error: ERR_WAPP_NOT_INITIALIZED
+      at getWbot (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\wbot.js:301:15)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:22:45)
+      at bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:38)
+      at Worker.callProcessJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:139:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:43
+      at trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\utils\index.js:258:16)
+      at Worker.trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\queue-base.js:153:34)
+      at Worker.processJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:481:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:66
+      at Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:30),
+  level: 'error',
+  timestamp: '2025-09-26T11:53:19.953Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 12)',
+  error: 'Error: ERR_WAPP_NOT_INITIALIZED',
+  stack: 'Error: Error: ERR_WAPP_NOT_INITIALIZED\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:105:19)\n' +
+    '    at bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:38)\n' +
+    '    at Worker.callProcessJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:139:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:43\n' +
+    '    at trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\utils\\index.js:258:16)\n' +
+    '    at Worker.trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue-base.js:153:34)\n' +
+    '    at Worker.processJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:481:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:66\n' +
+    '    at Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:30)\n' +
+    '    at Worker.mainLoop (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:41)',
+  level: 'error',
+  timestamp: '2025-09-26T11:53:19.956Z'
+}
+{
+  error: Error: Error: ERR_WAPP_NOT_INITIALIZED
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:105:19)
+      at bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:38)
+      at Worker.callProcessJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:139:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:43
+      at trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\utils\index.js:258:16)
+      at Worker.trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\queue-base.js:153:34)
+      at Worker.processJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:481:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:66
+      at Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:30)
+      at Worker.mainLoop (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:41),
+  level: 'error',
+  message: '[Worker SendMessageAPI] Job 12 falhou. Erro: Error: ERR_WAPP_NOT_INITIALIZED',
+  timestamp: '2025-09-26T11:53:20.177Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-09-26T12:09:30.173Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-09-26T12:09:47.021Z'
+}
+{
+  message: 'Error send message api',
+  error: TypeError: Cannot read properties of undefined (reading '_serialized')
+      at VerifyContact (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:12:25)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:67:63)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T12:19:35.084Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 2)',
+  error: "TypeError: Cannot read properties of undefined (reading '_serialized')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading '_serialized')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:115:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T12:19:35.086Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading '_serialized')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:115:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 2 falhou. Erro: TypeError: Cannot read properties of undefined (reading '_serialized')",
+  timestamp: '2025-09-26T12:19:35.306Z'
+}
+{
+  message: 'Error send message api',
+  error: TypeError: Cannot read properties of undefined (reading '_serialized')
+      at VerifyContact (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:12:25)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:66:63)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T12:20:53.880Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 3)',
+  error: "TypeError: Cannot read properties of undefined (reading '_serialized')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading '_serialized')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T12:20:53.882Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading '_serialized')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 3 falhou. Erro: TypeError: Cannot read properties of undefined (reading '_serialized')",
+  timestamp: '2025-09-26T12:20:54.110Z'
+}
+{
+  message: 'Error send message api',
+  error: TypeError: Cannot read properties of undefined (reading '_serialized')
+      at VerifyContact (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:12:25)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:66:63)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T12:22:35.813Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 2)',
+  error: "TypeError: Cannot read properties of undefined (reading '_serialized')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading '_serialized')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T12:22:35.814Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading '_serialized')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 2 falhou. Erro: TypeError: Cannot read properties of undefined (reading '_serialized')",
+  timestamp: '2025-09-26T12:22:36.041Z'
+}
+{
+  message: 'Error send message api',
+  error: TypeError: Cannot read properties of undefined (reading '_serialized')
+      at VerifyContact (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\services\WbotServices\Helpers\VerifyContact.js:12:25)
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:66:63)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  timestamp: '2025-09-26T12:23:54.617Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageAPI (ID: 3)',
+  error: "TypeError: Cannot read properties of undefined (reading '_serialized')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading '_serialized')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageAPI.js:114:19)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T12:23:54.618Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading '_serialized')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageAPI.js:114:19)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageAPI] Job 3 falhou. Erro: TypeError: Cannot read properties of undefined (reading '_serialized')",
+  timestamp: '2025-09-26T12:23:54.843Z'
+}
+{
+  message: 'Unhandled Rejection: Error: Queue "SendMessageConfirmar" not found.',
+  level: 'error',
+  timestamp: '2025-09-26T13:50:49.140Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageConfirmar (ID: 3)',
+  error: "TypeError: Cannot read properties of undefined (reading 'paciente_nome')",
+  stack: "Error: TypeError: Cannot read properties of undefined (reading 'paciente_nome')\n" +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageConfirmar.js:116:19)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-26T13:59:19.472Z'
+}
+{
+  error: Error: TypeError: Cannot read properties of undefined (reading 'paciente_nome')
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageConfirmar.js:116:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: "[Worker SendMessageConfirmar] Job 3 falhou. Erro: TypeError: Cannot read properties of undefined (reading 'paciente_nome')",
+  timestamp: '2025-09-26T13:59:19.698Z'
+}

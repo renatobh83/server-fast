@@ -2,49 +2,42 @@ import { sign } from "jsonwebtoken";
 import ApiConfig from "../../models/ApiConfig";
 import { AppError } from "../../errors/errors.helper";
 import * as Yup from "yup";
+import { FastifyRequest } from "fastify";
 
 interface Request {
+  request: FastifyRequest;
+  userId: number;
+  tenantId: number;
+}
+interface ApiData {
   name: string;
   sessionId: number;
   urlServiceStatus?: string;
   urlMessageStatus?: string;
   authToken: string;
-  userId: number;
-  tenantId: number;
+  isActive?: boolean;
 }
 
 const CreateApiConfigService = async ({
-  name,
-  sessionId,
-  urlServiceStatus,
-  urlMessageStatus,
+  request,
   userId,
-  authToken,
   tenantId,
 }: Request): Promise<ApiConfig> => {
   try {
-    const secret = process.env.JWT_API_CONFIG!;
-    const token = sign(
-      {
-        tenantId,
-        profile: "admin",
-        sessionId,
-      },
-      secret,
-      {
-        expiresIn: "730d",
-      }
-    );
+    const { sessionId, ...rest } = request.body as ApiData;
+    const payload = {
+      tenantId,
+      profile: "admin",
+      sessionId,
+    };
+    const token = request.server.jwt.sign(payload, { expiresIn: "100d" });
 
     const api = await ApiConfig.create({
-      name,
+      ...rest,
       sessionId,
-      token,
-      authToken,
-      urlServiceStatus,
-      urlMessageStatus,
       userId,
       tenantId,
+      token,
     });
 
     return api;

@@ -23,4 +23,42 @@ export default async function emailRoutes(fastify: FastifyInstance) {
     },
     EmailController.createEmail
   );
+  fastify.post(
+    "/email/send",
+    {
+      schema: {
+        body: {
+          type: "object",
+          required: ["to", "subject", "html"],
+          properties: {
+            html: { type: "string" },
+            subject: { type: "string" },
+            to: { type: "string", format: "email" },
+            attachmentUrl: { type: "string" },
+          },
+        },
+      },
+    },
+    EmailController.sendEmailController
+  );
+  fastify.post(
+    "/email/send/teste",
+    {
+      schema: {
+        body: {
+          type: "object",
+          required: ["text", "html"],
+          properties: {
+            html: { type: "string" },
+            text: { type: "string" },
+          },
+        },
+      },
+    },
+    EmailController.sendEmailController
+  );
+  fastify.post(
+    "/email/send/:chamadoId/close",
+    EmailController.sendEmailChamadoClose
+  );
 }

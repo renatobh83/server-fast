@@ -59,6 +59,7 @@ async function userRoutes(fastify: FastifyInstance) {
     },
     UserController.updateIsOnline
   );
+  fastify.get("/users/:userId", UserController.showUser);
 }
 
 export default userRoutes;

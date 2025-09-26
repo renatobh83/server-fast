@@ -7,6 +7,7 @@ import UpdateUserService from "../services/UserServices/UpdateUserService";
 import { getIO } from "../lib/socket";
 import DeleteUserService from "../services/UserServices/DeleteUserService";
 import { UpdateUserIsOnlineService } from "../helpers/UpdateUserIsOnlineService";
+import ShowUserService from "../services/UserServices/ShowUserService";
 
 type IndexQuery = {
   searchParam: string;
@@ -149,6 +150,21 @@ export const updateIsOnline = async (
     };
     io.emit(tenantId + ":user", updateMessage);
     return reply.code(STANDARD.OK.statusCode).send(updatedUser);
+  } catch (error) {
+    console.log(error);
+    return handleServerError(reply, error);
+  }
+};
+
+export const showUser = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  const { tenantId } = request.user as any;
+  const { userId } = request.params as any;
+  try {
+    const user = await ShowUserService(userId, tenantId);
+    return reply.code(STANDARD.OK.statusCode).send(user);
   } catch (error) {
     console.log(error);
     return handleServerError(reply, error);
