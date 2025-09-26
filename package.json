@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run copy-static",
     "run-dev": "tsc-watch --onSuccess \"node dist/server.js\"",
     "dev": "./start-tunnel.sh && npm run run-dev",
+    "copy-static": "cp -r src/services/IntegracoesServices/NFE/PDF/CodigoTributacao dist/services/IntegracoesServices/NFE/PDF/ && cp src/services/IntegracoesServices/NFE/PDF/template.html dist/services/IntegracoesServices/NFE/PDF/ && cp -r src/services/IntegracoesServices/NFE/mock dist/services/IntegracoesServices/NFE/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:win": "start /B ssh  -p 2290 -f -N -L 6432:localhost:6432 root@109.199.105.36 && npm run run-dev"
   },
