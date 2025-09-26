@@ -13,7 +13,6 @@ export async function getApiInstance(integracao: any, jwt: boolean) {
   try {
     if (!token || !token.trim() || isTokenExpired(token)) {
       const { user, baseUrl, password } = integracao.config_json;
-
       url = `${baseUrl}doFuncionarioLogin?id=${user}&pw=${encodeURIComponent(
         password
       )}`;
@@ -53,13 +52,3 @@ export async function getApiInstance(integracao: any, jwt: boolean) {
     throw error;
   }
 }
-
-// export async function getApiInstance2(integracao: any) {
-//   return axios.create({
-//     baseURL: integracao.config_json.baseUrl,
-//     httpsAgent: agent,
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded'",
-//     },
-//   });
-// }

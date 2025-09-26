@@ -212,6 +212,7 @@ const BuildSendMessageService = async ({
         });
       } else {
         const integracaoService = await GetIntegracao(tenantId, integracao);
+
         if (integracaoService.name.toLocaleLowerCase().trim() === "genesis") {
           options = await actionsIntegracaoGenesis(
             integracaoService,
@@ -395,6 +396,7 @@ const BuildSendMessageService = async ({
       });
     }
   } catch (error: any) {
+    console.log(error);
     throw new AppError("ERR_BUILD_SEND_MESSAGE_SERVICE", 502);
   }
 };

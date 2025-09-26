@@ -115,7 +115,8 @@ const TelegramSendMessagesSystem = async (
     if (error instanceof AppError) {
       throw error;
     }
-    throw new AppError("ERR_UPDATE_SETTING_SERVICE", 500);
+    console.log(error);
+    throw new AppError("ERR", 500);
   }
 };
 

@@ -61,13 +61,14 @@ export const createOrUpdateDadosIntegracao = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const { name, configJson, id } = request.body as any;
+  const { name, config_json, id } = request.body as any;
   try {
     const integracao = await CreateOrUpdateDadosIntegracaoService({
       id,
-      valores_json: configJson,
+      valores_json: config_json,
       name,
     });
+
     return reply.code(STANDARD.OK.statusCode).send(integracao);
   } catch (error) {
     return handleServerError(reply, error);

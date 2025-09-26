@@ -171,7 +171,7 @@ export async function handleConsulta({
     integracao,
     cpf,
   });
-
+  console.log(consultaAPI);
   const erro = getError(consultaAPI);
   if (erro === "Senha inválida !") {
     return "Para continuar, por favor, digite sua senha de acesso.";

@@ -26,7 +26,7 @@ export default async function auxiliarRoutes(fastify: FastifyInstance) {
     }
   });
 
-  fastify.post("/r/:code", async (request, reply) => {
+  fastify.get("/r/:code", async (request, reply) => {
     const { code } = request.params as any;
     try {
       const originalUrl = await redisClient.get(`short:${code}`);

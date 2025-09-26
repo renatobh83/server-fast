@@ -43,23 +43,24 @@ export const ObsplanoAsync = async ({
   cdPlano,
   token,
 }: GetObsPlanoProps) => {
-  const url = `/${avisoPLano}?cd_plano=${cdPlano}&token=${token}`;
+  const url = `${avisoPLano}?cd_plano=${cdPlano}&token=${token}`;
   const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
 
   try {
     const instanceApi = await getApiInstance(integracao, true);
-    const { data } = await instanceApi.post(URL_FINAL, {});
 
-    const infoPlano = data[0];
-    if (!infoPlano.ds_infoweb) return false;
-    // Decodifica Base64
-    const decoded = Buffer.from(infoPlano.ds_infoweb, "base64").toString(
-      "utf-8"
-    );
+    const data = await instanceApi.post(URL_FINAL, {});
 
-    return decoded;
+    // const infoPlano = data[0];
+    // if (!infoPlano.ds_infoweb) return false;
+    // // Decodifica Base64
+    // const decoded = Buffer.from(infoPlano.ds_infoweb, "base64").toString(
+    //   "utf-8"
+    // );
+
+    return "decoded";
   } catch (error) {
-    console.error("Erro ao confirmar exame:", error);
+    console.error("Erro observacao plano:", error);
     throw error;
   }
 };
