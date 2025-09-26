@@ -202,7 +202,7 @@ export const exportFlow = async (
       throw new AppError("ERR_NO_PERMISSION", 403);
     }
     const jsonFlow = await ExportChatFlowService({ tenantId, id: chatFlowId });
-    reply
+    return reply
       .header(
         "Content-Disposition",
         `attachment; filename=${jsonFlow.name}.json`

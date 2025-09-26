@@ -1,6 +1,3 @@
-// import dayjs from "dayjs";
-// import customParseFormat from "dayjs/plugin/customParseFormat";
-// dayjs.extend(customParseFormat);
 import Ticket from "../../../models/Ticket";
 import { dispatchAction } from "./actions/action_dispatcher";
 import {

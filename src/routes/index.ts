@@ -21,11 +21,13 @@ import channelRoutes from "./channelSessionRoutes";
 import chatRoutes from "./chatClientRoutes";
 import chatFlowRoutes from "./ChatFlowRoutes";
 import apiExternaRoutes from "./apiExternaRoutes";
+import auxiliarRoutes from "./auxiliarRoutes";
 
 async function routes(fastify: FastifyInstance) {
   fastify.register(authRoutes, { prefix: "/auth" });
   fastify.register(chatRoutes, { prefix: "/api" });
   fastify.register(apiExternaRoutes, { prefix: "/v1/api/external" });
+  fastify.register(auxiliarRoutes);
 
   fastify.register(async (privateScope) => {
     privateScope.addHook("preHandler", fastify.authenticate);
