@@ -97,7 +97,7 @@ const UpdateWhatsAppService = async ({
       action: "update",
       session: whatsapp,
     });
-    return { whatsapp, oldDefaultWhatsapp };
+    return whatsapp;
   } catch (err: any) {
     console.log(err);
     throw new AppError("ERRO_VALIDATE", 404);
