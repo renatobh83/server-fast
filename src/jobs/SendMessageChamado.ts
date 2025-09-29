@@ -47,7 +47,7 @@ export default {
       if (!contact) {
         throw new AppError("Contato nao encontrado", 404);
       }
-      console.log(contact);
+
       if (contact.telegramId) {
         const defaultTelegram = await GetDefaultWhatsApp(
           tenantId,
