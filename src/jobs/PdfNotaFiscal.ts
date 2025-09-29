@@ -5,8 +5,13 @@ import { logger } from "../utils/logger";
 export default {
   key: "pdfQueue",
   options: {
-    removeOnComplete: false,
-    removeOnFail: false,
+    removeOnComplete: {
+      age: 3600, // em segundos -> 1 hora
+      count: 100, // mantém no máximo 100 jobs completados
+    },
+    removeOnFail: {
+      age: 86400, // mantém falhas por 1 dia
+    },
     attempts: 3,
     backoff: {
       type: "exponential",

@@ -65,6 +65,7 @@ export const listaTodosChamados = async (
       hasMore,
     });
   } catch (error) {
+    console.log(error);
     return handleServerError(reply, error);
   }
 };
@@ -150,6 +151,7 @@ export const detailsChamado = async (
 
     return reply.code(STANDARD.OK.statusCode).send(detalhesChamado);
   } catch (error) {
+    console.log(error);
     return handleServerError(reply, error);
   }
 };

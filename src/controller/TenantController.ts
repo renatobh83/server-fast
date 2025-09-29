@@ -7,6 +7,7 @@ import ShowBusinessHoursAndMessageService from "../services/TenantServices/ShowB
 import ListDadosTenantService from "../services/TenantServices/ListDadosTenantService";
 import UpdateDadosTenantService from "../services/TenantServices/UpdateDadosTenantService";
 import UpdateBusinessHoursService from "../services/TenantServices/UpdateBusinessHoursService";
+import UpdateMessageBusinessHoursService from "../services/TenantServices/UpdateMessageBusinessHoursService";
 
 export const updateBusinessHours = async (
   request: FastifyRequest,
@@ -90,12 +91,12 @@ export const updateMessageBusinessHours = async (
         .send(ERRORS.MessageNoFound.message);
     }
 
-    // const newBusinessHours = await UpdateMessageBusinessHoursService({
-    //   messageBusinessHours,
-    //   tenantId,
-    // });
+    const newBusinessHours = await UpdateMessageBusinessHoursService({
+      messageBusinessHours,
+      tenantId,
+    });
 
-    reply.code(STANDARD.OK.statusCode).send({ message: "CONFIGURAR UPDATE" });
+    reply.code(STANDARD.OK.statusCode).send(newBusinessHours);
   } catch (error) {
     return handleServerError(reply, error);
   }

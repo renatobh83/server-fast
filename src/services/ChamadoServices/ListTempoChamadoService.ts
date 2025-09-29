@@ -25,6 +25,7 @@ export const ListTempoChamado = async (empresaId: number) => {
     if (error instanceof AppError) {
       throw error;
     }
+    console.log(error);
     throw new AppError("ERR_LIST_TIME_CHAMADO", 500);
   }
 };

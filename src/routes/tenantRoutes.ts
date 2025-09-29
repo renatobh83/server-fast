@@ -21,5 +21,9 @@ export default async function tenantRoutes(fastify: FastifyInstance) {
     TenantController.udpateDadosNf
   );
   fastify.put("/business-hours", TenantController.updateBusinessHours);
+  fastify.put(
+    "/message-business-hours",
+    TenantController.updateMessageBusinessHours
+  );
   fastify.get("/business-hours", TenantController.showBusinessHoursAndMessage);
 }

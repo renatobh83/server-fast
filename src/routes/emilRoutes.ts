@@ -31,7 +31,7 @@ export default async function emailRoutes(fastify: FastifyInstance) {
           type: "object",
           required: ["to", "subject", "html"],
           properties: {
-            html: { type: "string" },
+            html: { type: "object" },
             subject: { type: "string" },
             to: { type: "string", format: "email" },
             attachmentUrl: { type: "string" },
@@ -49,7 +49,7 @@ export default async function emailRoutes(fastify: FastifyInstance) {
           type: "object",
           required: ["text", "html"],
           properties: {
-            html: { type: "string" },
+            html: { type: "object" },
             text: { type: "string" },
           },
         },

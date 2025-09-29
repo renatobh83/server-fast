@@ -42,6 +42,7 @@ export const detailsChamadoService = async (
     if (error instanceof AppError) {
       throw error;
     }
+    console.log(error);
     throw new AppError("ERR_LIST_DETAILS_TICKET_SERVICE", 502);
   }
 };

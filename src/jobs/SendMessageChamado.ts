@@ -5,13 +5,13 @@ import GetDefaultWhatsApp from "../helpers/GetDefaultWhatsApp";
 import path from "node:path";
 import fs from "node:fs";
 import { AppError } from "../errors/errors.helper";
-import { getTbot ,requireTbot} from "../lib/tbot";
+import { getTbot, requireTbot } from "../lib/tbot";
 import { getWbot } from "../lib/wbot";
 export default {
   key: "SendMessageChamado",
   options: {
     delay: 1000,
-    attempts: 5,
+    attempts: 1,
     removeOnComplete: 2,
     removeOnFail: 5,
     backoff: {
@@ -47,6 +47,7 @@ export default {
       if (!contact) {
         throw new AppError("Contato nao encontrado", 404);
       }
+      console.log(contact);
       if (contact.telegramId) {
         const defaultTelegram = await GetDefaultWhatsApp(
           tenantId,
@@ -120,6 +121,7 @@ export default {
         }
       }
     } catch (error: any) {
+      console.log(error);
       logger.error({ message: "Error send message api", error });
       throw new Error(error);
     }

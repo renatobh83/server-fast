@@ -22,6 +22,7 @@ import chatRoutes from "./chatClientRoutes";
 import chatFlowRoutes from "./ChatFlowRoutes";
 import apiExternaRoutes from "./apiExternaRoutes";
 import auxiliarRoutes from "./auxiliarRoutes";
+import aplicationRoutes from "./aplicationRoutes";
 
 async function routes(fastify: FastifyInstance) {
   fastify.register(authRoutes, { prefix: "/auth" });
@@ -31,6 +32,7 @@ async function routes(fastify: FastifyInstance) {
 
   fastify.register(async (privateScope) => {
     privateScope.addHook("preHandler", fastify.authenticate);
+    fastify.register(aplicationRoutes);
     fastify.register(tenantRoutes, { prefix: "/tenants" });
     fastify.register(adminRoutes, { prefix: "/admin" });
     fastify.register(userRoutes, { prefix: "/users" });
