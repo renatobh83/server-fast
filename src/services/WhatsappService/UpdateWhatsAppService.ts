@@ -27,15 +27,11 @@ interface Request {
   tenantId: string | number;
 }
 
-interface Response {
-  whatsapp: Whatsapp;
-}
-
 const UpdateWhatsAppService = async ({
   whatsappData,
   whatsappId,
   tenantId,
-}: Request): Promise<Response> => {
+}: Request): Promise<Whatsapp> => {
   const {
     name,
     status,
