@@ -38,40 +38,39 @@ const FindOrCreateTicketService = async ({
   // se for uma mensagem de campanha, não abrir tícke
 
   try {
-    let ticket = (await getCache(
-      RedisKeys.ticketFindOrCreate(tenantId, whatsappId, contact.id)
-    )) as Ticket;
-    if (!ticket) {
-      ticket = (await Ticket.findOne({
-        where: {
-          status: {
-            [Op.or]: ["open", "pending"],
-          },
-          tenantId,
-          whatsappId,
-          contactId: contact.id,
+    // let ticket = (await getCache(
+    //   RedisKeys.ticketFindOrCreate(tenantId, whatsappId, contact.id)
+    // )) as Ticket;
+    // if (!ticket) {
+    let ticket = (await Ticket.findOne({
+      where: {
+        status: {
+          [Op.or]: ["open", "pending"],
         },
-        include: [
-          {
-            model: Contact,
-            as: "contact",
-          },
-          {
-            model: User,
-            as: "user",
-            attributes: ["id", "name"],
-          },
-          {
-            association: "whatsapp",
-            attributes: ["id", "name"],
-          },
-        ],
-      })) as unknown as Ticket;
-      await setCache(
-        RedisKeys.ticketFindOrCreate(tenantId, whatsappId, contact.id),
-        ticket
-      );
-    }
+        tenantId,
+        whatsappId,
+        contactId: contact.id,
+      },
+      include: [
+        {
+          model: Contact,
+          as: "contact",
+        },
+        {
+          model: User,
+          as: "user",
+          attributes: ["id", "name"],
+        },
+        {
+          association: "whatsapp",
+          attributes: ["id", "name"],
+        },
+      ],
+    })) as unknown as Ticket;
+    // await setCache(
+    //   RedisKeys.ticketFindOrCreate(tenantId, whatsappId, contact.id),
+    //   ticket
+    // );
 
     if (ticket) {
       unreadMessages =
