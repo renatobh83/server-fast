@@ -753,3 +753,188 @@
   message: '[Worker SendMessageChamado] Job 2 falhou. Erro: Error: 400: Bad Request: chat not found',
   timestamp: '2025-09-29T15:46:59.457Z'
 }
+{
+  message: 'Error send message api',
+  error: TelegramError: 400: Bad Request: chat not found
+      at Telegram.callApi (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\telegraf\lib\core\network\client.js:315:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageChamado.js:62:21)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24) {
+    response: {
+      ok: false,
+      error_code: 400,
+      description: 'Bad Request: chat not found'
+    },
+    on: {
+      method: 'sendMessage',
+      payload: {
+        chat_id: '0',
+        text: 'Olá,\n' +
+          '\n' +
+          'Seu chamado foi atualizado com as seguintes informações:\n' +
+          '\n' +
+          '🔹 ID do Chamado: 4\n' +
+          '🔹 Assunto: Erros na nova versao a ser olhado\n' +
+          '🔹 Técnico Responsável: Administrador Renato\n' +
+          '\n' +
+          'Erro 500 na rota https://fast.panelapps.site/email/send/4/close\n' +
+          'Método da solicitação\n' +
+          'POST\n' +
+          '\n' +
+          'Caso tenha alguma dúvida ou precise de mais informações, estamos à disposição.\n' +
+          '\n' +
+          'Atenciosamente,\n' +
+          '[Nome da Equipe/Suporte]'
+      }
+    }
+  },
+  level: 'error',
+  timestamp: '2025-09-29T15:48:24.436Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageChamado (ID: 3)',
+  error: 'Error: 400: Bad Request: chat not found',
+  stack: 'Error: Error: 400: Bad Request: chat not found\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageChamado.js:91:19)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-29T15:48:24.438Z'
+}
+{
+  error: Error: Error: 400: Bad Request: chat not found
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageChamado.js:91:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: '[Worker SendMessageChamado] Job 3 falhou. Erro: Error: 400: Bad Request: chat not found',
+  timestamp: '2025-09-29T15:48:24.661Z'
+}
+{
+  message: 'Error send message api',
+  error: TelegramError: 400: Bad Request: chat not found
+      at Telegram.callApi (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\telegraf\lib\core\network\client.js:315:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageChamado.js:62:21)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24) {
+    response: {
+      ok: false,
+      error_code: 400,
+      description: 'Bad Request: chat not found'
+    },
+    on: {
+      method: 'sendMessage',
+      payload: {
+        chat_id: '0',
+        text: 'Olá,\n' +
+          '\n' +
+          'Seu chamado foi atualizado com as seguintes informações:\n' +
+          '\n' +
+          '🔹 ID do Chamado: 4\n' +
+          '🔹 Assunto: Erros na nova versao a ser olhado\n' +
+          '🔹 Técnico Responsável: Administrador Renato\n' +
+          '\n' +
+          'Ver a geracao pdf nota fiscal. dados da montagem da nota nao esta na Pasta DIST\n' +
+          '\n' +
+          'Caso tenha alguma dúvida ou precise de mais informações, estamos à disposição.\n' +
+          '\n' +
+          'Atenciosamente,\n' +
+          '[Nome da Equipe/Suporte]'
+      }
+    }
+  },
+  level: 'error',
+  timestamp: '2025-09-29T15:53:41.414Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageChamado (ID: 4)',
+  error: 'Error: 400: Bad Request: chat not found',
+  stack: 'Error: Error: 400: Bad Request: chat not found\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageChamado.js:91:19)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-29T15:53:41.418Z'
+}
+{
+  error: Error: Error: 400: Bad Request: chat not found
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageChamado.js:91:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: '[Worker SendMessageChamado] Job 4 falhou. Erro: Error: 400: Bad Request: chat not found',
+  timestamp: '2025-09-29T15:53:41.638Z'
+}
+{
+  message: 'Error send message api',
+  error: TelegramError: 400: Bad Request: chat not found
+      at Telegram.callApi (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\telegraf\lib\core\network\client.js:315:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageChamado.js:62:21)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24) {
+    response: {
+      ok: false,
+      error_code: 400,
+      description: 'Bad Request: chat not found'
+    },
+    on: {
+      method: 'sendMessage',
+      payload: {
+        chat_id: '0',
+        text: 'Olá,\n' +
+          '\n' +
+          'Seu chamado foi atualizado com as seguintes informações:\n' +
+          '\n' +
+          '🔹 ID do Chamado: 4\n' +
+          '🔹 Assunto: Erros na nova versao a ser olhado\n' +
+          '🔹 Técnico Responsável: Administrador Renato\n' +
+          '\n' +
+          'Ver a geracao pdf nota fiscal. dados da montagem da nota nao esta na Pasta DIST\n' +
+          '\n' +
+          'Caso tenha alguma dúvida ou precise de mais informações, estamos à disposição.\n' +
+          '\n' +
+          'Atenciosamente,\n' +
+          '[Nome da Equipe/Suporte]'
+      }
+    }
+  },
+  level: 'error',
+  timestamp: '2025-09-29T15:55:28.622Z'
+}
+{
+  message: 'Erro em processamento do job SendMessageChamado (ID: 5)',
+  error: 'Error: 400: Bad Request: chat not found',
+  stack: 'Error: Error: 400: Bad Request: chat not found\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendMessageChamado.js:91:19)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-29T15:55:28.623Z'
+}
+{
+  error: Error: Error: 400: Bad Request: chat not found
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendMessageChamado.js:91:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: '[Worker SendMessageChamado] Job 5 falhou. Erro: Error: 400: Bad Request: chat not found',
+  timestamp: '2025-09-29T15:55:28.842Z'
+}
