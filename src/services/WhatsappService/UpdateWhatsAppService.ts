@@ -29,7 +29,6 @@ interface Request {
 
 interface Response {
   whatsapp: Whatsapp;
-  oldDefaultWhatsapp: Whatsapp | null;
 }
 
 const UpdateWhatsAppService = async ({
