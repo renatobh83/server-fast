@@ -23,8 +23,9 @@ export const RedisKeys = {
   ) => `DashTicketsPerUsersDetail:${startDate}:${endDate}:${profile}`,
   DashTicketsQueue: (startDate: string, endDate: string, profile: string) =>
     `DashTicketsQueue:${startDate}:${endDate}:${profile}`,
+  contactTicket: (tenantId: number, contactIdOrPhone: string | number) =>
+    `contact:${tenantId}:${contactIdOrPhone}`,
 
-  contatos: () => `contatos`,
   tentantServices: () => `tentantServices`,
   queues: (tenantId: number | string) => `queues:${tenantId}`,
   contact: (
@@ -32,8 +33,13 @@ export const RedisKeys = {
     uniqueValue: any,
     contactIdOrPhone: string | number
   ) => `contact:${tenantId}:${contactIdOrPhone}:${uniqueValue}`,
-  ticket: (tenantId: number | string, ticetId: number | string) =>
-    `ticket:${tenantId}:${ticetId}`,
+  ticketService: (tenantId: number | string, ticketId: number | string) =>
+    `ticket:${tenantId}:${ticketId}`,
+  ticketFindOrCreate: (
+    tenantId: number | string,
+    sessionId: number | string,
+    contatoId: number
+  ) => `ticket:${tenantId}:${sessionId}:${contatoId}`,
   messages: (tenantId: number | string, ticketId: string | number) =>
     `messages:${tenantId}:${ticketId}`,
   canalService: (channel: any) => `channelService:${channel}`,

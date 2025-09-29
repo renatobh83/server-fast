@@ -4,7 +4,7 @@ import CheckContactOpenTickets from "../../helpers/CheckContactOpenTickets";
 import GetDefaultWhatsApp from "../../helpers/GetDefaultWhatsApp";
 import socketEmit from "../../helpers/socketEmit";
 import Ticket from "../../models/Ticket";
-import { getCache } from "../../utils/cacheRedis";
+import { getCache, setCache } from "../../utils/cacheRedis";
 
 import ShowContactService from "../ContactServices/ShowContactService";
 import ShowTicketService from "./ShowTicketService";
@@ -54,10 +54,12 @@ const CreateTicketService = async ({
     }
     // --- FIM DA MODIFICAÇÃO ---
 
-    // let isGroup = await getCache(RedisKeys.contact(tenantId, contactId))
-    const { isGroup } =
-     await ShowContactService({ id: contactId, tenantId });
-
+    let isGroup = await getCache(RedisKeys.contactTicket(+tenantId, contactId));
+    if (!isGroup) {
+      const contact = await ShowContactService({ id: contactId, tenantId });
+      isGroup = contact.isGroup;
+      await setCache(RedisKeys.contactTicket(+tenantId, contactId), isGroup);
+    }
 
     const { id }: Ticket = await Ticket.create({
       contactId,
@@ -70,8 +72,14 @@ const CreateTicketService = async ({
       whatsappId: defaultWhatsapp.id, // 🔑 vínculo manual
     });
 
-    const ticket = await ShowTicketService({ id, tenantId });
-   
+    let ticket = (await getCache(
+      RedisKeys.ticketService(tenantId, id)
+    )) as Ticket;
+    if (!ticket) {
+      ticket = await ShowTicketService({ id, tenantId });
+      await setCache(RedisKeys.ticketService(tenantId, id), ticket);
+    }
+
     const jsonTicket = ticket.toJSON();
 
     if (!ticket) {

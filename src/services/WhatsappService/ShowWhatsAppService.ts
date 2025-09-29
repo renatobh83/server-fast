@@ -1,7 +1,5 @@
-import { RedisKeys } from "../../constants/redisKeys";
 import { AppError } from "../../errors/errors.helper";
 import Whatsapp from "../../models/Whatsapp";
-import { getCache, setCache } from "../../utils/cacheRedis";
 
 interface Data {
   id: string | number;

@@ -1,7 +1,5 @@
-import { RedisKeys } from "../../constants/redisKeys";
 import { AppError } from "../../errors/errors.helper";
 import socketEmit from "../../helpers/socketEmit";
-import { redisClient } from "../../lib/redis";
 import Chamado from "../../models/Chamado";
 import Contact from "../../models/Contact";
 import Empresa from "../../models/Empresa";

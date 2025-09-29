@@ -4,8 +4,6 @@ import { AppError } from "../../errors/errors.helper";
 import Empresa from "../../models/Empresa";
 import User from "../../models/User";
 import { sequelize } from "../../database/db";
-import { getCache, setCache } from "../../utils/cacheRedis";
-import { RedisKeys } from "../../constants/redisKeys";
 
 interface Request {
   searchParam?: string;
@@ -48,28 +46,25 @@ const ListContactsService = async ({
     ON "Contact"."id" = "contacts->EmpresaContact"."contactId"
     where ${where}
   `;
-    let contacts = (await getCache(RedisKeys.contatos())) as Contact[];
-    if (!contacts) {
-      contacts = await Contact.findAll({
-        include: [
-          {
-            model: Empresa,
-            as: "empresa",
-            through: { attributes: [] }, // Exclui campos da tabela intermediária
-            attributes: ["id", "name"], // Inclui apenas os campos desejados de Empresa
-          },
-          {
-            model: User,
-            attributes: ["id", "name"],
-          },
-        ],
-        // where: someWhereCondition, // Substitua pela sua condição
-        order: [["name", "ASC"]],
-        limit: limit,
-        offset: offset,
-      });
-      await setCache(RedisKeys.contatos(), contacts);
-    }
+
+    const contacts = await Contact.findAll({
+      include: [
+        {
+          model: Empresa,
+          as: "empresa",
+          through: { attributes: [] }, // Exclui campos da tabela intermediária
+          attributes: ["id", "name"], // Inclui apenas os campos desejados de Empresa
+        },
+        {
+          model: User,
+          attributes: ["id", "name"],
+        },
+      ],
+      // where: someWhereCondition, // Substitua pela sua condição
+      order: [["name", "ASC"]],
+      limit: limit,
+      offset: offset,
+    });
 
     const data: any = await sequelize.query(queryCount, {
       type: QueryTypes.SELECT,

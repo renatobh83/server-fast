@@ -1,9 +1,7 @@
-import { RedisKeys } from "../../constants/redisKeys";
 import { AppError } from "../../errors/errors.helper";
 import Contact from "../../models/Contact";
 import Ticket from "../../models/Ticket";
 import User from "../../models/User";
-import { getCache, setCache } from "../../utils/cacheRedis";
 
 interface Request {
   id: string | number;

@@ -1,126 +1,3 @@
-// import { Op } from "sequelize";
-// import { AppError } from "../../errors/errors.helper";
-// import socketEmit from "../../helpers/socketEmit";
-// import Contact from "../../models/Contact";
-// import User from "../../models/User";
-// import Ticket from "../../models/Ticket";
-// import CheckChatBotFlowWelcome from "../WbotServices/Helpers/CheckChatBotFlowWelcome";
-// import { getCache, setCache } from "../../utils/cacheRedis";
-// import { RedisKeys } from "../../constants/redisKeys";
-
-// interface Data {
-//   contact: Contact;
-//   whatsappId: number;
-//   unreadMessages: number;
-//   tenantId: number;
-//   groupContact?: boolean;
-//   msg?: any;
-//   isSync?: boolean;
-//   channel: string;
-// }
-// const FindOrCreateTicketService = async ({
-//   contact,
-//   whatsappId,
-//   unreadMessages,
-//   tenantId,
-//   groupContact = false,
-//   msg,
-//   isSync = false,
-//   channel,
-// }: Data): Promise<Ticket> => {
-//   try {
-//     let ticket = await Ticket.findOne({
-//       where: {
-//         status: {
-//           [Op.or]: ["open", "pending"],
-//         },
-//         tenantId,
-//         whatsappId,
-//         contactId: contact.id,
-//       },
-//       include: [
-//         {
-//           model: Contact,
-//           as: "contact",
-//         },
-//         {
-//           model: User,
-//           as: "user",
-//           attributes: ["id", "name"],
-//         },
-//         {
-//           association: "whatsapp",
-//           as: "whatsapp",
-//           attributes: ["id", "name"],
-//         },
-//       ],
-//     });
-
-//     if (ticket) {
-//       unreadMessages =
-//         ["telegram", "waba", "instagram", "messenger"].includes(channel) &&
-//         unreadMessages > 0
-//           ? (unreadMessages += ticket.unreadMessages)
-//           : unreadMessages;
-//       await ticket.update({
-//         unreadMessages,
-//         status: "pending",
-//         userId: undefined,
-//       });
-
-//       socketEmit({
-//         tenantId,
-//         type: "ticket:update",
-//         payload: ticket,
-//       });
-//       return ticket;
-//     } else {
-//       // 🔹 2b. Ticket individual: upsert
-//       const [ticketUpsert] = await Ticket.upsert(
-//         {
-//           contactId: contact.id,
-//           tenantId,
-//           whatsappId,
-//           unreadMessages,
-//           status: "open",
-//           channel,
-//         },
-
-//         {
-//           returning: true,
-//           conflictFields: ["contactId", "whatsappId", "tenantId"], // campos com UNIQUE
-//         }
-//       );
-//       ticket = (await Ticket.findByPk(ticketUpsert.id, {
-//         include: [
-//           { model: Contact, as: "contact" },
-//           { model: User, as: "user", attributes: ["id", "name"] },
-//           {
-//             association: "whatsapp",
-//             as: "whatsapp",
-//             attributes: ["id", "name"],
-//           },
-//         ],
-//       })) as Ticket;
-//     }
-
-//     // 🔹 4. Emissão de socket
-//     socketEmit({
-//       tenantId,
-//       type: "ticket:update",
-//       payload: ticket,
-//     });
-//     // 🔹 5. Trigger chatbot
-//     if ((msg && !msg.fromMe) || (!ticket.userId && !msg?.author) || isSync) {
-//       await CheckChatBotFlowWelcome(ticket);
-//     }
-//     ticket.setDataValue("isCreated", true);
-//     return ticket;
-//   } catch (error) {
-//     console.error(error);
-//     throw new AppError("ERR_FIND_OR_CREATE_TICKET_SERVICE", 500);
-//   }
-// };
 import { Op } from "sequelize";
 import type { Message as WpMessage } from "wbotconnect";
 import socketEmit from "../../helpers/socketEmit";
@@ -134,6 +11,8 @@ import ShowTicketService from "./ShowTicketService";
 import ListSettingsService from "../SettingServices/ListSettingsService";
 import CheckChatBotFlowWelcome from "../WbotServices/Helpers/CheckChatBotFlowWelcome";
 import { AppError } from "../../errors/errors.helper";
+import { getCache, setCache } from "../../utils/cacheRedis";
+import { RedisKeys } from "../../constants/redisKeys";
 
 interface Data {
   contact: Contact;
@@ -159,31 +38,41 @@ const FindOrCreateTicketService = async ({
   // se for uma mensagem de campanha, não abrir tícke
 
   try {
-    let ticket = await Ticket.findOne({
-      where: {
-        status: {
-          [Op.or]: ["open", "pending"],
+    let ticket = (await getCache(
+      RedisKeys.ticketFindOrCreate(tenantId, whatsappId, contact.id)
+    )) as Ticket;
+    if (!ticket) {
+      ticket = (await Ticket.findOne({
+        where: {
+          status: {
+            [Op.or]: ["open", "pending"],
+          },
+          tenantId,
+          whatsappId,
+          contactId: contact.id,
         },
-        tenantId,
-        whatsappId,
-        contactId: contact.id,
-      },
-      include: [
-        {
-          model: Contact,
-          as: "contact",
-        },
-        {
-          model: User,
-          as: "user",
-          attributes: ["id", "name"],
-        },
-        {
-          association: "whatsapp",
-          attributes: ["id", "name"],
-        },
-      ],
-    });
+        include: [
+          {
+            model: Contact,
+            as: "contact",
+          },
+          {
+            model: User,
+            as: "user",
+            attributes: ["id", "name"],
+          },
+          {
+            association: "whatsapp",
+            attributes: ["id", "name"],
+          },
+        ],
+      })) as unknown as Ticket;
+      await setCache(
+        RedisKeys.ticketFindOrCreate(tenantId, whatsappId, contact.id),
+        ticket
+      );
+    }
+
     if (ticket) {
       unreadMessages =
         ["telegram", "waba", "instagram", "messenger"].includes(channel) &&
@@ -201,7 +90,7 @@ const FindOrCreateTicketService = async ({
     }
 
     if (groupContact) {
-      ticket = await Ticket.findOne({
+      ticket = (await Ticket.findOne({
         where: {
           contactId: contact.id,
           tenantId,
@@ -223,7 +112,7 @@ const FindOrCreateTicketService = async ({
             attributes: ["id", "name"],
           },
         ],
-      });
+      })) as Ticket;
 
       if (ticket) {
         await ticket.update({
@@ -241,11 +130,8 @@ const FindOrCreateTicketService = async ({
         return ticket;
       }
     } else {
-      ticket = await Ticket.findOne({
+      ticket = (await Ticket.findOne({
         where: {
-          // updatedAt: {
-          //   [Op.between]: [+subHours(new Date(), 24), +new Date()]
-          // },
           status: {
             [Op.in]: ["open", "pending"],
           },
@@ -269,7 +155,8 @@ const FindOrCreateTicketService = async ({
             attributes: ["id", "name"],
           },
         ],
-      });
+      })) as Ticket;
+
       if (ticket) {
         await ticket.update({
           status: "pending",

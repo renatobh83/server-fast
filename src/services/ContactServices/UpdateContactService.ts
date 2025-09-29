@@ -1,7 +1,5 @@
-import { RedisKeys } from "../../constants/redisKeys";
 import { AppError } from "../../errors/errors.helper";
 import socketEmit from "../../helpers/socketEmit";
-import { redisClient } from "../../lib/redis";
 import Contact from "../../models/Contact";
 import Empresa from "../../models/Empresa";
 import CheckIsValidContact from "../WbotServices/Helpers/CheckIsValidContact";
@@ -96,7 +94,7 @@ const UpdateContactService = async ({
       type: "contact:update",
       payload: contact,
     });
-    redisClient.del(RedisKeys.contatos());
+
     return contact;
   } catch (error: any) {
     console.log(error);

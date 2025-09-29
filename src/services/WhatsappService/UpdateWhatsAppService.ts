@@ -1,12 +1,8 @@
 import { Op } from "sequelize";
-import * as Yup from "yup";
 
 import Whatsapp from "../../models/Whatsapp";
 import { getIO } from "../../lib/socket";
 import { AppError } from "../../errors/errors.helper";
-import { redisClient } from "../../lib/redis";
-import { RedisKeys } from "../../constants/redisKeys";
-
 interface WhatsappData {
   name?: string;
   status?: string;
@@ -94,7 +90,7 @@ const UpdateWhatsAppService = async ({
       chatFlowId: chatFlowId === 0 ? null : chatFlowId,
       qrcode,
     };
-    redisClient.del(RedisKeys.canalService(whatsappId));
+
     await whatsapp.update(data);
     await whatsapp.reload();
     io.emit(`${tenantId}:whatsappSession`, {
