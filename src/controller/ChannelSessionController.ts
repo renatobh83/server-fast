@@ -6,7 +6,7 @@ import { StartWhatsAppSession } from "../services/WbotServices/StartWhatsAppSess
 import { removeWbot } from "../lib/wbot";
 import UpdateWhatsAppService from "../services/WhatsappService/UpdateWhatsAppService";
 import { getIO } from "../lib/socket";
-import { getTbot, removeTbot ,requireTbot} from "../lib/tbot";
+import { removeTbot, requireTbot } from "../lib/tbot";
 import { logger } from "../utils/logger";
 
 export const startSessionChannel = async (
@@ -38,7 +38,7 @@ export const updateSessionChannel = async (
     if (isQrcode) {
       await removeWbot(id);
     }
-    const { whatsapp } = await UpdateWhatsAppService({
+    const whatsapp = await UpdateWhatsAppService({
       whatsappId,
       whatsappData: {
         status: "DISCONNECTED",
@@ -77,7 +77,7 @@ export const removeSessionChannel = async (
       await removeWbot(channel.id);
     }
     if (channel.type === "telegram") {
-      const tbot =requireTbot(channel.id)// getTbot(channel.id);
+      const tbot = requireTbot(channel.id); // getTbot(channel.id);
       await tbot.telegram
         .logOut()
         .catch((error) =>
