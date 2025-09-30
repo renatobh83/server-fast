@@ -18,7 +18,7 @@ export const ConsultaPaciente = async ({
     body.append("pw", senha);
 
     const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
-    console.log(URL_FINAL);
+
     const { data } = await axios.post(URL_FINAL, body, {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",

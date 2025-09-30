@@ -63,7 +63,6 @@ export default {
             const mimeType = mime.lookup(mediaPath);
             console.log(`Arquivo: ${url}, MIME Type detectado: ${mimeType}`);
             if (mimeType && mimeType.startsWith("image/")) {
-              console.log("Enviando como foto...");
               await tbot.telegram.sendPhoto(
                 contact.telegramId,
                 { source: mediaPath },

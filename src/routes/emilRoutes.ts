@@ -61,4 +61,5 @@ export default async function emailRoutes(fastify: FastifyInstance) {
     "/email/send/:chamadoId/close",
     EmailController.sendEmailChamadoClose
   );
+  fastify.post("/email/send/test", EmailController.sendEmailControllerTest);
 }

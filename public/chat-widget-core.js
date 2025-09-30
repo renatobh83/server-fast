@@ -168,8 +168,6 @@
           console.error("Erro ao exibir notificação:", e);
         }
         //  notify("Nova mensagem", msg);
-
-        console.log(loadingOlder);
       });
       socket.on("chat:image", (data) =>
         appendImage(data.url, Date.now(), true)
@@ -334,7 +332,6 @@
       chatMessages.addEventListener("scroll", () => {
         if (chatMessages.scrollTop === 0) {
           loadMessages();
-          console.log("ontop");
         }
       });
     }

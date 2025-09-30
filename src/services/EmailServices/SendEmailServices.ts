@@ -54,9 +54,12 @@ export const SendEmailServices = async ({
         to,
         subject,
         text,
-        html: attachmentUrl
-          ? gerarTemplateEmailAnexo(html, html.username)
-          : gerarTemplateEmail(html, html.username), // Usa o nome correto
+        html:
+          html === "teste" // 1. Nova verificação primeiro
+            ? "Este e-mail é de teste" // 2. Se for verdade, use a string "teste"
+            : attachmentUrl // 3. Se não, prossiga com a lógica anterior
+            ? gerarTemplateEmailAnexo(html, html.username)
+            : gerarTemplateEmail(html, html.username),
         attachmentUrl,
       };
 

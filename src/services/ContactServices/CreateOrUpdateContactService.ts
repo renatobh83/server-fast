@@ -1,9 +1,6 @@
-import { RedisKeys } from "../../constants/redisKeys";
 import { AppError } from "../../errors/errors.helper";
 import socketEmit from "../../helpers/socketEmit";
 import Contact from "../../models/Contact";
-import { getCache, setCache } from "../../utils/cacheRedis";
-
 interface Request {
   name: string;
   number: string;
@@ -46,15 +43,10 @@ const CreateOrUpdateContactService = async ({
       messenger: { field: "messengerId", value: messengerId },
     };
     let contact: Contact | null = null;
-   
+
     const uniqueValue = originFieldMap[origem];
-    
-   
+
     if (!uniqueValue) throw new AppError("ERR_INVALID_ORIGEM_VALUE", 400);
-   
-    contact = (await getCache(
-      RedisKeys.contact(tenantId, uniqueValue.field, rawNumber)
-    )) as unknown as Contact;
 
     if (contact) {
       return contact;
@@ -100,12 +92,7 @@ const CreateOrUpdateContactService = async ({
       type: "contact:update",
       payload: contact,
     });
-    console.log("gravando contato cache");
-    await setCache(
-      RedisKeys.contact(tenantId, uniqueValue.field, rawNumber),
-      contact,
-      360
-    ); // cache por 60s
+
     return contact;
   } catch (err) {
     throw new AppError("ERR_CREATE_CONTACT", 500);

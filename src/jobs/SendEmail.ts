@@ -22,35 +22,36 @@ export default {
     const { tenantId } = data;
     const { transporter, emailConfig } = await createTransporter(tenantId);
 
-    // 1. Vamos definir o caminho do anexo manualmente.
-    //    Pegue o nome do arquivo do seu log de erro anterior para garantir que ele existe.
-    const filename = "chat bot new.json";
-    const pastaPublic = path.join(process.cwd(), "public", "attachments");
-    const mediaPath = path.join(pastaPublic, filename);
+    // 3. Crie o objeto de anexo usando a propriedade 'path'.
+    const attachments = [];
+    if (data.attachmentUrl) {
+      // 1. Vamos definir o caminho do anexo manualmente.
+      //    Pegue o nome do arquivo do seu log de erro anterior para garantir que ele existe.
+      const filename = getFilenameFromUrl(data.attachmentUrl);
+      const pastaPublic = path.join(process.cwd(), "public", "attachments");
+      const mediaPath = path.join(pastaPublic, filename);
 
-    logger.info(`Caminho do anexo (codificado): ${mediaPath}`);
+      logger.info(`Caminho do anexo (codificado): ${mediaPath}`);
 
-    // 2. Verifique se o arquivo realmente existe neste caminho
-    if (!fs.existsSync(mediaPath)) {
-      const errorMsg = `DEPURAÇÃO: Arquivo codificado não encontrado em ${mediaPath}. O teste não pode continuar.`;
-      logger.error(errorMsg);
-      throw new Error(errorMsg);
+      // 2. Verifique se o arquivo realmente existe neste caminho
+      if (!fs.existsSync(mediaPath)) {
+        const errorMsg = `DEPURAÇÃO: Arquivo codificado não encontrado em ${mediaPath}. O teste não pode continuar.`;
+        logger.error(errorMsg);
+        throw new Error(errorMsg);
+      }
+      attachments.push({
+        filename,
+        path: mediaPath, // Use a propriedade 'path' em vez de 'content'
+      });
     }
 
-    // 3. Crie o objeto de anexo usando a propriedade 'path'.
-    const hardcodedAttachment = [
-      {
-        filename: filename,
-        path: mediaPath,
-      },
-    ];
     const mailOptions = {
       from: emailConfig.email,
       to: data.to, // Usando o destinatário do job
       subject: data.subject,
       text: data.text,
       html: data.html,
-      attachments: hardcodedAttachment, // USANDO O ANEXO CODIFICADO
+      attachments: attachments, // USANDO O ANEXO CODIFICADO
     };
 
     logger.info(

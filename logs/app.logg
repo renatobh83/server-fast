@@ -2739,3 +2739,186 @@
     "[Nome da Equipe\\Suporte]'",
   timestamp: '2025-09-30T13:17:31.840Z'
 }
+{
+  message: 'DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  level: 'error',
+  timestamp: '2025-09-30T13:55:27.548Z'
+}
+{
+  message: 'Erro em processamento do job SendEmail (ID: 44)',
+  error: 'DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  stack: 'Error: DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendEmail.js:37:19)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-30T13:55:27.550Z'
+}
+{
+  error: Error: DEPURAÇÃO: Arquivo codificado não encontrado em C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\public\attachments\anexo. O teste não pode continuar.
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendEmail.js:37:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: '[Worker SendEmail] Job 44 falhou. Erro: DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  timestamp: '2025-09-30T13:55:27.776Z'
+}
+{
+  message: 'DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  level: 'error',
+  timestamp: '2025-09-30T13:55:28.406Z'
+}
+{
+  message: 'Erro em processamento do job SendEmail (ID: 44)',
+  error: 'DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  stack: 'Error: DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendEmail.js:37:19)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-30T13:55:28.407Z'
+}
+{
+  error: Error: DEPURAÇÃO: Arquivo codificado não encontrado em C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\public\attachments\anexo. O teste não pode continuar.
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendEmail.js:37:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: '[Worker SendEmail] Job 44 falhou. Erro: DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  timestamp: '2025-09-30T13:55:28.628Z'
+}
+{
+  message: 'DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  level: 'error',
+  timestamp: '2025-09-30T13:55:29.103Z'
+}
+{
+  message: 'Erro em processamento do job SendEmail (ID: 44)',
+  error: 'DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  stack: 'Error: DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendEmail.js:37:19)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-30T13:55:29.104Z'
+}
+{
+  error: Error: DEPURAÇÃO: Arquivo codificado não encontrado em C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\public\attachments\anexo. O teste não pode continuar.
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendEmail.js:37:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: '[Worker SendEmail] Job 44 falhou. Erro: DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  timestamp: '2025-09-30T13:55:29.328Z'
+}
+{
+  message: 'DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  level: 'error',
+  timestamp: '2025-09-30T13:57:06.340Z'
+}
+{
+  message: 'Erro em processamento do job SendEmail (ID: 45)',
+  error: 'DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  stack: 'Error: DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendEmail.js:37:19)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-30T13:57:06.343Z'
+}
+{
+  error: Error: DEPURAÇÃO: Arquivo codificado não encontrado em C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\public\attachments\anexo. O teste não pode continuar.
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendEmail.js:37:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: '[Worker SendEmail] Job 45 falhou. Erro: DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  timestamp: '2025-09-30T13:57:06.564Z'
+}
+{
+  message: 'DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  level: 'error',
+  timestamp: '2025-09-30T13:57:07.224Z'
+}
+{
+  message: 'Erro em processamento do job SendEmail (ID: 45)',
+  error: 'DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  stack: 'Error: DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendEmail.js:37:19)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-30T13:57:07.225Z'
+}
+{
+  error: Error: DEPURAÇÃO: Arquivo codificado não encontrado em C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\public\attachments\anexo. O teste não pode continuar.
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendEmail.js:37:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: '[Worker SendEmail] Job 45 falhou. Erro: DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  timestamp: '2025-09-30T13:57:07.444Z'
+}
+{
+  message: 'DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  level: 'error',
+  timestamp: '2025-09-30T13:57:07.886Z'
+}
+{
+  message: 'Erro em processamento do job SendEmail (ID: 45)',
+  error: 'DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  stack: 'Error: DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\jobs\\SendEmail.js:37:19)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async bullmq_1.Worker.connection [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:154:32)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:32\n' +
+    '    at async Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:24)',
+  level: 'error',
+  timestamp: '2025-09-30T13:57:07.887Z'
+}
+{
+  error: Error: DEPURAÇÃO: Arquivo codificado não encontrado em C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\public\attachments\anexo. O teste não pode continuar.
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\jobs\SendEmail.js:37:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async bullmq_1.Worker.connection [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:154:32)
+      at async C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:32
+      at async Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:24),
+  level: 'error',
+  message: '[Worker SendEmail] Job 45 falhou. Erro: DEPURAÇÃO: Arquivo codificado não encontrado em C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public\\attachments\\anexo. O teste não pode continuar.',
+  timestamp: '2025-09-30T13:57:08.110Z'
+}
+{
+  message: 'Unhandled Rejection: Error: Falha ao enviar e-mail',
+  level: 'error',
+  timestamp: '2025-09-30T14:00:08.899Z'
+}
+{
+  message: 'Unhandled Rejection: Error: Falha ao enviar e-mail',
+  level: 'error',
+  timestamp: '2025-09-30T14:05:05.898Z'
+}
+{
+  message: 'Unhandled Rejection: Error: Falha ao enviar e-mail',
+  level: 'error',
+  timestamp: '2025-09-30T14:06:43.503Z'
+}

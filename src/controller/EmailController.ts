@@ -90,13 +90,13 @@ export const sendEmailControllerTest = async (
   reply: FastifyReply
 ) => {
   const { tenantId } = request.user as any;
-  const { html, text } = request.body as any;
+  const { text } = request.body as any;
 
   SendEmailServices({
     tenantId,
     to: "suporte2@exp.net.br",
     subject: "Teste envio de email",
-    html,
+    html: "teste",
     text,
   });
   try {
