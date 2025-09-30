@@ -81,8 +81,9 @@ export default async function auxiliarRoutes(fastify: FastifyInstance) {
           .status(STANDARD.NO_CONTENT.statusCode)
           .send("PDF expirado ou não encontrado");
       }
-      reply
-        .header("Content-Type", "application/json")
+
+      return reply
+        .header("Content-Type", "text/html; charset=utf-8")
         .code(200)
         .send(htmlContent);
     } catch (error) {

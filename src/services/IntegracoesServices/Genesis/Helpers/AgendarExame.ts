@@ -1,3 +1,4 @@
+import axios from "axios";
 import { getApiInstance } from "./authService";
 import FormData from "form-data";
 const unidades = "doListaEmpresa";
@@ -48,17 +49,19 @@ export const ObsplanoAsync = async ({
 
   try {
     const instanceApi = await getApiInstance(integracao, true);
+    const body = new URLSearchParams();
+    body.append("cd_plano", cdPlano.toString());
+    body.append("token", token);
 
-    const data = await instanceApi.post(URL_FINAL, {});
+    const { data } = await instanceApi.post(URL_FINAL, body);
 
-    // const infoPlano = data[0];
-    // if (!infoPlano.ds_infoweb) return false;
-    // // Decodifica Base64
-    // const decoded = Buffer.from(infoPlano.ds_infoweb, "base64").toString(
-    //   "utf-8"
-    // );
-
-    return "decoded";
+    const infoPlano = data[0];
+    1;
+    if (!infoPlano.ds_infoweb) return false;
+    const decoded = Buffer.from(infoPlano.ds_infoweb, "base64").toString(
+      "utf-8"
+    );
+    return decoded;
   } catch (error) {
     console.error("Erro observacao plano:", error);
     throw error;

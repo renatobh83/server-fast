@@ -219,6 +219,3 @@ export const cancelarNfe = async (dadosCancelamento: any) => {
     throw error;
   }
 };
-// ConsultaNfseRpsEnvio(2).then((data) => console.log(data));
-// GerarNFE().then((data) => console.log(data));
-// cancelarNfe().then((data) => console.log(data));

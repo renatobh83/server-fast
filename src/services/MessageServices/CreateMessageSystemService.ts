@@ -73,7 +73,6 @@ export const CreateMessageSystemService = async ({
     await Promise.all(
       (filesArray && filesArray.length ? filesArray : [null]).map(
         async (media) => {
-          console.log(media);
           if (!media) {
             messageData.mediaType = "chat";
             messageData.mediaName = undefined;

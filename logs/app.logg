@@ -2922,3 +2922,48 @@
   level: 'error',
   timestamp: '2025-09-30T14:06:43.503Z'
 }
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_FIND_OR_CREATE_TICKET_SERICE',
+  level: 'error',
+  timestamp: '2025-09-30T14:39:21.033Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_FIND_OR_CREATE_TICKET_SERICE',
+  level: 'error',
+  timestamp: '2025-09-30T14:39:48.140Z'
+}
+{
+  message: "Error send message (id: undefined):: Error: 400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 24",
+  level: 'error',
+  timestamp: '2025-09-30T15:46:58.915Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: callback_query | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-09-30T15:46:58.918Z'
+}
+{
+  message: 'Error send message (id: undefined):: Error: 400: Bad Request: message text is empty',
+  level: 'error',
+  timestamp: '2025-09-30T16:11:49.809Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: callback_query | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-09-30T16:11:49.812Z'
+}
+{
+  message: "Error send message (id: undefined):: Error: 400: Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 26",
+  level: 'error',
+  timestamp: '2025-09-30T16:15:54.718Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: callback_query | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-09-30T16:15:54.721Z'
+}
+{
+  message: 'Unhandled Rejection: Error: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running',
+  level: 'error',
+  timestamp: '2025-09-30T16:24:20.698Z'
+}

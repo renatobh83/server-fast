@@ -35,7 +35,6 @@ const updateTicketAndEmit = async (
   socketType: "ticket:update" | "ticket:update_chatflow" = "ticket:update"
 ): Promise<void> => {
   try {
-    
     await ticket.update(data);
     socketEmit({
       tenantId: ticket.tenantId,
@@ -50,7 +49,7 @@ const updateTicketAndEmit = async (
 // Função auxiliar para verificar horário comercial e fechar ticket se fora do horário
 const handleBusinessHoursCheck = async (ticket: Ticket): Promise<boolean> => {
   const isBusinessHours = await VerifyBusinessHoursFlow(ticket);
-  
+
   if (!isBusinessHours) {
     await updateTicketAndEmit(ticket, {
       status: "closed",

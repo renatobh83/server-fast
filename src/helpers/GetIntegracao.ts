@@ -5,8 +5,6 @@ const GetIntegracao = async (
   tenantId: string | number,
   id: string
 ): Promise<Integracoes> => {
-  console.log(tenantId);
-  console.log(id);
   const integracao = await Integracoes.findOne({
     where: {
       tenantId,

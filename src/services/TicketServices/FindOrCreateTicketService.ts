@@ -38,11 +38,7 @@ const FindOrCreateTicketService = async ({
   // se for uma mensagem de campanha, não abrir tícke
 
   try {
-    // let ticket = (await getCache(
-    //   RedisKeys.ticketFindOrCreate(tenantId, whatsappId, contact.id)
-    // )) as Ticket;
-    // if (!ticket) {
-    let ticket = (await Ticket.findOne({
+    let ticket = await Ticket.findOne({
       where: {
         status: {
           [Op.or]: ["open", "pending"],
@@ -66,11 +62,7 @@ const FindOrCreateTicketService = async ({
           attributes: ["id", "name"],
         },
       ],
-    })) as unknown as Ticket;
-    // await setCache(
-    //   RedisKeys.ticketFindOrCreate(tenantId, whatsappId, contact.id),
-    //   ticket
-    // );
+    });
 
     if (ticket) {
       unreadMessages =
@@ -84,12 +76,11 @@ const FindOrCreateTicketService = async ({
         type: "ticket:update",
         payload: ticket,
       });
-
       return ticket;
     }
 
     if (groupContact) {
-      ticket = (await Ticket.findOne({
+      ticket = await Ticket.findOne({
         where: {
           contactId: contact.id,
           tenantId,
@@ -111,7 +102,7 @@ const FindOrCreateTicketService = async ({
             attributes: ["id", "name"],
           },
         ],
-      })) as Ticket;
+      });
 
       if (ticket) {
         await ticket.update({
@@ -129,8 +120,11 @@ const FindOrCreateTicketService = async ({
         return ticket;
       }
     } else {
-      ticket = (await Ticket.findOne({
+      ticket = await Ticket.findOne({
         where: {
+          // updatedAt: {
+          //   [Op.between]: [+subHours(new Date(), 24), +new Date()]
+          // },
           status: {
             [Op.in]: ["open", "pending"],
           },
@@ -154,8 +148,7 @@ const FindOrCreateTicketService = async ({
             attributes: ["id", "name"],
           },
         ],
-      })) as Ticket;
-
+      });
       if (ticket) {
         await ticket.update({
           status: "pending",

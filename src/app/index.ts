@@ -9,6 +9,7 @@ import { configSchema } from "./configSchema";
 import { redisPlugin } from "../lib/fastifyPlugins/redis";
 import { sequelizePlugin } from "../lib/fastifyPlugins/sequelize";
 import { StartAllWhatsAppsSessions } from "../services/WbotServices/StartAllWhatsAppsSessions";
+import axios from "axios";
 
 export async function buildServer(
   config: FastifyServerOptions = {}
@@ -94,6 +95,7 @@ export async function start() {
     console.log("Server listening on http://localhost:3000");
     initSocket(app.server);
     setupSocketListeners();
+
     await StartAllWhatsAppsSessions();
   } catch (err) {
     app.log.error(err);

@@ -44,7 +44,6 @@ export async function getApiInstance(integracao: any, jwt: boolean) {
       httpsAgent: agent,
       headers: {
         Authorization: authorizationHeader,
-        "Content-Type": "application/json",
       },
     });
   } catch (error: any) {
