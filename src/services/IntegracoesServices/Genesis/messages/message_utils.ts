@@ -1000,21 +1000,25 @@ export function generatePrecoExameMensagem(
   precoExame: string,
   perguntarPreferencia: boolean
 ) {
-  if (channel === "whatsapp") {
-    const wpp = gerarMensagemWpp(precoExame, perguntarPreferencia);
-    return wpp;
-  } else {
-    const { texto, markup } = gerarMensagemTelegram(
-      precoExame,
-      perguntarPreferencia
-    );
+  try {
+    if (channel === "whatsapp") {
+      const wpp = gerarMensagemWpp(precoExame, perguntarPreferencia);
+      return wpp;
+    } else {
+      const { texto, markup } = gerarMensagemTelegram(
+        precoExame,
+        perguntarPreferencia
+      );
 
-    const options = {
-      body: texto,
-      hasButtons: true,
-      reply_markup: markup.reply_markup,
-    };
-    return options;
+      const options = {
+        body: texto,
+        hasButtons: true,
+        reply_markup: markup.reply_markup,
+      };
+      return options;
+    }
+  } catch (error) {
+    console.log(error);
   }
 }
 

@@ -2967,3 +2967,33 @@
   level: 'error',
   timestamp: '2025-09-30T16:24:20.698Z'
 }
+{
+  message: 'Error send message (id: undefined):: Error: 400: Bad Request: message text is empty',
+  level: 'error',
+  timestamp: '2025-09-30T16:35:38.282Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: callback_query | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-09-30T16:35:38.286Z'
+}
+{
+  message: 'Error send message (id: undefined):: Error: 400: Bad Request: message text is empty',
+  level: 'error',
+  timestamp: '2025-09-30T16:39:49.987Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: callback_query | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-09-30T16:39:49.994Z'
+}
+{
+  message: 'Error send message (id: undefined):: Error: 400: Bad Request: message text is empty',
+  level: 'error',
+  timestamp: '2025-09-30T16:45:02.573Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: callback_query | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-09-30T16:45:02.576Z'
+}

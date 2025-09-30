@@ -1,4 +1,8 @@
 import { Markup } from "telegraf";
+import {
+  gerarMensagemExame,
+  gerarMensagemListaMedicos,
+} from "../services/IntegracoesServices/Genesis/utils/gerarMensagemExame";
 // import {
 //   gerarMensagemExame,
 //   gerarMensagemListaMedicos,
@@ -9,12 +13,10 @@ export function gerarMensagemWpp(
   precoExame: string,
   perguntarPreferencia: boolean
 ): any {
-  const opcoes: any = [];
-  const texto: string = "";
-  // const { texto, opcoes } = gerarMensagemExame(
-  //   precoExame,
-  //   perguntarPreferencia
-  // );
+  const { texto, opcoes } = gerarMensagemExame(
+    precoExame,
+    perguntarPreferencia
+  );
 
   return {
     sections: [
@@ -39,12 +41,10 @@ export function gerarMensagemTelegram(
   precoExame: string,
   perguntarPreferencia: boolean
 ) {
-  const opcoes: any = [];
-  const texto: string = "";
-  // const { texto, opcoes } = gerarMensagemExame(
-  //   precoExame,
-  //   perguntarPreferencia
-  // );
+  const { texto, opcoes } = gerarMensagemExame(
+    precoExame,
+    perguntarPreferencia
+  );
 
   const botoes = opcoes.map((opcao: { texto: string; id: string }) =>
     Markup.button.callback(opcao.texto, opcao.id)
@@ -56,9 +56,7 @@ export function gerarMensagemTelegram(
   };
 }
 export function gerarMensagemExamesMedicosWpp(exames: any[]): any {
-  const opcoes: any = [];
-  const texto: string = "";
-  // const { texto, opcoes } = gerarMensagemListaMedicos(exames);
+  const { texto, opcoes } = gerarMensagemListaMedicos(exames);
   const rowsListMessage = [
     ...opcoes.map((opcao: { id: any; texto: any; description: any }) => ({
       rowId: opcao.id,
@@ -85,9 +83,7 @@ export function gerarMensagemExamesMedicosWpp(exames: any[]): any {
   };
 }
 export function gerarMensagemExamesMedicosTelegram(exames: any[]) {
-  const opcoes: any = [];
-  const texto: string = "";
-  // const { texto, opcoes } = gerarMensagemListaMedicos(exames);
+  const { texto, opcoes } = gerarMensagemListaMedicos(exames);
 
   const botoes = opcoes.map((opcao: { texto: string; id: string }) =>
     Markup.button.callback(opcao.texto, opcao.id)
