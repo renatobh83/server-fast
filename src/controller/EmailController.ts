@@ -57,6 +57,7 @@ export const sendEmailChamadoClose = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "E-mail enviado" });
   } catch (error) {
+    console.log(error);
     return handleServerError(reply, error);
   }
 };

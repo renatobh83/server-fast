@@ -2,7 +2,7 @@ import type { Message as WbotMessage } from "wbotconnect";
 import SendWhatsAppMessage from "../services/WbotServices/Helpers/SendWhatsAppMessage";
 import SendWhatsAppMedia from "../services/WbotServices/Helpers/SendWhatsAppMedia";
 import TelegramSendMessagesSystem from "../services/TbotServices/TelegramSendMessagesSystem";
-import { getTbot ,requireTbot} from "../lib/tbot";
+import { getTbot, requireTbot } from "../lib/tbot";
 import { SendMessageMediaChatClient } from "../services/ChatClientService/SendMessageMediaChatClient";
 import { SendMessageChatClient } from "../services/ChatClientService/SendMessageChatClient";
 

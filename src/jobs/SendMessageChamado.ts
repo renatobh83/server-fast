@@ -1,11 +1,11 @@
 import { logger } from "../utils/logger";
 import Contact from "../models/Contact";
 import GetDefaultWhatsApp from "../helpers/GetDefaultWhatsApp";
-
+import mime from "mime-types";
 import path from "node:path";
 import fs from "node:fs";
 import { AppError } from "../errors/errors.helper";
-import { getTbot, requireTbot } from "../lib/tbot";
+import { requireTbot } from "../lib/tbot";
 import { getWbot } from "../lib/wbot";
 export default {
   key: "SendMessageChamado",
@@ -48,7 +48,7 @@ export default {
         throw new AppError("Contato nao encontrado", 404);
       }
 
-      if (contact.telegramId) {
+      if (contact.telegramId && contact.telegramId !== "0") {
         const defaultTelegram = await GetDefaultWhatsApp(
           tenantId,
           undefined,
@@ -60,15 +60,42 @@ export default {
           const url = path.basename(mediaUrl.url);
           const mediaPath = path.join(pastaPublic, url);
           if (fs.existsSync(mediaPath)) {
-            await tbot.telegram.sendPhoto(
-              contact.telegramId,
-              {
-                source: mediaPath,
-              },
-              {
-                caption: TemplateMessageMediUrl(msg, data.caption),
-              }
-            );
+            const mimeType = mime.lookup(mediaPath);
+            console.log(`Arquivo: ${url}, MIME Type detectado: ${mimeType}`);
+            if (mimeType && mimeType.startsWith("image/")) {
+              console.log("Enviando como foto...");
+              await tbot.telegram.sendPhoto(
+                contact.telegramId,
+                { source: mediaPath },
+                {
+                  caption: TemplateMessageMediUrl(msg, data.caption),
+                }
+              );
+            } else if (mimeType && mimeType.startsWith("video/")) {
+              await tbot.telegram.sendVideo(
+                contact.telegramId,
+                { source: mediaPath },
+                {
+                  caption: TemplateMessageMediUrl(msg, data.caption),
+                }
+              );
+            } else if (mimeType && mimeType.startsWith("audio/")) {
+              await tbot.telegram.sendAudio(
+                contact.telegramId,
+                { source: mediaPath },
+                {
+                  caption: TemplateMessageMediUrl(msg, data.caption),
+                }
+              );
+            } else {
+              await tbot.telegram.sendDocument(
+                contact.telegramId,
+                { source: mediaPath },
+                {
+                  caption: TemplateMessageMediUrl(msg, data.caption),
+                }
+              );
+            }
           } else {
             await tbot.telegram.sendMessage(
               contact.telegramId,
@@ -92,12 +119,20 @@ export default {
           const url = path.basename(mediaUrl.url);
           const mediaPath = path.join(pastaPublic, url);
           if (fs.existsSync(mediaPath)) {
-            await wbot.sendImage(
-              contact?.serializednumber!,
-              mediaPath,
-              url,
-              TemplateMessageMediUrl(msg, data.caption)
-            );
+            const mimeType = mime.lookup(mediaPath);
+            console.log(`Arquivo: ${url}, MIME Type detectado: ${mimeType}`);
+            if (mimeType && mimeType.startsWith("image/")) {
+              await wbot.sendImage(
+                contact?.serializednumber!,
+                mediaPath,
+                url,
+                TemplateMessageMediUrl(msg, data.caption)
+              );
+            } else {
+              await wbot.sendFile(contact?.serializednumber!, mediaPath, {
+                caption: TemplateMessageMediUrl(msg, data.caption),
+              });
+            }
           } else {
             await wbot.sendText(
               contact?.serializednumber!,

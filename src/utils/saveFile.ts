@@ -1,12 +1,10 @@
 import path from "path";
-import { format } from "date-fns";
 import fs from "fs";
 
 function generateFileName(originalname: string) {
   const ext = path.extname(originalname);
   const name = path.basename(originalname, ext);
-  const timestamp = format(new Date(), "ddMMyyyyHHmmssSSS");
-  return `${name}_${timestamp}${ext}`;
+  return `${name}${ext}`;
 }
 
 export async function saveFile(file: any, folder: string): Promise<string> {

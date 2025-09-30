@@ -54,10 +54,12 @@ export const SendEmailServices = async ({
         to,
         subject,
         text,
-        html,
+        html: attachmentUrl
+          ? gerarTemplateEmailAnexo(html, html.username)
+          : gerarTemplateEmail(html, html.username), // Usa o nome correto
         attachmentUrl,
       };
-      
+
       await addJob("SendEmail", mailOptions);
     }
   } catch (error) {

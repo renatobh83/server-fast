@@ -1,0 +1,2914 @@
+{
+  "flow": {
+    "nodeList": [
+      {
+        "id": "configurations",
+        "type": "configurations",
+        "position": {
+          "x": 340,
+          "y": 100
+        },
+        "deletable": false,
+        "draggable": false,
+        "data": {
+          "label": "Configuracoes",
+          "notOptionsSelectMessage": {
+            "message": "",
+            "stepReturn": "A"
+          },
+          "notResponseMessage": {
+            "time": 10,
+            "type": 3,
+            "destiny": "",
+            "message": "{{name}} Estamos finalizando seu atendimento!! Obrigado {{greeting}}"
+          },
+          "welcomeMessage": {
+            "message": "{{name}}, Estamos transferindo para a fila de atendimento!"
+          },
+          "farewellMessage": {
+            "message": ""
+          },
+          "maxRetryBotMessage": {
+            "number": "4",
+            "type": 3,
+            "destiny": ""
+          },
+          "outOpenHours": {
+            "type": 1,
+            "destiny": ""
+          },
+          "firstInteraction": {
+            "type": 1,
+            "destiny": ""
+          },
+          "keyword": {
+            "message": ""
+          }
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        },
+        "selected": false
+      },
+      {
+        "id": "start",
+        "type": "start",
+        "position": {
+          "x": 90,
+          "y": 135
+        },
+        "deletable": false,
+        "draggable": false,
+        "data": {
+          "label": "Inicio"
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        },
+        "selected": false
+      },
+      {
+        "id": "nodeC",
+        "type": "boasVindas",
+        "position": {
+          "x": 225,
+          "y": 210
+        },
+        "deletable": false,
+        "draggable": false,
+        "data": {
+          "label": "Boas vindas!",
+          "interactions": [
+            {
+              "type": "MessageField",
+              "id": "77446a02-f0b3-444a-a14d-a6b9da82412d",
+              "data": {
+                "message": "Olá, {{name}} {{greeting}} Seja bem-vindo! \nComo podemos te ajudar hoje?"
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "consultaChamado",
+                "consulta",
+                "consultar"
+              ],
+              "id": "509c590d-e459-4e7c-9ace-5306c07ae94b",
+              "action": 0,
+              "nextStepId": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
+              "userIdDestination": null,
+              "queueId": null,
+              "closeTicket": "Obrigado por acessar nossos serviços.",
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "AbrirChamado",
+                "abrir",
+                "novo"
+              ],
+              "id": "46fd1da8-68b1-48fb-8c57-65e0c830c4a0",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "3"
+              ],
+              "id": "a5e7ea0d-e77e-4159-8f04-bd6d2efe13f5",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "closeTicket": "Obrigado por acessar nossos serviços.",
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "id": "5594c7b9-aa07-4a8f-a3aa-ccfe4538a76f",
+              "action": 0,
+              "nextStepId": "b9541322-6ba5-48f7-b7cf-01841a4292f7",
+              "userIdDestination": null,
+              "queueId": null,
+              "condition": [
+                "ext",
+                "1"
+              ],
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        },
+        "selected": false
+      },
+      {
+        "id": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
+        "type": "node",
+        "position": {
+          "x": 459.0513181868368,
+          "y": 209.1235959734957
+        },
+        "data": {
+          "label": "Consulta",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "id": "39ccff78-e5f5-4574-bcef-ba42e2b095e7",
+              "data": {
+                "webhook": {
+                  "apiId": "",
+                  "acao": "consultar",
+                  "consulta": true
+                }
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "empresa_"
+              ],
+              "id": "4e7a7f9a-abde-48c9-a77b-5503d1a6e706",
+              "action": 0,
+              "nextStepId": "66de1dd5-4546-42e7-af5b-bc67376468f1",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "chamado_"
+              ],
+              "id": "060b9798-2ddd-401c-9801-035bf500af84",
+              "action": 0,
+              "nextStepId": "9a49289a-8cc8-4463-8b53-c1ce3462d0e6",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "3"
+              ],
+              "id": "0828d032-5bc3-4a39-bab1-b5ca5dda2086",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            },
+            {
+              "type": "R",
+              "id": "2eba2de6-7543-46cc-9daf-87cf85e7db6b",
+              "action": 2,
+              "nextStepId": null,
+              "userIdDestination": 24,
+              "queueId": null,
+              "condition": [
+                "suporte"
+              ],
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        },
+        "selected": false
+      },
+      {
+        "id": "66de1dd5-4546-42e7-af5b-bc67376468f1",
+        "type": "node",
+        "position": {
+          "x": 608.060198620157,
+          "y": 59.61426218640014
+        },
+        "data": {
+          "label": "2 ou mais empresas (seleciona empresa)",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "acao": "empresaSelecionada"
+                }
+              },
+              "id": "f8ea64e4-e3d9-4b6f-b9f1-c1f78966e960"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "chamado_"
+              ],
+              "id": "91c76f67-7b9e-4151-bd79-b06f6de66e54",
+              "action": 0,
+              "nextStepId": "9a49289a-8cc8-4463-8b53-c1ce3462d0e6",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "3"
+              ],
+              "id": "70963d7b-00ec-4cac-8604-8215482da232",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            },
+            {
+              "type": "R",
+              "condition": [
+                "suporte"
+              ],
+              "id": "19b8c9e1-218f-421e-94b3-dcf5752c0211",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "voltar"
+              ],
+              "id": "cb143044-9681-4ab8-894d-0839a965c386",
+              "action": 0,
+              "nextStepId": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 58
+        }
+      },
+      {
+        "id": "9a49289a-8cc8-4463-8b53-c1ce3462d0e6",
+        "type": "node",
+        "position": {
+          "x": 727.6821435247832,
+          "y": 235.1213994712772
+        },
+        "data": {
+          "label": "Chamado Detalhes",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "acao": "consultaChamado"
+                }
+              },
+              "id": "75407795-a0b4-433d-9855-d9f9fc1bfc65"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "id": "45ff7529-f459-4ee2-9ea9-f1afa0907d8f",
+              "action": 0,
+              "nextStepId": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
+              "userIdDestination": null,
+              "queueId": null,
+              "condition": [
+                "1",
+                "voltar",
+                "anterior"
+              ],
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "3",
+                "encerar",
+                "fechar"
+              ],
+              "id": "390b527d-2362-40ef-aee9-209484a3d6a3",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Obrigado por acessar nossos serviços."
+            },
+            {
+              "type": "R",
+              "condition": [
+                "Suporte",
+                "suporte"
+              ],
+              "id": "e367b943-99b7-4a79-8e0f-d81ac028e1d2",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "US",
+              "id": "83b8ce36-5829-4fbd-b47e-f2ba67626965",
+              "action": 0,
+              "nextStepId": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
+              "userIdDestination": null,
+              "queueId": null
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "b9541322-6ba5-48f7-b7cf-01841a4292f7",
+        "type": "node",
+        "position": {
+          "x": 125.37426776095879,
+          "y": 335.05749231662776
+        },
+        "data": {
+          "label": "Integracao TESTES",
+          "interactions": [
+            {
+              "type": "MessageField",
+              "data": {
+                "message": "Olá, {{name}}, seja muito bem-vindo(a)! \nPara continuar, preciso te identificar. Por favor, digite o *CPF*. \n\n`Apenas números`"
+              },
+              "id": "4d3ac058-1235-4dc6-8b42-15a61d01d242"
+            },
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "Inicio"
+                }
+              },
+              "id": "55e0c813-058d-4539-8e93-016d74a4d4d5"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "recuperar"
+              ],
+              "id": "c840c335-2f7b-4f3d-9afb-1c4385bb39d0",
+              "action": 0,
+              "nextStepId": "224482e2-10a5-4d62-867e-f98b24f25d6a",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "id": "8b29be71-f27f-4f67-956a-4b06e1c2d4b4",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "condition": [
+                "abrir",
+                "suporte"
+              ],
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "finalizar",
+                "fim"
+              ],
+              "id": "ad01b86b-5e4f-4c4f-aba2-a373861070c4",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            },
+            {
+              "type": "US",
+              "id": "d0057082-5083-43ac-b249-85696e096bff",
+              "action": 0,
+              "nextStepId": "393e801b-0d56-487b-a1e5-ae1952bf7e8e",
+              "userIdDestination": null,
+              "queueId": null
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        },
+        "selected": false
+      },
+      {
+        "id": "706313a6-863a-43b4-8a30-ea2e9bac6c8a",
+        "type": "node",
+        "position": {
+          "x": 623.412004738625,
+          "y": 691.6004218240105
+        },
+        "data": {
+          "label": "Servicos",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "servicoescolhido"
+                }
+              },
+              "id": "1c5c3231-05fb-4211-8ce7-b54428e89787"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "id": "4cee56a2-e492-42e0-bed4-3a94f3cecd78",
+              "action": 0,
+              "nextStepId": "d8f70c55-22e9-476a-8720-908cb646436d",
+              "userIdDestination": null,
+              "queueId": null,
+              "condition": [
+                "agendamentos"
+              ],
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "laudo"
+              ],
+              "id": "1e5b0eb5-203b-4ef1-8af3-ddccfa8bb698",
+              "action": 0,
+              "nextStepId": "ca4dced9-55e6-4fd0-a655-7a5b38e7630c",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "suporte"
+              ],
+              "id": "c3966cd5-5d91-4d58-8f71-1b1e090f7f66",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "3"
+              ],
+              "id": "1637c036-873d-4157-a93e-84aa0ade633f",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "d8f70c55-22e9-476a-8720-908cb646436d",
+        "type": "node",
+        "position": {
+          "x": 837.5247130252285,
+          "y": 352.9565803193388
+        },
+        "data": {
+          "label": "Agendamentos",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "agendamentos"
+                }
+              },
+              "id": "b091681d-64de-4c8d-be7c-8a53ec46826c"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ],
+              "id": "ff27716e-27c6-4599-98a7-a0ba43ec8ae4",
+              "action": 0,
+              "nextStepId": "9a7c7a6f-b14a-4a81-b191-f805e99c4d5c",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "6"
+              ],
+              "id": "8a1bd2dd-da0f-4232-bd1d-4f4a6f916c4f",
+              "action": 0,
+              "nextStepId": "48470ea8-0254-400c-a436-95ece2c533b1",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "7"
+              ],
+              "id": "a1b83514-8e06-436f-80d9-553e64e0b062",
+              "action": 0,
+              "nextStepId": "706313a6-863a-43b4-8a30-ea2e9bac6c8a",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "8"
+              ],
+              "id": "a07f2a63-ee58-495f-aa8b-4811961c70e8",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            },
+            {
+              "type": "R",
+              "condition": [
+                "9",
+                "suporte"
+              ],
+              "id": "88ce6e39-9000-441c-a601-c8776d384712",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "agendar",
+                "agendamentos",
+                "agendar exame",
+                "marcar"
+              ],
+              "id": "4887bcfb-1110-419b-a608-68f72bf422a5",
+              "action": 0,
+              "nextStepId": "3dcf3ea6-e8a1-409b-acba-1985c601aca9",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "ca4dced9-55e6-4fd0-a655-7a5b38e7630c",
+        "type": "node",
+        "position": {
+          "x": 836.1807992939893,
+          "y": 451.2149974328597
+        },
+        "data": {
+          "label": "Atendimentos",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "laudo"
+                }
+              },
+              "id": "085a14e7-a73a-4202-a1ba-390c2283445a"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ],
+              "id": "612a816f-e068-4d7a-9367-bd16602684d4",
+              "action": 0,
+              "nextStepId": "08550817-da6a-4823-981e-cd8a2deea762",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "9"
+              ],
+              "id": "a78bea87-22d2-45f8-9c3c-0ed2893470cc",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "7"
+              ],
+              "id": "fd66ed5f-a28b-4ce9-a089-eb558b03820b",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            },
+            {
+              "type": "R",
+              "condition": [
+                "6"
+              ],
+              "id": "8d214881-f3e4-4cf2-9c4f-a98560b832a2",
+              "action": 0,
+              "nextStepId": "706313a6-863a-43b4-8a30-ea2e9bac6c8a",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "08550817-da6a-4823-981e-cd8a2deea762",
+        "type": "node",
+        "position": {
+          "x": 898.7908518489121,
+          "y": 517.0077637243572
+        },
+        "data": {
+          "label": "Laudo",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "laudopdf"
+                }
+              },
+              "id": "e6cf9405-3728-4703-a242-1423106c0569"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "9",
+                "suporte"
+              ],
+              "id": "bc048b64-9a9c-4967-895a-5fd955300da4",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "6"
+              ],
+              "id": "46dd1367-e3f8-4b33-8824-821f767893a1",
+              "action": 0,
+              "nextStepId": "ca4dced9-55e6-4fd0-a655-7a5b38e7630c",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "7",
+                "encerar",
+                "fechar"
+              ],
+              "id": "d7670718-c43e-4c69-bb4d-696ae1b6fb3b",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        },
+        "selected": false
+      },
+      {
+        "id": "48470ea8-0254-400c-a436-95ece2c533b1",
+        "type": "node",
+        "position": {
+          "x": 1027.5039481874924,
+          "y": 231.64473160255486
+        },
+        "data": {
+          "label": "Preparos",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "preparo"
+                }
+              },
+              "id": "7be3b094-8336-4036-97b6-7b57c6accc68"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "Preparo_"
+              ],
+              "id": "95c9d4a4-acd5-4b00-8617-4a9f836709b1",
+              "action": 0,
+              "nextStepId": "67f53216-e996-428b-82a7-d99a77446769",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            },
+            {
+              "type": "R",
+              "condition": [
+                "9",
+                "suporte"
+              ],
+              "id": "07a01a97-1252-4a5c-bc7b-c80569d10315",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            },
+            {
+              "type": "R",
+              "condition": [
+                "3",
+                "7"
+              ],
+              "id": "e65a7d84-85e0-47b2-a046-73961c934df3",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "67f53216-e996-428b-82a7-d99a77446769",
+        "type": "node",
+        "position": {
+          "x": 1223.565528899559,
+          "y": 230.2884269016816
+        },
+        "data": {
+          "label": "Envio do Preparo",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "acao": "sendpreparo",
+                  "apiId": "12"
+                }
+              },
+              "id": "64613635-103d-4ae1-89f7-bd6422a88b8f"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "9",
+                "suporte"
+              ],
+              "id": "472eeb77-69b7-4add-95e6-610fa3126aa3",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "6"
+              ],
+              "id": "a69239a0-c999-44b8-aaa9-3ebbf0dff6b5",
+              "action": 0,
+              "nextStepId": "48470ea8-0254-400c-a436-95ece2c533b1",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "7"
+              ],
+              "id": "60506e19-4936-4bce-87d9-c93e4ef778b3",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "9a7c7a6f-b14a-4a81-b191-f805e99c4d5c",
+        "type": "node",
+        "position": {
+          "x": 1027.3011287889035,
+          "y": 294.37414448178765
+        },
+        "data": {
+          "label": "confirmar",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "confirmar"
+                }
+              },
+              "id": "fb92ee40-fe9a-4bc9-981b-aacb8f65b55c"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "3"
+              ],
+              "id": "90bf5f30-006e-42a2-b1c9-44c49ad0ca28",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋",
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "2"
+              ],
+              "id": "485c92f0-3ac9-4948-ba58-e4510d33a825",
+              "action": 0,
+              "nextStepId": "d8f70c55-22e9-476a-8720-908cb646436d",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "224482e2-10a5-4d62-867e-f98b24f25d6a",
+        "type": "node",
+        "position": {
+          "x": 348.80264869958705,
+          "y": 449.48607635362396
+        },
+        "data": {
+          "label": "Recuperar senha",
+          "interactions": [
+            {
+              "type": "MessageField",
+              "data": {
+                "message": "Para recuperar/cadastrar sua senha, por favor *informe seu E-mail e, logo após, a data de nascimento*, tudo na mesma mensagem. \nExemplo: `email@xxx.com DD/MM/AAAA`"
+              },
+              "id": "e75b3647-fc89-4e57-a505-6ce0797cdace"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "US",
+              "id": "a8d26e65-8ca9-4a56-98fd-203f8c01fe3e",
+              "action": 0,
+              "nextStepId": "3be20d90-0db1-468f-89d5-73d1b1aa0c1f",
+              "userIdDestination": null,
+              "queueId": null
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "3be20d90-0db1-468f-89d5-73d1b1aa0c1f",
+        "type": "node",
+        "position": {
+          "x": 195.70492620850303,
+          "y": 517.9367034021025
+        },
+        "data": {
+          "label": "envioSenhaEmail",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "recuperar"
+                }
+              },
+              "id": "80a6de29-9de0-47fd-9a47-d04e7ea1afd0"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "US",
+              "id": "0b5ddb99-6b1b-427d-8543-1acdab475a6b",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "3dcf3ea6-e8a1-409b-acba-1985c601aca9",
+        "type": "node",
+        "position": {
+          "x": 1055.4577792507794,
+          "y": 400.71093597012145
+        },
+        "data": {
+          "label": "agendarExames",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "agendar"
+                }
+              },
+              "id": "3c47703c-6ce0-43b1-906e-2c8349ab363d"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "voltar_unidades"
+              ],
+              "id": "ad247a39-fe7c-49e5-a287-9bb555226a71",
+              "action": 0,
+              "nextStepId": "3dcf3ea6-e8a1-409b-acba-1985c601aca9",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "empresa_"
+              ],
+              "id": "94997dd5-d201-4367-bf10-db949010fb41",
+              "action": 0,
+              "nextStepId": "60f5eed4-b311-4585-a791-d6743555a760",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "60f5eed4-b311-4585-a791-d6743555a760",
+        "type": "node",
+        "position": {
+          "x": 1138.2571323244351,
+          "y": 484.9628046681207
+        },
+        "data": {
+          "label": "Unidade",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "selecionarPlano"
+                }
+              },
+              "id": "f2a16911-0f96-41ad-a712-6f83a3ee299f"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "US",
+              "id": "7e18490f-f216-422e-8f2c-abee699b1400",
+              "action": 0,
+              "nextStepId": "48b4e5bc-244e-4224-b2e1-d69a20886740",
+              "userIdDestination": null,
+              "queueId": null
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "48b4e5bc-244e-4224-b2e1-d69a20886740",
+        "type": "node",
+        "position": {
+          "x": 1290.9595167241096,
+          "y": 396.91191634834047
+        },
+        "data": {
+          "label": "Plano",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "getPlano"
+                }
+              },
+              "id": "66f73409-4814-496c-a0f0-3feedabe1d14"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "voltar_plano"
+              ],
+              "id": "157275bc-c973-4ce0-a5b1-2e73e02a03d0",
+              "action": 0,
+              "nextStepId": "60f5eed4-b311-4585-a791-d6743555a760",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "plano_"
+              ],
+              "id": "c9cc49d4-a133-4317-be3f-fb2230c0e7dc",
+              "action": 0,
+              "nextStepId": "0ef1a893-426a-470c-be5a-294399a7c1ef",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "3d34cb56-51cc-4c05-8a3a-74a459eb293c",
+        "type": "node",
+        "position": {
+          "x": 1691.0397354494535,
+          "y": 398.76015108036773
+        },
+        "data": {
+          "label": "Digite Exame",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "pesquisaexame"
+                }
+              },
+              "id": "b2511cf4-c171-4436-974e-94d7007e3429"
+            },
+            {
+              "type": "MessageField",
+              "data": {
+                "message": "Por favor, informe o exame que deseja marcar.\nDigite apenas um exame nesta etapa."
+              },
+              "id": "1294c232-a6ca-4a00-a325-190c58760930"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "US",
+              "id": "e74e71d6-6352-42d5-a24c-d67e11626237",
+              "action": 0,
+              "nextStepId": "5791349c-7a18-40d2-be7d-97ee62f1c1b1",
+              "userIdDestination": null,
+              "queueId": null
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "0ef1a893-426a-470c-be5a-294399a7c1ef",
+        "type": "node",
+        "position": {
+          "x": 1420.0213679675137,
+          "y": 486.6745413664863
+        },
+        "data": {
+          "label": "ObservacaoPlano",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "Obsplano"
+                }
+              },
+              "id": "9757c65d-2576-405d-a2b9-7cd63505511c"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "SIM",
+                "sim",
+                "continuar",
+                "1"
+              ],
+              "id": "4e30b3fe-d8a1-4594-9098-f1acaffec9e4",
+              "action": 0,
+              "nextStepId": "3d34cb56-51cc-4c05-8a3a-74a459eb293c",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "nao",
+                "não",
+                "cancelar",
+                "2"
+              ],
+              "id": "a85abc64-e40c-43a5-9f2c-d6f17f0f88c5",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "5791349c-7a18-40d2-be7d-97ee62f1c1b1",
+        "type": "node",
+        "position": {
+          "x": 1690.2031088990473,
+          "y": 468.8765111473272
+        },
+        "data": {
+          "label": "Selecao de exames",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "procedimento"
+                }
+              },
+              "id": "f17ab2a0-9b9f-4e26-b0f1-fe1f791f751c"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "exame_"
+              ],
+              "id": "51223545-3833-48c2-849c-442b8b680c03",
+              "action": 0,
+              "nextStepId": "8747be46-a374-42ec-afa2-230135059023",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            },
+            {
+              "type": "R",
+              "condition": [
+                "1",
+                "suporte"
+              ],
+              "id": "ee3daba5-e803-44d7-9282-0bf5c2513b32",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "3"
+              ],
+              "id": "9e152065-3da3-4406-88d1-d34493bdbb7b",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            },
+            {
+              "type": "R",
+              "condition": [
+                "2"
+              ],
+              "id": "344bda8f-ec64-40c9-8f6d-2fbe75b920ab",
+              "action": 0,
+              "nextStepId": "3d34cb56-51cc-4c05-8a3a-74a459eb293c",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "ff6061f6-3bb8-4f66-83b0-d9670a530f5b",
+        "type": "node",
+        "position": {
+          "x": 1973.5304755028665,
+          "y": 480.0291546194559
+        },
+        "data": {
+          "label": "loop",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "loop"
+                }
+              },
+              "id": "b9ee0ac9-6114-4259-992a-9de7393d732a"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "sim"
+              ],
+              "id": "440b102d-7050-4b16-9fdb-fd7cdeb21b35",
+              "action": 0,
+              "nextStepId": "3d34cb56-51cc-4c05-8a3a-74a459eb293c",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "id": "2f471f1c-1368-425b-ae78-46b0002492d2",
+              "action": 0,
+              "nextStepId": "f11e7255-2b82-4c68-ab84-ce502e9839b0",
+              "userIdDestination": null,
+              "queueId": null,
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋",
+              "condition": [
+                "nao",
+                "não"
+              ],
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "f11e7255-2b82-4c68-ab84-ce502e9839b0",
+        "type": "node",
+        "position": {
+          "x": 1972.1793884160254,
+          "y": 599.4352142309157
+        },
+        "data": {
+          "label": "preparo",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "preparoAgendamento"
+                }
+              },
+              "id": "ab28342c-880d-4e3c-897a-e5a89690375b"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "id": "72f183e5-9ebe-4daf-ba93-4b463c4f201c",
+              "action": 0,
+              "nextStepId": "6699a5cf-b5c9-491e-a82b-b327e7bbfeb5",
+              "userIdDestination": null,
+              "queueId": null,
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋",
+              "condition": [
+                "1",
+                "continuar"
+              ],
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "2",
+                "voltar"
+              ],
+              "id": "4e4dae1f-9a8d-46f0-837d-e0996a26b376",
+              "action": 0,
+              "nextStepId": "ff6061f6-3bb8-4f66-83b0-d9670a530f5b",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "3"
+              ],
+              "id": "8839ca85-d118-4441-962a-6a6207d178c3",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        },
+        "selected": false
+      },
+      {
+        "id": "d3e46bfa-7e2c-40f0-9fff-56c242dbbba7",
+        "type": "node",
+        "position": {
+          "x": 2237.640062534777,
+          "y": 537.0047845505464
+        },
+        "data": {
+          "label": "Pesquisa de horarios",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "pesquisaHorarios"
+                }
+              },
+              "id": "fb9c8f89-0a8e-418a-98cd-378064512595"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "id": "afb288a1-0690-4968-9190-5db0d8e829f1",
+              "nextStepId": "1e46f1d6-c659-4c71-9811-269f27eaca5e",
+              "userIdDestination": null,
+              "queueId": null,
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋",
+              "condition": [
+                "horario_"
+              ],
+              "inputValue": "",
+              "action": 0
+            },
+            {
+              "type": "R",
+              "condition": [
+                "next"
+              ],
+              "id": "de7f72d2-cea8-4b05-936d-a95ceb7424bc",
+              "action": 0,
+              "nextStepId": "d3e46bfa-7e2c-40f0-9fff-56c242dbbba7",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "1",
+                "suporte"
+              ],
+              "id": "de18e0cd-d9a5-4bc3-b4a8-f69041b970fa",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "2",
+                "voltar"
+              ],
+              "id": "577ba8f6-295d-4b6e-a2ee-fb4ec25bc272",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "3",
+                "encerar",
+                "cancelar"
+              ],
+              "id": "d6132358-5d78-4886-93e0-023a645a6f70",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            },
+            {
+              "type": "R",
+              "condition": [
+                "mais"
+              ],
+              "id": "02cd830f-8a01-48d8-bebe-381125f4be75",
+              "action": 0,
+              "nextStepId": "d3e46bfa-7e2c-40f0-9fff-56c242dbbba7",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "1e46f1d6-c659-4c71-9811-269f27eaca5e",
+        "type": "node",
+        "position": {
+          "x": 2234.21075210895,
+          "y": 590.6328086312797
+        },
+        "data": {
+          "label": "Confirmar agendamento",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "confirmarHorario"
+                }
+              },
+              "id": "b6555cc7-ad7e-4feb-9f35-597c20505f8b"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "id": "f4c5ccf6-670e-46ff-857d-c2415c69efd4",
+              "action": 0,
+              "nextStepId": "ba2d0b12-1f31-4d4f-bc48-a11faa31685d",
+              "userIdDestination": null,
+              "queueId": null,
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋",
+              "condition": [
+                "confirmar",
+                "1"
+              ],
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "2"
+              ],
+              "id": "205ad21e-2275-4348-b65f-9734f7bdf46b",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "f965ca07-34d4-4010-8097-0f367be7af4e",
+        "type": "node",
+        "position": {
+          "x": 431.483270586107,
+          "y": 400.57406889130806
+        },
+        "data": {
+          "label": "Link",
+          "interactions": [
+            {
+              "type": "MessageField",
+              "data": {
+                "message": "Em breve enviaremos o link para cadastrar.\nCaso precise de um novo link favor digitar *reenviar*. Para finalizar digite 3."
+              },
+              "id": "a33f6d4d-1ee3-44cc-a331-b683d4678571"
+            },
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "linkcadastro"
+                }
+              },
+              "id": "261bf5d9-09eb-402d-b1f1-ad11bcfa69bb"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "Reenvi",
+                "Reenvia",
+                "reenvia",
+                "reenviar"
+              ],
+              "id": "89aa7e4c-7e22-4bb9-abd2-5f155f142afb",
+              "action": 0,
+              "nextStepId": "f965ca07-34d4-4010-8097-0f367be7af4e",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "US",
+              "id": "5d855198-993e-409d-8992-4eb72b4f3214",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "ba2d0b12-1f31-4d4f-bc48-a11faa31685d",
+        "type": "node",
+        "position": {
+          "x": 2234.8060137724046,
+          "y": 641.6993350592621
+        },
+        "data": {
+          "label": "Conclusao agendamento",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "concluiragendamento"
+                }
+              },
+              "id": "77406bdc-2a64-4c2a-8270-78e0ea121ce3"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "3"
+              ],
+              "id": "83e010af-02ca-48a9-9134-91187e3d7813",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            },
+            {
+              "type": "R",
+              "condition": [
+                "1"
+              ],
+              "id": "ea9b2b7f-e008-48c6-9785-cc594a6f9671",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "393e801b-0d56-487b-a1e5-ae1952bf7e8e",
+        "type": "node",
+        "position": {
+          "x": 306.99750455993905,
+          "y": 306.9645716784377
+        },
+        "data": {
+          "label": "consulta",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "consulta"
+                }
+              },
+              "id": "adcf2bcb-27e4-4865-b228-6f7b73bce980"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "cadastrar",
+                "cadastro"
+              ],
+              "id": "646f4d36-3287-4ce3-b40f-9b7a74895cf9",
+              "action": 0,
+              "nextStepId": "f965ca07-34d4-4010-8097-0f367be7af4e",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "id": "4034f562-e23f-47c1-92e5-4314e1acf315",
+              "action": 0,
+              "nextStepId": "224482e2-10a5-4d62-867e-f98b24f25d6a",
+              "userIdDestination": null,
+              "queueId": null,
+              "condition": [
+                "recuperar",
+                "Recuperar",
+                "Recupera",
+                "recupera"
+              ],
+              "inputValue": ""
+            },
+            {
+              "type": "US",
+              "id": "7a1f5ff2-5bb9-412f-ace6-5197e953495f",
+              "action": 0,
+              "nextStepId": "ae5cdd62-0417-4226-86ca-4e4fee713c61",
+              "userIdDestination": null,
+              "queueId": null
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "ae5cdd62-0417-4226-86ca-4e4fee713c61",
+        "type": "node",
+        "position": {
+          "x": 590.6492501958516,
+          "y": 306.50218267768093
+        },
+        "data": {
+          "label": "senha",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "solicitarSenha"
+                }
+              },
+              "id": "f33ce5fe-6bf0-4236-9805-bbcf0dcf4405"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "suporte",
+                "atendimento"
+              ],
+              "id": "e1b5d032-0641-4429-bed9-d81f66e6e8f2",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "servicos",
+                "servico",
+                "serviço"
+              ],
+              "id": "4a434bde-a7be-45a6-b184-0e377d279485",
+              "action": 0,
+              "nextStepId": "706313a6-863a-43b4-8a30-ea2e9bac6c8a",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "Recuperar",
+                "recupera",
+                "recuperae"
+              ],
+              "id": "584248f7-b2b7-4a28-a53e-12d6519407c0",
+              "action": 0,
+              "nextStepId": "224482e2-10a5-4d62-867e-f98b24f25d6a",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "3",
+                "fim",
+                "encerar"
+              ],
+              "id": "b4a905d1-b790-477f-87e7-00998c104178",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "6699a5cf-b5c9-491e-a82b-b327e7bbfeb5",
+        "type": "node",
+        "position": {
+          "x": 2230.893205166164,
+          "y": 375.2983487154379
+        },
+        "data": {
+          "label": "Periodo",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "periodo"
+                }
+              },
+              "id": "f7fd607c-4710-4fad-b738-f7da3dc40cda"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "id": "70253846-8396-49a6-8018-f55fb68414a5",
+              "action": 0,
+              "nextStepId": "bd4b85e6-3fb1-4300-9493-5af4413532ac",
+              "userIdDestination": null,
+              "queueId": null,
+              "condition": [
+                "periodo_"
+              ],
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "bd4b85e6-3fb1-4300-9493-5af4413532ac",
+        "type": "node",
+        "position": {
+          "x": 2229.964508562191,
+          "y": 429.2756586744877
+        },
+        "data": {
+          "label": "Intervalo ",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "intervalo"
+                }
+              },
+              "id": "2285589c-edee-45e5-82cd-31da956ace58"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "id": "b98a4ad2-1374-49af-8684-f97c31848c81",
+              "nextStepId": "b6254bd4-5a10-4069-b5ae-c5a6622b0ad4",
+              "userIdDestination": null,
+              "queueId": null,
+              "action": 0,
+              "condition": [
+                "intervalo_"
+              ],
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "b6254bd4-5a10-4069-b5ae-c5a6622b0ad4",
+        "type": "node",
+        "position": {
+          "x": 2229.756338470296,
+          "y": 481.7092944345924
+        },
+        "data": {
+          "label": "Confirma",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "confirmaintervalo"
+                }
+              },
+              "id": "ef2fe927-3e53-468c-a4aa-7ab5dd47fa0a"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "continuar",
+                "1"
+              ],
+              "id": "dab15008-8287-41c5-ae55-5f8299e1dec9",
+              "action": 0,
+              "nextStepId": "d3e46bfa-7e2c-40f0-9fff-56c242dbbba7",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "6a471351-262a-4e63-9e5e-80f02d731bdf",
+        "type": "node",
+        "position": {
+          "x": 1699.130113920717,
+          "y": 632.2580208475883
+        },
+        "data": {
+          "label": "listaExameMedico",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "examesmedico"
+                }
+              },
+              "id": "8623f010-795a-49d3-a1fd-dae93cea5d2c"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "suporte"
+              ],
+              "id": "5fe2940c-dcdd-4ddf-be1e-256b00bb9e67",
+              "action": 1,
+              "nextStepId": null,
+              "userIdDestination": null,
+              "queueId": 13,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "medico_"
+              ],
+              "id": "ee38c547-1dd8-4155-a27f-19fd4a8d22e5",
+              "action": 0,
+              "nextStepId": "ff6061f6-3bb8-4f66-83b0-d9670a530f5b",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      },
+      {
+        "id": "8747be46-a374-42ec-afa2-230135059023",
+        "type": "node",
+        "position": {
+          "x": 1686.0582474191237,
+          "y": 539.7451821439727
+        },
+        "data": {
+          "label": "Preço exames",
+          "interactions": [
+            {
+              "type": "WebhookField",
+              "data": {
+                "webhook": {
+                  "apiId": "12",
+                  "acao": "precoexame"
+                }
+              },
+              "id": "348cc065-e5a4-43f4-b27f-52e58dbd1300"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "R",
+              "condition": [
+                "selecionarMedico"
+              ],
+              "id": "cd6ec361-1818-4509-ba90-a36eaa6958ba",
+              "action": 0,
+              "nextStepId": "6a471351-262a-4e63-9e5e-80f02d731bdf",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "condition": [
+                "continuar",
+                "naoSelecionar"
+              ],
+              "id": "1d9ca2e2-cf18-4076-b4dc-ffed7e89da01",
+              "action": 0,
+              "nextStepId": "ff6061f6-3bb8-4f66-83b0-d9670a530f5b",
+              "userIdDestination": null,
+              "queueId": null,
+              "inputValue": ""
+            },
+            {
+              "type": "R",
+              "id": "6bd81cd3-a863-483c-862e-903f82b911cc",
+              "action": 3,
+              "nextStepId": "",
+              "userIdDestination": "",
+              "queueId": "",
+              "condition": [
+                "3",
+                "cancelar"
+              ],
+              "inputValue": "",
+              "closeTicket": "Estamos finalizando o seu atendimento. 👋"
+            }
+          ],
+          "actions": []
+        },
+        "measured": {
+          "width": 172,
+          "height": 40
+        }
+      }
+    ],
+    "lineList": [
+      {
+        "type": "default",
+        "source": "start",
+        "target": "nodeC",
+        "id": "xy-edge__start-nodeCleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "nodeC",
+        "target": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
+        "targetHandle": "left",
+        "id": "xy-edge__nodeC-92b6e6fb-5043-4eea-ba10-516c7c3e117aleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
+        "sourceHandle": "right",
+        "target": "9a49289a-8cc8-4463-8b53-c1ce3462d0e6",
+        "targetHandle": "left",
+        "id": "xy-edge__92b6e6fb-5043-4eea-ba10-516c7c3e117aright-9a49289a-8cc8-4463-8b53-c1ce3462d0e6left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
+        "sourceHandle": "right",
+        "target": "66de1dd5-4546-42e7-af5b-bc67376468f1",
+        "targetHandle": "left",
+        "id": "xy-edge__92b6e6fb-5043-4eea-ba10-516c7c3e117aright-66de1dd5-4546-42e7-af5b-bc67376468f1left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "66de1dd5-4546-42e7-af5b-bc67376468f1",
+        "sourceHandle": "right",
+        "target": "9a49289a-8cc8-4463-8b53-c1ce3462d0e6",
+        "targetHandle": "left",
+        "id": "xy-edge__66de1dd5-4546-42e7-af5b-bc67376468f1right-9a49289a-8cc8-4463-8b53-c1ce3462d0e6left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "9a49289a-8cc8-4463-8b53-c1ce3462d0e6",
+        "sourceHandle": "right",
+        "target": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
+        "targetHandle": "left",
+        "id": "xy-edge__9a49289a-8cc8-4463-8b53-c1ce3462d0e6right-92b6e6fb-5043-4eea-ba10-516c7c3e117aleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "nodeC",
+        "target": "b9541322-6ba5-48f7-b7cf-01841a4292f7",
+        "targetHandle": "left",
+        "id": "xy-edge__nodeC-b9541322-6ba5-48f7-b7cf-01841a4292f7left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "706313a6-863a-43b4-8a30-ea2e9bac6c8a",
+        "sourceHandle": "right",
+        "target": "d8f70c55-22e9-476a-8720-908cb646436d",
+        "targetHandle": "left",
+        "id": "xy-edge__706313a6-863a-43b4-8a30-ea2e9bac6c8aright-d8f70c55-22e9-476a-8720-908cb646436dleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "d8f70c55-22e9-476a-8720-908cb646436d",
+        "sourceHandle": "right",
+        "target": "706313a6-863a-43b4-8a30-ea2e9bac6c8a",
+        "targetHandle": "left",
+        "id": "xy-edge__d8f70c55-22e9-476a-8720-908cb646436dright-706313a6-863a-43b4-8a30-ea2e9bac6c8aleft",
+        "selected": false,
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "706313a6-863a-43b4-8a30-ea2e9bac6c8a",
+        "sourceHandle": "right",
+        "target": "ca4dced9-55e6-4fd0-a655-7a5b38e7630c",
+        "targetHandle": "left",
+        "id": "xy-edge__706313a6-863a-43b4-8a30-ea2e9bac6c8aright-ca4dced9-55e6-4fd0-a655-7a5b38e7630cleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "ca4dced9-55e6-4fd0-a655-7a5b38e7630c",
+        "sourceHandle": "right",
+        "target": "08550817-da6a-4823-981e-cd8a2deea762",
+        "targetHandle": "left",
+        "id": "xy-edge__ca4dced9-55e6-4fd0-a655-7a5b38e7630cright-08550817-da6a-4823-981e-cd8a2deea762left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "ca4dced9-55e6-4fd0-a655-7a5b38e7630c",
+        "sourceHandle": "right",
+        "target": "706313a6-863a-43b4-8a30-ea2e9bac6c8a",
+        "targetHandle": "left",
+        "id": "xy-edge__ca4dced9-55e6-4fd0-a655-7a5b38e7630cright-706313a6-863a-43b4-8a30-ea2e9bac6c8aleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "08550817-da6a-4823-981e-cd8a2deea762",
+        "sourceHandle": "right",
+        "target": "ca4dced9-55e6-4fd0-a655-7a5b38e7630c",
+        "targetHandle": "left",
+        "id": "xy-edge__08550817-da6a-4823-981e-cd8a2deea762right-ca4dced9-55e6-4fd0-a655-7a5b38e7630cleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "d8f70c55-22e9-476a-8720-908cb646436d",
+        "sourceHandle": "right",
+        "target": "48470ea8-0254-400c-a436-95ece2c533b1",
+        "targetHandle": "left",
+        "id": "xy-edge__d8f70c55-22e9-476a-8720-908cb646436dright-48470ea8-0254-400c-a436-95ece2c533b1left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "48470ea8-0254-400c-a436-95ece2c533b1",
+        "sourceHandle": "right",
+        "target": "67f53216-e996-428b-82a7-d99a77446769",
+        "targetHandle": "left",
+        "id": "xy-edge__48470ea8-0254-400c-a436-95ece2c533b1right-67f53216-e996-428b-82a7-d99a77446769left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "67f53216-e996-428b-82a7-d99a77446769",
+        "sourceHandle": "right",
+        "target": "48470ea8-0254-400c-a436-95ece2c533b1",
+        "targetHandle": "left",
+        "id": "xy-edge__67f53216-e996-428b-82a7-d99a77446769right-48470ea8-0254-400c-a436-95ece2c533b1left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "9a7c7a6f-b14a-4a81-b191-f805e99c4d5c",
+        "sourceHandle": "right",
+        "target": "67f53216-e996-428b-82a7-d99a77446769",
+        "targetHandle": "left",
+        "id": "xy-edge__9a7c7a6f-b14a-4a81-b191-f805e99c4d5cright-67f53216-e996-428b-82a7-d99a77446769left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "d8f70c55-22e9-476a-8720-908cb646436d",
+        "sourceHandle": "right",
+        "target": "9a7c7a6f-b14a-4a81-b191-f805e99c4d5c",
+        "targetHandle": "left",
+        "id": "xy-edge__d8f70c55-22e9-476a-8720-908cb646436dright-9a7c7a6f-b14a-4a81-b191-f805e99c4d5cleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "9a7c7a6f-b14a-4a81-b191-f805e99c4d5c",
+        "sourceHandle": "right",
+        "target": "d8f70c55-22e9-476a-8720-908cb646436d",
+        "targetHandle": "left",
+        "id": "xy-edge__9a7c7a6f-b14a-4a81-b191-f805e99c4d5cright-d8f70c55-22e9-476a-8720-908cb646436dleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "224482e2-10a5-4d62-867e-f98b24f25d6a",
+        "sourceHandle": "right",
+        "target": "3be20d90-0db1-468f-89d5-73d1b1aa0c1f",
+        "targetHandle": "left",
+        "id": "xy-edge__224482e2-10a5-4d62-867e-f98b24f25d6aright-3be20d90-0db1-468f-89d5-73d1b1aa0c1fleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        },
+        "selected": false
+      },
+      {
+        "type": "default",
+        "source": "d8f70c55-22e9-476a-8720-908cb646436d",
+        "sourceHandle": "right",
+        "target": "3dcf3ea6-e8a1-409b-acba-1985c601aca9",
+        "targetHandle": "left",
+        "id": "xy-edge__d8f70c55-22e9-476a-8720-908cb646436dright-3dcf3ea6-e8a1-409b-acba-1985c601aca9left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "3dcf3ea6-e8a1-409b-acba-1985c601aca9",
+        "sourceHandle": "right",
+        "target": "3dcf3ea6-e8a1-409b-acba-1985c601aca9",
+        "targetHandle": "left",
+        "id": "xy-edge__3dcf3ea6-e8a1-409b-acba-1985c601aca9right-3dcf3ea6-e8a1-409b-acba-1985c601aca9left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "3dcf3ea6-e8a1-409b-acba-1985c601aca9",
+        "sourceHandle": "right",
+        "target": "60f5eed4-b311-4585-a791-d6743555a760",
+        "targetHandle": "left",
+        "id": "xy-edge__3dcf3ea6-e8a1-409b-acba-1985c601aca9right-60f5eed4-b311-4585-a791-d6743555a760left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "60f5eed4-b311-4585-a791-d6743555a760",
+        "sourceHandle": "right",
+        "target": "48b4e5bc-244e-4224-b2e1-d69a20886740",
+        "targetHandle": "left",
+        "id": "xy-edge__60f5eed4-b311-4585-a791-d6743555a760right-48b4e5bc-244e-4224-b2e1-d69a20886740left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "48b4e5bc-244e-4224-b2e1-d69a20886740",
+        "sourceHandle": "right",
+        "target": "60f5eed4-b311-4585-a791-d6743555a760",
+        "targetHandle": "left",
+        "id": "xy-edge__48b4e5bc-244e-4224-b2e1-d69a20886740right-60f5eed4-b311-4585-a791-d6743555a760left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "48b4e5bc-244e-4224-b2e1-d69a20886740",
+        "sourceHandle": "right",
+        "target": "0ef1a893-426a-470c-be5a-294399a7c1ef",
+        "targetHandle": "left",
+        "id": "xy-edge__48b4e5bc-244e-4224-b2e1-d69a20886740right-0ef1a893-426a-470c-be5a-294399a7c1efleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "0ef1a893-426a-470c-be5a-294399a7c1ef",
+        "sourceHandle": "right",
+        "target": "3d34cb56-51cc-4c05-8a3a-74a459eb293c",
+        "targetHandle": "left",
+        "id": "xy-edge__0ef1a893-426a-470c-be5a-294399a7c1efright-3d34cb56-51cc-4c05-8a3a-74a459eb293cleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "3d34cb56-51cc-4c05-8a3a-74a459eb293c",
+        "sourceHandle": "right",
+        "target": "5791349c-7a18-40d2-be7d-97ee62f1c1b1",
+        "targetHandle": "left",
+        "id": "xy-edge__3d34cb56-51cc-4c05-8a3a-74a459eb293cright-5791349c-7a18-40d2-be7d-97ee62f1c1b1left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "ff6061f6-3bb8-4f66-83b0-d9670a530f5b",
+        "sourceHandle": "right",
+        "target": "3d34cb56-51cc-4c05-8a3a-74a459eb293c",
+        "targetHandle": "left",
+        "id": "xy-edge__ff6061f6-3bb8-4f66-83b0-d9670a530f5bright-3d34cb56-51cc-4c05-8a3a-74a459eb293cleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "5791349c-7a18-40d2-be7d-97ee62f1c1b1",
+        "sourceHandle": "right",
+        "target": "3d34cb56-51cc-4c05-8a3a-74a459eb293c",
+        "targetHandle": "left",
+        "id": "xy-edge__5791349c-7a18-40d2-be7d-97ee62f1c1b1right-3d34cb56-51cc-4c05-8a3a-74a459eb293cleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "ff6061f6-3bb8-4f66-83b0-d9670a530f5b",
+        "sourceHandle": "right",
+        "target": "f11e7255-2b82-4c68-ab84-ce502e9839b0",
+        "targetHandle": "left",
+        "id": "xy-edge__ff6061f6-3bb8-4f66-83b0-d9670a530f5bright-f11e7255-2b82-4c68-ab84-ce502e9839b0left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "f11e7255-2b82-4c68-ab84-ce502e9839b0",
+        "sourceHandle": "right",
+        "target": "ff6061f6-3bb8-4f66-83b0-d9670a530f5b",
+        "targetHandle": "left",
+        "id": "xy-edge__f11e7255-2b82-4c68-ab84-ce502e9839b0right-ff6061f6-3bb8-4f66-83b0-d9670a530f5bleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "d3e46bfa-7e2c-40f0-9fff-56c242dbbba7",
+        "sourceHandle": "right",
+        "target": "1e46f1d6-c659-4c71-9811-269f27eaca5e",
+        "targetHandle": "left",
+        "id": "xy-edge__d3e46bfa-7e2c-40f0-9fff-56c242dbbba7right-1e46f1d6-c659-4c71-9811-269f27eaca5eleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "1e46f1d6-c659-4c71-9811-269f27eaca5e",
+        "sourceHandle": "right",
+        "target": "ba2d0b12-1f31-4d4f-bc48-a11faa31685d",
+        "targetHandle": "left",
+        "id": "xy-edge__1e46f1d6-c659-4c71-9811-269f27eaca5eright-ba2d0b12-1f31-4d4f-bc48-a11faa31685dleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "f965ca07-34d4-4010-8097-0f367be7af4e",
+        "sourceHandle": "right",
+        "target": "f965ca07-34d4-4010-8097-0f367be7af4e",
+        "targetHandle": "left",
+        "id": "xy-edge__f965ca07-34d4-4010-8097-0f367be7af4eright-f965ca07-34d4-4010-8097-0f367be7af4eleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "b9541322-6ba5-48f7-b7cf-01841a4292f7",
+        "sourceHandle": "right",
+        "target": "393e801b-0d56-487b-a1e5-ae1952bf7e8e",
+        "targetHandle": "left",
+        "id": "xy-edge__b9541322-6ba5-48f7-b7cf-01841a4292f7right-393e801b-0d56-487b-a1e5-ae1952bf7e8eleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "393e801b-0d56-487b-a1e5-ae1952bf7e8e",
+        "sourceHandle": "right",
+        "target": "ae5cdd62-0417-4226-86ca-4e4fee713c61",
+        "targetHandle": "left",
+        "id": "xy-edge__393e801b-0d56-487b-a1e5-ae1952bf7e8eright-ae5cdd62-0417-4226-86ca-4e4fee713c61left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "393e801b-0d56-487b-a1e5-ae1952bf7e8e",
+        "sourceHandle": "right",
+        "target": "f965ca07-34d4-4010-8097-0f367be7af4e",
+        "targetHandle": "left",
+        "id": "xy-edge__393e801b-0d56-487b-a1e5-ae1952bf7e8eright-f965ca07-34d4-4010-8097-0f367be7af4eleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "ae5cdd62-0417-4226-86ca-4e4fee713c61",
+        "sourceHandle": "right",
+        "target": "706313a6-863a-43b4-8a30-ea2e9bac6c8a",
+        "targetHandle": "left",
+        "id": "xy-edge__ae5cdd62-0417-4226-86ca-4e4fee713c61right-706313a6-863a-43b4-8a30-ea2e9bac6c8aleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "ae5cdd62-0417-4226-86ca-4e4fee713c61",
+        "sourceHandle": "right",
+        "target": "224482e2-10a5-4d62-867e-f98b24f25d6a",
+        "targetHandle": "left",
+        "id": "xy-edge__ae5cdd62-0417-4226-86ca-4e4fee713c61right-224482e2-10a5-4d62-867e-f98b24f25d6aleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "66de1dd5-4546-42e7-af5b-bc67376468f1",
+        "sourceHandle": "right",
+        "target": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
+        "targetHandle": "left",
+        "id": "xy-edge__66de1dd5-4546-42e7-af5b-bc67376468f1right-92b6e6fb-5043-4eea-ba10-516c7c3e117aleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "6699a5cf-b5c9-491e-a82b-b327e7bbfeb5",
+        "sourceHandle": "right",
+        "target": "bd4b85e6-3fb1-4300-9493-5af4413532ac",
+        "targetHandle": "left",
+        "id": "xy-edge__6699a5cf-b5c9-491e-a82b-b327e7bbfeb5right-bd4b85e6-3fb1-4300-9493-5af4413532acleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "f11e7255-2b82-4c68-ab84-ce502e9839b0",
+        "sourceHandle": "right",
+        "target": "6699a5cf-b5c9-491e-a82b-b327e7bbfeb5",
+        "targetHandle": "left",
+        "id": "xy-edge__f11e7255-2b82-4c68-ab84-ce502e9839b0right-6699a5cf-b5c9-491e-a82b-b327e7bbfeb5left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "bd4b85e6-3fb1-4300-9493-5af4413532ac",
+        "sourceHandle": "right",
+        "target": "b6254bd4-5a10-4069-b5ae-c5a6622b0ad4",
+        "targetHandle": "left",
+        "id": "xy-edge__bd4b85e6-3fb1-4300-9493-5af4413532acright-b6254bd4-5a10-4069-b5ae-c5a6622b0ad4left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "d3e46bfa-7e2c-40f0-9fff-56c242dbbba7",
+        "sourceHandle": "right",
+        "target": "d3e46bfa-7e2c-40f0-9fff-56c242dbbba7",
+        "targetHandle": "left",
+        "id": "xy-edge__d3e46bfa-7e2c-40f0-9fff-56c242dbbba7right-d3e46bfa-7e2c-40f0-9fff-56c242dbbba7left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "b6254bd4-5a10-4069-b5ae-c5a6622b0ad4",
+        "sourceHandle": "right",
+        "target": "d3e46bfa-7e2c-40f0-9fff-56c242dbbba7",
+        "targetHandle": "left",
+        "id": "xy-edge__b6254bd4-5a10-4069-b5ae-c5a6622b0ad4right-d3e46bfa-7e2c-40f0-9fff-56c242dbbba7left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "5791349c-7a18-40d2-be7d-97ee62f1c1b1",
+        "sourceHandle": "right",
+        "target": "8747be46-a374-42ec-afa2-230135059023",
+        "targetHandle": "left",
+        "id": "xy-edge__5791349c-7a18-40d2-be7d-97ee62f1c1b1right-8747be46-a374-42ec-afa2-230135059023left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        },
+        "selected": false
+      },
+      {
+        "type": "default",
+        "source": "8747be46-a374-42ec-afa2-230135059023",
+        "sourceHandle": "right",
+        "target": "6a471351-262a-4e63-9e5e-80f02d731bdf",
+        "targetHandle": "left",
+        "id": "xy-edge__8747be46-a374-42ec-afa2-230135059023right-6a471351-262a-4e63-9e5e-80f02d731bdfleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "6a471351-262a-4e63-9e5e-80f02d731bdf",
+        "sourceHandle": "right",
+        "target": "ff6061f6-3bb8-4f66-83b0-d9670a530f5b",
+        "targetHandle": "left",
+        "id": "xy-edge__6a471351-262a-4e63-9e5e-80f02d731bdfright-ff6061f6-3bb8-4f66-83b0-d9670a530f5bleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "8747be46-a374-42ec-afa2-230135059023",
+        "sourceHandle": "right",
+        "target": "ff6061f6-3bb8-4f66-83b0-d9670a530f5b",
+        "targetHandle": "left",
+        "id": "xy-edge__8747be46-a374-42ec-afa2-230135059023right-ff6061f6-3bb8-4f66-83b0-d9670a530f5bleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "6a471351-262a-4e63-9e5e-80f02d731bdf",
+        "sourceHandle": "right",
+        "target": "8747be46-a374-42ec-afa2-230135059023",
+        "targetHandle": "left",
+        "id": "xy-edge__6a471351-262a-4e63-9e5e-80f02d731bdfright-8747be46-a374-42ec-afa2-230135059023left",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      },
+      {
+        "type": "default",
+        "source": "393e801b-0d56-487b-a1e5-ae1952bf7e8e",
+        "sourceHandle": "right",
+        "target": "224482e2-10a5-4d62-867e-f98b24f25d6a",
+        "targetHandle": "left",
+        "id": "xy-edge__393e801b-0d56-487b-a1e5-ae1952bf7e8eright-224482e2-10a5-4d62-867e-f98b24f25d6aleft",
+        "style": {
+          "stroke": "#999",
+          "strokeWidth": 3,
+          "pointerEvents": "stroke"
+        }
+      }
+    ]
+  }
+}

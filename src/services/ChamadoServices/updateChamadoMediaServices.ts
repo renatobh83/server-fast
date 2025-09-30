@@ -15,6 +15,7 @@ export const updateChamadoMediaServices = async (
         const { url, type } = prepareMediaFile(file);
         return { url, type, chamadoId };
       }) as unknown as Media[];
+
       await Media.bulkCreate(mediaData, { ignoreDuplicates: true });
     }
     const chamado = await Chamado.findByPk(chamadoId, {
@@ -57,7 +58,7 @@ function prepareMediaFile(file: any): { url: string; type: string } {
 
   let url = `${BACKEND_URL}/public/attachments/${filename}`;
   if (NODE_ENV === "development") {
-    url = `${BACKEND_URL}:${PROXY_PORT}/public/attachments/${filename}`;
+    url = `${BACKEND_URL}/public/attachments/${filename}`;
   }
 
   const type = mimetype;

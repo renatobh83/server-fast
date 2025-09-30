@@ -224,6 +224,7 @@ export const sendMessageChamado = async (
     const { tenantId } = request.user as any;
     const dataBody = request.body as any;
     const payload = { ...dataBody, tenantId };
+
     await SendMessageChamadoServices(payload);
     return reply.code(STANDARD.OK.statusCode).send({ message: "Sucess" });
   } catch (error) {

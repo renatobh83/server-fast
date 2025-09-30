@@ -1,0 +1,17 @@
+NOTA INTERNA:
+
+Problema: os lancamentos de impostos de forma automática as vezes é gerado sem banco informado.
+
+Solicitação: Que em todos os lançamentos o banco seja preenchido.
+
+Justificativa: o departamento do financeiro me relatou um problema que estão enfrentando com relação ao lançamento das nfs o campo banco ele ele nao  pode ser nulo  sempre foi obrigatório a inserção do banco mesmo o pessoal selecionando o banco, ele esta aparecendo no relatório nulo
+
+OBS: Cliente parece ter alguma customização, pois em Financeiro > Impostos é possível criar um imposto e não informar um banco, uma vez que esse campo é obrigatário e no cadastro do cliente todos os impostos esta sem banco informado.
+Cliente esta reclamando que alguns lançamentos de impostos, gerados pelo sistema, o campo banco esta vindo como nulo, outros lançamentos essa informação é preenchida.
+Pedi para o cliente então ir em Financeiro> Imposto e associar um banco ao imposto, ele disse que ao fazer isso o lançamentos principal o banco foi alterado para esse que foi selecionado.
+
+Cliente gostaria de saber porque não e todos os lançamentos gerados pelo sistema vai para a um banco, ele gostaria que todos fossem direcionado para o banco
+
+
+
+Renato

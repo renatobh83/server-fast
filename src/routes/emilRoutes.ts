@@ -30,12 +30,12 @@ export default async function emailRoutes(fastify: FastifyInstance) {
         body: {
           type: "object",
           required: ["to", "subject", "html"],
-          properties: {
-            html: { type: "object" },
-            subject: { type: "string" },
-            to: { type: "string", format: "email" },
-            attachmentUrl: { type: "string" },
-          },
+          // properties: {
+          //   html: { type: "object" },
+          //   subject: { type: "string" },
+          //   to: { type: "string", format: "email" },
+          //   attachmentUrl: { type: "string" },
+          // },
         },
       },
     },

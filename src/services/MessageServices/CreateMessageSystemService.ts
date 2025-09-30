@@ -73,12 +73,16 @@ export const CreateMessageSystemService = async ({
     await Promise.all(
       (filesArray && filesArray.length ? filesArray : [null]).map(
         async (media) => {
+          console.log(media);
           if (!media) {
             messageData.mediaType = "chat";
             messageData.mediaName = undefined;
             messageData.buffer = undefined;
           } else {
-            messageData.mediaType = media.mimetype.split("/")[0];
+            messageData.mediaType =
+              media.mimetype.split("/")[0] === "text"
+                ? "application"
+                : media.mimetype.split("/")[0];
             messageData.mediaName = media.filename;
             messageData.buffer = media.buffer;
             const filepath = `./public/${media.filename}`;

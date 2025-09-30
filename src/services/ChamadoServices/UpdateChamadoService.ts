@@ -103,8 +103,10 @@ export const updateChamadoService = async ({
   if (status === "CONCLUIDO") {
     await fecharTicket(findChamado.id, conclusao!);
   }
-
-  findChamado.setContatos(contatoId);
+  if (contatoId) {
+    const contatosArray = Array.isArray(contatoId) ? contatoId : [contatoId];
+    await findChamado.setContatos(contatosArray);
+  }
 
   await findChamado.update({
     userId,

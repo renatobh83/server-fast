@@ -1,3 +1,4 @@
+import { options } from "pdfkit";
 import { addJob } from "../../lib/Queue";
 import Contact from "../../models/Contact";
 import Empresa from "../../models/Empresa";
@@ -8,8 +9,8 @@ import {
 
 export const sendEmailOpenClose = async (chamado: any, conclusao?: any) => {
   const contatos = await Promise.all(
-    chamado.contatoId.map(async (id: any) =>
-      Contact.findByPk(id, {
+    chamado.contatos.map(async (contato: any) =>
+      Contact.findByPk(contato.id, {
         attributes: ["name", "email"],
         raw: true,
       })
