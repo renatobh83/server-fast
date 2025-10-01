@@ -95,8 +95,7 @@ export async function start() {
     console.log("Server listening on http://localhost:3000");
     initSocket(app.server);
     setupSocketListeners();
-
-    await StartAllWhatsAppsSessions();
+    // await StartAllWhatsAppsSessions();
   } catch (err) {
     app.log.error(err);
     process.exit(1);

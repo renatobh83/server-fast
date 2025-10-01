@@ -3,6 +3,8 @@ import { STANDARD } from "../constants/request";
 import { handleServerError } from "../errors/errors.helper";
 import { FindEmpresaByIdentifierServices } from "../services/EmpresaServices/FindEmpresaByIdentifierServices";
 import { sign } from "jsonwebtoken";
+import { saveFile } from "../utils/saveFile";
+import path from "node:path";
 
 export const createTokenChatClient = async (
   request: FastifyRequest<{
@@ -43,9 +45,19 @@ export const storeFileChatClient = async (
   reply: FastifyReply
 ) => {
   try {
-    const parts = request.parts();
-    console.log(parts);
-    return reply.code(STANDARD.OK.statusCode).send("token");
+    const files = request.files();
+    const publicFolder = path.join(process.cwd(), "public");
+    let filename;
+    for await (const file of files) {
+      try {
+        filename = await saveFile(file, publicFolder);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    const fileUrl = `${process.env.BACKEND_URL}/public/${filename}`;
+
+    return reply.code(STANDARD.OK.statusCode).send({ url: fileUrl });
   } catch (error) {
     console.log(error);
     return handleServerError(reply, error);

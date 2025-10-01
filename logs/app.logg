@@ -3012,3 +3012,8 @@
   level: 'error',
   timestamp: '2025-10-01T13:38:29.463Z'
 }
+{
+  message: 'Falha na verificação do token em todas as chaves.',
+  level: 'error',
+  timestamp: '2025-10-01T18:09:22.730Z'
+}
