@@ -9,7 +9,6 @@ import { configSchema } from "./configSchema";
 import { redisPlugin } from "../lib/fastifyPlugins/redis";
 import { sequelizePlugin } from "../lib/fastifyPlugins/sequelize";
 import { StartAllWhatsAppsSessions } from "../services/WbotServices/StartAllWhatsAppsSessions";
-import axios from "axios";
 
 export async function buildServer(
   config: FastifyServerOptions = {}
@@ -46,6 +45,7 @@ export async function buildServer(
   // decorador para verificar se o usuário está autenticado
   server.decorate("authenticate", async function (request: any, reply: any) {
     try {
+      console.log(request.raw.url);
       await request.jwtVerify(); // verifica o token
     } catch (err) {
       console.error("JWT ERROR:", err);
@@ -95,7 +95,7 @@ export async function start() {
     console.log("Server listening on http://localhost:3000");
     initSocket(app.server);
     setupSocketListeners();
-    // await StartAllWhatsAppsSessions();
+    await StartAllWhatsAppsSessions();
   } catch (err) {
     app.log.error(err);
     process.exit(1);
