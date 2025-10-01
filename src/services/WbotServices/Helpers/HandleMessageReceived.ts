@@ -12,6 +12,9 @@ import VerifyStepsChatFlowTicket from "../../ChatFlowServices/VerifyStepsChatFlo
 import { getCache, setCache } from "../../../utils/cacheRedis";
 import { RedisKeys } from "../../../constants/redisKeys";
 import Whatsapp from "../../../models/Whatsapp";
+import IntegracaoGenesisConfirmacao from "../../../models/IntegracaoGenesisConfirmacao";
+import { Op } from "sequelize";
+import { GetContactByLid } from "./GetContactBYLid";
 
 interface Session extends wbot {
   id: number;
@@ -63,6 +66,14 @@ export const HandleMessageReceived = async (
     return;
   }
   const contact = await VerifyContact(chat, tenantId);
+
+  let authorGrupMessage: any = "";
+
+  if (msg.isGroupMsg) {
+    const number = await GetContactByLid(msg.author, wbot);
+    authorGrupMessage = number;
+  }
+
   // const integracaoMessage = await IntegracaoGenesisConfirmacao.findOne({
   //   where: { contato: chat.id._serialized, closedAt: { [Op.is]: null } },
   // });
@@ -104,9 +115,9 @@ export const HandleMessageReceived = async (
   //   scheduleCleanup(ticket.id);
 
   if (msg.filehash) {
-    await VerifyMediaMessage(msg, ticket, contact, wbot);
+    await VerifyMediaMessage(msg, ticket, contact, wbot, authorGrupMessage);
   } else {
-    await VerifyMessage(msg, ticket, contact);
+    await VerifyMessage(msg, ticket, contact, authorGrupMessage);
   }
 
   await VerifyStepsChatFlowTicket(msg, ticket);
