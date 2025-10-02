@@ -72,6 +72,7 @@ export const wbotMessageListener = async (wbot: any): Promise<void> => {
       // Obter a mensagem original relacionada ao ACK
       const message = await wbot.getMessageById(ack.id._serialized);
       if (!message.fromMe) return;
+
       if (message && message.ack === 2) {
         await HandleMsgAck(ack);
       } else {
