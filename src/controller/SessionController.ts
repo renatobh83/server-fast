@@ -23,6 +23,7 @@ export const StoreLoginHandler = async (
   });
 
   await SendRefreshToken(response, refreshToken);
+
   const io = getIO();
   const params = {
     token,
@@ -60,7 +61,8 @@ export const LogoutUser = async (
     if (userLogout) {
       userLogout.update({ isOnline: false, lastLogout: new Date() });
     }
-    request.server.io.emit(`${userLogout?.tenantId}:users`, {
+    const io = getIO();
+    io.emit(`${userLogout?.tenantId}:users`, {
       action: "update",
       data: {
         username: userLogout?.name,
@@ -71,10 +73,11 @@ export const LogoutUser = async (
     });
     reply
       .clearCookie("refreshToken", {
-        path: "/refresh-token", // precisa ser o mesmo usado ao criar
+        path: "/", // precisa ser o mesmo usado ao criar
       })
       .send({ message: "Logout realizado com sucesso" });
   } catch (error) {
+    console.log(error);
     return handleServerError(reply, error);
   }
 };

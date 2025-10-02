@@ -4,7 +4,7 @@ import { logger } from "../utils/logger";
 
 import { RepeatOptions, JobsOptions } from "bullmq";
 import { redisClient } from "./redis";
-
+import fastify from "fastify";
 
 // Atualize a interface JobQueue para incluir o tipo correto para options
 interface JobQueue {
@@ -80,7 +80,9 @@ function setupWorkerListeners(worker: Worker, name: string) {
 
   worker.on("completed", (job: Job, result: any) => {
     logger.info(
-      `[Worker ${name}] Job ${job.id} concluído com sucesso. Resultado: ${JSON.stringify(result, null,2)}`
+      `[Worker ${name}] Job ${
+        job.id
+      } concluído com sucesso. Resultado: ${JSON.stringify(result, null, 2)}`
     );
   });
 
@@ -164,7 +166,7 @@ export function processQueues(concurrency = 10) {
           logger.info(`Processando job ${name} com ID ${job.id}`);
           const result = await handle(job.data);
           logger.info(`Job ${name} processado com sucesso.`);
-          return result; 
+          return result;
         } catch (error) {
           const err = handleError(
             `processamento do job ${name} (ID: ${job.id})`,
@@ -179,7 +181,7 @@ export function processQueues(concurrency = 10) {
     setupWorkerListeners(worker, name);
     workers.push(worker);
   }
-  logger.info("Workers configurados e prontos para processar jobs.");
+  //logger.info("Workers configurados e prontos para processar jobs.");
 }
 
 /**

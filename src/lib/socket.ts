@@ -6,6 +6,7 @@ import { JsonWebTokenError } from "jsonwebtoken";
 import User from "../models/User";
 import { HandleMessageChatClient } from "../services/ChatClientService/HandleMessageChatClient";
 import decodeTokenSocket from "../utils/decodeTokenSocket";
+import { logger } from "../utils/logger";
 
 // 1. Declare a variável `io` no escopo do módulo.
 //    Ela começará como `null` e será inicializada depois.
@@ -121,20 +122,19 @@ export const setupSocketListeners = (): void => {
         return;
       }
 
-      
       if (tenantId) {
         socket.join(tenantId.toString());
-        console.log(
+        logger.info(
           `Cliente ${socket.id} entrou na sala do tenant ${tenantId}`
         );
       }
     } catch (err) {
       if (err instanceof JsonWebTokenError) {
-        console.warn(
+        logger.warn(
           `Socket ${socket.id} forneceu token inválido: ${err.message}`
         );
       } else {
-        console.error(`Erro inesperado no socket ${socket.id}:`, err);
+        logger.error(`Erro inesperado no socket ${socket.id}:`, err);
       }
       socket.disconnect(true); // garante que não fique conectado
     }

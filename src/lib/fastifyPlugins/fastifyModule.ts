@@ -81,7 +81,6 @@ const fastifyModule = fp(async (fastify) => {
   await fastify.register(cookie, {
     secret: process.env.COOKIE_SECRET || "super-secret",
   });
-
   // 5️⃣ Body parsing
   await fastify.register(formbody);
   await fastify.register(multipart, { limits: { fileSize: 10 * 1024 * 1024 } });

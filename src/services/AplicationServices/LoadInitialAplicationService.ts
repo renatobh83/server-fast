@@ -1,3 +1,4 @@
+import ListChatFlowService from "../AdminServices/AdminListChatFlowService";
 import ListContactsService from "../ContactServices/ListContactsService";
 import { ListEmpresaService } from "../EmpresaServices/ListEmpresaService";
 import ListQueueService from "../QueueServices/ListQueueService";
@@ -26,5 +27,6 @@ export const LoadInitialAplicationService = async ({
   const channels = await ListWhatsAppsService(tenantId);
   const empresas = await ListEmpresaService(tenantId);
   const usuarios = await ListUsersService({ tenantId });
-  return { contatos, queues, settigns, channels, empresas, usuarios };
+  const chatFlow = await ListChatFlowService({ tenantId });
+  return { contatos, queues, settigns, channels, empresas, usuarios, chatFlow };
 };

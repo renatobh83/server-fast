@@ -1,5 +1,9 @@
 import "dotenv/config";
-import Fastify, { FastifyInstance, FastifyServerOptions } from "fastify";
+import Fastify, {
+  FastifyInstance,
+  FastifyRequest,
+  FastifyServerOptions,
+} from "fastify";
 import fastifyEnv from "@fastify/env";
 import jwt from "@fastify/jwt";
 import routes from "../routes";
@@ -14,7 +18,12 @@ export async function buildServer(
   config: FastifyServerOptions = {}
 ): Promise<FastifyInstance> {
   const server = Fastify({
-    logger: false,
+    logger: {
+      level: "info",
+      transport: {
+        target: "pino-pretty", // saída mais legível
+      },
+    },
     trustProxy: true,
   });
 
@@ -43,15 +52,17 @@ export async function buildServer(
     });
   });
   // decorador para verificar se o usuário está autenticado
-  server.decorate("authenticate", async function (request: any, reply: any) {
-    try {
-      console.log(request.raw.url);
-      await request.jwtVerify(); // verifica o token
-    } catch (err) {
-      console.error("JWT ERROR:", err);
-      reply.status(401).send({ error: "Token inválido", details: err });
+  server.decorate(
+    "authenticate",
+    async function (request: FastifyRequest, reply: any) {
+      try {
+        await request.jwtVerify(); // verifica o token
+      } catch (err: any) {
+        request.server.log.error("JWT ERROR:", err);
+        reply.status(401).send({ error: "Token inválido", details: err });
+      }
     }
-  });
+  );
 
   await server.register(routes);
 
@@ -91,8 +102,6 @@ export async function start() {
 
   try {
     await app.listen({ port: 3000, host: "0.0.0.0" });
-
-    console.log("Server listening on http://localhost:3000");
     initSocket(app.server);
     setupSocketListeners();
     await StartAllWhatsAppsSessions();
@@ -103,11 +112,9 @@ export async function start() {
 }
 process.on("unhandledRejection", (reason, promise) => {
   console.error("Unhandled Rejection:", reason);
-  // não encerra a aplicação, só loga
 });
 
 process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception:", err);
-  // em prod pode logar em arquivo/monitoramento
 });
 export default buildServer;
