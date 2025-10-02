@@ -177,22 +177,22 @@ class Contact extends Model<CreateContactInput> implements CreateContactInput {
         sequelize,
         tableName: "Contacts",
         freezeTableName: true,
-        hooks: {
-          afterCreate: async (contact: Contact) => {
-            const normalized = normalizePhoneNumber(contact.number);
-            if (contact.number !== normalized) {
-              contact.number = normalized;
-              await contact.save();
-            }
-          },
-          afterUpdate: async (contact: Contact) => {
-            const normalized = normalizePhoneNumber(contact.number);
-            if (contact.number !== normalized) {
-              contact.number = normalized;
-              await contact.save();
-            }
-          },
-        },
+        // hooks: {
+        //   afterCreate: async (contact: Contact) => {
+        //     const normalized = normalizePhoneNumber(contact.number);
+        //     if (contact.number !== normalized) {
+        //       contact.number = normalized;
+        //       await contact.save();
+        //     }
+        //   },
+        //   afterUpdate: async (contact: Contact) => {
+        //     const normalized = normalizePhoneNumber(contact.number);
+        //     if (contact.number !== normalized) {
+        //       contact.number = normalized;
+        //       await contact.save();
+        //     }
+        //   },
+        // },
       }
     );
 

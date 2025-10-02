@@ -19,9 +19,12 @@ export const CreateContactService = async ({
   identifier,
 }: CreateContactData): Promise<Contact> => {
   try {
+    let serializednumber: string | undefined = undefined;
     const wppInitialized = await CheckWappInitialized(tenantId);
     if (wppInitialized) {
       const dataContato = await CheckIsValidContact(number, tenantId);
+
+      serializednumber = dataContato.id._serialized;
 
       if (dataContato.isWAContact) {
         name =
@@ -31,6 +34,7 @@ export const CreateContactService = async ({
           dataContato.formattedName;
       }
     }
+
     const contactExists = await Contact.findOne({
       where: {
         number,
@@ -47,6 +51,7 @@ export const CreateContactService = async ({
       email,
       tenantId,
       identifier,
+      serializednumber,
     });
     await contact.reload({
       attributes: [

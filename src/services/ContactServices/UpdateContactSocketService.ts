@@ -44,11 +44,7 @@ const UpdateContactSocketService = async ({
     const wppInitialized = await CheckWappInitialized(tenantId);
     if (wppInitialized && !isGroup && isWAContact) {
       try {
-        const dataContato = await CheckIsValidContact(
-          serializednumber,
-          tenantId
-        );
-
+        const dataContato = await CheckIsValidContact(number, tenantId);
         if (dataContato.isWAContact) {
           name = dataContato.pushname;
           profilePicUrl = dataContato.profilePicThumbObj.eurl;
