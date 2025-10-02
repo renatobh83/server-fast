@@ -3,6 +3,9 @@ import { logger } from "../../utils/logger";
 import { blockedMessages } from "../../helpers/BlockedMessages";
 import { HandleMessageSend } from "./Helpers/HandleMessageSend";
 import { HandleMessageReceived } from "./Helpers/HandleMessageReceived";
+import { VerifyCall } from "./Helpers/VerifyCall";
+import { HandleMsgReaction } from "./Helpers/HandleMsgReaction";
+import HandleMsgAck from "./Helpers/HandleMsgAck";
 
 interface Session extends Whatsapp {
   id: number;
@@ -52,30 +55,30 @@ export const wbotMessageListener = async (wbot: any): Promise<void> => {
   });
 
   wbot.onIncomingCall(async (call: IncomingCall) => {
-    // if (isSyncing) {
-    //   return;
-    // }
-    // await VerifyCall(call, wbot);
+    if (isSyncing) {
+      return;
+    }
+    await VerifyCall(call, wbot);
   });
 
   wbot.onReactionMessage(async (msg: MessageReaction) => {
-    // await HandleMsgReaction(msg);
+    await HandleMsgReaction(msg);
   });
   wbot.onAck(async (ack: Ack) => {
-    // if (isSyncing) {
-    //   return;
-    // }
-    // try {
-    //   // Obter a mensagem original relacionada ao ACK
-    //   const message = await wbot.getMessageById(ack.id._serialized);
-    //   if (!message.fromMe) return;
-    //   if (message && message.ack === 2) {
-    //     // await HandleMsgAck(ack);
-    //   } else {
-    //     console.warn(`Mensagem não encontrada para ACK ID: ${ack.id.id}`);
-    //   }
-    // } catch (error) {
-    //   console.error("Erro ao processar ACK:", error);
-    // }
+    if (isSyncing) {
+      return;
+    }
+    try {
+      // Obter a mensagem original relacionada ao ACK
+      const message = await wbot.getMessageById(ack.id._serialized);
+      if (!message.fromMe) return;
+      if (message && message.ack === 2) {
+        await HandleMsgAck(ack);
+      } else {
+        console.warn(`Mensagem não encontrada para ACK ID: ${ack.id.id}`);
+      }
+    } catch (error) {
+      console.error("Erro ao processar ACK:", error);
+    }
   });
 };
