@@ -94,25 +94,25 @@ export const HandleMessageReceived = async (
     channel: "whatsapp",
   });
 
-  //   // 🔹 Usando o timestamp real da mensagem
-  //   const msgTime = msg.timestamp; // já vem em segundos
-  //   const lastTime = lastMessageTime.get(ticket.id) || 0;
-  //   const diffSeconds = msgTime - lastTime;
+  // 🔹 Usando o timestamp real da mensagem
+  const msgTime = msg.timestamp; // já vem em segundos
+  const lastTime = lastMessageTime.get(ticket.id) || 0;
+  const diffSeconds = msgTime - lastTime;
 
-  //   if (
-  //     lastTime > 0 &&
-  //     diffSeconds >= MIN_INTERVAL_SECONDS &&
-  //     diffSeconds <= MAX_INTERVAL_SECONDS
-  //   ) {
-  //     console.log(
-  //       `⏱ Ignorando mensagem rápida do ticket ${ticket.id}, intervalo de ${diffSeconds}s`
-  //     );
-  //     return;
-  //   }
+  if (
+    lastTime > 0 &&
+    diffSeconds >= MIN_INTERVAL_SECONDS &&
+    diffSeconds <= MAX_INTERVAL_SECONDS
+  ) {
+    console.log(
+      `⏱ Ignorando mensagem rápida do ticket ${ticket.id}, intervalo de ${diffSeconds}s`
+    );
+    return;
+  }
 
-  //   // Atualiza o horário e agenda limpeza
-  //   lastMessageTime.set(ticket.id, msgTime);
-  //   scheduleCleanup(ticket.id);
+  // Atualiza o horário e agenda limpeza
+  lastMessageTime.set(ticket.id, msgTime);
+  scheduleCleanup(ticket.id);
 
   if (msg.filehash) {
     await VerifyMediaMessage(msg, ticket, contact, wbot, authorGrupMessage);
