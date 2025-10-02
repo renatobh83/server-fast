@@ -1,33 +1,38 @@
-import { Op } from "sequelize";
 import Chamado from "../../../../models/Chamado";
+import Contact from "../../../../models/Contact";
 
-export const ChamadoEmpresaFlow = async (emrpesaId: number, contact: any) => {
+export const ChamadoEmpresaFlow = async (empresaId: number, contact: any) => {
   const tickets = await Chamado.findAll({
     where: {
-      empresaId: emrpesaId,
-      contatoId: {
-        [Op.contains]: [contact.id], // Busca onde o array JSON contenha o userId
-      },
+      empresaId: empresaId
     },
-    raw: true,
+    include: [
+      {
+        model: Contact,
+        as: "contatos",
+        where: { id: contact.id } // garante que o chamado tenha esse contato
+      }
+    ],
+    order: [["createdAt", "DESC"]],
+    limit: 5
   });
-  const dataRecent = tickets
-    .sort((a, b) => {
-      return (
-        new Date(b.createdAt!).getTime() - new Date(a.createdAt!).getTime()
-      );
-    })
-    .slice(0, 5)
-    .map((t) => ({
-      id: t.id,
-      status: t.status,
-      assunto: t.assunto,
-    }));
 
-  return dataRecent;
+  return tickets.map((t) => ({
+    id: t.id,
+    status: t.status,
+    assunto: t.assunto
+  }));
 };
 
 export const ConsultaChamadoFlow = async (chamadoId: number) => {
-  const chamadoDetails = await Chamado.findByPk(chamadoId);
+  const chamadoDetails = await Chamado.findByPk(chamadoId, {
+    include: [
+      {
+        model: Contact,
+        as: "contatos"
+      }
+    ]
+  });
+
   return chamadoDetails;
 };
