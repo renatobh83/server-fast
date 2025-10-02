@@ -3,6 +3,8 @@ import { handleServerError } from "../errors/errors.helper";
 import { STANDARD } from "../constants/request";
 import { sendMenssageApiService } from "../services/ApiExternaService/SendMessageApiService";
 import { ConfirmacaoIntegracaoService } from "../services/IntegracoesServices/Genesis/Externa/ConfirmacaoService";
+import { checkBotIntegracaoService } from "../services/IntegracoesServices/checkBotIntegracaoService";
+import { botRequest } from "telegraf/typings/button";
 
 export const sendMenssageApi = async (
   request: FastifyRequest<{
@@ -44,8 +46,7 @@ export const integracaoConfirmacao = async (
   const dadosConfirmacao = request.body.contatos[0] as any;
   try {
     const payload = { ...dadosConfirmacao, apiId, idIntegracao, authToken };
-
-    await ConfirmacaoIntegracaoService(payload);
+    await checkBotIntegracaoService(dadosConfirmacao, payload);
     return reply.code(STANDARD.OK.statusCode).send({ message: "Add job " });
   } catch (error) {
     console.log(error);

@@ -3042,3 +3042,147 @@
   level: 'error',
   timestamp: '2025-10-02T15:01:46.606Z'
 }
+{
+  error: Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Package subpath './typings/button' is not defined by "exports" in C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\telegraf\package.json
+      at exportsNotFound (node:internal/modules/esm/resolve:313:10)
+      at packageExportsResolve (node:internal/modules/esm/resolve:660:9)
+      at resolveExports (node:internal/modules/cjs/loader:650:36)
+      at Function._findPath (node:internal/modules/cjs/loader:717:31)
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1369:27)
+      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+      at Function._load (node:internal/modules/cjs/loader:1192:37)
+      at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24) {
+    code: 'ERR_PACKAGE_PATH_NOT_EXPORTED'
+  },
+  level: 'error',
+  message: `uncaughtException: Package subpath './typings/button' is not defined by "exports" in C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\package.json\n` +
+    `Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Package subpath './typings/button' is not defined by "exports" in C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\package.json\n` +
+    '    at exportsNotFound (node:internal/modules/esm/resolve:313:10)\n' +
+    '    at packageExportsResolve (node:internal/modules/esm/resolve:660:9)\n' +
+    '    at resolveExports (node:internal/modules/cjs/loader:650:36)\n' +
+    '    at Function._findPath (node:internal/modules/cjs/loader:717:31)\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1369:27)\n' +
+    '    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)\n' +
+    '    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1192:37)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)',
+  stack: `Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Package subpath './typings/button' is not defined by "exports" in C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\package.json\n` +
+    '    at exportsNotFound (node:internal/modules/esm/resolve:313:10)\n' +
+    '    at packageExportsResolve (node:internal/modules/esm/resolve:660:9)\n' +
+    '    at resolveExports (node:internal/modules/cjs/loader:650:36)\n' +
+    '    at Function._findPath (node:internal/modules/cjs/loader:717:31)\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1369:27)\n' +
+    '    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)\n' +
+    '    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1192:37)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)',
+  exception: true,
+  date: 'Thu Oct 02 2025 14:30:43 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 20156,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.19.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 139579392,
+      heapTotal: 94285824,
+      heapUsed: 82167580,
+      external: 4483850,
+      arrayBuffers: 786323
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 27552.671 },
+  trace: [
+    {
+      column: 10,
+      file: 'node:internal/modules/esm/resolve',
+      function: 'exportsNotFound',
+      line: 313,
+      method: null,
+      native: false
+    },
+    {
+      column: 9,
+      file: 'node:internal/modules/esm/resolve',
+      function: 'packageExportsResolve',
+      line: 660,
+      method: null,
+      native: false
+    },
+    {
+      column: 36,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'resolveExports',
+      line: 650,
+      method: null,
+      native: false
+    },
+    {
+      column: 31,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._findPath',
+      line: 717,
+      method: '_findPath',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1369,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 19,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'defaultResolveImpl',
+      line: 1025,
+      method: null,
+      native: false
+    },
+    {
+      column: 22,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'resolveForCJSWithHooks',
+      line: 1030,
+      method: null,
+      native: false
+    },
+    {
+      column: 37,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1192,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 322,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 237,
+      method: null,
+      native: false
+    }
+  ],
+  timestamp: '2025-10-02T17:30:43.918Z'
+}

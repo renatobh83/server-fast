@@ -7,6 +7,7 @@ export default async function apiExternaRoutes(fastify: FastifyInstance) {
     { preHandler: [fastify.authenticate] },
     ApiExternaController.sendMenssageApi
   );
+
   fastify.post(
     "/:apiId/:idIntegracao/:authToken",
     { preHandler: [] },
