@@ -19,6 +19,7 @@ import { RemoveMidaChamadoService } from "../services/ChamadoServices/RemoveMedi
 import { SendMessageChamadoServices } from "../services/ChamadoServices/SendMessageChamadoServices";
 import { UpdateMediaDadosService } from "../services/ChamadoServices/UpdateMediaDadosService";
 import { updateChamadoMediaServices } from "../services/ChamadoServices/updateChamadoMediaServices";
+import { listaChamadoEmpresaService } from "../services/ChamadoServices/ListaChamadoEmpresaService";
 
 const ATTACHMENTSFOLDER = path.join(process.cwd(), "public", "attachments");
 // Garantir que a pasta existe
@@ -64,6 +65,20 @@ export const listaTodosChamados = async (
       count,
       hasMore,
     });
+  } catch (error) {
+    console.log(error);
+    return handleServerError(reply, error);
+  }
+};
+
+export const listaChamadosEmpresa = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  const { empresaId } = request.params as any;
+  try {
+    const chamados = await listaChamadoEmpresaService(empresaId);
+    return reply.code(STANDARD.OK.statusCode).send(chamados);
   } catch (error) {
     console.log(error);
     return handleServerError(reply, error);

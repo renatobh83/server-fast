@@ -9,6 +9,7 @@ import Setting from "../../models/Setting";
 import Ticket from "../../models/Ticket";
 import User from "../../models/User";
 import { getCache, setCache } from "../../utils/cacheRedis";
+import { sendEmailOpenClose } from "../EmailServices/SendEmailOpenClose";
 
 export type dataChamado = {
   ticket?: any;
@@ -39,6 +40,7 @@ export const CreateChamadoService = async ({
   if (!empresaExists) {
     throw new AppError("ERR_COMPANY_NOT_FOUND", 404);
   }
+
   const created: Chamado = await Chamado.create({
     id: numeroChamado,
     ticketId: ticket?.id,
@@ -69,7 +71,7 @@ export const CreateChamadoService = async ({
   )?.value;
 
   if (sendEmail !== "disabled") {
-    //   sendEmailOpenClose(dataCreateChamado);
+    sendEmailOpenClose(created);
   }
   const chamadoCompleto = await Chamado.findByPk(created.id, {
     include: [

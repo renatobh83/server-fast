@@ -77,7 +77,10 @@ export default async function chamadoRoutes(fastify: FastifyInstance) {
     ChamadoController.updateChamado
   );
   fastify.get("/chamados/:chamadoId", ChamadoController.detailsChamado);
-
+  fastify.get(
+    "/chamados/empresa/:empresaId",
+    ChamadoController.listaChamadosEmpresa
+  );
   fastify.put(
     "/chamados/empresa/:empresaId",
     {

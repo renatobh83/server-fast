@@ -7,6 +7,7 @@ import Media from "../../models/Media";
 import PauseHistory from "../../models/PauseHistoryChamado";
 import Setting from "../../models/Setting";
 import User from "../../models/User";
+import { sendEmailOpenClose } from "../EmailServices/SendEmailOpenClose";
 
 interface IUpdateChamadoService {
   userIdUpdate: string;
@@ -37,18 +38,31 @@ export const updateChamadoService = async ({
   files,
   tenantId,
 }: IUpdateChamadoService) => {
-  let parsedComentarios;
+  let parsedComentarios: string[] = [];
   if (typeof comentarios === "string") {
     try {
       parsedComentarios = JSON.parse(comentarios);
     } catch {
-      parsedComentarios = []; // ou o valor padrão desejado caso o parse falhe
+      parsedComentarios = [];
     }
-  } else if (typeof comentarios === "object" && comentarios !== null) {
-    parsedComentarios = comentarios; // já é um objeto válido
-  } else {
-    parsedComentarios = []; // ou outro valor padrão
+  } else if (Array.isArray(comentarios)) {
+    parsedComentarios = comentarios;
   }
+  // Filtra valores null/undefined
+  const safeComentarios = parsedComentarios.filter(
+    (c) => c !== null && c !== undefined
+  );
+  // if (typeof comentarios === "string") {
+  //   try {
+  //     parsedComentarios = JSON.parse(comentarios);
+  //   } catch {
+  //     parsedComentarios = []; // ou o valor padrão desejado caso o parse falhe
+  //   }
+  // } else if (typeof comentarios === "object" && comentarios !== null) {
+  //   parsedComentarios = comentarios; // já é um objeto válido
+  // } else {
+  //   parsedComentarios = []; // ou outro valor padrão
+  // }
 
   const findChamado = await Chamado.findOne({
     where: {
@@ -88,12 +102,17 @@ export const updateChamadoService = async ({
   if (findChamado.status === "CONCLUIDO") {
     throw new AppError("ERR_CHAMADO_IS_CLOSED", 404);
   }
-  if (parsedComentarios && !Array.isArray(parsedComentarios)) {
-    throw new AppError("ERR_INVALID_COMENTARIOS_FORMAT", 400);
+  // Atualiza comentários apenas se houver elementos válidos
+  if (safeComentarios.length > 0) {
+    findChamado.comentarios = safeComentarios;
   }
-  if (parsedComentarios) {
-    findChamado.comentarios = [...parsedComentarios]; // Substitui o array de comentários pelo novo array
-  }
+
+  // if (parsedComentarios && !Array.isArray(parsedComentarios)) {
+  //   throw new AppError("ERR_INVALID_COMENTARIOS_FORMAT", 400);
+  // }
+  // if (parsedComentarios) {
+  //   findChamado.comentarios = [...parsedComentarios]; // Substitui o array de comentários pelo novo array
+  // }
   if (status === "PAUSADO") {
     await pausarTicket(findChamado);
   }
@@ -113,7 +132,8 @@ export const updateChamadoService = async ({
     descricao,
     assunto,
     conclusao,
-    comentarios: findChamado.comentarios,
+    comentarios:
+      safeComentarios.length > 0 ? safeComentarios : findChamado.comentarios,
   });
 
   await findChamado.reload({
@@ -215,8 +235,8 @@ async function fecharTicket(chamadoId: number, conclusao: string) {
   )?.value;
   ticket.status = "CONCLUIDO";
   ticket.closedAt = new Date();
-  // if (sendEmail !== "disabled") {
-  //   sendEmailOpenClose(ticket, conclusao);
-  // }
+  if (sendEmail !== "disabled") {
+    sendEmailOpenClose(ticket, conclusao);
+  }
   await ticket.save();
 }

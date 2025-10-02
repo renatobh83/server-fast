@@ -147,6 +147,7 @@ export class Ticket extends Model {
           type: DataTypes.VIRTUAL,
           get(this: Ticket) {
             const date = this.getDataValue("createdAt");
+            if (!date) return null; // evita crash
             const formatDate = format(new Date(date!), "ddMMyyyyHHmmss");
             const id = this.getDataValue("id");
             return `${formatDate}${id}`;
