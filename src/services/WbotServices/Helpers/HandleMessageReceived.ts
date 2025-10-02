@@ -74,15 +74,15 @@ export const HandleMessageReceived = async (
     authorGrupMessage = number;
   }
 
-  // const integracaoMessage = await IntegracaoGenesisConfirmacao.findOne({
-  //   where: { contato: chat.id._serialized, closedAt: { [Op.is]: null } },
-  // });
-  // // console.log("integracaoMessage", new Date().toLocaleTimeString())
+  const integracaoMessage = await IntegracaoGenesisConfirmacao.findOne({
+    where: { contato: chat.id._serialized, closedAt: { [Op.is]: null } },
+  });
+  // console.log("integracaoMessage", new Date().toLocaleTimeString())
 
-  // if (integracaoMessage) {
-  //   ProcessReturnMessage(msg, tenantId);
-  //   return;
-  // }
+  if (integracaoMessage) {
+    ProcessReturnMessage(msg, tenantId);
+    return;
+  }
 
   const ticket = await FindOrCreateTicketService({
     contact,

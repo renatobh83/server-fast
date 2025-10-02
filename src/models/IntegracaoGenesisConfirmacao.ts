@@ -7,14 +7,14 @@ export class IntegracaoGenesisConfirmacao extends Model {
   declare contatoSend?: string | null;
   declare contato?: string | null;
   declare lastMessage?: string | null;
-  declare procedimentos?: number[] | null;
-  declare idexterno?: number[] | null;
+  declare procedimentos: number[];
+  declare idexterno: number[];
   declare atendimentoData?: string | null;
   declare atendimentoHora?: string | null;
   declare answered: boolean;
   declare lastMessageAt?: number | null;
   declare messageResponse?: string | null;
-  declare integracaoId?: number | null;
+  declare integracaoId: number;
   declare preparoEnviado: boolean;
   declare closedAt?: number | null;
   declare createdAt?: Date;

@@ -11,6 +11,7 @@ interface GetLaudoProps {
   cdPaciente: string;
 }
 import { v4 as uuidV4 } from "uuid";
+import BuildSendMessageService from "../../../ChatFlowServices/BuildSendMessageService";
 
 export const GetLaudo = async ({
   cdExame,
@@ -19,17 +20,17 @@ export const GetLaudo = async ({
   exame,
   cdPaciente,
 }: GetLaudoProps) => {
-  // const newURL = `https://gdicomvixnew.zapto.org/dwclinux/www/doLaudoDownload?cd_exame=${cdExame}&cd_paciente=${cdPaciente}&cd_funcionario=230&sn_entrega=true`;
-  const baseUrl = new URL(integracao.config_json.baseUrl).origin + "/";
-  const subDominio = integracao.config_json.homologacao
-    ? "dwportalrf"
-    : "dwclinux";
-  const newURL = `${baseUrl}${subDominio}/www/doLaudoDownload?cd_exame=${cdExame}&cd_paciente=${cdPaciente}&cd_funcionario=1&sn_entrega=false`;
+  const url = `/doLaudoExternoLista`;
+  const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
+  const body = new URLSearchParams();
+  body.append("cd_exame", cdExame.toString());
+
   try {
     const instanceApi = await getApiInstance(integracao, true);
 
-    const { data } = await instanceApi.get(newURL, {
+    const { data } = await instanceApi.post(URL_FINAL, body, {
       headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
         Accept: "application/pdf",
       },
       responseType: "stream",
@@ -38,21 +39,22 @@ export const GetLaudo = async ({
     const filePath = path.resolve(publicFolder, `${exame}.pdf`);
     await fs.writeFile(filePath, data);
 
-    // await BuildSendMessageService({
-    //   ticket,
-    //   tenantId: ticket.tenantId,
-    //   msg: {
-    //     type: "MediaField",
-    //     id: uuidV4(),
-    //     data: {
-    //       mediaUrl: `${exame}.pdf`,
-    //       name: "Laudo Exame",
-    //       message: {
-    //         mediaType: "document",
-    //       },
-    //     },
-    //   },
-    // });
+    await BuildSendMessageService({
+      ticket,
+      tenantId: ticket.tenantId,
+      msg: {
+        type: "MediaField",
+        id: uuidV4(),
+        data: {
+          mediaUrl: `${exame}.pdf`,
+          name: "Laudo Exame",
+          message: {
+            mediaType: "document",
+          },
+        },
+      },
+    });
+    fs.unlink(filePath);
   } catch (error) {
     console.error("Erro ao confirmar exame:", error);
     throw error;

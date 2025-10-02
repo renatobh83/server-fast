@@ -19,7 +19,7 @@ export async function buildServer(
 ): Promise<FastifyInstance> {
   const server = Fastify({
     logger: {
-      level: "info",
+      level: "error",
       transport: {
         target: "pino-pretty", // saída mais legível
       },
@@ -91,14 +91,7 @@ export async function buildServer(
   return server;
 }
 export async function start() {
-  const app = await buildServer({
-    logger: {
-      level: "error",
-      transport: {
-        target: "pino-pretty",
-      },
-    },
-  });
+  const app = await buildServer();
 
   try {
     await app.listen({ port: 3000, host: "0.0.0.0" });

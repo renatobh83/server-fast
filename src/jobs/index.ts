@@ -10,3 +10,4 @@ export { default as sendEmail } from "./SendEmail";
 export { default as SendMessageChamado } from "./SendMessageChamado";
 export { default as pdfQeues } from "./PdfNotaFiscal";
 export { default as SendMessageConfirmar } from "./SendMessageConfirmar";
+export { default as WebHookConfirma } from "./WebHookConfirma";

@@ -36,9 +36,10 @@ export const wbotMessageListener = async (wbot: any): Promise<void> => {
     if (!msg.fromMe) return;
     if (msg.type === "list") return;
     const messageContent = msg.body || msg.caption || ""; // Garante que sempre haverá uma string
-    const isBlocked = blockedMessages.some((blocked) =>
-      messageContent.includes(blocked)
-    );
+    const isBlocked = blockedMessages.some((blocked) => {
+      return messageContent.includes(blocked);
+    });
+
     if (msg.fromMe && isBlocked) return;
     await HandleMessageSend(msg, wbot);
   });

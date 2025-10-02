@@ -18,7 +18,7 @@ export const ConsultaAtendimentos = async ({
 
     const instanceApi = await getApiInstance(integracao, true);
 
-    const { data } = await instanceApi.post(URL_FINAL, {});
+    const { data } = await instanceApi.post(URL_FINAL, null);
     if (data.length) {
       return data
         .filter((i: { nr_laudo: null }) => i.nr_laudo !== null)

@@ -725,7 +725,7 @@ export async function handlePreparoAutoAgendamento({
       return await GetPreparoHelper(procedimento, integracao, ticket);
     })
   );
-
+  console.log(data);
   return generatePreparoAutoAgedamentoMessage(ticket.channel, data);
 }
 

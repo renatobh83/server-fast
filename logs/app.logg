@@ -3017,3 +3017,28 @@
   level: 'error',
   timestamp: '2025-10-01T18:09:22.730Z'
 }
+{
+  message: 'Error send message (id: undefined):: FetchError: request to https://api.telegram.org/bot8196077280:[REDACTED]/sendMessage failed, reason: read ECONNRESET',
+  level: 'error',
+  timestamp: '2025-10-02T14:42:47.191Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-10-02T14:42:47.196Z'
+}
+{
+  message: 'Error send message (id: undefined):: FetchError: request to https://api.telegram.org/bot8196077280:[REDACTED]/sendMessage failed, reason: read ECONNRESET',
+  level: 'error',
+  timestamp: '2025-10-02T14:43:28.661Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-10-02T14:43:28.663Z'
+}
+{
+  message: 'Unhandled Rejection: Error: Queue "WebHookConfirma" not found.',
+  level: 'error',
+  timestamp: '2025-10-02T15:01:46.606Z'
+}

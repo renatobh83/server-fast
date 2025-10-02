@@ -7,6 +7,9 @@ import { CadastroPaciente } from "../services/IntegracoesServices/Genesis/Helper
 const usedTokens = new Set();
 
 export default async function auxiliarRoutes(fastify: FastifyInstance) {
+  fastify.get("/server-time", (req, res) => {
+    return res.code(200).send({ serverTime: new Date().toISOString() });
+  });
   fastify.post("/api/validate-registration-token", (request, reply) => {
     const { token } = request.body as any;
     try {

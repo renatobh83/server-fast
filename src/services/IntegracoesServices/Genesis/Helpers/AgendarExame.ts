@@ -182,6 +182,7 @@ export const doAgendaSemanal = async ({
   form.append("dt_hora_fim", dadosPesquisa.dt_hora_fim); // '23:49'
   form.append("js_exame", JSON.stringify(dadosPesquisa.js_exame));
   try {
+    console.log(form);
     const instanceApi = await getApiInstance(integracao, true);
     const { data } = await instanceApi.post(URL_FINAL, form, {
       headers: {

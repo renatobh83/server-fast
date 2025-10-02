@@ -4,6 +4,7 @@ import path from "node:path";
 // import BuildSendMessageService from "../../../ChatFlowServices/BuildSendMessageService";
 import Ticket from "../../../../models/Ticket";
 import { v4 as uuidV4 } from "uuid";
+import BuildSendMessageService from "../../../ChatFlowServices/BuildSendMessageService";
 
 export const getPreparo = async (
   chosenIndex: number,
@@ -15,13 +16,12 @@ export const getPreparo = async (
     const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
 
     const instanceApi = await getApiInstance(integracao, true);
-    const { data } = await instanceApi.post(URL_FINAL, {});
+    const { data } = await instanceApi.post(URL_FINAL, null);
 
     if (!data[0].bb_preparo) {
       return null;
     }
     const blob = data[0].bb_preparo;
-
     const buffer = Buffer.from(blob, "base64");
     const publicFolder = path.join(process.cwd(), "public");
     const filePath = path.resolve(
@@ -30,21 +30,22 @@ export const getPreparo = async (
     );
 
     await fs.writeFile(filePath, buffer);
-    // await BuildSendMessageService({
-    //     ticket,
-    //     tenantId: ticket.tenantId,
-    //     msg: {
-    //         type: 'MediaField',
-    //         id: uuidV4(),
-    //         data: {
-    //             mediaUrl: `Preparo exame_${chosenIndex}.html`,
-    //             name: 'Preparo Exame',
-    //             message: {
-    //                 mediaType: 'document'
-    //             }
-    //         }
-    //     }
-    // })
+    await BuildSendMessageService({
+      ticket,
+      tenantId: ticket.tenantId,
+      msg: {
+        type: "MediaField",
+        id: uuidV4(),
+        data: {
+          mediaUrl: `Preparo exame_${chosenIndex}.html`,
+          name: "Preparo Exame",
+          message: {
+            mediaType: "document",
+          },
+        },
+      },
+    });
+    fs.unlink(filePath);
   } catch (error) {
     console.log(error);
   }

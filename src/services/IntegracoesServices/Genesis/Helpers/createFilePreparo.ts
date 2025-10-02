@@ -14,7 +14,8 @@ export const CreateFilePreparo = async ({
   const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
 
   const instanceApi = await getApiInstance(integracao, true);
-  const { data } = await instanceApi.post(URL_FINAL, {});
+  const { data } = await instanceApi.post(URL_FINAL, null);
+
   if (!data[0].bb_preparo) {
     return null;
   }
@@ -24,7 +25,8 @@ export const CreateFilePreparo = async ({
 
   const publicFolder = path.join(process.cwd(), "public");
 
-  const filePath = path.resolve(publicFolder,
+  const filePath = path.resolve(
+    publicFolder,
     `Preparo exame_${atendimento}.html`
   );
 
