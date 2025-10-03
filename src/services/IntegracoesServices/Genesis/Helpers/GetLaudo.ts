@@ -40,7 +40,7 @@ export const GetLaudo = async ({
       },
       responseType: "stream",
     });
-
+console.log(data)
     // grava stream no arquivo da pasta pública
     const writer = createWriteStream(filePath);
     data.pipe(writer);
