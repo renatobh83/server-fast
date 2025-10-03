@@ -2,7 +2,6 @@ import { getApiInstance } from "./authService";
 import fs from "node:fs/promises";
 import { createWriteStream } from "node:fs";
 import path from "node:path";
-import os from "node:os";
 import { v4 as uuidV4 } from "uuid";
 import BuildSendMessageService from "../../../ChatFlowServices/BuildSendMessageService";
 import Ticket from "../../../../models/Ticket";
@@ -26,9 +25,10 @@ export const GetLaudo = async ({
   const body = new URLSearchParams();
   body.append("cd_exame", cdExame.toString());
 
-  const tempDir = os.tmpdir(); // diretório temporário do SO
+  // gera nome único no public/
+  const publicFolder = path.join(process.cwd(), "public");
   const uniqueName = `${exame}-${uuidV4()}.pdf`;
-  const filePath = path.join(tempDir, uniqueName);
+  const filePath = path.join(publicFolder, uniqueName);
 
   try {
     const instanceApi = await getApiInstance(integracao, true);
@@ -41,7 +41,7 @@ export const GetLaudo = async ({
       responseType: "stream",
     });
 
-    // Grava stream em arquivo temporário
+    // grava stream no arquivo da pasta pública
     const writer = createWriteStream(filePath);
     data.pipe(writer);
 
@@ -50,7 +50,7 @@ export const GetLaudo = async ({
       writer.on("error", reject);
     });
 
-    // Envia o PDF
+    // envia usando o nome relativo (acessível via public/)
     await BuildSendMessageService({
       ticket,
       tenantId: ticket.tenantId,
@@ -58,7 +58,7 @@ export const GetLaudo = async ({
         type: "MediaField",
         id: uuidV4(),
         data: {
-          mediaUrl: filePath, // melhor passar caminho absoluto do arquivo
+          mediaUrl: uniqueName, // << só o nome do arquivo, já que está em public/
           name: "Laudo Exame",
           message: {
             mediaType: "document",
@@ -70,7 +70,7 @@ export const GetLaudo = async ({
     console.error("Erro ao confirmar exame:", error);
     throw error;
   } finally {
-    // Sempre remove o arquivo no fim
+    // remove arquivo depois do envio
     await fs.unlink(filePath).catch(() => {});
   }
 };
