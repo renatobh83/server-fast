@@ -19,7 +19,7 @@ export default async function empresaRoutes(fastify: FastifyInstance) {
             conclusao: { type: "string" },
             acessoExterno: {
               type: "array",
-              items: { type: "string" },
+              items: { type: "object" },
             },
           },
         },
@@ -42,7 +42,7 @@ export default async function empresaRoutes(fastify: FastifyInstance) {
             conclusao: { type: "string" },
             acessoExterno: {
               type: "array",
-              items: { type: "string" },
+              items: { type: "object" },
             },
           },
         },
@@ -84,7 +84,7 @@ export default async function empresaRoutes(fastify: FastifyInstance) {
           properties: {
             contactIds: {
               type: "array",
-              items: { type: "string" },
+              items: { type: "object" },
             },
           },
         },

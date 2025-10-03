@@ -222,6 +222,7 @@ const BuildSendMessageService = async ({
         }
       }
       if (!options) return;
+
       if (typeof options === "object") {
         if (ticket.channel === "telegram") {
           messageSent = await SendTbotAppMessageList({ options, ticket });

@@ -143,7 +143,6 @@ const fastifyModule = fp(async (fastify) => {
       `[Response] ${req.method} ${req.url} → ${reply.statusCode}`
     )
   );
-
   fastify.log.info("✅ Production Fastify module loaded!");
 });
 

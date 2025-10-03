@@ -1,5 +1,5 @@
 import { sign } from "jsonwebtoken";
-import { nanoid } from "nanoid";
+import { customAlphabet, nanoid } from "nanoid";
 import { redisClient } from "../../../../lib/redis";
 
 const { FRONTEND_URL, BACKEND_URL } = process.env;
@@ -19,8 +19,12 @@ export const generateRegistrationLink = async (
   // Link original com o token
   const fullUrl = `${FRONTEND_URL}/register?token=${token}`;
 
+  const nanoidSafe = customAlphabet(
+    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+    6
+  );
   // Encurta com Redis
-  const code = nanoid(6);
+  const code = nanoidSafe();
   const expireSeconds = 15 * 60;
 
   await redisClient.setex(`short:${code}`, expireSeconds, fullUrl);
@@ -43,8 +47,12 @@ export const generateLinkPdf = async (plano: number, integracao: any) => {
   // Link original com o token
   const fullUrl = `${BACKEND_URL}/pdf/${plano}?token=${token}`;
 
+  const nanoidSafe = customAlphabet(
+    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+    6
+  );
   // Encurta com Redis
-  const code = nanoid(6);
+  const code = nanoidSafe();
   const expireSeconds = 25 * 60;
 
   await redisClient.setex(`short:${code}`, expireSeconds, fullUrl);
