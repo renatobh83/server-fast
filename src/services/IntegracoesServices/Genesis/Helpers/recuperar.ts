@@ -13,12 +13,14 @@ export const RecuperarAcesso = async ({
   dtNascimento,
 }: ConsultaPacienteProps) => {
   try {
-    const url = `doPacientePassword?ds_email=${email}&dt_nascimento=${dtNascimento}`;
+    const url = `doPacientePassword`;
     const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
-
+    const body = new URLSearchParams();
+    body.append("ds_email", email);
+    body.append("dt_nascimento", dtNascimento);
     const instanceApi = await getApiInstance(integracao, true);
 
-    const { data } = await instanceApi.post(URL_FINAL, {});
+    const { data } = await instanceApi.post(URL_FINAL, body);
 
     return data;
   } catch (error: any) {

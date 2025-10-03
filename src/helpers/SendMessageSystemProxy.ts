@@ -5,6 +5,7 @@ import TelegramSendMessagesSystem from "../services/TbotServices/TelegramSendMes
 import { getTbot, requireTbot } from "../lib/tbot";
 import { SendMessageMediaChatClient } from "../services/ChatClientService/SendMessageMediaChatClient";
 import { SendMessageChatClient } from "../services/ChatClientService/SendMessageChatClient";
+import { transformFile } from "../utils/transformFile";
 
 type Payload = {
   ticket: any;
@@ -37,7 +38,13 @@ const SendMessageSystemProxy = async ({
 
     case "whatsapp":
       if (hasMedia) {
-        message = await SendWhatsAppMedia({ media, ticket, userId });
+        const mediaTransforme = await transformFile(media);
+
+        message = await SendWhatsAppMedia({
+          media: mediaTransforme,
+          ticket,
+          userId,
+        });
       } else {
         message = await SendWhatsAppMessage({
           body: messageData.body,

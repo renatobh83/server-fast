@@ -1,6 +1,7 @@
 import { Telegraf } from "telegraf";
 import HandleMessageTelegram from "./HandleMessageTelegram";
 import { listaUnidades } from "../IntegracoesServices/Genesis/actions/action_handlers";
+import { logger } from "../../utils/logger";
 
 interface Session extends Telegraf {
   id: number;
@@ -14,6 +15,7 @@ const esc = escapeMarkdownV2;
 
 const tbotMessageListener = (tbot: Session): void => {
   tbot.on("message", async (ctx) => {
+    logger.info("Message Telegram listener");
     await HandleMessageTelegram(ctx, tbot);
   });
 

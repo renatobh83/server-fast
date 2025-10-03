@@ -44,6 +44,7 @@ const SendWhatsAppMedia = async ({
     const wbot = await GetTicketWbot(ticket);
     let messageSent: any;
     let mimetype = media.mimetype;
+
     const fileData = `data:${mimetype};base64,${media.buffer.toString(
       "base64"
     )}`;

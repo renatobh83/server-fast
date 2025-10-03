@@ -3216,3 +3216,48 @@
   level: 'error',
   timestamp: '2025-10-02T23:48:02.841Z'
 }
+{
+  message: 'Error send message (id: undefined):: Error: 400: Bad Request: file must be non-empty',
+  level: 'error',
+  timestamp: '2025-10-03T09:58:58.569Z'
+}
+{
+  message: 'Error send message (id: undefined):: Error: ERR_NO_TICKET_FOUND',
+  level: 'error',
+  timestamp: '2025-10-03T10:28:34.421Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-10-03T10:28:34.425Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {}',
+  level: 'error',
+  timestamp: '2025-10-03T11:17:46.527Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {}',
+  level: 'error',
+  timestamp: '2025-10-03T11:21:19.279Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {}',
+  level: 'error',
+  timestamp: '2025-10-03T11:25:29.799Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {}',
+  level: 'error',
+  timestamp: '2025-10-03T11:29:06.997Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {}',
+  level: 'error',
+  timestamp: '2025-10-03T11:32:42.835Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {}',
+  level: 'error',
+  timestamp: '2025-10-03T11:39:04.590Z'
+}

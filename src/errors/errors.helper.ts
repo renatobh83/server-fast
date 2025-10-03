@@ -29,7 +29,5 @@ export function handleServerError(reply: FastifyReply, error: any) {
     return reply.status(error.statusCode).send({ message: error.message });
   }
 
-  return reply
-    .status(ERRORS.internalServerError.statusCode)
-    .send(ERRORS.internalServerError.message);
+  return reply.status(ERRORS.internalServerError.statusCode).send(error);
 }

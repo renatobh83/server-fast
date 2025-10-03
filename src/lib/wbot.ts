@@ -30,7 +30,7 @@ export const initWbot = async (whatsapp: any): Promise<Session> => {
   );
   try {
     const options = {
-      headless: true,
+      headless: false,
       phoneNumber: whatsapp.pairingCodeEnabled ? whatsapp.wppUser : null,
       puppeteerOptions: {
         userDataDir: "./userDataDir/" + whatsapp.name,
@@ -174,6 +174,7 @@ export const initWbot = async (whatsapp: any): Promise<Session> => {
             }
           }
         },
+        logger: logger,
       })
     )) as unknown as Session;
     await start(wbot, io);

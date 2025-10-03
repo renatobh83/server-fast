@@ -171,7 +171,6 @@ export async function handleConsulta({
     integracao,
     cpf,
   });
-  console.log(consultaAPI);
   const erro = getError(consultaAPI);
   if (erro === "Senha inválida !") {
     return "Para continuar, por favor, digite sua senha de acesso.";
@@ -379,7 +378,7 @@ export async function handleSendPreparo({
       .trim()
       .split("_")[1] as string;
   }
-  const cdProcedimento = procedimento.split(";").map(Number);
+  const cdProcedimento = procedimento.split(";");
   const data = await Promise.all(
     cdProcedimento.map(async (procedimento) => {
       return await GetPreparoHelper(procedimento, integracao, ticket);
@@ -725,7 +724,6 @@ export async function handlePreparoAutoAgendamento({
       return await GetPreparoHelper(procedimento, integracao, ticket);
     })
   );
-  console.log(data);
   return generatePreparoAutoAgedamentoMessage(ticket.channel, data);
 }
 

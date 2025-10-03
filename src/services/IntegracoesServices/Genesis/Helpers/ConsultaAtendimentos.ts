@@ -13,12 +13,18 @@ export const ConsultaAtendimentos = async ({
   token,
 }: ConsultaAtendimentoProps) => {
   try {
-    const url = `/doListaAtendimento?cd_paciente=${codigoPaciente}&token=${token}`;
+    // const url = `/doListaAtendimento?cd_paciente=${codigoPaciente}&token=${codigoPaciente}`;
+    const url = `/doListaAtendimento`;
     const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
+
+    const body = new URLSearchParams();
+    body.append("cd_paciente", codigoPaciente);
+    body.append("token", codigoPaciente);
 
     const instanceApi = await getApiInstance(integracao, true);
 
-    const { data } = await instanceApi.post(URL_FINAL, null);
+    const { data } = await instanceApi.post(URL_FINAL, body);
+
     if (data.length) {
       return data
         .filter((i: { nr_laudo: null }) => i.nr_laudo !== null)

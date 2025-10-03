@@ -13,10 +13,7 @@ export default {
   },
   async handle(data: any) {
     logger.info("SendEmail Initiated");
-    // =================================================================
-    // INÍCIO DO TESTE DE DEPURAÇÃO
-    // =================================================================
-    logger.info("--- INICIANDO TESTE DE DEPURAÇÃO ---");
+
     logger.info("Dados recebidos pelo job:", JSON.stringify(data, null, 2));
 
     const { tenantId } = data;
@@ -35,7 +32,7 @@ export default {
 
       // 2. Verifique se o arquivo realmente existe neste caminho
       if (!fs.existsSync(mediaPath)) {
-        const errorMsg = `DEPURAÇÃO: Arquivo codificado não encontrado em ${mediaPath}. O teste não pode continuar.`;
+        const errorMsg = `DEPURAÇÃO: Arquivo codificado não encontrado em ${mediaPath}.`;
         logger.error(errorMsg);
         throw new Error(errorMsg);
       }
@@ -64,7 +61,7 @@ export default {
 
     try {
       const info = await transporter.sendMail(mailOptions);
-      logger.info("E-mail de teste enviado com sucesso!", info);
+      logger.info("E-mail enviado com sucesso!", info);
       return { success: true, messageId: info.messageId };
     } catch (error) {
       logger.error(

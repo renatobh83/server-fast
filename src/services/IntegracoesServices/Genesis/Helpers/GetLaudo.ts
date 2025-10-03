@@ -19,9 +19,12 @@ export const GetLaudo = async ({
   integracao,
   ticket,
   exame,
+  cdPaciente,
 }: GetLaudoProps) => {
-  const url = `doLaudoExternoLista`;
-  const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
+  const URL_FINAL = `${integracao.config_json.baseUrl}`.replace("se1/", "");
+
+  const newURL = `${URL_FINAL}/www/doLaudoDownload?cd_exame=${cdExame}&cd_paciente=${cdPaciente}&cd_funcionario=1&sn_entrega=false`;
+
   const body = new URLSearchParams();
   body.append("cd_exame", cdExame.toString());
 
@@ -33,14 +36,14 @@ export const GetLaudo = async ({
   try {
     const instanceApi = await getApiInstance(integracao, true);
 
-    const { data } = await instanceApi.post(URL_FINAL, body, {
+    const { data } = await instanceApi.get(newURL, {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         Accept: "application/pdf",
       },
       responseType: "stream",
     });
-console.log(data)
+
     // grava stream no arquivo da pasta pública
     const writer = createWriteStream(filePath);
     data.pipe(writer);
@@ -71,6 +74,6 @@ console.log(data)
     throw error;
   } finally {
     // remove arquivo depois do envio
-  //  await fs.unlink(filePath).catch(() => {});
+    // await fs.unlink(filePath).catch(() => {});
   }
 };
