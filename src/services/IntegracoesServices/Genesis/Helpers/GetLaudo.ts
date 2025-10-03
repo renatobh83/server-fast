@@ -21,7 +21,7 @@ export const GetLaudo = async ({
   ticket,
   exame,
 }: GetLaudoProps) => {
-  const url = `/doLaudoExternoLista`;
+  const url = `doLaudoExternoLista`;
   const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
   const body = new URLSearchParams();
   body.append("cd_exame", cdExame.toString());
