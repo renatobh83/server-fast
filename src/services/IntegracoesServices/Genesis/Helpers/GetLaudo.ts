@@ -73,29 +73,4 @@ export const GetLaudo = async ({
     // Sempre remove o arquivo no fim
     await fs.unlink(filePath).catch(() => {});
   }
-};    });
-    const publicFolder = path.join(process.cwd(), "public");
-    const filePath = path.resolve(publicFolder, `${exame}.pdf`);
-    await fs.writeFile(filePath, data);
-
-    await BuildSendMessageService({
-      ticket,
-      tenantId: ticket.tenantId,
-      msg: {
-        type: "MediaField",
-        id: uuidV4(),
-        data: {
-          mediaUrl: `${exame}.pdf`,
-          name: "Laudo Exame",
-          message: {
-            mediaType: "document",
-          },
-        },
-      },
-    });
- //   fs.unlink(filePath);
-  } catch (error) {
-    console.error("Erro ao confirmar exame:", error);
-    throw error;
-  }
 };
