@@ -54,7 +54,7 @@ export const GetLaudo = async ({
         },
       },
     });
-    fs.unlink(filePath);
+ //   fs.unlink(filePath);
   } catch (error) {
     console.error("Erro ao confirmar exame:", error);
     throw error;
