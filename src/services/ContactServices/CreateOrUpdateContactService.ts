@@ -16,6 +16,8 @@ interface Request {
   instagramPK?: number;
   messengerId?: string;
   origem?: "whatsapp" | "telegram" | "instagram" | "messenger";
+  serializednumber?: string | undefined
+  
 }
 
 const CreateOrUpdateContactService = async ({
@@ -33,11 +35,12 @@ const CreateOrUpdateContactService = async ({
   messengerId,
   extraInfo,
   origem = "whatsapp",
+  serializednumber
 }: Request): Promise<Contact> => {
   try {
     // 🔹 Mapeamento dinâmico do campo de busca
     const originFieldMap: Record<string, { field: string; value: any }> = {
-      whatsapp: { field: "serializednumber", value: rawNumber },
+      whatsapp: { field: "serializednumber", value: serializednumber },
       telegram: { field: "telegramId", value: telegramId },
       instagram: { field: "instagramPK", value: instagramPK },
       messenger: { field: "messengerId", value: messengerId },
@@ -53,11 +56,12 @@ const CreateOrUpdateContactService = async ({
     }
 
     const { field, value } = originFieldMap[origem] || {};
-
+    
     if (field && value) {
       contact = await Contact.findOne({ where: { [field]: value, tenantId } });
     }
 
+    
     if (contact) {
       await contact.update({
         profilePicUrl,
@@ -83,6 +87,7 @@ const CreateOrUpdateContactService = async ({
         telegramId,
         instagramPK,
         messengerId,
+        serializednumber,
       });
     }
 

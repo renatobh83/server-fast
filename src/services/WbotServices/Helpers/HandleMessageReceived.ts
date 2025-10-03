@@ -15,6 +15,7 @@ import Whatsapp from "../../../models/Whatsapp";
 import IntegracaoGenesisConfirmacao from "../../../models/IntegracaoGenesisConfirmacao";
 import { Op } from "sequelize";
 import { GetContactByLid } from "./GetContactBYLid";
+import Contact from "../../../models/Contact";
 
 interface Session extends wbot {
   id: number;
@@ -43,6 +44,8 @@ export const HandleMessageReceived = async (
   // console.log("Recebido", new Date().toLocaleTimeString())
 
   let whatsapp = (await getCache(RedisKeys.canalService(wbot.id))) as Whatsapp;
+  
+  
   if (!whatsapp) {
     whatsapp = await ShowWhatsAppService({ id: wbot.id });
     await setCache(RedisKeys.canalService(wbot.id), whatsapp);
@@ -55,17 +58,31 @@ export const HandleMessageReceived = async (
   }
   const chat: Chat = await wbot.getChatById(msg.from);
 
-  const Settingdb = await Setting.findOne({
-    where: { key: "ignoreGroupMsg", tenantId },
-  });
+  let Settingdb = await getCache(RedisKeys.settingsIgnoreGroupMsg(tenantId))  as Setting
+  if(!Settingdb){
 
+     Settingdb = await Setting.findOne({
+      where: { key: "ignoreGroupMsg", tenantId },
+    }) as Setting
+    await setCache(RedisKeys.settingsIgnoreGroupMsg(+tenantId), Settingdb);
+  }
+
+  
   if (
     Settingdb?.value === "enabled" &&
     (chat.isGroup || msg.from === "status@broadcast")
   ) {
     return;
   }
-  const contact = await VerifyContact(chat, tenantId);
+  
+  let contact: Contact
+  contact  = await getCache(RedisKeys.ticketContactCache(tenantId,chat.id._serialized )) as Contact;
+  if(!contact) {
+     contact = await VerifyContact(chat, tenantId);
+    await setCache(RedisKeys.ticketContactCache(tenantId, chat.id._serialized), contact);
+  }
+  
+  
 
   let authorGrupMessage: any = "";
 

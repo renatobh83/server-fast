@@ -1,5 +1,6 @@
 export const RedisKeys = {
   settings: (tenantId: number | string) => `settings:${tenantId}`,
+  settingsIgnoreGroupMsg: (tenantId: number | string) => `settingsignoreGroupMsg:${tenantId}`,
   chatFlow: (tenantId: number | string) => `chatFlow:${tenantId}`,
   chamados: (pageNumber: number | string) => `chamados:${pageNumber}`,
   DashTicketsAndTimes: (startDate: string, endDate: string, profile: string) =>
@@ -35,6 +36,8 @@ export const RedisKeys = {
   ) => `contact:${tenantId}:${contactIdOrPhone}:${uniqueValue}`,
   ticketService: (tenantId: number | string, ticketId: number | string) =>
     `ticket:${tenantId}:${ticketId}`,
+  ticketContactCache: (tenantId: number | string, ticketId: number | string) =>
+    `ticketContactCache:${tenantId}:${ticketId}`,
   ticketFindOrCreate: (
     tenantId: number | string,
     sessionId: number | string,

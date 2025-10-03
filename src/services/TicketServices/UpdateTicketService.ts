@@ -83,7 +83,7 @@ const UpdateTicketService = async ({
   const data: any = {
     status: statusData,
     queueId,
-    userId,
+    userId: ticket.isGroup ? null : userId,
   };
 
   // se atendimento for encerrado, informar data da finalização
@@ -105,6 +105,7 @@ const UpdateTicketService = async ({
     data.stepAutoReplyId = null;
     data.startedAttendanceAt = new Date().getTime();
   }
+
 
   await ticket.update(data);
 
