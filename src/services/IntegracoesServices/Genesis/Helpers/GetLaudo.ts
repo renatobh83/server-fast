@@ -71,6 +71,6 @@ export const GetLaudo = async ({
     throw error;
   } finally {
     // remove arquivo depois do envio
-    await fs.unlink(filePath).catch(() => {});
+  //  await fs.unlink(filePath).catch(() => {});
   }
 };
