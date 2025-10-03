@@ -70,6 +70,7 @@ export const CreateMessageSystemService = async ({
         Object.entries(data).filter(([key]) => modelAttributes.includes(key))
       );
     };
+
     await Promise.all(
       (filesArray && filesArray.length ? filesArray : [null]).map(
         async (media) => {

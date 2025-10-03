@@ -39,7 +39,6 @@ const SendMessageSystemProxy = async ({
     case "whatsapp":
       if (hasMedia) {
         const mediaTransforme = await transformFile(media);
-
         message = await SendWhatsAppMedia({
           media: mediaTransforme,
           ticket,

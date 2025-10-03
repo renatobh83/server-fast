@@ -12,9 +12,13 @@ function sanitizeFilename(filename: string): string {
     .replace(/[^a-zA-Z0-9]/g, "_"); // troca espaços e símbolos por _
 }
 
-export async function transformFile(file: { path: string; filename: string }) {
+export async function transformFile(file: {
+  path: string;
+  filename: string;
+  buffer?: Buffer;
+}) {
   // Lê o conteúdo do arquivo como Buffer
-  const buffer = await fs.readFile(file.path);
+  const buffer = file.buffer ? file.buffer : await fs.readFile(file.path!);
 
   // Gera UUID
   const id = uuidv4().replace(/-/g, "_");

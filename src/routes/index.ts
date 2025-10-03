@@ -6,7 +6,7 @@ import adminRoutes from "./adminRoutes";
 import apiConfiRoutes from "./apiConfigRoutes";
 import chamadoRoutes from "./chamadosRoutes";
 import contactRoutes from "./contactRoutes";
-import empresaRoutes from "./emrpesaRoutes";
+import empresaRoutes from "./empresaRoutes";
 import fastReplyRoutes from "./fastReplyRoutes";
 import settginsRoutes from "./settingsRoutes";
 import emailRoutes from "./emilRoutes";

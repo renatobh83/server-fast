@@ -3268,3 +3268,22 @@
   type: 'client',
   timestamp: '2025-10-03T15:34:06.147Z'
 }
+{
+  session: 2,
+  type: 'browser',
+  level: 'error',
+  message: 'Error no open browser',
+  timestamp: '2025-10-03T19:03:08.336Z'
+}
+{
+  session: 2,
+  type: 'browser',
+  level: 'error',
+  message: 'Failed to launch the browser process:  Code: 21\n' +
+    '\n' +
+    'stderr:\n' +
+    '\n' +
+    '\n' +
+    'TROUBLESHOOTING: https://pptr.dev/troubleshooting\n',
+  timestamp: '2025-10-03T19:03:08.338Z'
+}
