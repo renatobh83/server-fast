@@ -84,7 +84,7 @@ export default async function empresaRoutes(fastify: FastifyInstance) {
           properties: {
             contactIds: {
               type: "array",
-              items: { type: "object" },
+              items: { type: "number" },
             },
           },
         },
