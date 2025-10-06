@@ -10,8 +10,8 @@ import ShowTicketService from "./ShowTicketService";
 import ListSettingsService from "../SettingServices/ListSettingsService";
 import CheckChatBotFlowWelcome from "../WbotServices/Helpers/CheckChatBotFlowWelcome";
 import { AppError } from "../../errors/errors.helper";
-import { getCache, setCache } from "../../utils/cacheRedis";
-import { RedisKeys } from "../../constants/redisKeys";
+
+import Message from "../../models/Message";
 
 interface Data {
   contact: Contact;
@@ -35,6 +35,22 @@ const FindOrCreateTicketService = async ({
   channel,
 }: Data): Promise<Ticket | any> => {
   try {
+    if (msg && msg.fromMe) {
+      const farewellMessage = await Message.findOne({
+        where: { messageId: msg.id?.id || msg.message_id || msg.item_id },
+        include: ["ticket"],
+      });
+
+      if (
+        farewellMessage?.ticket?.status === "closed" &&
+        farewellMessage?.ticket.lastMessage === msg.body
+      ) {
+        const ticket = farewellMessage.ticket as any;
+        ticket.isFarewellMessage = true;
+        return ticket;
+      }
+    }
+
     const commonIncludes = [
       {
         model: Contact,
