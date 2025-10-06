@@ -10,6 +10,7 @@ interface WhatsappData {
   isDefault?: boolean;
   tokenTelegram?: string;
   pairingCodeEnabled?: boolean;
+  farewellMessage: string;
   isActive?: boolean;
   type?: "waba" | "instagram" | "telegram" | "whatsapp" | "messenger";
   wabaBSP?: string;
@@ -46,6 +47,7 @@ const UpdateWhatsAppService = async ({
     pairingCodeEnabled,
     chatFlowId,
     qrcode,
+    farewellMessage,
   } = whatsappData;
   const io = getIO();
 
@@ -80,6 +82,7 @@ const UpdateWhatsAppService = async ({
       pairingCodeEnabled,
       wppUser,
       type,
+      farewellMessage,
       wabaBSP,
       tokenAPI,
       chatFlowId: chatFlowId === 0 ? null : chatFlowId,

@@ -46,6 +46,7 @@ export const updateSessionChannel = async (
         retries: 0,
         phone: "",
         session: "",
+        farewellMessage: "",
       },
       tenantId,
     });

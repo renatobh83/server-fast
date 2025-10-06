@@ -16,11 +16,6 @@ interface Request {
   type: "waba" | "instagram" | "telegram" | "whatsapp" | "messenger";
 }
 
-interface Response {
-  whatsapp: Whatsapp;
-  oldDefaultWhatsapp: Whatsapp | null;
-}
-
 const CreateWhatsAppService = async ({
   name,
   status = "DISCONNECTED",
@@ -30,7 +25,8 @@ const CreateWhatsAppService = async ({
   tokenTelegram,
   wppUser,
   isDefault = false,
-}: Request): Promise<Response> => {
+  farewellMessage,
+}: Request): Promise<Whatsapp> => {
   if (type === "telegram" && !tokenTelegram) {
     throw new AppError("Telegram: favor informar o Token.", 400);
   }
@@ -58,6 +54,7 @@ const CreateWhatsAppService = async ({
       pairingCodeEnabled: pairingCodeEnabled ? pairingCodeEnabled : false,
       wppUser,
       tokenTelegram,
+      farewellMessage,
     });
     const io = getIO();
     io.emit(`${tenantId}:whatsapp`, {
@@ -65,7 +62,7 @@ const CreateWhatsAppService = async ({
       whatsapp,
     });
 
-    return { whatsapp, oldDefaultWhatsapp: whatsappFound };
+    return whatsapp;
   } catch (error) {
     logger.error(error);
     throw new AppError("ERR_CREATE_WAPP", 404);

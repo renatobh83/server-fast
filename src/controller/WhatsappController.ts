@@ -25,6 +25,7 @@ export const createCanal = async (
     const { tenantId } = request.user as any;
     const payload = { ...request.body, status: "DISCONNECTED", tenantId };
     const createdChannel = await CreateWhatsAppService(payload);
+
     return reply.code(STANDARD.OK.statusCode).send(createdChannel);
   } catch (error) {
     return handleServerError(reply, error);
@@ -74,6 +75,7 @@ export const updateCanal = async (
       pairingCodeEnabled: boolean;
       chatFlowId: number;
       qrcode: string;
+      farewellMessage: string;
     };
   }>,
   reply: FastifyReply

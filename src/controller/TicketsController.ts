@@ -1,38 +1,19 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { STANDARD } from "../constants/request";
-import {  handleServerError } from "../errors/errors.helper";
+import { handleServerError } from "../errors/errors.helper";
 import CreateTicketService from "../services/TicketServices/CreateTicketService";
 import DeleteTicketService from "../services/TicketServices/DeleteTicketService";
 import { getIO } from "../lib/socket";
-import { FindOrCreateTicketClientChat } from "../services/TicketServices/FindOrCreateTicketClientChat";
 import ListTicketsService from "../services/TicketServices/ListTicketsService";
 import ShowTicketService from "../services/TicketServices/ShowTicketService";
 import { Op } from "sequelize";
 import Message from "../models/Message";
 import UpdateTicketService from "../services/TicketServices/UpdateTicketService";
-
-export const TESTEROTATICKET = async (
-  request: FastifyRequest,
-  reply: FastifyReply
-) => {
-  const { tenantId, id } = request.user as any;
-
-  try {
-    const client = {
-      empresaId: 1,
-      tenantId: 1,
-      email: "admin@admin.com",
-      name: "Renato",
-    };
-    const settign = await FindOrCreateTicketClientChat({
-      client,
-      socketId: "555",
-    });
-    return reply.code(STANDARD.OK.statusCode).send(settign);
-  } catch (error) {
-    return handleServerError(reply, error);
-  }
-};
+import Whatsapp from "../models/Whatsapp";
+import { pupa } from "../utils/pupa";
+import { CreateMessageSystemService } from "../services/MessageServices/CreateMessageSystemService";
+import Ticket from "../models/Ticket";
+import Contact from "../models/Contact";
 
 export const apagarTicket = async (
   request: FastifyRequest,
@@ -98,9 +79,9 @@ export const mostrarTicket = async (
   try {
     const { tenantId } = request.user as any;
     const { ticketId } = request.params as { ticketId: number };
-   
+
     const ticket = await ShowTicketService({ id: ticketId, tenantId });
-   
+
     const where = {
       contactId: ticket.contactId,
       scheduleDate: { [Op.not]: null },
@@ -147,6 +128,40 @@ export const updateTicket = async (
       userIdRequest: id,
     };
     const { ticket } = await UpdateTicketService(payload);
+
+    if (ticket.status === "closed") {
+      const inTicket = await Ticket.findByPk(ticket.id, {
+        include: [
+          {
+            model: Contact,
+            as: "contact",
+          },
+        ],
+      });
+
+      const whatsapp = await Whatsapp.findOne({
+        where: { id: ticket.whatsappId, tenantId },
+      });
+      if (whatsapp?.farewellMessage) {
+        const body = pupa(whatsapp.farewellMessage || "", {
+          protocol: ticket.protocol,
+          name: ticket.contact.name,
+        });
+        const messageData = {
+          message: { body, fromMe: true, read: true },
+          tenantId,
+          ticket: inTicket!,
+          userId: id,
+          sendType: "bot",
+          status: "pending",
+          isTransfer: false,
+          note: false,
+        };
+        await CreateMessageSystemService(messageData);
+        inTicket!.update({ isFarewellMessage: true });
+      }
+    }
+
     return reply.code(STANDARD.OK.statusCode).send(ticket);
   } catch (error) {
     console.log(error);

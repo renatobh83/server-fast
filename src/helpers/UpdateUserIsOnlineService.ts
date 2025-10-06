@@ -25,12 +25,12 @@ export const UpdateUserIsOnlineService = async ({
     attributes: ["id", "name", "email", "profile", "isOnline", "status"],
   };
   await user.reload(reloadOptions);
-  const defaultWhatsapp = await GetDefaultWhatsApp(tenantId);
+  // const defaultWhatsapp = await GetDefaultWhatsApp(tenantId);
 
-  if (typeof defaultWhatsapp === "object") {
-    // const wbot = getWbot(defaultWhatsapp.id);
-    // wbot.setOnlinePresence(userData.isOnline);
-  }
+  // if (typeof defaultWhatsapp === "object") {
+  //   // const wbot = getWbot(defaultWhatsapp.id);
+  //   // wbot.setOnlinePresence(userData.isOnline);
+  // }
 
   return {
     id: user.id,
