@@ -36,9 +36,13 @@ export const HandleMessageChatClient = async (socket: any) => {
         await CreateMessageSystemService({
           message: {
             body: "👋 Oi! Que bom ter você por aqui. Em instantes, um de nossos atendentes vai te responder. Fique à vontade para enviar sua mensagem!",
+            fromMe: true,
+            sendType: "bot",
+            read: true,
           },
           tenantId: ticket.tenantId,
           ticket,
+
           status: "pending",
         });
         socket.emit("chat:boasVindas");
