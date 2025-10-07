@@ -58,17 +58,7 @@
       chatVisible = true;
       connectSocket();
     }
-    function showDesktopNotification(title, body) {
-      if (Notification.permission === "granted") {
-        const notification = new Notification(title, {
-          body: body,
-          icon: "https://cdn-icons-png.flaticon.com/512/1034/1034141.png", // opcional
-        });
 
-        // Fecha a notificação após 5s
-        setTimeout(() => notification.close(), 5000);
-      }
-    }
     function showPreForm() {
       formContainer = document.createElement("div");
       formContainer.innerHTML = `
@@ -580,11 +570,29 @@
 
     function notify(title, body) {
       if (Notification.permission === "granted") {
-        new Notification(title, { body });
+        const mensagem = body.replace(/\*/g, "");
+        new Notification(title, {
+          body: mensagem,
+          icon: "https://cdn-icons-png.flaticon.com/512/2645/2645897.png",
+          requireInteraction: false,
+          silent: false,
+          vibrate: [200, 100, 200],
+          tag: "meu-alerta",
+          renotify: true,
+        });
       } else if (Notification.permission !== "denied") {
         Notification.requestPermission().then((perm) => {
           if (perm === "granted") {
-            new Notification(title, { body });
+            const mensagem = body.replace(/\*/g, "");
+            new Notification(title, {
+              body: mensagem,
+              icon: "https://cdn-icons-png.flaticon.com/512/2645/2645897.png",
+              requireInteraction: false,
+              silent: false,
+              vibrate: [200, 100, 200],
+              tag: "meu-alerta",
+              renotify: true,
+            });
           }
         });
       }
