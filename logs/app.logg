@@ -4363,3 +4363,34 @@
     '                            }); }); }',
   timestamp: '2025-10-07T11:04:42.509Z'
 }
+{
+  session: 2,
+  type: 'browser',
+  level: 'error',
+  message: 'Error no open browser',
+  timestamp: '2025-10-07T13:37:29.018Z'
+}
+{
+  session: 2,
+  type: 'browser',
+  level: 'error',
+  message: 'Failed to launch the browser process:  Code: 21\n' +
+    '\n' +
+    'stderr:\n' +
+    '\n' +
+    '\n' +
+    'TROUBLESHOOTING: https://pptr.dev/troubleshooting\n',
+  timestamp: '2025-10-07T13:37:29.019Z'
+}
+{
+  level: 'error',
+  message: "Cannot read properties of null (reading 'eurl')",
+  session: 2,
+  type: 'client',
+  stack: "TypeError: Cannot read properties of null (reading 'eurl')\n" +
+    '    at VerifyContact (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\VerifyContact.js:20:55)\n' +
+    '    at HandleMessageSend (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageSend.js:30:55)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-07T13:46:07.924Z'
+}
