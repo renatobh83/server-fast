@@ -79,6 +79,7 @@ const VerifyMediaMessage = async (
     timestamp: msg.timestamp,
     status: msg.fromMe ? "sended" : "received",
     ack: msg.ack,
+    isForwarded: msg.isForwarded,
   };
 
   await ticket.update({

@@ -195,6 +195,7 @@ export const editarTempoChamado = async (
 ) => {
   const { ticketId } = request.params as { ticketId: number };
   const { tempoAjusteMinutos, motivo } = request.body as any;
+
   if (await EditarTempoChamadoService({ ticketId, tempoAjusteMinutos, motivo }))
     return reply
       .code(STANDARD.OK.statusCode)

@@ -30,6 +30,7 @@ interface IMessage {
   quotedMsgId?: string;
   idFront?: string;
   isDeleted?: boolean;
+  isForwarded?: boolean;
 }
 
 class Message extends Model<IMessage> implements IMessage {
@@ -64,6 +65,7 @@ class Message extends Model<IMessage> implements IMessage {
   declare quotedMsg: Message;
   declare idFront: string;
   declare isDeleted: boolean;
+  declare isForwarded: boolean;
   declare createdAt: Date;
   declare updatedAt: Date;
 
@@ -195,6 +197,10 @@ class Message extends Model<IMessage> implements IMessage {
           allowNull: true,
         },
         isDeleted: {
+          type: DataTypes.BOOLEAN,
+          defaultValue: false,
+        },
+        isForwarded: {
           type: DataTypes.BOOLEAN,
           defaultValue: false,
         },

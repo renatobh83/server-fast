@@ -4248,3 +4248,118 @@
   level: 'error',
   timestamp: '2025-10-06T12:59:30.651Z'
 }
+{
+  message: 'forwardMessage | Error: {"code":"invalid_wid"}',
+  level: 'error',
+  timestamp: '2025-10-07T09:48:56.893Z'
+}
+{
+  level: 'error',
+  message: 'ERR_FIND_OR_CREATE_TICKET_SERICE',
+  session: 2,
+  type: 'client',
+  statusCode: 500,
+  stack: 'Error: ERR_FIND_OR_CREATE_TICKET_SERICE\n' +
+    '    at FindOrCreateTicketService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TicketServices\\FindOrCreateTicketService.js:165:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessageSend (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageSend.js:37:20)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-07T09:49:12.544Z'
+}
+{
+  message: 'forwardMessage | Error: {"code":"invalid_wid"}',
+  level: 'error',
+  timestamp: '2025-10-07T10:04:35.646Z'
+}
+{
+  level: 'error',
+  message: 'ERR_FIND_OR_CREATE_TICKET_SERICE',
+  session: 2,
+  type: 'client',
+  statusCode: 500,
+  stack: 'Error: ERR_FIND_OR_CREATE_TICKET_SERICE\n' +
+    '    at FindOrCreateTicketService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TicketServices\\FindOrCreateTicketService.js:165:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessageSend (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageSend.js:37:20)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-07T10:05:52.235Z'
+}
+{
+  level: 'error',
+  message: 'ERR_FIND_OR_CREATE_TICKET_SERICE',
+  session: 2,
+  type: 'client',
+  statusCode: 500,
+  stack: 'Error: ERR_FIND_OR_CREATE_TICKET_SERICE\n' +
+    '    at FindOrCreateTicketService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TicketServices\\FindOrCreateTicketService.js:165:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessageSend (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageSend.js:37:20)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-07T10:11:56.326Z'
+}
+{
+  level: 'error',
+  message: 'ERR_FIND_OR_CREATE_TICKET_SERICE',
+  session: 2,
+  type: 'client',
+  statusCode: 500,
+  stack: 'Error: ERR_FIND_OR_CREATE_TICKET_SERICE\n' +
+    '    at FindOrCreateTicketService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TicketServices\\FindOrCreateTicketService.js:166:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessageSend (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageSend.js:37:20)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-07T10:13:39.902Z'
+}
+{
+  message: 'forwardMessage | Error: {"name":"ForwardError","reasons":[{}]}',
+  level: 'error',
+  timestamp: '2025-10-07T10:43:22.330Z'
+}
+{
+  level: 'error',
+  message: "Cannot read properties of undefined (reading 'length')",
+  session: 2,
+  type: 'client',
+  stack: "TypeError: Cannot read properties of undefined (reading 'length')\n" +
+    '    at VerifyMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\VerifyMessage.js:44:25)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessageSend (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageSend.js:50:9)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-07T10:49:14.441Z'
+}
+{
+  level: 'error',
+  message: "Cannot read properties of undefined (reading 'length')",
+  session: 2,
+  type: 'client',
+  stack: "TypeError: Cannot read properties of undefined (reading 'length')\n" +
+    '    at VerifyMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\VerifyMessage.js:44:25)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessageSend (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageSend.js:51:9)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-07T10:56:26.833Z'
+}
+{
+  level: 'error',
+  message: 'Message true_120363368710149549@g.us_3EB02E5DACB5F377045945_243468827926767@lid not contains media',
+  session: 2,
+  type: 'client',
+  code: 'message_not_contains_media',
+  id: 'true_120363368710149549@g.us_3EB02E5DACB5F377045945_243468827926767@lid',
+  stack: 'Error: Message true_120363368710149549@g.us_3EB02E5DACB5F377045945_243468827926767@lid not contains media\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\wbotconnect\\dist\\api\\helpers\\evaluate-and-return.js:107:31\n' +
+    '    at step (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\wbotconnect\\dist\\api\\helpers\\evaluate-and-return.js:49:23)\n' +
+    '    at Object.next (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\wbotconnect\\dist\\api\\helpers\\evaluate-and-return.js:30:53)\n' +
+    '    at fulfilled (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\wbotconnect\\dist\\api\\helpers\\evaluate-and-return.js:21:58)\n' +
+    'JS Stack: Error: Message true_120363368710149549@g.us_3EB02E5DACB5F377045945_243468827926767@lid not contains media\n' +
+    '    at Object.e (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\@wppconnect\\wa-js\\dist\\wppconnect-wa.js:2:233179)\n' +
+    'Function: function (messageId) { return __awaiter(_this, void 0, void 0, function () { var _a, _b; return __generator(this, function (_c) {\n' +
+    '                                switch (_c.label) {\n' +
+    '                                    case 0:\n' +
+    '                                        _b = (_a = WPP.util).blobToBase64;\n' +
+    '                                        return [4 /*yield*/, WPP.chat.downloadMedia(messageId)];\n' +
+    '                                    case 1: return [2 /*return*/, _b.apply(_a, [_c.sent()])];\n' +
+    '                                }\n' +
+    '                            }); }); }',
+  timestamp: '2025-10-07T11:04:42.509Z'
+}

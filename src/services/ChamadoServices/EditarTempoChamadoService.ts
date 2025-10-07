@@ -14,18 +14,13 @@ export const EditarTempoChamadoService = async ({
   tempoAjusteMinutos,
 }: IEditarTempoChamadoService): Promise<boolean> => {
   try {
-    if (!Number.isInteger(ticketId) || Number(ticketId) <= 0) {
-      throw new Error("ticketId inválido.");
-    }
-
     const chamado = await Chamado.findOne({
       where: {
         ticketsAssociados: {
-          [Op.contains]: [ticketId],
+          [Op.contains]: [Number(ticketId)],
         },
       },
     });
-
     if (!chamado) {
       throw new AppError("ERR_NO_TICKET_FOUND", 404);
     }
@@ -53,6 +48,7 @@ export const EditarTempoChamadoService = async ({
     if (error instanceof AppError) {
       throw error;
     }
+    console.log(error);
     throw new AppError("ERR_EDITAR_TEMPO_CHAMADO_SERVICE", 502);
   }
 };

@@ -20,14 +20,13 @@ export const SendWhatsAppForwardMessage = async ({
   try {
     const wbot = await GetTicketWbot(ticket);
 
-    const wppContact = await wbot.checkNumberStatus(contact.number);
-    message.filehash;
-    const media = message.filehash
+    // const wppContact = await wbot.checkNumberStatus(contact.number);
+
+    const media = message.mediaUrl
       ? await wbot.downloadMedia(message.messageId)
       : "";
 
-    await wbot.forwardMessage(wppContact.id._serialized, message.messageId);
-
+    await wbot.forwardMessage(contact.serializednumber, message.messageId);
     await ticket.update({
       lastMessage:
         message.body.length > 255
@@ -48,7 +47,7 @@ export const SendWhatsAppForwardMessage = async ({
     }
   } catch (err) {
     logger.error(`forwardMessage | Error: ${JSON.stringify(err)}`);
-    console.log("error");
+
     throw new AppError("ERR_SENDING_WAPP_MSG", 501);
   }
 };

@@ -21,6 +21,7 @@ export const HandleMessageSend = async (
   wbot: Session
 ): Promise<void> => {
   let whatsapp = (await getCache(RedisKeys.canalService(wbot.id))) as Whatsapp;
+
   if (!whatsapp) {
     whatsapp = await ShowWhatsAppService({ id: wbot.id });
     await setCache(RedisKeys.canalService(wbot.id), whatsapp);
@@ -42,6 +43,7 @@ export const HandleMessageSend = async (
     return;
   }
   const contact = await VerifyContact(chat, tenantId);
+
   const ticket = await FindOrCreateTicketService({
     contact,
     whatsappId: wbot.id!,
@@ -52,7 +54,7 @@ export const HandleMessageSend = async (
     channel: "whatsapp",
   });
 
-  if (message.filehash) {
+  if (message.filehash || message.mimetype) {
     await VerifyMediaMessage(message, ticket, contact, wbot);
   } else {
     await VerifyMessage(message, ticket, contact);

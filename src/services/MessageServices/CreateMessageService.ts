@@ -16,6 +16,7 @@ interface MessageData {
   mediaUrl?: string;
   timestamp?: number;
   ack?: number;
+  isForwarded?: boolean;
 }
 interface Request {
   messageData: MessageData;

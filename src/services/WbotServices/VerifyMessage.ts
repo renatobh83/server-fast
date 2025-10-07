@@ -34,7 +34,9 @@ const VerifyMessage = async (
     quotedMsgId: quotedMsg?.messageId,
     timestamp: msg.timestamp,
     status: msg.fromMe ? "sended" : "received",
+    isForwarded: msg.isForwarded,
   };
+
   // Normalizar lastMessage
   let lastMessage: string;
   if (msg.type === "list") {

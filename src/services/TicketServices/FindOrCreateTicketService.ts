@@ -37,7 +37,9 @@ const FindOrCreateTicketService = async ({
   try {
     if (msg && msg.fromMe) {
       const farewellMessage = await Message.findOne({
-        where: { messageId: msg.id?.id || msg.message_id || msg.item_id },
+        where: {
+          messageId: msg.id || msg.id?.id || msg.message_id || msg.item_id,
+        },
         include: ["ticket"],
       });
 

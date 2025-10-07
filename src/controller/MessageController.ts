@@ -5,8 +5,6 @@ import { STANDARD } from "../constants/request";
 import SetTicketMessagesAsRead from "../helpers/SetTicketMessagesAsRead";
 import { Message } from "wbotconnect";
 import ShowTicketService from "../services/TicketServices/ShowTicketService";
-import { pipeline } from "node:stream/promises";
-import { createWriteStream } from "node:fs";
 import { CreateMessageSystemService } from "../services/MessageServices/CreateMessageSystemService";
 import CreateForwardMessageService from "../services/MessageServices/CreateForwardMessageService";
 
