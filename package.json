@@ -59,7 +59,7 @@
     "telegraf": "^4.16.3",
     "ts-node": "^10.9.2",
     "tsc-watch": "^7.1.1",
-    "wbotconnect": "^1.0.17-b",
+    "wbotconnect": "^1.0.18",
     "winston": "^3.17.0",
     "xml-crypto": "^6.1.2",
     "xml2js": "^0.6.2",
