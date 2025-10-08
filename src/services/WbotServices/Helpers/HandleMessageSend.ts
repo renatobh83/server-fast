@@ -45,7 +45,7 @@ export const HandleMessageSend = async (
     msg: message,
     channel: "whatsapp",
   });
-  console.log(ticket);
+
   if (ticket?.isFarewellMessage) {
     return;
   }
