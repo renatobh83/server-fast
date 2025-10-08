@@ -129,15 +129,15 @@ export const updateTicket = async (
     };
     const { ticket } = await UpdateTicketService(payload);
 
-    if (ticket.status === "closed") {
-      const inTicket = await Ticket.findByPk(ticket.id, {
+    if (ticket.status === "closed" && !ticket.isGroup) {
+      const inTicket = (await Ticket.findByPk(ticket.id, {
         include: [
           {
             model: Contact,
             as: "contact",
           },
         ],
-      });
+      })) as Ticket;
 
       const whatsapp = await Whatsapp.findOne({
         where: { id: ticket.whatsappId, tenantId },
@@ -150,7 +150,7 @@ export const updateTicket = async (
         const messageData = {
           message: { body, fromMe: true, read: true },
           tenantId,
-          ticket: inTicket!,
+          ticket: inTicket,
           userId: id,
           sendType: "bot",
           status: "pending",
@@ -158,7 +158,7 @@ export const updateTicket = async (
           note: false,
         };
         await CreateMessageSystemService(messageData);
-        inTicket!.update({ isFarewellMessage: true });
+        inTicket.update({ isFarewellMessage: true });
       }
     }
 

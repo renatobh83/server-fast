@@ -93,6 +93,7 @@ const CreateMessageService = async ({
       // Isso é um caso improvável, mas é bom ter uma verificação.
       throw new AppError("ERR_CREATING_MESSAGE", 501);
     }
+
     message = reloadedMessage;
     socketEmit({
       tenantId,
@@ -100,6 +101,14 @@ const CreateMessageService = async ({
       payload: reloadedMessage,
     });
     // A mensagem agora contém todas as associações, seja ela encontrada ou recém-criada.
+    return reloadedMessage;
+  }
+  if (!created) {
+    socketEmit({
+      tenantId,
+      type: "chat:create",
+      payload: message,
+    });
   }
   return message;
 };

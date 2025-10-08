@@ -42,14 +42,7 @@ export const HandleMessageReceived = async (
   msg: Message,
   wbot: Session
 ): Promise<void> => {
-  // console.log("Recebido", new Date().toLocaleTimeString())
-
-  let whatsapp = (await getCache(RedisKeys.canalService(wbot.id))) as Whatsapp;
-
-  if (!whatsapp) {
-    whatsapp = await ShowWhatsAppService({ id: wbot.id });
-    await setCache(RedisKeys.canalService(wbot.id), whatsapp);
-  }
+  const whatsapp = await ShowWhatsAppService({ id: wbot.id });
 
   const { tenantId } = whatsapp;
 
@@ -58,15 +51,9 @@ export const HandleMessageReceived = async (
   }
   const chat: Chat = await wbot.getChatById(msg.from);
 
-  let Settingdb = (await getCache(
-    RedisKeys.settingsIgnoreGroupMsg(tenantId)
-  )) as Setting;
-  if (!Settingdb) {
-    Settingdb = (await Setting.findOne({
-      where: { key: "ignoreGroupMsg", tenantId },
-    })) as Setting;
-    await setCache(RedisKeys.settingsIgnoreGroupMsg(+tenantId), Settingdb);
-  }
+  const Settingdb = (await Setting.findOne({
+    where: { key: "ignoreGroupMsg", tenantId },
+  })) as Setting;
 
   if (
     Settingdb?.value === "enabled" &&
@@ -104,7 +91,7 @@ export const HandleMessageReceived = async (
     return;
   }
 
-  const ticket = (await FindOrCreateTicketService({
+  const ticket = await FindOrCreateTicketService({
     contact,
     whatsappId: wbot.id,
     unreadMessages: chat.unreadCount,
@@ -112,8 +99,7 @@ export const HandleMessageReceived = async (
     groupContact: chat.isGroup,
     msg,
     channel: "whatsapp",
-  })) as Ticket;
-
+  });
   // 🔹 Usando o timestamp real da mensagem
   const msgTime = msg.timestamp; // já vem em segundos
   const lastTime = lastMessageTime.get(ticket.id) || 0;

@@ -140,12 +140,6 @@ export const CreateMessageSystemService = async ({
               // Isso é um caso improvável, mas é bom ter uma verificação.
               throw new AppError("ERR_RELOAD_MESSAGE", 501);
             }
-
-            socketEmit({
-              tenantId,
-              type: "chat:create",
-              payload: reloadedMessage,
-            });
           }
         }
       )

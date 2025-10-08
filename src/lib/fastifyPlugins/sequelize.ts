@@ -37,8 +37,9 @@ function monitorConnection(fastify: FastifyInstance, interval = 10000) {
 
 export const sequelizePlugin = fp(async (fastify) => {
   // inicia conexão (com retry até dar certo)
+  console.log("Inicio");
   await connectWithRetry(fastify, 5000);
-
+  console.log("connectWithRetry Fim");
   // inicia monitoramento em background
   monitorConnection(fastify, 10000);
 

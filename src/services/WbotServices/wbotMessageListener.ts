@@ -44,6 +44,7 @@ export const wbotMessageListener = async (wbot: any): Promise<void> => {
     });
 
     if (msg.fromMe && isBlocked) return;
+
     await HandleMessageSend(msg, wbot);
   });
   // tratar mensagem recebida
@@ -51,6 +52,7 @@ export const wbotMessageListener = async (wbot: any): Promise<void> => {
     if (isSyncing) {
       return;
     }
+
     await HandleMessageReceived(msg, wbot);
   });
 

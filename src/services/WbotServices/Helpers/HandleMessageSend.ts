@@ -45,6 +45,10 @@ export const HandleMessageSend = async (
     msg: message,
     channel: "whatsapp",
   });
+  console.log(ticket);
+  if (ticket?.isFarewellMessage) {
+    return;
+  }
 
   if (message.filehash || message.mimetype) {
     await VerifyMediaMessage(message, ticket, contact, wbot);
