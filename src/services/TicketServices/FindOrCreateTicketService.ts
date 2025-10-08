@@ -42,7 +42,7 @@ const FindOrCreateTicketService = async ({
         },
         include: ["ticket"],
       });
-
+      console.log(farewellMessage?.ticket.lastMessage === msg.body);
       if (
         farewellMessage?.ticket?.status === "closed" &&
         farewellMessage?.ticket.lastMessage === msg.body
