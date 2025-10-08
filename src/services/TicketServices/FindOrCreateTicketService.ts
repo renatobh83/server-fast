@@ -23,7 +23,9 @@ interface Data {
   isSync?: boolean;
   channel: string;
 }
-
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 const FindOrCreateTicketService = async ({
   contact,
   whatsappId,
@@ -36,13 +38,19 @@ const FindOrCreateTicketService = async ({
 }: Data): Promise<Ticket | any> => {
   try {
     if (msg && msg.fromMe) {
+      await sleep(500);
+
       const farewellMessage = await Message.findOne({
         where: {
           messageId: msg.id || msg.id?.id || msg.message_id || msg.item_id,
         },
-        include: ["ticket"],
+        include: [
+          {
+            model: Ticket,
+            as: "ticket",
+          },
+        ],
       });
-      console.log(farewellMessage?.ticket.lastMessage === msg.body);
       if (
         farewellMessage?.ticket?.status === "closed" &&
         farewellMessage?.ticket.lastMessage === msg.body

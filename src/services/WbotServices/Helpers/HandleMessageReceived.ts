@@ -26,7 +26,7 @@ const lastMessageTime = new Map<number, number>();
 
 // Intervalo para ignorar mensagens rápidas (em segundos)
 const MIN_INTERVAL_SECONDS = 2;
-const MAX_INTERVAL_SECONDS = 3;
+const MAX_INTERVAL_SECONDS = 10;
 
 // Tempo para limpar registros antigos (em ms)
 const CLEANUP_INTERVAL = 10 * 60 * 1000; // 10 minutos

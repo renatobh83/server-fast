@@ -4394,3 +4394,348 @@
     '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
   timestamp: '2025-10-07T13:46:07.924Z'
 }
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageChamado] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-08T14:01:26.330Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:01:50.457Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageConfirmar] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-08T14:09:09.354Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-08T14:09:09.944Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageLaudoPronto] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-08T14:09:10.778Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageWhatsappBusinessHours] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-08T14:09:10.851Z'
+}
+{
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read',
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): read ECONNRESET',
+  stack: 'Error: read ECONNRESET\n' +
+    '    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)',
+  timestamp: '2025-10-08T14:09:24.307Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageWhatsappBusinessHours] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.315Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageAPI] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.315Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessages] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.315Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker WebHooksAPI] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.315Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker VerifyTicketsChatBotInactives] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.315Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageSchenduled] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.316Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker WebHooksAPIConfirmacao] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.316Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageLaudoPronto] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.316Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendEmail] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.316Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageChamado] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.316Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.317Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageConfirmar] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.317Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker WebHookConfirma] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-08T14:09:24.317Z'
+}
+{
+  error: FastifyError [Error]: Root plugin has already booted
+      at Boot._addPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:170:11)
+      at Boot.use (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:139:25)
+      at server.<computed> [as register] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:213:14)
+      at EventEmitter.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\fastifyPlugins\redis.js:13:17)
+      at EventEmitter.emit (node:events:531:35)
+      at process.processTicksAndRejections (node:internal/process/task_queues:85:11) {
+    code: 'AVV_ERR_ROOT_PLG_BOOTED',
+    statusCode: 500
+  },
+  level: 'error',
+  message: 'uncaughtException: Root plugin has already booted\n' +
+    'FastifyError: Root plugin has already booted\n' +
+    '    at Boot._addPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:170:11)\n' +
+    '    at Boot.use (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:139:25)\n' +
+    '    at server.<computed> [as register] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:213:14)\n' +
+    '    at EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:13:17)\n' +
+    '    at EventEmitter.emit (node:events:531:35)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)',
+  stack: 'FastifyError: Root plugin has already booted\n' +
+    '    at Boot._addPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:170:11)\n' +
+    '    at Boot.use (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:139:25)\n' +
+    '    at server.<computed> [as register] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:213:14)\n' +
+    '    at EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:13:17)\n' +
+    '    at EventEmitter.emit (node:events:531:35)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)',
+  exception: true,
+  date: 'Wed Oct 08 2025 11:09:24 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 15956,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.19.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 47562752,
+      heapTotal: 81891328,
+      heapUsed: 74462804,
+      external: 5724643,
+      arrayBuffers: 6026894
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 15727.64 },
+  trace: [
+    {
+      column: 11,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._addPlugin',
+      line: 170,
+      method: '_addPlugin',
+      native: false
+    },
+    {
+      column: 25,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot.use',
+      line: 139,
+      method: 'use',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'server.<computed> [as register]',
+      line: 213,
+      method: '<computed> [as register]',
+      native: false
+    },
+    {
+      column: 17,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js',
+      function: null,
+      line: 13,
+      method: null,
+      native: false
+    },
+    {
+      column: 35,
+      file: 'node:events',
+      function: 'EventEmitter.emit',
+      line: 531,
+      method: 'emit',
+      native: false
+    },
+    {
+      column: 11,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 85,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-10-08T14:09:24.839Z'
+}
