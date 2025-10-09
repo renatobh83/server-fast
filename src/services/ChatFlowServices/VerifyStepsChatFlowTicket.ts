@@ -362,6 +362,8 @@ const VerifyStepsChatFlowTicket = async (
       return;
     }
 console.log(ticket.sendWelcomeFlow)
+    
+          await ticket.update({ sendWelcomeFlow: true });
     const chatFlow = await ticket.getChatFlow();
 
     if (!chatFlow) {
@@ -456,7 +458,7 @@ console.log(ticket.sendWelcomeFlow)
       }
 
       // Lógica de boas-vindas para o passo inicial
-      if (step.type === "boasVindas" && !ticket.sendWelcomeFlow) {
+      if (step.type === "boasVindas") {
         try {
           logger.info(
             `Tentando enviar mensagem de boas-vindas para o ticket ${ticket.id}`
