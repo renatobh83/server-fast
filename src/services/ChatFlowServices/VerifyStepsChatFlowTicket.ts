@@ -361,7 +361,7 @@ const VerifyStepsChatFlowTicket = async (
     ) {
       return;
     }
-
+console.log(ticket.sendWelcomeFlow)
     const chatFlow = await ticket.getChatFlow();
 
     if (!chatFlow) {
