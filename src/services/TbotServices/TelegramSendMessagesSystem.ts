@@ -102,6 +102,7 @@ const TelegramSendMessagesSystem = async (
       messageId: sendedMessage.message_id,
       status: "sended",
       ack: 2,
+      sendType: "chat",
     };
 
     logger.info("Message Update ok");
