@@ -129,7 +129,7 @@ export const HandleMessageReceived = async (
   // Atualiza o horário e agenda limpeza
   lastMessageTime.set(ticket.id, msgTime);
   scheduleCleanup(ticket.id);
-  console.log("recebida", msg);
+
   if (msg.filehash) {
     await VerifyMediaMessage(msg, ticket, contact, wbot, authorGrupMessage);
   } else {
