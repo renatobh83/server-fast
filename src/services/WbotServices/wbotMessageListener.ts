@@ -5,7 +5,7 @@ import { HandleMessageSend } from "./Helpers/HandleMessageSend";
 import { HandleMessageReceived } from "./Helpers/HandleMessageReceived";
 import { VerifyCall } from "./Helpers/VerifyCall";
 import { HandleMsgReaction } from "./Helpers/HandleMsgReaction";
-import HandleMsgAck from "./Helpers/HandleMsgAck";
+// import HandleMsgAck from "./Helpers/HandleMsgAck";
 
 interface Session extends Whatsapp {
   id: number;
@@ -25,27 +25,26 @@ interface MessageChange extends Message {
 }
 let isSyncing = true;
 
-export const wbotMessageListener = async (wbot: any): Promise<void> => {
+export const wbotMessageListener = async (wbot: Session): Promise<void> => {
   setTimeout(() => {
     isSyncing = false;
     logger.warn(`Sync ${new Date().toLocaleTimeString()}`);
   }, 5000);
 
   wbot.onAnyMessage(async (msg: Message) => {
-    if (isSyncing) {
-      return;
-    }
-    if (msg.chatId === "status@broadcast") return;
-    if (!msg.fromMe) return;
-    if (msg.type === "list") return;
-    const messageContent = msg.body || msg.caption || ""; // Garante que sempre haverá uma string
-    const isBlocked = blockedMessages.some((blocked) => {
-      return messageContent.includes(blocked);
-    });
-
-    if (msg.fromMe && isBlocked) return;
-
-    await HandleMessageSend(msg, wbot);
+    // if (isSyncing) {
+    //   return;
+    // }
+    // if (msg.chatId === "status@broadcast") return;
+    // if (!msg.fromMe) return;
+    // if (msg.type === "list") return;
+    // const messageContent = msg.body || msg.caption || ""; // Garante que sempre haverá uma string
+    // const isBlocked = blockedMessages.some((blocked) => {
+    //   return messageContent.includes(blocked);
+    // });
+    // if (msg.fromMe && isBlocked) return;
+    // console.log("in on Any", msg);
+    // await HandleMessageSend(msg, wbot);
   });
   // tratar mensagem recebida
   wbot.onMessage(async (msg: Message) => {
@@ -71,14 +70,21 @@ export const wbotMessageListener = async (wbot: any): Promise<void> => {
       return;
     }
     try {
-      // Obter a mensagem original relacionada ao ACK
       const message = await wbot.getMessageById(ack.id._serialized);
+      if (message.type === "list") return;
+      const messageContent = message.body || message.caption || ""; // Garante que sempre haverá uma string
+      const isBlocked = blockedMessages.some((blocked) => {
+        return messageContent.includes(blocked);
+      });
+
+      if (isBlocked) return;
+
       if (!message.fromMe) return;
 
-      if (message && message.ack === 2) {
-        await HandleMsgAck(ack);
-      } else {
-        console.warn(`Mensagem não encontrada para ACK ID: ${ack.id.id}`);
+      if (message && (message.ack === 2 || message.isGroupMsg)) {
+        // await HandleMsgAck(ack);
+
+        await HandleMessageSend(message, wbot);
       }
     } catch (error) {
       console.error("Erro ao processar ACK:", error);

@@ -5327,3 +5327,93 @@
   ],
   timestamp: '2025-10-08T19:00:42.867Z'
 }
+{
+  level: 'error',
+  message: 'ERR_CREATING_MESSAGE',
+  session: 2,
+  type: 'client',
+  statusCode: 501,
+  stack: 'Error: ERR_CREATING_MESSAGE\n' +
+    '    at CreateMessageService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\MessageServices\\CreateMessageService.js:47:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async VerifyMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\VerifyMessage.js:35:5)\n' +
+    '    at async HandleMessageReceived (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageReceived.js:100:9)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-09T10:53:00.240Z'
+}
+{
+  level: 'error',
+  message: 'ERR_CREATING_MESSAGE',
+  session: 2,
+  type: 'client',
+  statusCode: 501,
+  stack: 'Error: ERR_CREATING_MESSAGE\n' +
+    '    at CreateMessageService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\MessageServices\\CreateMessageService.js:47:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async VerifyMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\VerifyMessage.js:35:5)\n' +
+    '    at async HandleMessageReceived (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageReceived.js:100:9)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-09T10:54:47.182Z'
+}
+{
+  level: 'error',
+  message: 'ERR_CREATING_MESSAGE',
+  session: 2,
+  type: 'client',
+  statusCode: 501,
+  stack: 'Error: ERR_CREATING_MESSAGE\n' +
+    '    at CreateMessageService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\MessageServices\\CreateMessageService.js:47:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async VerifyMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\VerifyMessage.js:35:5)\n' +
+    '    at async HandleMessageReceived (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageReceived.js:100:9)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-09T10:55:17.833Z'
+}
+{
+  message: 'SendWhatsMessageList | Error: Error: ERR_CREATING_MESSAGE',
+  level: 'error',
+  timestamp: '2025-10-09T10:55:18.499Z'
+}
+{
+  statusCode: 501,
+  level: 'error',
+  message: 'Falha ao enviar mensagem de boas-vindas ou atualizar ticket 595: ERR_SENDING_WAPP_MSG',
+  stack: 'Error: ERR_SENDING_WAPP_MSG\n' +
+    '    at SendWhatsMessageList (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\SendWhatsAppMessageList.js:24:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:342:25)\n' +
+    '    at async HandleMessageReceived (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageReceived.js:102:5)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-09T10:55:18.500Z'
+}
+{
+  message: 'SendWhatsMessageList | Error: Error: ERR_CREATING_MESSAGE',
+  level: 'error',
+  timestamp: '2025-10-09T10:55:18.969Z'
+}
+{
+  statusCode: 501,
+  level: 'error',
+  message: 'Falha ao enviar mensagem de boas-vindas ou atualizar ticket 595: ERR_SENDING_WAPP_MSG',
+  stack: 'Error: ERR_SENDING_WAPP_MSG\n' +
+    '    at SendWhatsMessageList (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\SendWhatsAppMessageList.js:24:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:342:25)\n' +
+    '    at async HandleMessageReceived (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageReceived.js:102:5)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-09T10:55:18.970Z'
+}
+{
+  level: 'error',
+  message: 'ERR_CREATING_MESSAGE',
+  session: 2,
+  type: 'client',
+  statusCode: 501,
+  stack: 'Error: ERR_CREATING_MESSAGE\n' +
+    '    at CreateMessageService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\MessageServices\\CreateMessageService.js:47:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async VerifyMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\VerifyMessage.js:35:5)\n' +
+    '    at async HandleMessageReceived (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageReceived.js:100:9)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
+  timestamp: '2025-10-09T10:57:51.046Z'
+}

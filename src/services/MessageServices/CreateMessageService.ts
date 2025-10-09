@@ -103,13 +103,13 @@ const CreateMessageService = async ({
     // A mensagem agora contém todas as associações, seja ela encontrada ou recém-criada.
     return reloadedMessage;
   }
-  if (!created) {
-    socketEmit({
-      tenantId,
-      type: "chat:create",
-      payload: message,
-    });
-  }
+
+  socketEmit({
+    tenantId,
+    type: "chat:create",
+    payload: message,
+  });
+
   return message;
 };
 export default CreateMessageService;

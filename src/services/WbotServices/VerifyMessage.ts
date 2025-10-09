@@ -30,14 +30,14 @@ const VerifyMessage = async (
     ticketId: ticket.id,
     contactId,
     body,
-    fromMe: msg.fromMe,
     mediaType: msg.type,
     read: msg.fromMe,
     quotedMsgId: quotedMsg?.messageId,
-    timestamp: msg.timestamp,
     status: msg.fromMe ? "sended" : "received",
-    isForwarded: msg.isForwarded,
+    ...msg,
   };
+
+  await CreateMessageService({ messageData, tenantId: ticket.tenantId });
 
   // Normalizar lastMessage
   let lastMessage: string;
@@ -49,13 +49,12 @@ const VerifyMessage = async (
         ? msg.content.slice(0, 252) + "..."
         : msg.content;
   }
+
   await ticket.update({
     lastMessage,
     lastMessageAt: Date.now(),
     answered: !!msg.fromMe,
   });
-
-  await CreateMessageService({ messageData, tenantId: ticket.tenantId });
 };
 
 export default VerifyMessage;

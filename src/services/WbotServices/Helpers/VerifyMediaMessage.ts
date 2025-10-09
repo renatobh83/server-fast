@@ -67,18 +67,16 @@ const VerifyMediaMessage = async (
   }
 
   const messageData = {
+    ...msg,
     messageId: msg.id,
     ticketId: ticket.id,
     contactId,
     body: msg.caption || filename,
-    fromMe: msg.fromMe,
     read: msg.fromMe,
     mediaUrl: filename,
     mediaType: msg.mimetype.split("/")[0],
     quotedMsgId: quotedMsg?.messageId,
-    timestamp: msg.timestamp,
     status: msg.fromMe ? "sended" : "received",
-    ack: msg.ack,
     isForwarded: msg.isForwarded,
   };
 

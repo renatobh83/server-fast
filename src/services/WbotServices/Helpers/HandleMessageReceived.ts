@@ -51,9 +51,18 @@ export const HandleMessageReceived = async (
   }
   const chat: Chat = await wbot.getChatById(msg.from);
 
-  const Settingdb = (await Setting.findOne({
-    where: { key: "ignoreGroupMsg", tenantId },
-  })) as Setting;
+  let Settingdb: Setting;
+
+  Settingdb = (await getCache(
+    RedisKeys.settingsIgnoreGroupMsg(tenantId)
+  )) as Setting;
+
+  if (!Settingdb) {
+    Settingdb = (await Setting.findOne({
+      where: { key: "ignoreGroupMsg", tenantId },
+    })) as Setting;
+    await setCache(RedisKeys.settingsIgnoreGroupMsg(+tenantId), Settingdb);
+  }
 
   if (
     Settingdb?.value === "enabled" &&
@@ -120,7 +129,7 @@ export const HandleMessageReceived = async (
   // Atualiza o horário e agenda limpeza
   lastMessageTime.set(ticket.id, msgTime);
   scheduleCleanup(ticket.id);
-
+  console.log("recebida", msg);
   if (msg.filehash) {
     await VerifyMediaMessage(msg, ticket, contact, wbot, authorGrupMessage);
   } else {

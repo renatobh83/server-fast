@@ -1,13 +1,15 @@
 import { Chat, Message, Whatsapp as wbot } from "wbotconnect";
 import ShowWhatsAppService from "../../WhatsappService/ShowWhatsAppService";
 import { isValidMsg } from "./isValidMsg";
-import Setting from "../../../models/Setting";
 import VerifyContact from "./VerifyContact";
 import FindOrCreateTicketService from "../../TicketServices/FindOrCreateTicketService";
 import VerifyMessage from "../VerifyMessage";
 import VerifyMediaMessage from "./VerifyMediaMessage";
 import VerifyStepsChatFlowTicket from "../../ChatFlowServices/VerifyStepsChatFlowTicket";
 import verifyBusinessHours from "./VerifyBusinessHours";
+import { RedisKeys } from "../../../constants/redisKeys";
+import { getCache, setCache } from "../../../utils/cacheRedis";
+import Contact from "../../../models/Contact";
 
 interface Session extends wbot {
   id: number;
@@ -25,20 +27,22 @@ export const HandleMessageSend = async (
     return;
   }
   const chat: Chat = await wbot.getChatById(message.to);
-  const Settingdb = await Setting.findOne({
-    where: { key: "ignoreGroupMsg", tenantId },
-  });
-  if (
-    Settingdb?.value === "enabled" &&
-    (chat.isGroup || message.from === "status@broadcast")
-  ) {
-    return;
+
+  let contact: Contact;
+  contact = (await getCache(
+    RedisKeys.ticketContactCache(tenantId, chat.id._serialized)
+  )) as Contact;
+  if (!contact) {
+    contact = await VerifyContact(chat, tenantId);
+    await setCache(
+      RedisKeys.ticketContactCache(tenantId, chat.id._serialized),
+      contact
+    );
   }
-  const contact = await VerifyContact(chat, tenantId);
 
   const ticket = await FindOrCreateTicketService({
     contact,
-    whatsappId: wbot.id!,
+    whatsappId: wbot.id,
     unreadMessages: 0,
     tenantId,
     groupContact: chat.isGroup,

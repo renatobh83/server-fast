@@ -95,6 +95,7 @@ export const CreateMessageSystemService = async ({
             media,
             userId,
           });
+          if (ticket.channel === "whatsapp") return;
 
           const [msgCreated, created] = await Message.findOrCreate({
             where: {
@@ -140,6 +141,17 @@ export const CreateMessageSystemService = async ({
               // Isso é um caso improvável, mas é bom ter uma verificação.
               throw new AppError("ERR_RELOAD_MESSAGE", 501);
             }
+            socketEmit({
+              tenantId,
+              type: "chat:create",
+              payload: reloadedMessage,
+            });
+          } else {
+            socketEmit({
+              tenantId,
+              type: "chat:create",
+              payload: msgCreated,
+            });
           }
         }
       )
