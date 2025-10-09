@@ -362,8 +362,8 @@ const VerifyStepsChatFlowTicket = async (
       return;
     }
 if(ticket.sendWelcomeFlow) return 
-    
-          await ticket.update({ sendWelcomeFlow: true });
+    if (!ticket.isCreated) {
+          await ticket.update({ sendWelcomeFlow: true });}
     const chatFlow = await ticket.getChatFlow();
 
     if (!chatFlow) {
