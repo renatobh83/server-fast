@@ -48,6 +48,7 @@ export class Ticket extends Model {
   declare scheduledMessages: Message[];
   declare apiConfig: object | null;
   declare user: User;
+  declare sendWelcomeFlow: boolean;
 
   // getter virtual
   get protocol(): string {
@@ -86,6 +87,11 @@ export class Ticket extends Model {
         },
         isActiveDemand: {
           type: DataTypes.BOOLEAN,
+          defaultValue: false,
+        },
+        sendWelcomeFlow: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false,
           defaultValue: false,
         },
         isFarewellMessage: {

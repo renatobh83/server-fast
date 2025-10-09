@@ -10,7 +10,7 @@ import { SendTbotAppMessageList } from "../WbotServices/SendTbotAppMessageList";
 import { v4 as uuidV4 } from "uuid";
 import { logger } from "../../utils/logger";
 import socketEmit from "../../helpers/socketEmit";
-import type Ticket from "../../models/Ticket";
+import Ticket from "../../models/Ticket";
 import {
   ChatFlowAction,
   ConditionType,
@@ -351,6 +351,7 @@ const VerifyStepsChatFlowTicket = async (
 ): Promise<void> => {
   try {
     // Condições iniciais para processar o fluxo de chat
+
     if (
       !ticket.chatFlowId ||
       ticket.status !== "pending" ||
@@ -455,7 +456,7 @@ const VerifyStepsChatFlowTicket = async (
       }
 
       // Lógica de boas-vindas para o passo inicial
-      if (step.type === "boasVindas") {
+      if (step.type === "boasVindas" && !ticket.sendWelcomeFlow) {
         try {
           logger.info(
             `Tentando enviar mensagem de boas-vindas para o ticket ${ticket.id}`
@@ -471,6 +472,8 @@ const VerifyStepsChatFlowTicket = async (
               options: ListMessageWelcome(),
             });
           }
+
+          await ticket.update({ sendWelcomeFlow: true });
           logger.info(
             `Mensagem de boas-vindas enviada com sucesso para o ticket ${ticket.id} e estado atualizado.`
           );

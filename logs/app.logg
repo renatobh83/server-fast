@@ -5417,3 +5417,1577 @@
     '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:36:9)',
   timestamp: '2025-10-09T10:57:51.046Z'
 }
+{
+  level: 'error',
+  message: 'ERR_FIND_OR_CREATE_TICKET_SERICE',
+  session: 2,
+  type: 'client',
+  statusCode: 500,
+  stack: 'Error: ERR_FIND_OR_CREATE_TICKET_SERICE\n' +
+    '    at FindOrCreateTicketService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TicketServices\\FindOrCreateTicketService.js:155:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessageReceived (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageReceived.js:73:20)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:40:9)',
+  timestamp: '2025-10-09T15:29:31.081Z'
+}
+{
+  level: 'error',
+  message: "Erro em VerifyStepsChatFlowTicket para o ticket 641: Cannot read properties of undefined (reading 'toLowerCase')",
+  stack: "TypeError: Cannot read properties of undefined (reading 'toLowerCase')\n" +
+    '    at getMessageBody (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:53:25)\n' +
+    '    at findStepCondition (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:79:21)\n' +
+    '    at VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:277:31)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:134:9)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:19:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)',
+  timestamp: '2025-10-09T15:55:17.111Z'
+}
+{
+  statusCode: 502,
+  level: 'error',
+  message: 'Error in HandleMessage: ERR_VERIFY_STEPS_CHAT_FLOW_SERVICE',
+  stack: 'Error: ERR_VERIFY_STEPS_CHAT_FLOW_SERVICE\n' +
+    '    at VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:361:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:134:9)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:19:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\p-timeout\\index.js:50:13',
+  timestamp: '2025-10-09T15:55:17.115Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_VERIFY_STEPS_CHAT_FLOW_SERVICE',
+  level: 'error',
+  timestamp: '2025-10-09T15:55:17.115Z'
+}
+{
+  message: 'Error send message (id: undefined):: Error: ERR_NO_TICKET_FOUND',
+  level: 'error',
+  timestamp: '2025-10-09T15:55:53.338Z'
+}
+{
+  statusCode: 501,
+  level: 'error',
+  message: 'Error in HandleMessage: ERR_CREATING_MESSAGE',
+  stack: 'Error: ERR_CREATING_MESSAGE\n' +
+    '    at CreateMessageSystemService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\MessageServices\\CreateMessageSystemService.js:130:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async sendBotMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:70:5)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:316:17)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:134:9)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:19:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)',
+  timestamp: '2025-10-09T15:55:53.343Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_CREATING_MESSAGE',
+  level: 'error',
+  timestamp: '2025-10-09T15:55:53.343Z'
+}
+{
+  message: 'Error send message (id: undefined):: Error: ERR_NO_TICKET_FOUND',
+  level: 'error',
+  timestamp: '2025-10-09T15:55:53.563Z'
+}
+{
+  statusCode: 501,
+  level: 'error',
+  message: 'Error in HandleMessage: ERR_CREATING_MESSAGE',
+  stack: 'Error: ERR_CREATING_MESSAGE\n' +
+    '    at CreateMessageSystemService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\MessageServices\\CreateMessageSystemService.js:130:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async sendBotMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:70:5)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:316:17)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:134:9)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:19:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)',
+  timestamp: '2025-10-09T15:55:53.565Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_CREATING_MESSAGE',
+  level: 'error',
+  timestamp: '2025-10-09T15:55:53.565Z'
+}
+{
+  statusCode: 502,
+  level: 'error',
+  message: 'Error in HandleMessage: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  stack: 'Error: ERR_BUILD_SEND_MESSAGE_SERVICE\n' +
+    '    at BuildSendMessageService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\BuildSendMessageService.js:323:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:325:17)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:135:9)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:19:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)',
+  timestamp: '2025-10-09T16:05:58.396Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-10-09T16:05:58.399Z'
+}
+{
+  statusCode: 502,
+  level: 'error',
+  message: 'Error in HandleMessage: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  stack: 'Error: ERR_BUILD_SEND_MESSAGE_SERVICE\n' +
+    '    at BuildSendMessageService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\BuildSendMessageService.js:323:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:325:17)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:135:9)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:19:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)',
+  timestamp: '2025-10-09T16:05:58.888Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-10-09T16:05:58.889Z'
+}
+{
+  statusCode: 500,
+  level: 'error',
+  message: 'Falha ao enviar mensagem de boas-vindas ou atualizar ticket 665: ERR_UPDATE_BOT_MESSAGE',
+  stack: 'Error: ERR_UPDATE_BOT_MESSAGE\n' +
+    '    at UpdateBotMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\UpdateBotMessage.js:84:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async SendTbotAppMessageList (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\SendTbotAppMessageList.js:11:5)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:336:25)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:162:9)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:54:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21',
+  timestamp: '2025-10-09T16:39:10.140Z'
+}
+{
+  message: 'Error send message (id: undefined):: Error: ERR_NO_TICKET_FOUND',
+  level: 'error',
+  timestamp: '2025-10-09T16:39:27.674Z'
+}
+{
+  statusCode: 502,
+  level: 'error',
+  message: 'Error in HandleMessage: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  stack: 'Error: ERR_BUILD_SEND_MESSAGE_SERVICE\n' +
+    '    at BuildSendMessageService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\BuildSendMessageService.js:323:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:325:17)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:162:9)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:19:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)',
+  timestamp: '2025-10-09T16:39:27.675Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-10-09T16:39:27.675Z'
+}
+{
+  message: 'Error send message (id: undefined):: Error: ERR_NO_TICKET_FOUND',
+  level: 'error',
+  timestamp: '2025-10-09T16:39:28.834Z'
+}
+{
+  statusCode: 502,
+  level: 'error',
+  message: 'Error in HandleMessage: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  stack: 'Error: ERR_BUILD_SEND_MESSAGE_SERVICE\n' +
+    '    at BuildSendMessageService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\BuildSendMessageService.js:323:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:325:17)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:162:9)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:19:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)',
+  timestamp: '2025-10-09T16:39:28.836Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-10-09T16:39:28.836Z'
+}
+{
+  message: 'Error send message (id: undefined):: Error: ERR_NO_TICKET_FOUND',
+  level: 'error',
+  timestamp: '2025-10-09T16:39:29.060Z'
+}
+{
+  statusCode: 502,
+  level: 'error',
+  message: 'Error in HandleMessage: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  stack: 'Error: ERR_BUILD_SEND_MESSAGE_SERVICE\n' +
+    '    at BuildSendMessageService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\BuildSendMessageService.js:323:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:325:17)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:162:9)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:19:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)',
+  timestamp: '2025-10-09T16:39:29.061Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-10-09T16:39:29.061Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageLaudoPronto] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T16:55:35.953Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T16:55:36.011Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageChamado] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T16:56:07.807Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T16:56:26.769Z'
+}
+{
+  message: 'Error send message (id: undefined):: Error: ERR_NO_TICKET_FOUND',
+  level: 'error',
+  timestamp: '2025-10-09T17:02:53.172Z'
+}
+{
+  statusCode: 501,
+  level: 'error',
+  message: '[Telegram] Erro ao processar mensagem para o contato 1_77: ERR_CREATING_MESSAGE',
+  stack: 'Error: ERR_CREATING_MESSAGE\n' +
+    '    at CreateMessageSystemService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\MessageServices\\CreateMessageSystemService.js:130:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async sendBotMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:70:5)\n' +
+    '    at async sendCloseMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:172:9)\n' +
+    '    at async isRetriesLimit (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:203:13)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:288:17)\n' +
+    '    at async processMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:70:9)',
+  timestamp: '2025-10-09T17:02:53.175Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendEmail] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:03.069Z'
+}
+{
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read',
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): read ECONNRESET',
+  stack: 'Error: read ECONNRESET\n' +
+    '    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)',
+  timestamp: '2025-10-09T18:42:05.180Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageWhatsappBusinessHours] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.187Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageAPI] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.187Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessages] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.188Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker WebHooksAPI] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.188Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker VerifyTicketsChatBotInactives] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.188Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageSchenduled] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.188Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker WebHooksAPIConfirmacao] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.188Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageLaudoPronto] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.188Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendEmail] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.188Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageChamado] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.188Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.188Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageConfirmar] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.189Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker WebHookConfirma] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:42:05.189Z'
+}
+{
+  errorno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  syscall: 'connect',
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect ETIMEDOUT',
+  stack: 'Error: connect ETIMEDOUT\n' +
+    '    at Socket.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\ioredis\\built\\Redis.js:171:41)\n' +
+    '    at Object.onceWrapper (node:events:633:28)\n' +
+    '    at Socket.emit (node:events:519:28)\n' +
+    '    at Socket._onTimeout (node:net:604:8)\n' +
+    '    at listOnTimeout (node:internal/timers:588:17)\n' +
+    '    at process.processTimers (node:internal/timers:523:7)',
+  timestamp: '2025-10-09T18:42:15.266Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageWhatsappBusinessHours] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.276Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageAPI] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.276Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessages] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.276Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker WebHooksAPI] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.276Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker VerifyTicketsChatBotInactives] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.277Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageSchenduled] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.277Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker WebHooksAPIConfirmacao] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.277Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageLaudoPronto] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.277Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendEmail] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.277Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageChamado] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.278Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.278Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageConfirmar] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.278Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker WebHookConfirma] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:42:15.279Z'
+}
+{
+  error: FastifyError [Error]: Root plugin has already booted
+      at Boot._addPlugin (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:170:11)
+      at Boot.use (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:139:25)
+      at server.<computed> [as register] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\avvio\boot.js:213:14)
+      at EventEmitter.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\fastifyPlugins\redis.js:13:17)
+      at EventEmitter.emit (node:events:531:35)
+      at process.processTicksAndRejections (node:internal/process/task_queues:85:11) {
+    code: 'AVV_ERR_ROOT_PLG_BOOTED',
+    statusCode: 500
+  },
+  level: 'error',
+  message: 'uncaughtException: Root plugin has already booted\n' +
+    'FastifyError: Root plugin has already booted\n' +
+    '    at Boot._addPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:170:11)\n' +
+    '    at Boot.use (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:139:25)\n' +
+    '    at server.<computed> [as register] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:213:14)\n' +
+    '    at EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:13:17)\n' +
+    '    at EventEmitter.emit (node:events:531:35)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)',
+  stack: 'FastifyError: Root plugin has already booted\n' +
+    '    at Boot._addPlugin (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:170:11)\n' +
+    '    at Boot.use (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:139:25)\n' +
+    '    at server.<computed> [as register] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js:213:14)\n' +
+    '    at EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js:13:17)\n' +
+    '    at EventEmitter.emit (node:events:531:35)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)',
+  exception: true,
+  date: 'Thu Oct 09 2025 15:42:17 GMT-0300 (Horário Padrão de Brasília)',
+  process: {
+    pid: 18552,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify',
+    execPath: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+    version: 'v22.19.0',
+    argv: [
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Port\\app\\node.exe',
+      'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\server.js'
+    ],
+    memoryUsage: {
+      rss: 135200768,
+      heapTotal: 80318464,
+      heapUsed: 71302488,
+      external: 4949129,
+      arrayBuffers: 5254477
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 32458.078 },
+  trace: [
+    {
+      column: 11,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot._addPlugin',
+      line: 170,
+      method: '_addPlugin',
+      native: false
+    },
+    {
+      column: 25,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'Boot.use',
+      line: 139,
+      method: 'use',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\avvio\\boot.js',
+      function: 'server.<computed> [as register]',
+      line: 213,
+      method: '<computed> [as register]',
+      native: false
+    },
+    {
+      column: 17,
+      file: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\fastifyPlugins\\redis.js',
+      function: null,
+      line: 13,
+      method: null,
+      native: false
+    },
+    {
+      column: 35,
+      file: 'node:events',
+      function: 'EventEmitter.emit',
+      line: 531,
+      method: 'emit',
+      native: false
+    },
+    {
+      column: 11,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 85,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-10-09T18:42:17.994Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:45:33.643Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:45:43.768Z'
+}
+{
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read',
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): read ECONNRESET',
+  stack: 'Error: read ECONNRESET\n' +
+    '    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)',
+  timestamp: '2025-10-09T18:46:09.922Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageWhatsappBusinessHours] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.924Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageAPI] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.924Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessages] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.925Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker WebHooksAPI] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.925Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker VerifyTicketsChatBotInactives] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.925Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageSchenduled] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.925Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker WebHooksAPIConfirmacao] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.925Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageLaudoPronto] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.925Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendEmail] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.925Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageChamado] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.925Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.925Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker SendMessageConfirmar] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.925Z'
+}
+{
+  error: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  },
+  level: 'error',
+  message: '[Worker WebHookConfirma] Erro geral no worker: read ECONNRESET',
+  timestamp: '2025-10-09T18:46:09.925Z'
+}
+{
+  errorno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  syscall: 'connect',
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect ETIMEDOUT',
+  stack: 'Error: connect ETIMEDOUT\n' +
+    '    at Socket.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\ioredis\\built\\Redis.js:171:41)\n' +
+    '    at Object.onceWrapper (node:events:633:28)\n' +
+    '    at Socket.emit (node:events:519:28)\n' +
+    '    at Socket._onTimeout (node:net:604:8)\n' +
+    '    at listOnTimeout (node:internal/timers:588:17)\n' +
+    '    at process.processTimers (node:internal/timers:523:7)',
+  timestamp: '2025-10-09T18:46:19.993Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageWhatsappBusinessHours] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.006Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageAPI] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.007Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessages] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.007Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker WebHooksAPI] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.008Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker VerifyTicketsChatBotInactives] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.010Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageSchenduled] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.010Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker WebHooksAPIConfirmacao] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.011Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageLaudoPronto] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.012Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendEmail] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.012Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageChamado] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.013Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.013Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageConfirmar] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.014Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker WebHookConfirma] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:20.014Z'
+}
+{
+  errorno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  syscall: 'connect',
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect ETIMEDOUT',
+  stack: 'Error: connect ETIMEDOUT\n' +
+    '    at Socket.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\ioredis\\built\\Redis.js:171:41)\n' +
+    '    at Object.onceWrapper (node:events:633:28)\n' +
+    '    at Socket.emit (node:events:519:28)\n' +
+    '    at Socket._onTimeout (node:net:604:8)\n' +
+    '    at listOnTimeout (node:internal/timers:588:17)\n' +
+    '    at process.processTimers (node:internal/timers:523:7)',
+  timestamp: '2025-10-09T18:46:30.134Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageWhatsappBusinessHours] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.144Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageAPI] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.144Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessages] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.144Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker WebHooksAPI] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.145Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker VerifyTicketsChatBotInactives] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.145Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageSchenduled] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.145Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker WebHooksAPIConfirmacao] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.145Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageLaudoPronto] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.145Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendEmail] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.146Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageChamado] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.146Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker pdfQueue] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.146Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker SendMessageConfirmar] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.146Z'
+}
+{
+  error: Error: connect ETIMEDOUT
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\ioredis\built\Redis.js:171:41)
+      at Object.onceWrapper (node:events:633:28)
+      at Socket.emit (node:events:519:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:588:17)
+      at process.processTimers (node:internal/timers:523:7) {
+    errorno: 'ETIMEDOUT',
+    code: 'ETIMEDOUT',
+    syscall: 'connect'
+  },
+  level: 'error',
+  message: '[Worker WebHookConfirma] Erro geral no worker: connect ETIMEDOUT',
+  timestamp: '2025-10-09T18:46:30.146Z'
+}
+{
+  name: 'SequelizeDatabaseError',
+  parent: Error: Connection terminated unexpectedly
+      at Connection.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\pg\lib\client.js:136:73)
+      at Object.onceWrapper (node:events:633:28)
+      at Connection.emit (node:events:519:28)
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\pg\lib\connection.js:62:12)
+      at Socket.emit (node:events:519:28)
+      at TCP.<anonymous> (node:net:346:12) {
+    sql: 'SELECT "id", "qrcode", "name", "status", "plugged", "isDefault", "tokenTelegram", "type", "createdAt", "updatedAt", "number", "phone", "tenantId", "wabaBSP", "tokenAPI", "farewellMessage", "chatFlowId", "pairingCode", "pairingCodeEnabled", "wppUser" FROM "Whatsapp" AS "Whatsapp" WHERE "Whatsapp"."id" = 10;',
+    parameters: undefined
+  },
+  original: Error: Connection terminated unexpectedly
+      at Connection.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\pg\lib\client.js:136:73)
+      at Object.onceWrapper (node:events:633:28)
+      at Connection.emit (node:events:519:28)
+      at Socket.<anonymous> (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\pg\lib\connection.js:62:12)
+      at Socket.emit (node:events:519:28)
+      at TCP.<anonymous> (node:net:346:12) {
+    sql: 'SELECT "id", "qrcode", "name", "status", "plugged", "isDefault", "tokenTelegram", "type", "createdAt", "updatedAt", "number", "phone", "tenantId", "wabaBSP", "tokenAPI", "farewellMessage", "chatFlowId", "pairingCode", "pairingCodeEnabled", "wppUser" FROM "Whatsapp" AS "Whatsapp" WHERE "Whatsapp"."id" = 10;',
+    parameters: undefined
+  },
+  sql: 'SELECT "id", "qrcode", "name", "status", "plugged", "isDefault", "tokenTelegram", "type", "createdAt", "updatedAt", "number", "phone", "tenantId", "wabaBSP", "tokenAPI", "farewellMessage", "chatFlowId", "pairingCode", "pairingCodeEnabled", "wppUser" FROM "Whatsapp" AS "Whatsapp" WHERE "Whatsapp"."id" = 10;',
+  parameters: {},
+  level: 'error',
+  message: 'Error in HandleMessage: Connection terminated unexpectedly',
+  stack: 'Error\n' +
+    '    at Query.run (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\sequelize\\lib\\dialects\\postgres\\query.js:50:25)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\sequelize\\lib\\sequelize.js:315:28\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async PostgresQueryInterface.select (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\sequelize\\lib\\dialects\\abstract\\query-interface.js:407:12)\n' +
+    '    at async Whatsapp.findAll (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\sequelize\\lib\\model.js:1140:21)\n' +
+    '    at async Whatsapp.findOne (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\sequelize\\lib\\model.js:1240:12)\n' +
+    '    at async Whatsapp.findByPk (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\sequelize\\lib\\model.js:1221:12)\n' +
+    '    at async ShowWhatsAppService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WhatsappService\\ShowWhatsAppService.js:31:22)\n' +
+    '    at async getCachedChannel (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:50:23)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:92:25)',
+  timestamp: '2025-10-09T18:51:01.176Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: SequelizeDatabaseError: Connection terminated unexpectedly',
+  level: 'error',
+  timestamp: '2025-10-09T18:51:01.177Z'
+}
+{
+  statusCode: 502,
+  level: 'error',
+  message: 'Error in HandleMessage: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  stack: 'Error: ERR_BUILD_SEND_MESSAGE_SERVICE\n' +
+    '    at BuildSendMessageService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\BuildSendMessageService.js:323:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:325:17)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:170:9)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:20:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)',
+  timestamp: '2025-10-09T19:04:12.611Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message | err: Error: ERR_BUILD_SEND_MESSAGE_SERVICE',
+  level: 'error',
+  timestamp: '2025-10-09T19:04:12.614Z'
+}
+{
+  level: 'error',
+  message: "Erro em VerifyStepsChatFlowTicket para o ticket 689: Cannot read properties of undefined (reading 'number')",
+  stack: "TypeError: Cannot read properties of undefined (reading 'number')\n" +
+    '    at VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:285:67)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:128:13)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:55:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21',
+  timestamp: '2025-10-09T19:04:44.150Z'
+}
+{
+  statusCode: 502,
+  level: 'error',
+  message: 'Error in HandleMessage: ERR_VERIFY_STEPS_CHAT_FLOW_SERVICE',
+  stack: 'Error: ERR_VERIFY_STEPS_CHAT_FLOW_SERVICE\n' +
+    '    at VerifyStepsChatFlowTicket (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\ChatFlowServices\\VerifyStepsChatFlowTicket.js:360:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:128:13)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:55:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21',
+  timestamp: '2025-10-09T19:04:44.151Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: callback_query | err: Error: ERR_VERIFY_STEPS_CHAT_FLOW_SERVICE',
+  level: 'error',
+  timestamp: '2025-10-09T19:04:44.152Z'
+}
+{
+  level: 'error',
+  message: 'Error in HandleMessage: ticket.update is not a function',
+  stack: 'TypeError: ticket.update is not a function\n' +
+    '    at VerifyMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\TelegramVerifyMessage.js:43:18)\n' +
+    '    at HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:214:55)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:55:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21',
+  timestamp: '2025-10-09T19:30:50.775Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: callback_query | err: TypeError: ticket.update is not a function',
+  level: 'error',
+  timestamp: '2025-10-09T19:30:50.777Z'
+}

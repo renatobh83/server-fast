@@ -12,10 +12,12 @@ function escapeMarkdownV2(text: string) {
     .replace(/([_*\[\]()~`>#+\-=|{}.!])/g, "\\$1"); // 2) escapa todos os reservados
 }
 const esc = escapeMarkdownV2;
+const ticketLock = new Map<string, boolean>();
 
 const tbotMessageListener = (tbot: Session): void => {
   tbot.on("message", async (ctx) => {
     logger.info("Message Telegram listener");
+
     await HandleMessageTelegram(ctx, tbot);
   });
 
