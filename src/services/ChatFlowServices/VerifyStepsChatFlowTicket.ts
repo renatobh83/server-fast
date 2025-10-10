@@ -65,6 +65,7 @@ const handleBusinessHoursCheck = async (ticket: Ticket): Promise<boolean> => {
 
 // Função auxiliar para extrair o corpo da mensagem de forma padronizada
 const getMessageBody = (msg: WbotMessage | any): string => {
+  console.log(msg)
   if (msg.type === "reply_markup") {
     return msg.body.toLowerCase().trim();
   }
@@ -361,11 +362,11 @@ const VerifyStepsChatFlowTicket = async (
     ) {
       return;
     }
-if(ticket.sendWelcomeFlow) return 
-    if (!ticket.isCreated) {
-          await ticket.update({ sendWelcomeFlow: true });}
+
+
     const chatFlow = await ticket.getChatFlow();
 
+  
     if (!chatFlow) {
       logger.warn(`ChatFlow não encontrado para o ticket ${ticket.id}`);
       return;
@@ -389,7 +390,6 @@ if(ticket.sendWelcomeFlow) return
     const flowConfig = chatFlow.flow.nodeList.find(
       (node: { type: string }) => node.type === "configurations"
     ) as FlowConfig;
-
     const stepCondition = findStepCondition(step.data.conditions, msg);
 
     // Verificar se a mensagem é para fechar o ticket automaticamente

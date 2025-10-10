@@ -190,6 +190,7 @@ const FindOrCreateTicketService = async ({
       type: "ticket:update",
       payload: finalTicket,
     });
+    
     return finalTicket;
   } catch (error: any) {
     if (error instanceof AppError) {
