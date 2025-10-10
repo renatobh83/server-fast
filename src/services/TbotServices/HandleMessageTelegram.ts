@@ -149,6 +149,7 @@ const cleanupExpiredCache = () => {
 setInterval(cleanupExpiredCache, 2 * 60 * 1000);
 
 // FUNÇÃO MELHORADA: Buscar ou criar ticket com prevenção de duplicação
+// FUNÇÃO MELHORADA: Buscar ou criar ticket com prevenção de duplicação E verificação de status
 const findOrCreateTicketSafe = async (params: {
   contact: any;
   whatsappId: number;
@@ -159,32 +160,35 @@ const findOrCreateTicketSafe = async (params: {
 }): Promise<any> => {
   const { contact, whatsappId, tenantId } = params;
 
+  // Chave única para identificar sessão ativa
   const ticketKey = `ticket_${whatsappId}_${contact.id}`;
 
   // PRIMEIRO: Verificar se já existe ticket ativo no cache
   const cachedTicket = activeTicketsCache.get(ticketKey);
   if (cachedTicket) {
     try {
+      // Buscar ticket do banco para verificar status atual
       const existingTicket = await Ticket.findByPk(cachedTicket.ticketId, { 
         include: commonIncludes 
       });
 
       if (existingTicket) {
+        // Verificar se o ticket está FECHADO
         if (existingTicket.status === "closed" || existingTicket.closedAt) {
           logger.info(
             `[Telegram] Ticket ${cachedTicket.ticketId} está FECHADO, removendo do cache e criando novo`
           );
+          // Remover do cache pois está fechado
           activeTicketsCache.delete(ticketKey);
+          // Continuar para criar novo ticket
         } else {
           logger.info(
             `[Telegram] Usando ticket existente do cache: ${cachedTicket.ticketId} - Status: ${existingTicket.status}`
           );
-          return { 
-            ticket: existingTicket, 
-            shouldRunFlow: existingTicket.sendWelcomeFlow // ✅ Verificar se precisa rodar o fluxo
-          };
+          return existingTicket;
         }
       } else {
+        // Ticket não existe mais no banco, remover do cache
         logger.info(
           `[Telegram] Ticket ${cachedTicket.ticketId} não encontrado no banco, removendo do cache`
         );
@@ -192,6 +196,7 @@ const findOrCreateTicketSafe = async (params: {
       }
     } catch (error) {
       logger.error(`[Telegram] Erro ao verificar ticket do cache: ${error}`);
+      // Em caso de erro, remover do cache e continuar
       activeTicketsCache.delete(ticketKey);
     }
   }
@@ -203,22 +208,22 @@ const findOrCreateTicketSafe = async (params: {
     );
     const existingTicket = await ticketCreationLocks.get(ticketKey);
 
+    // Se conseguimos o ticket do lock existente, verificar status
     if (existingTicket) {
+      // Verificar se o ticket retornado não está fechado
       if (existingTicket.status !== "closed" && !existingTicket.isClosed) {
-        return { 
-          ticket: existingTicket, 
-          shouldRunFlow: existingTicket.sendWelcomeFlow // ✅ Verificar se precisa rodar o fluxo
-        };
+        return existingTicket;
       } else {
         logger.info(
           `[Telegram] Ticket do lock está FECHADO, ignorando e criando novo`
         );
+        // Remover o lock pois o ticket está fechado
         ticketCreationLocks.delete(ticketKey);
       }
     }
   }
 
-  // TERCEIRO: Criar NOVO ticket
+  // TERCEIRO: Criar NOVO ticket (com lock apenas na criação)
   const ticketPromise = (async () => {
     try {
       // Double-check: verificar cache novamente antes de criar
@@ -230,11 +235,9 @@ const findOrCreateTicketSafe = async (params: {
           });
           
           if (recheckTicket && recheckTicket.status !== "closed" && !recheckTicket.closedAt) {
-            return { 
-              ticket: recheckTicket, 
-              shouldRunFlow: recheckTicket.sendWelcomeFlow // ✅ Verificar se precisa rodar o fluxo
-            };
+            return recheckTicket;
           } else {
+            // Ticket está fechado, remover do cache
             activeTicketsCache.delete(ticketKey);
           }
         } catch (error) {
@@ -243,11 +246,13 @@ const findOrCreateTicketSafe = async (params: {
         }
       }
 
-      // AGORA SIM: Criar o ticket
+      // AGORA SIM: Criar o ticket (esta é a única parte com lock)
       const ticket = await FindOrCreateTicketService(params);
 
       if (ticket && ticket.id) {
+        // Verificar se o ticket criado não está fechado antes de armazenar no cache
         if (ticket.status !== "closed" && !ticket.isClosed) {
+          // Armazenar no cache de tickets ativos apenas se NÃO estiver fechado
           activeTicketsCache.set(ticketKey, {
             ticketId: ticket.id,
             timestamp: Date.now(),
@@ -263,26 +268,25 @@ const findOrCreateTicketSafe = async (params: {
         }
       }
 
-      return { 
-        ticket, 
-        shouldRunFlow: ticket.sendWelcomeFlow // ✅ Novo ticket geralmente precisa rodar o fluxo
-      };
+      return ticket;
     } catch (error) {
       logger.error(`[Telegram] Erro ao criar ticket: ${error}`);
       throw error;
     }
   })();
 
+  // COLOCAR LOCK APENAS DURANTE A CRIAÇÃO
   ticketCreationLocks.set(ticketKey, ticketPromise);
 
   try {
     const result = await ticketPromise;
     return result;
   } finally {
+    // IMPORTANTE: Remover o lock IMEDIATAMENTE após a criação
+    // Isso permite que outras mensagens usem o ticket livremente
     ticketCreationLocks.delete(ticketKey);
   }
 };
-
 const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
   try {
     const channel = await getCachedChannel(tbot.id);
