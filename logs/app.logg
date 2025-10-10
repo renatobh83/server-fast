@@ -7348,3 +7348,43 @@
   level: 'error',
   timestamp: '2025-10-10T13:40:47.824Z'
 }
+{
+  message: '[Telegram] Falha ao criar/obter ticket',
+  level: 'error',
+  timestamp: '2025-10-10T16:37:13.689Z'
+}
+{
+  message: '[Telegram] Falha ao criar/obter ticket',
+  level: 'error',
+  timestamp: '2025-10-10T16:37:14.154Z'
+}
+{
+  message: '[Telegram] Falha ao criar/obter ticket',
+  level: 'error',
+  timestamp: '2025-10-10T17:42:39.268Z'
+}
+{
+  message: '[Telegram] Falha ao criar/obter ticket',
+  level: 'error',
+  timestamp: '2025-10-10T17:42:39.271Z'
+}
+{
+  message: '[Telegram] Falha ao criar/obter ticket',
+  level: 'error',
+  timestamp: '2025-10-10T17:44:59.764Z'
+}
+{
+  message: '[Telegram] Falha ao criar/obter ticket',
+  level: 'error',
+  timestamp: '2025-10-10T17:44:59.766Z'
+}
+{
+  message: '[Telegram] Falha ao criar/obter ticket',
+  level: 'error',
+  timestamp: '2025-10-10T17:48:01.943Z'
+}
+{
+  message: '[Telegram] Falha ao criar/obter ticket',
+  level: 'error',
+  timestamp: '2025-10-10T17:48:01.950Z'
+}

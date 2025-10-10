@@ -245,10 +245,10 @@ const findOrCreateTicketSafe = async (params: {
           activeTicketsCache.delete(ticketKey);
         }
       }
-
+      console.log('criando ticket aqui', params.msg)
       // AGORA SIM: Criar o ticket (esta é a única parte com lock)
       const ticket = await FindOrCreateTicketService(params);
-
+      
       if (ticket && ticket.id) {
         // Verificar se o ticket criado não está fechado antes de armazenar no cache
         if (ticket.status !== "closed" && !ticket.isClosed) {
@@ -320,7 +320,7 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
     let contact = await getCachedContact(ctx, channel.tenantId, tbot.id);
 
     // ✅ Buscar/Criar ticket
-    const ticketResult = await findOrCreateTicketSafe({
+    const ticket = await findOrCreateTicketSafe({
       contact,
       whatsappId: tbot.id!,
       unreadMessages: fromMe ? 0 : 1,
@@ -328,10 +328,9 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
       msg: { ...messageData, fromMe },
       channel: "telegram",
     });
-
-    const ticket = ticketResult.ticket as Ticket;
-    const shouldRunFlow = ticketResult.shouldRunFlow as boolean;
-    console.log(ticket)
+ 
+    
+    
     if (!ticket) {
       logger.error("[Telegram] Falha ao criar/obter ticket");
       return;
@@ -341,8 +340,6 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
       return;
     }
 
-    logger.info(`[Telegram] Processando mensagem no ticket: ${ticket.id} - sendWelcomeFlow: ${ticket.sendWelcomeFlow}`);
-
     // Processar mensagem
     if (!messageData?.text && chat?.id) {
       await VerifyMediaMessage(ctx, fromMe, ticket, contact);
@@ -350,9 +347,6 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
       await VerifyMessage(ctx, fromMe, ticket, contact);
     }
 
-    // ✅ EXECUTAR VerifyStepsChatFlowTicket APENAS SE sendWelcomeFlow for true
-    if (!shouldRunFlow) {
-      logger.info(`[Telegram] Executando VerifyStepsChatFlowTicket para ticket: ${ticket.id} (sendWelcomeFlow: true)`);
       
       await VerifyStepsChatFlowTicket(
         {
@@ -365,13 +359,9 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
         ticket
       );
 
-      // ✅ IMPORTANTE: Após executar o fluxo, atualizar o ticket para não rodar novamente
-      // (isso deve ser feito dentro do VerifyStepsChatFlowTicket ou aqui)
-      // await ticket.update({ sendWelcomeFlow: false });
+     
       
-    } else {
-      logger.info(`[Telegram] Pulando VerifyStepsChatFlowTicket para ticket: ${ticket.id} (sendWelcomeFlow: false)`);
-    }
+    
 
     // Atualizar timestamp do ticket no cache
     const ticketKey = `ticket_${tbot.id}_${contact.id}`;

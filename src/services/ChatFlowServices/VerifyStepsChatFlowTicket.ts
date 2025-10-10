@@ -65,7 +65,7 @@ const handleBusinessHoursCheck = async (ticket: Ticket): Promise<boolean> => {
 
 // Função auxiliar para extrair o corpo da mensagem de forma padronizada
 const getMessageBody = (msg: WbotMessage | any): string => {
-  console.log(msg)
+  
   if (msg.type === "reply_markup") {
     return msg.body.toLowerCase().trim();
   }
