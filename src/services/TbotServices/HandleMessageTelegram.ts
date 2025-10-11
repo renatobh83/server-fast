@@ -148,7 +148,6 @@ const cleanupExpiredCache = () => {
 
 setInterval(cleanupExpiredCache, 2 * 60 * 1000);
 
-// FUNÇÃO MELHORADA: Buscar ou criar ticket com prevenção de duplicação
 // FUNÇÃO MELHORADA: Buscar ou criar ticket com prevenção de duplicação E verificação de status
 const findOrCreateTicketSafe = async (params: {
   contact: any;
@@ -158,6 +157,7 @@ const findOrCreateTicketSafe = async (params: {
   msg: any;
   channel: string;
 }): Promise<any> => {
+
   const { contact, whatsappId, tenantId } = params;
 
   // Chave única para identificar sessão ativa
@@ -165,6 +165,7 @@ const findOrCreateTicketSafe = async (params: {
 
   // PRIMEIRO: Verificar se já existe ticket ativo no cache
   const cachedTicket = activeTicketsCache.get(ticketKey);
+
   if (cachedTicket) {
     try {
       // Buscar ticket do banco para verificar status atual
@@ -245,7 +246,7 @@ const findOrCreateTicketSafe = async (params: {
           activeTicketsCache.delete(ticketKey);
         }
       }
-      console.log('criando ticket aqui', params.msg)
+      
       // AGORA SIM: Criar o ticket (esta é a única parte com lock)
       const ticket = await FindOrCreateTicketService(params);
       
@@ -346,23 +347,26 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
     } else {
       await VerifyMessage(ctx, fromMe, ticket, contact);
     }
-
-      
+    
+    if(!ticket.sendWelcomeFlow) {
+       logger.info(`[Telegram] Ticket ${ticket.id} tem permissão para iniciar o ChatFlow. Executando...`);
       await VerifyStepsChatFlowTicket(
         {
           fromMe,
           body: message.reply_markup
-            ? ctx.update.callback_query?.data
-            : message.text,
+          ? ctx.update.callback_query?.data
+          : message.text,
           type: "reply_markup",
         },
         ticket
       );
+      await ticket.update({ sendWelcomeFlow: true });
+            logger.info(`[Telegram] Permissão 'sendWelcomeFlow' para o ticket ${ticket.id} foi desativada.`);
 
-     
-      
+    }
     
 
+     
     // Atualizar timestamp do ticket no cache
     const ticketKey = `ticket_${tbot.id}_${contact.id}`;
     if (activeTicketsCache.has(ticketKey)) {
