@@ -348,7 +348,7 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
       await VerifyMessage(ctx, fromMe, ticket, contact);
     }
     
-    if(!ticket.sendWelcomeFlow) {
+    if(ticket.sendWelcomeFlow) {
        logger.info(`[Telegram] Ticket ${ticket.id} tem permissão para iniciar o ChatFlow. Executando...`);
       await VerifyStepsChatFlowTicket(
         {
@@ -360,7 +360,7 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
         },
         ticket
       );
-      await ticket.update({ sendWelcomeFlow: true });
+      await ticket.update({ sendWelcomeFlow: false });
             logger.info(`[Telegram] Permissão 'sendWelcomeFlow' para o ticket ${ticket.id} foi desativada.`);
 
     }
