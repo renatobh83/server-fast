@@ -475,7 +475,7 @@ const VerifyStepsChatFlowTicket = async (
             });
           }
 
-          await ticket.update({ sendWelcomeFlow: true });
+          
           logger.info(
             `Mensagem de boas-vindas enviada com sucesso para o ticket ${ticket.id} e estado atualizado.`
           );
@@ -484,6 +484,8 @@ const VerifyStepsChatFlowTicket = async (
             `Falha ao enviar mensagem de boas-vindas ou atualizar ticket ${ticket.id}:`,
             error
           );
+        } finally {
+          await ticket.update({ sendWelcomeFlow: true });
         }
       }
     }
