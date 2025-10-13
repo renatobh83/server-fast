@@ -14,7 +14,6 @@ import {
   activeTicketsCache,
   channelCache,
   chatFlowInitiationLocks,
-  cleanupExpiredCache,
   contactCache,
   getCachedBotInstance,
   getCachedChannel,

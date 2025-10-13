@@ -67,7 +67,7 @@ export const getCachedChannel = async (
     channelCache.set(whatsappId, channel);
     cacheTimestamps.set(`channel_${whatsappId}`, Date.now());
   }
-
+  setInterval(cleanupExpiredCache, 10 * 60 * 1000);
   return channel;
 };
 
@@ -109,5 +109,3 @@ const logCacheSizes = () => {
 
   console.log(`------------------------------------`);
 };
-
-setInterval(cleanupExpiredCache, 2 * 60 * 1000);
