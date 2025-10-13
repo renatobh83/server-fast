@@ -16,37 +16,73 @@ import { Op } from "sequelize";
 import { GetContactByLid } from "./GetContactBYLid";
 import Contact from "../../../models/Contact";
 import Ticket from "../../../models/Ticket";
-import {
-  activeTicketsCache,
-  cacheTimestamps,
-  channelCache,
-  chatFlowInitiationLocks,
-  contactCache,
-  getCachedChannel,
-  ticketCreationLocks,
-} from "../../../utils/cacheLocal";
+
 import { logger } from "../../../utils/logger";
 import User from "../../../models/User";
+import { redisClient } from "../../../lib/redis";
+import ShowWhatsAppService from "../../WhatsappService/ShowWhatsAppService";
+import Whatsapp from "../../../models/Whatsapp";
 
 interface Session extends wbot {
   id: number;
 }
+
+// Constantes para chaves Redis e TTLs
+const REDIS_KEYS = {
+  channel: (id: number) => `cache:channel:${id}`,
+  botInstance: (id: number) => `cache:bot:${id}`,
+  contact: (whatsappId: number, userId: number) =>
+    `cache:contact:${whatsappId}:${userId}`,
+  ticketLock: (whatsappId: number, contactId: number) =>
+    `lock:ticket:${whatsappId}:${contactId}`,
+};
+const TTL = {
+  CACHE: 5 * 60, // 5 minutos para caches gerais
+  LOCK: 15, // 15 segundos para um lock de criação de ticket
+};
+
 const commonIncludes = [
-  {
-    model: Contact,
-    as: "contact",
-  },
-  {
-    model: User,
-    as: "user",
-    attributes: ["id", "name"],
-  },
-  {
-    association: "whatsapp",
-    attributes: ["id", "name"],
-  },
+  { model: Contact, as: "contact" },
+  { model: User, as: "user", attributes: ["id", "name"] },
+  { association: "whatsapp", attributes: ["id", "name"] },
 ];
 
+// ========================================================================
+// FUNÇÕES DE CACHE REESCRITAS COM REDIS
+// ========================================================================
+
+const getCachedChannel = async (whatsappId: number): Promise<Whatsapp> => {
+  const key = REDIS_KEYS.channel(whatsappId);
+  const cached = await redisClient.get(key);
+  if (cached) {
+    return JSON.parse(cached);
+  }
+
+  const channel = await ShowWhatsAppService({ id: whatsappId });
+  if (channel) {
+    await redisClient.set(key, JSON.stringify(channel), "EX", TTL.CACHE);
+  }
+  return channel;
+};
+
+const getCachedContact = async (
+  chat: any,
+  tenantId: number,
+  whatsappId: number,
+  contatoNumber: string
+): Promise<any> => {
+  const key = REDIS_KEYS.contact(whatsappId, +contatoNumber);
+  const cached = await redisClient.get(key);
+  if (cached) {
+    return JSON.parse(cached);
+  }
+
+  const contact = await VerifyContact(chat, tenantId);
+  if (contact) {
+    await redisClient.set(key, JSON.stringify(contact), "EX", TTL.CACHE);
+  }
+  return contact;
+};
 // FUNÇÃO MELHORADA: Buscar ou criar ticket com prevenção de duplicação E verificação de status
 export const findOrCreateTicketSafe = async (params: {
   contact: any;
@@ -58,161 +94,70 @@ export const findOrCreateTicketSafe = async (params: {
   groupContact: boolean;
 }): Promise<any> => {
   const { contact, whatsappId } = params;
+  const lockKey = REDIS_KEYS.ticketLock(whatsappId, contact.id);
 
-  // Chave única para identificar sessão ativa
-  const ticketKey = `ticket_${whatsappId}_${contact.id}`;
+  // Tenta adquirir o lock distribuído
+  const lockAcquired = await redisClient.set(
+    lockKey,
+    "locked",
+    "EX",
+    TTL.LOCK,
+    "NX"
+  );
 
-  // PRIMEIRO: Verificar se já existe ticket ativo no cache
-  const cachedTicket = activeTicketsCache.get(ticketKey);
-
-  if (cachedTicket) {
+  if (lockAcquired) {
     try {
-      // Buscar ticket do banco para verificar status atual
-      const existingTicket = await Ticket.findByPk(cachedTicket.ticketId, {
+      // Verifica se um ticket aberto já existe (pode ter sido criado em uma interação anterior)
+      const existingTicket = await Ticket.findOne({
+        where: { contactId: contact.id, whatsappId, status: "open" },
         include: commonIncludes,
       });
-
       if (existingTicket) {
-        // Verificar se o ticket está FECHADO
-        if (existingTicket.status === "closed" || existingTicket.closedAt) {
-          logger.info(
-            `[WhatsApp] Ticket ${cachedTicket.ticketId} está FECHADO, removendo do cache e criando novo`
-          );
-          // Remover do cache pois está fechado
-          activeTicketsCache.delete(ticketKey);
-          // Continuar para criar novo ticket
-        } else {
-          logger.info(
-            `[WhatsApp] Usando ticket existente do cache: ${cachedTicket.ticketId} - Status: ${existingTicket.status}`
-          );
-          return existingTicket;
-        }
-      } else {
-        // Ticket não existe mais no banco, remover do cache
         logger.info(
-          `[WhatsApp] Ticket ${cachedTicket.ticketId} não encontrado no banco, removendo do cache`
+          `[whatsapp] Ticket ${existingTicket.id} já existia. Usando-o.`
         );
-        activeTicketsCache.delete(ticketKey);
+        return { ticket: existingTicket, isNew: false };
       }
+      // Se não existe, cria o novo ticket
+      const newTicket = await FindOrCreateTicketService(params);
+      logger.info(`[whatsapp] Novo ticket ${newTicket.id} criado.`);
+      return { ticket: newTicket, isNew: true };
     } catch (error) {
-      logger.error(`[WhatsApp] Erro ao verificar ticket do cache: ${error}`);
-      // Em caso de erro, remover do cache e continuar
-      activeTicketsCache.delete(ticketKey);
+      logger.error(
+        `[whatsapp] Erro durante a criação do ticket (com lock): ${error}`
+      );
+      return { ticket: null, isNew: false };
+    } finally {
+      // Libera o lock para futuras operações
+      await redisClient.del(lockKey);
+      logger.info(`[whatsapp] Lock liberado para ${lockKey}.`);
     }
-  }
-
-  // SEGUNDO: Verificar se já existe uma CRIAÇÃO em andamento
-  if (ticketCreationLocks.has(ticketKey)) {
+  } else {
+    // === LOCK NÃO ADQUIRIDO: Somos um processo seguidor ===
     logger.info(
-      `[WhatsApp] Aguardando criação de ticket em andamento para ${ticketKey}`
+      `[whatsapp] Lock para ${lockKey} já existe. Aguardando ticket...`
     );
-    const existingTicket = await ticketCreationLocks.get(ticketKey);
+    // Espera um pouco para dar tempo ao primeiro processo de criar o ticket
+    await new Promise((resolve) => setTimeout(resolve, 500)); // Delay de 500ms
 
-    // Se conseguimos o ticket do lock existente, verificar status
-    if (existingTicket) {
-      // Verificar se o ticket retornado não está fechado
-      if (existingTicket.status !== "closed" && !existingTicket.isClosed) {
-        return existingTicket;
-      } else {
-        logger.info(
-          `[WhatsApp] Ticket do lock está FECHADO, ignorando e criando novo`
-        );
-        // Remover o lock pois o ticket está fechado
-        ticketCreationLocks.delete(ticketKey);
-      }
+    // Busca o ticket que o outro processo DEVE ter criado
+    const ticket = await Ticket.findOne({
+      where: { contactId: contact.id, whatsappId, status: "pennding" },
+      order: [["createdAt", "DESC"]], // Pega o mais recente para garantir
+      include: commonIncludes,
+    });
+    if (ticket) {
+      logger.info(`[whatsapp] Ticket ${ticket.id} encontrado após aguardar.`);
+      return { ticket, isNew: false };
+    } else {
+      logger.error(
+        `[whatsapp] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.`
+      );
+      return { ticket: null, isNew: false };
     }
-  }
-
-  // TERCEIRO: Criar NOVO ticket (com lock apenas na criação)
-  const ticketPromise = (async () => {
-    try {
-      // Double-check: verificar cache novamente antes de criar
-      const recheckCachedTicket = activeTicketsCache.get(ticketKey);
-      if (recheckCachedTicket) {
-        try {
-          const recheckTicket = await Ticket.findByPk(
-            recheckCachedTicket.ticketId,
-            {
-              include: commonIncludes,
-            }
-          );
-
-          if (
-            recheckTicket &&
-            recheckTicket.status !== "closed" &&
-            !recheckTicket.closedAt
-          ) {
-            return recheckTicket;
-          } else {
-            // Ticket está fechado, remover do cache
-            activeTicketsCache.delete(ticketKey);
-          }
-        } catch (error) {
-          logger.error(`[WhatsApp] Erro ao re-verificar ticket: ${error}`);
-          activeTicketsCache.delete(ticketKey);
-        }
-      }
-
-      // AGORA SIM: Criar o ticket (esta é a única parte com lock)
-      const ticket = await FindOrCreateTicketService(params);
-
-      if (ticket && ticket.id) {
-        // Verificar se o ticket criado não está fechado antes de armazenar no cache
-        if (ticket.status !== "closed" && !ticket.isClosed) {
-          // Armazenar no cache de tickets ativos apenas se NÃO estiver fechado
-          activeTicketsCache.set(ticketKey, {
-            ticketId: ticket.id,
-            timestamp: Date.now(),
-          });
-
-          logger.info(
-            `[WhatsApp] Novo ticket criado: ${ticket.id} para ${ticketKey} - Status: ${ticket.status}`
-          );
-        } else {
-          logger.info(
-            `[WhatsApp] Ticket criado mas está FECHADO, não armazenando no cache: ${ticket.id}`
-          );
-        }
-      }
-
-      return ticket;
-    } catch (error) {
-      logger.error(`[WhatsApp] Erro ao criar ticket: ${error}`);
-      throw error;
-    }
-  })();
-
-  // COLOCAR LOCK APENAS DURANTE A CRIAÇÃO
-  ticketCreationLocks.set(ticketKey, ticketPromise);
-
-  try {
-    const result = await ticketPromise;
-    return result;
-  } finally {
-    // IMPORTANTE: Remover o lock IMEDIATAMENTE após a criação
-    // Isso permite que outras mensagens usem o ticket livremente
-    ticketCreationLocks.delete(ticketKey);
   }
 };
 
-const getCachedContact = async (
-  chat: any,
-  tenantId: number,
-  whatsappId: number,
-  contatoNumber: string
-): Promise<any> => {
-  // CHAVE ÚNICA: WhatsApp ID + User ID
-  const contactKey = `contact_${whatsappId}_${contatoNumber}`;
-  let contact = contactCache.get(contactKey);
-
-  if (!contact) {
-    contact = await VerifyContact(chat, tenantId);
-    contactCache.set(contactKey, contact);
-    cacheTimestamps.set(contactKey, Date.now());
-  }
-
-  return contact;
-};
 export const HandleMessageReceived = async (
   msg: Message,
   wbot: Session
@@ -223,7 +168,7 @@ export const HandleMessageReceived = async (
   if (!isValidMsg(msg)) {
     return;
   }
-  let ticketIdForLock: number | null = null;
+
   try {
     const chat: Chat = await wbot.getChatById(msg.from);
 
@@ -271,7 +216,7 @@ export const HandleMessageReceived = async (
       return;
     }
 
-    const ticket = await findOrCreateTicketSafe({
+    const { ticket, isNew } = await findOrCreateTicketSafe({
       contact,
       whatsappId: wbot.id,
       unreadMessages: chat.unreadCount,
@@ -280,40 +225,30 @@ export const HandleMessageReceived = async (
       msg,
       channel: "whatsapp",
     });
-
+    if (!ticket) {
+      logger.error("[whatsapp] Falha crítica ao criar ou obter ticket.");
+      return;
+    }
     if (msg.filehash) {
       await VerifyMediaMessage(msg, ticket, contact, wbot, authorGrupMessage);
     } else {
       await VerifyMessage(msg, ticket, contact, authorGrupMessage);
     }
-    if (ticket.chatFlowId) {
-      ticketIdForLock = ticket.id;
-    }
 
-    if (ticket.sendWelcomeFlow && !chatFlowInitiationLocks.has(ticket.id)) {
-      chatFlowInitiationLocks.add(ticket.id);
+    if (isNew) {
+      // Se o ticket foi criado AGORA, executa o flow. Apenas UM processo receberá isNew = true.
       logger.info(
-        `[WhatsApp] Ticket ${ticket.id} tem permissão para iniciar o ChatFlow. Executando...`
+        `[whatsapp] Ticket ${ticket.id} é novo. Iniciando ChatFlow de boas-vindas.`
       );
 
       await VerifyStepsChatFlowTicket(msg, ticket);
-      await ticket.update({ sendWelcomeFlow: false });
-      logger.info(
-        `[WhatsApp] Permissão 'sendWelcomeFlow' para o ticket ${ticket.id} foi desativada.`
-      );
-    } else if (!ticket.sendWelcomeFlow && ticket.chatFlowId) {
+    } else {
       logger.info(
         `[WhatsApp] Ticket ${ticket.id} em atendimento normal. Verificando passos do ChatFlow.`
       );
       await VerifyStepsChatFlowTicket(msg, ticket);
     }
-    const ticketKey = `ticket_${whatsapp.id}_${contact.id}`;
-    if (activeTicketsCache.has(ticketKey)) {
-      activeTicketsCache.set(ticketKey, {
-        ticketId: ticket.id,
-        timestamp: Date.now(),
-      });
-    }
+
     const apiConfig: any = ticket.apiConfig || {};
 
     if (
@@ -339,13 +274,6 @@ export const HandleMessageReceived = async (
       // });
     }
   } catch (error) {
-    channelCache.delete(whatsapp.id);
-  } finally {
-    if (ticketIdForLock) {
-      chatFlowInitiationLocks.delete(ticketIdForLock);
-      logger.info(
-        `[WhatsApp] Lock de iniciação do ChatFlow liberado para o ticket ${ticketIdForLock}.`
-      );
-    }
+    logger.error("Erro fatal no HandleMessage:", error);
   }
 };

@@ -7428,3 +7428,133 @@
   level: 'error',
   timestamp: '2025-10-11T11:19:01.573Z'
 }
+{
+  message: '[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-13T16:04:47.475Z'
+}
+{
+  message: '[Telegram] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-13T16:04:47.476Z'
+}
+{
+  message: '[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-13T16:04:47.636Z'
+}
+{
+  message: '[Telegram] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-13T16:04:47.637Z'
+}
+{
+  message: '[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-13T16:04:47.904Z'
+}
+{
+  message: '[Telegram] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-13T16:04:47.906Z'
+}
+{
+  message: '[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-13T16:04:48.146Z'
+}
+{
+  message: '[Telegram] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-13T16:04:48.147Z'
+}
+{
+  message: '[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-13T16:04:48.357Z'
+}
+{
+  message: '[Telegram] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-13T16:04:48.359Z'
+}
+{
+  message: '[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-13T16:04:48.572Z'
+}
+{
+  message: '[Telegram] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-13T16:04:48.574Z'
+}
+{
+  message: '[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-13T17:59:39.881Z'
+}
+{
+  level: 'error',
+  message: "Erro fatal no HandleMessage: Cannot read properties of null (reading 'id')",
+  stack: "TypeError: Cannot read properties of null (reading 'id')\n" +
+    '    at VerifyMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\VerifyMessage.js:26:26)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessageReceived (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageReceived.js:185:13)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:40:9)',
+  timestamp: '2025-10-13T17:59:39.884Z'
+}
+{
+  message: '[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-13T17:59:40.355Z'
+}
+{
+  level: 'error',
+  message: "Erro fatal no HandleMessage: Cannot read properties of null (reading 'id')",
+  stack: "TypeError: Cannot read properties of null (reading 'id')\n" +
+    '    at VerifyMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\VerifyMessage.js:26:26)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessageReceived (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\Helpers\\HandleMessageReceived.js:185:13)\n' +
+    '    at async EventEmitter.<anonymous> (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\WbotServices\\wbotMessageListener.js:40:9)',
+  timestamp: '2025-10-13T17:59:40.357Z'
+}
+{
+  message: '[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-13T18:23:34.276Z'
+}
+{
+  message: '[Telegram] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-13T18:23:34.279Z'
+}
+{
+  message: '[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-13T18:23:34.928Z'
+}
+{
+  message: '[Telegram] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-13T18:23:34.929Z'
+}
+{
+  message: '[whatsapp] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-13T18:27:36.564Z'
+}
+{
+  message: '[whatsapp] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-13T18:27:36.568Z'
+}
+{
+  message: '[whatsapp] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-13T18:27:36.784Z'
+}
+{
+  message: '[whatsapp] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-13T18:27:36.786Z'
+}

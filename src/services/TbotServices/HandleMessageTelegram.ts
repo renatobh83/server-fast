@@ -5,42 +5,71 @@ import FindOrCreateTicketService from "../TicketServices/FindOrCreateTicketServi
 import VerifyMediaMessage from "./TelegramVerifyMediaMessage";
 import VerifyMessage from "./TelegramVerifyMessage";
 import VerifyStepsChatFlowTicket from "../ChatFlowServices/VerifyStepsChatFlowTicket";
-
 import { logger } from "../../utils/logger";
 import Ticket from "../../models/Ticket";
 import Contact from "../../models/Contact";
 import User from "../../models/User";
-import {
-  activeTicketsCache,
-  channelCache,
-  chatFlowInitiationLocks,
-  contactCache,
-  getCachedBotInstance,
-  getCachedChannel,
-  ticketCreationLocks,
-} from "../../utils/cacheLocal";
+import Whatsapp from "../../models/Whatsapp";
+import { redisClient } from "../../lib/redis";
 
 interface Session extends Telegraf {
   id: number;
 }
 
-const cacheTimestamps = new Map<string, number>();
+// Constantes para chaves Redis e TTLs
+const REDIS_KEYS = {
+  channel: (id: number) => `cache:channel:${id}`,
+  botInstance: (id: number) => `cache:bot:${id}`,
+  contact: (whatsappId: number, userId: number) =>
+    `cache:contact:${whatsappId}:${userId}`,
+  ticketLock: (whatsappId: number, contactId: number) =>
+    `lock:ticket:${whatsappId}:${contactId}`,
+};
+const TTL = {
+  CACHE: 5 * 60, // 5 minutos para caches gerais
+  LOCK: 15, // 15 segundos para um lock de criação de ticket
+};
 
 const commonIncludes = [
-  {
-    model: Contact,
-    as: "contact",
-  },
-  {
-    model: User,
-    as: "user",
-    attributes: ["id", "name"],
-  },
-  {
-    association: "whatsapp",
-    attributes: ["id", "name"],
-  },
+  { model: Contact, as: "contact" },
+  { model: User, as: "user", attributes: ["id", "name"] },
+  { association: "whatsapp", attributes: ["id", "name"] },
 ];
+
+// ========================================================================
+// FUNÇÕES DE CACHE REESCRITAS COM REDIS
+// ========================================================================
+
+const getCachedChannel = async (whatsappId: number): Promise<Whatsapp> => {
+  const key = REDIS_KEYS.channel(whatsappId);
+  const cached = await redisClient.get(key);
+  if (cached) {
+    return JSON.parse(cached);
+  }
+
+  const channel = await ShowWhatsAppService({ id: whatsappId });
+  if (channel) {
+    await redisClient.set(key, JSON.stringify(channel), "EX", TTL.CACHE);
+  }
+  return channel;
+};
+
+const getCachedBotInstance = async (ctx: any): Promise<any> => {
+  const botId = ctx?.botInfo?.id || ctx?.me?.id;
+  if (!botId) return ctx.telegram.getMe();
+
+  const key = REDIS_KEYS.botInstance(botId);
+  const cached = await redisClient.get(key);
+  if (cached) {
+    return JSON.parse(cached);
+  }
+
+  const botInstance = await ctx.telegram.getMe();
+  if (botInstance) {
+    await redisClient.set(key, JSON.stringify(botInstance), "EX", TTL.CACHE);
+  }
+  return botInstance;
+};
 
 const getCachedContact = async (
   ctx: any,
@@ -51,25 +80,25 @@ const getCachedContact = async (
     ctx.message?.from?.id ||
     ctx.update?.callback_query?.from?.id ||
     ctx.update?.edited_message?.from?.id;
+  if (!userId) return VerifyContact(ctx, tenantId);
 
-  if (!userId) {
-    return await VerifyContact(ctx, tenantId);
+  const key = REDIS_KEYS.contact(whatsappId, userId);
+  const cached = await redisClient.get(key);
+  if (cached) {
+    return JSON.parse(cached);
   }
 
-  // CHAVE ÚNICA: WhatsApp ID + User ID
-  const contactKey = `contact_${whatsappId}_${userId}`;
-  let contact = contactCache.get(contactKey);
-
-  if (!contact) {
-    contact = await VerifyContact(ctx, tenantId);
-    contactCache.set(contactKey, contact);
-    cacheTimestamps.set(contactKey, Date.now());
+  const contact = await VerifyContact(ctx, tenantId);
+  if (contact) {
+    await redisClient.set(key, JSON.stringify(contact), "EX", TTL.CACHE);
   }
-
   return contact;
 };
 
-// FUNÇÃO MELHORADA: Buscar ou criar ticket com prevenção de duplicação E verificação de status
+// ========================================================================
+// findOrCreateTicketSafe REESCRITO COM LOCK DISTRIBUÍDO (REDIS)
+// ========================================================================
+
 const findOrCreateTicketSafe = async (params: {
   contact: any;
   whatsappId: number;
@@ -77,181 +106,115 @@ const findOrCreateTicketSafe = async (params: {
   tenantId: number;
   msg: any;
   channel: string;
-}): Promise<any> => {
+}): Promise<{ ticket: any; isNew: boolean }> => {
   const { contact, whatsappId } = params;
+  const lockKey = REDIS_KEYS.ticketLock(whatsappId, contact.id);
 
-  // Chave única para identificar sessão ativa
-  const ticketKey = `ticket_${whatsappId}_${contact.id}`;
+  // Tenta adquirir o lock distribuído
+  const lockAcquired = await redisClient.set(
+    lockKey,
+    "locked",
+    "EX",
+    TTL.LOCK,
+    "NX"
+  );
 
-  // PRIMEIRO: Verificar se já existe ticket ativo no cache
-  const cachedTicket = activeTicketsCache.get(ticketKey);
-
-  if (cachedTicket) {
+  if (lockAcquired) {
+    // === LOCK ADQUIRIDO: Somos o primeiro processo ===
+    logger.info(
+      `[Telegram] Lock adquirido para ${lockKey}. Procedendo com a criação.`
+    );
     try {
-      // Buscar ticket do banco para verificar status atual
-      const existingTicket = await Ticket.findByPk(cachedTicket.ticketId, {
+      // Verifica se um ticket aberto já existe (pode ter sido criado em uma interação anterior)
+      const existingTicket = await Ticket.findOne({
+        where: { contactId: contact.id, whatsappId, status: "open" },
         include: commonIncludes,
       });
 
       if (existingTicket) {
-        // Verificar se o ticket está FECHADO
-        if (existingTicket.status === "closed" || existingTicket.closedAt) {
-          logger.info(
-            `[Telegram] Ticket ${cachedTicket.ticketId} está FECHADO, removendo do cache e criando novo`
-          );
-          // Remover do cache pois está fechado
-          activeTicketsCache.delete(ticketKey);
-          // Continuar para criar novo ticket
-        } else {
-          logger.info(
-            `[Telegram] Usando ticket existente do cache: ${cachedTicket.ticketId} - Status: ${existingTicket.status}`
-          );
-          return existingTicket;
-        }
-      } else {
-        // Ticket não existe mais no banco, remover do cache
         logger.info(
-          `[Telegram] Ticket ${cachedTicket.ticketId} não encontrado no banco, removendo do cache`
+          `[Telegram] Ticket ${existingTicket.id} já existia. Usando-o.`
         );
-        activeTicketsCache.delete(ticketKey);
+        return { ticket: existingTicket, isNew: false };
       }
-    } catch (error) {
-      logger.error(`[Telegram] Erro ao verificar ticket do cache: ${error}`);
-      // Em caso de erro, remover do cache e continuar
-      activeTicketsCache.delete(ticketKey);
-    }
-  }
 
-  // SEGUNDO: Verificar se já existe uma CRIAÇÃO em andamento
-  if (ticketCreationLocks.has(ticketKey)) {
+      // Se não existe, cria o novo ticket
+      const newTicket = await FindOrCreateTicketService(params);
+      logger.info(`[Telegram] Novo ticket ${newTicket.id} criado.`);
+      return { ticket: newTicket, isNew: true };
+    } catch (error) {
+      logger.error(
+        `[Telegram] Erro durante a criação do ticket (com lock): ${error}`
+      );
+      return { ticket: null, isNew: false };
+    } finally {
+      // Libera o lock para futuras operações
+      await redisClient.del(lockKey);
+      logger.info(`[Telegram] Lock liberado para ${lockKey}.`);
+    }
+  } else {
+    // === LOCK NÃO ADQUIRIDO: Somos um processo seguidor ===
     logger.info(
-      `[Telegram] Aguardando criação de ticket em andamento para ${ticketKey}`
+      `[Telegram] Lock para ${lockKey} já existe. Aguardando ticket...`
     );
-    const existingTicket = await ticketCreationLocks.get(ticketKey);
+    // Espera um pouco para dar tempo ao primeiro processo de criar o ticket
+    await new Promise((resolve) => setTimeout(resolve, 500)); // Delay de 500ms
 
-    // Se conseguimos o ticket do lock existente, verificar status
-    if (existingTicket) {
-      // Verificar se o ticket retornado não está fechado
-      if (existingTicket.status !== "closed" && !existingTicket.isClosed) {
-        return existingTicket;
-      } else {
-        logger.info(
-          `[Telegram] Ticket do lock está FECHADO, ignorando e criando novo`
-        );
-        // Remover o lock pois o ticket está fechado
-        ticketCreationLocks.delete(ticketKey);
-      }
+    // Busca o ticket que o outro processo DEVE ter criado
+    const ticket = await Ticket.findOne({
+      where: { contactId: contact.id, whatsappId, status: "open" },
+      order: [["createdAt", "DESC"]], // Pega o mais recente para garantir
+      include: commonIncludes,
+    });
+
+    if (ticket) {
+      logger.info(`[Telegram] Ticket ${ticket.id} encontrado após aguardar.`);
+      return { ticket, isNew: false };
+    } else {
+      logger.error(
+        `[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.`
+      );
+      return { ticket: null, isNew: false };
     }
-  }
-
-  // TERCEIRO: Criar NOVO ticket (com lock apenas na criação)
-  const ticketPromise = (async () => {
-    try {
-      // Double-check: verificar cache novamente antes de criar
-      const recheckCachedTicket = activeTicketsCache.get(ticketKey);
-      if (recheckCachedTicket) {
-        try {
-          const recheckTicket = await Ticket.findByPk(
-            recheckCachedTicket.ticketId,
-            {
-              include: commonIncludes,
-            }
-          );
-
-          if (
-            recheckTicket &&
-            recheckTicket.status !== "closed" &&
-            !recheckTicket.closedAt
-          ) {
-            return recheckTicket;
-          } else {
-            // Ticket está fechado, remover do cache
-            activeTicketsCache.delete(ticketKey);
-          }
-        } catch (error) {
-          logger.error(`[Telegram] Erro ao re-verificar ticket: ${error}`);
-          activeTicketsCache.delete(ticketKey);
-        }
-      }
-
-      // AGORA SIM: Criar o ticket (esta é a única parte com lock)
-      const ticket = await FindOrCreateTicketService(params);
-
-      if (ticket && ticket.id) {
-        // Verificar se o ticket criado não está fechado antes de armazenar no cache
-        if (ticket.status !== "closed" && !ticket.isClosed) {
-          // Armazenar no cache de tickets ativos apenas se NÃO estiver fechado
-          activeTicketsCache.set(ticketKey, {
-            ticketId: ticket.id,
-            timestamp: Date.now(),
-          });
-
-          logger.info(
-            `[Telegram] Novo ticket criado: ${ticket.id} para ${ticketKey} - Status: ${ticket.status}`
-          );
-        } else {
-          logger.info(
-            `[Telegram] Ticket criado mas está FECHADO, não armazenando no cache: ${ticket.id}`
-          );
-        }
-      }
-
-      return ticket;
-    } catch (error) {
-      logger.error(`[Telegram] Erro ao criar ticket: ${error}`);
-      throw error;
-    }
-  })();
-
-  // COLOCAR LOCK APENAS DURANTE A CRIAÇÃO
-  ticketCreationLocks.set(ticketKey, ticketPromise);
-
-  try {
-    const result = await ticketPromise;
-    return result;
-  } finally {
-    // IMPORTANTE: Remover o lock IMEDIATAMENTE após a criação
-    // Isso permite que outras mensagens usem o ticket livremente
-    ticketCreationLocks.delete(ticketKey);
   }
 };
-const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
-  let ticketIdForLock: number | null = null;
 
+// ========================================================================
+// HANDLEMESSAGE PRINCIPAL (AGORA MAIS LIMPO)
+// ========================================================================
+
+const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
   try {
     const channel = await getCachedChannel(tbot.id);
-
-    let message = ctx?.message || ctx.update.callback_query?.message;
-    let updateMessage: any = ctx?.update;
-
-    if (!message && updateMessage) {
-      message = updateMessage?.edited_message;
+    if (!channel) {
+      logger.error(`[Telegram] Canal ${tbot.id} não encontrado.`);
+      return;
     }
 
-    const chat = message?.chat;
+    let message = ctx?.message || ctx.update.callback_query?.message;
+    if (!message && ctx.update) {
+      message = ctx.update.edited_message;
+    }
+    if (!message) {
+      logger.warn(
+        "[Telegram] Não foi possível extrair a mensagem do contexto.",
+        ctx
+      );
+      return;
+    }
 
+    const chat = message.chat;
     const me = await getCachedBotInstance(ctx);
-
     const fromMe =
       me.id ===
       (ctx.message?.from?.id ||
         ctx.update?.callback_query?.from?.id ||
         ctx.update?.edited_message?.from?.id);
+    const contact = await getCachedContact(ctx, channel.tenantId, tbot.id);
+    const messageData = { ...message, timestamp: +message.date * 1000 };
 
-    const userId =
-      ctx.message?.from?.id ||
-      ctx.update?.callback_query?.from?.id ||
-      ctx.update?.edited_message?.from?.id;
-
-    const messageData = {
-      ...message,
-      timestamp: +message.date * 1000,
-    };
-
-    let contact = await getCachedContact(ctx, channel.tenantId, tbot.id);
-
-    // ✅ Buscar/Criar ticket
-    const ticket = await findOrCreateTicketSafe({
+    // A chamada para buscar/criar o ticket agora é atomicamente segura entre processos
+    const { ticket, isNew } = await findOrCreateTicketSafe({
       contact,
       whatsappId: tbot.id!,
       unreadMessages: fromMe ? 0 : 1,
@@ -261,80 +224,45 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
     });
 
     if (!ticket) {
-      logger.error("[Telegram] Falha ao criar/obter ticket");
-      return;
-    }
-    if (ticket.chatFlowId) {
-      ticketIdForLock = ticket.id;
-    }
-    if (ticket?.isFarewellMessage) {
+      logger.error("[Telegram] Falha crítica ao criar ou obter ticket.");
       return;
     }
 
-    // Processar mensagem
-    if (!messageData?.text && chat?.id) {
+    if (ticket.isFarewellMessage) return;
+
+    // Processamento da mensagem (mídia ou texto)
+    if (!messageData.text && chat?.id) {
       await VerifyMediaMessage(ctx, fromMe, ticket, contact);
     } else {
       await VerifyMessage(ctx, fromMe, ticket, contact);
     }
 
-    if (ticket.sendWelcomeFlow && !chatFlowInitiationLocks.has(ticket.id)) {
-      chatFlowInitiationLocks.add(ticket.id);
+    // Lógica de execução do ChatFlow
+    const body = message.reply_markup
+      ? ctx.update.callback_query?.data
+      : message.text;
+
+    if (isNew) {
+      // Se o ticket foi criado AGORA, executa o flow. Apenas UM processo receberá isNew = true.
       logger.info(
-        `[Telegram] Ticket ${ticket.id} tem permissão para iniciar o ChatFlow. Executando...`
+        `[Telegram] Ticket ${ticket.id} é novo. Iniciando ChatFlow de boas-vindas.`
       );
       await VerifyStepsChatFlowTicket(
-        {
-          fromMe,
-          body: message.reply_markup
-            ? ctx.update.callback_query?.data
-            : message.text,
-          type: "reply_markup",
-        },
+        { fromMe, body, type: "reply_markup" },
         ticket
       );
-      await ticket.update({ sendWelcomeFlow: false });
+    } else {
+      // Para todas as outras mensagens (concorrentes e futuras), executa o flow normalmente.
       logger.info(
-        `[Telegram] Permissão 'sendWelcomeFlow' para o ticket ${ticket.id} foi desativada.`
+        `[Telegram] Ticket ${ticket.id} já existente. Verificando passos normais do ChatFlow.`
       );
-    } else if (!ticket.sendWelcomeFlow && ticket.chatFlowId) {
-      logger.info(
-        `[Telegram] Ticket ${ticket.id} em atendimento normal. Verificando passos do ChatFlow.`
-      );
-
-      // Aqui, o VerifyStepsChatFlowTicket é chamado sem a proteção do lock,
-      // permitindo que ele seja executado em todas as mensagens subsequentes.
       await VerifyStepsChatFlowTicket(
-        {
-          fromMe,
-          body: message.reply_markup
-            ? ctx.update.callback_query?.data
-            : message.text,
-          type: "reply_markup",
-        },
+        { fromMe, body, type: "reply_markup" },
         ticket
       );
-    }
-
-    // Atualizar timestamp do ticket no cache
-    const ticketKey = `ticket_${tbot.id}_${contact.id}`;
-    if (activeTicketsCache.has(ticketKey)) {
-      activeTicketsCache.set(ticketKey, {
-        ticketId: ticket.id,
-        timestamp: Date.now(),
-      });
     }
   } catch (error) {
-    logger.error("Error in HandleMessage:", error);
-    channelCache.delete(tbot.id);
-    throw error;
-  } finally {
-    if (ticketIdForLock) {
-      chatFlowInitiationLocks.delete(ticketIdForLock);
-      logger.info(
-        `[Telegram] Lock de iniciação do ChatFlow liberado para o ticket ${ticketIdForLock}.`
-      );
-    }
+    logger.error("Erro fatal no HandleMessage:", error);
   }
 };
 
