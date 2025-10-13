@@ -371,7 +371,20 @@ ticketIdForLock = ticket.id;
             logger.info(`[Telegram] Permissão 'sendWelcomeFlow' para o ticket ${ticket.id} foi desativada.`);
 
     }
-    
+    else if (!ticket.sendWelcomeFlow) {
+      logger.info(`[Telegram] Ticket ${ticket.id} em atendimento normal. Verificando passos do ChatFlow.`);
+      
+      // Aqui, o VerifyStepsChatFlowTicket é chamado sem a proteção do lock,
+      // permitindo que ele seja executado em todas as mensagens subsequentes.
+      await VerifyStepsChatFlowTicket(
+        {
+          fromMe,
+          body: message.reply_markup ? ctx.update.callback_query?.data : message.text,
+          type: "reply_markup",
+        },
+        ticket
+      );
+    }
 
      
     // Atualizar timestamp do ticket no cache
