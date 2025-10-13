@@ -392,7 +392,7 @@ ticketIdForLock = ticket.id;
        if (ticketIdForLock) {
       chatFlowInitiationLocks.delete(ticketIdForLock);
       logger.info(`[Telegram] Lock de iniciação do ChatFlow liberado para o ticket ${ticketIdForLock}.`);
-       }
+       }}
 };
 
 // Função para verificar se um ticket existe no cache
