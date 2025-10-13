@@ -484,8 +484,6 @@ const VerifyStepsChatFlowTicket = async (
             `Falha ao enviar mensagem de boas-vindas ou atualizar ticket ${ticket.id}:`,
             error
           );
-        } finally {
-          await ticket.update({ sendWelcomeFlow: true });
         }
       }
     }
