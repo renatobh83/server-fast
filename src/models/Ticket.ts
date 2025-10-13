@@ -92,7 +92,7 @@ export class Ticket extends Model {
         sendWelcomeFlow: {
           type: DataTypes.BOOLEAN,
           allowNull: false,
-          defaultValue: false,
+          defaultValue: true,
         },
         isFarewellMessage: {
           type: DataTypes.BOOLEAN,
