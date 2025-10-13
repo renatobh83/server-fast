@@ -17,6 +17,11 @@ interface Session extends Telegraf {
   id: number;
 }
 
+// Armazena os IDs dos tickets que estão atualmente executando o flow pela primeira vez.
+const chatFlowInitiationLocks = new Set<number>();
+// Armazena os IDs dos tickets que estão atualmente executando o flow pela primeira vez.
+const chatFlowInitiationLocks = new Set<number>();
+
 // NOVO: Cache de tickets ativos por usuário
 const activeTicketsCache = new Map<
   string,
@@ -289,6 +294,8 @@ const findOrCreateTicketSafe = async (params: {
   }
 };
 const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
+  let ticketIdForLock: number | null = null;
+  
   try {
     const channel = await getCachedChannel(tbot.id);
 
@@ -336,7 +343,7 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
       logger.error("[Telegram] Falha ao criar/obter ticket");
       return;
     }
-
+ticketIdForLock = ticket.id;
     if (ticket?.isFarewellMessage) {
       return;
     }
@@ -348,7 +355,9 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
       await VerifyMessage(ctx, fromMe, ticket, contact);
     }
     
-    if(ticket.sendWelcomeFlow) {
+    if (ticket.sendWelcomeFlow && !chatFlowInitiationLocks.has(ticket.id)) {
+
+      chatFlowInitiationLocks.add(ticket.id);
        logger.info(`[Telegram] Ticket ${ticket.id} tem permissão para iniciar o ChatFlow. Executando...`);
       await VerifyStepsChatFlowTicket(
         {
@@ -379,7 +388,11 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
     logger.error("Error in HandleMessage:", error);
     channelCache.delete(tbot.id);
     throw error;
-  }
+  }finally{
+       if (ticketIdForLock) {
+      chatFlowInitiationLocks.delete(ticketIdForLock);
+      logger.info(`[Telegram] Lock de iniciação do ChatFlow liberado para o ticket ${ticketIdForLock}.`);
+       }
 };
 
 // Função para verificar se um ticket existe no cache
