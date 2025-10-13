@@ -5,7 +5,7 @@ export class IntegracaoGenesisConfirmacao extends Model {
   declare id: string;
   declare status: string;
   declare contatoSend?: string | null;
-  declare contato?: string | null;
+  declare contato: string;
   declare lastMessage?: string | null;
   declare procedimentos: number[];
   declare idexterno: number[];
