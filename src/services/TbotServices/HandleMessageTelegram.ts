@@ -19,8 +19,6 @@ interface Session extends Telegraf {
 
 // Armazena os IDs dos tickets que estão atualmente executando o flow pela primeira vez.
 const chatFlowInitiationLocks = new Set<number>();
-// Armazena os IDs dos tickets que estão atualmente executando o flow pela primeira vez.
-const chatFlowInitiationLocks = new Set<number>();
 
 // NOVO: Cache de tickets ativos por usuário
 const activeTicketsCache = new Map<
