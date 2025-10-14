@@ -11,6 +11,7 @@ import Contact from "../../models/Contact";
 import User from "../../models/User";
 import Whatsapp from "../../models/Whatsapp";
 import { redisClient } from "../../lib/redis";
+import { isValidFlowAnswer } from "../../utils/isValidFlowAnswer";
 
 interface Session extends Telegraf {
   id: number;
@@ -27,7 +28,7 @@ const REDIS_KEYS = {
 };
 const TTL = {
   CACHE: 5 * 60, // 5 minutos para caches gerais
-  LOCK: 15, // 15 segundos para um lock de criação de ticket
+  LOCK: 10, // 15 segundos para um lock de criação de ticket
 };
 
 const commonIncludes = [
@@ -127,7 +128,7 @@ const findOrCreateTicketSafe = async (params: {
     try {
       // Verifica se um ticket aberto já existe (pode ter sido criado em uma interação anterior)
       const existingTicket = await Ticket.findOne({
-        where: { contactId: contact.id, whatsappId, status: "open" },
+        where: { contactId: contact.id, whatsappId, status: "pending" },
         include: commonIncludes,
       });
 
@@ -162,7 +163,7 @@ const findOrCreateTicketSafe = async (params: {
 
     // Busca o ticket que o outro processo DEVE ter criado
     const ticket = await Ticket.findOne({
-      where: { contactId: contact.id, whatsappId, status: "open" },
+      where: { contactId: contact.id, whatsappId, status: "pending" },
       order: [["createdAt", "DESC"]], // Pega o mais recente para garantir
       include: commonIncludes,
     });
@@ -251,10 +252,36 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
         { fromMe, body, type: "reply_markup" },
         ticket
       );
-    } else {
-      // Para todas as outras mensagens (concorrentes e futuras), executa o flow normalmente.
+      await ticket.update({ chatFlowStatus: "waiting_answer" });
+    } else if (ticket.chatFlowStatus === "waiting_answer") {
       logger.info(
-        `[Telegram] Ticket ${ticket.id} já existente. Verificando passos normais do ChatFlow.`
+        `[Telegram] Ticket ${ticket.id} está aguardando resposta. Processando...`
+      );
+      const chatFlow = await ticket.getChatFlow();
+      const step = chatFlow?.flow.nodeList.find(
+        (node: any) => node.id === ticket.stepChatFlow
+      );
+      if (step) {
+        if (isValidFlowAnswer({ fromMe, body, type: "reply_markup" }, step)) {
+          // A RESPOSTA É VÁLIDA! Agora sim, processamos o fluxo.
+          logger.info(
+            `[Telegram] Ticket ${ticket.id}: Resposta inicial válida. Processando passo.`
+          );
+          await VerifyStepsChatFlowTicket(
+            { fromMe, body, type: "reply_markup" },
+            ticket
+          );
+          // E finalmente, mudamos o estado para o fluxo normal.
+          await ticket.update({ chatFlowStatus: "in_progress" });
+        } else {
+          logger.warn(
+            `[Telegram] Ticket ${ticket.id}: Resposta inválida recebida no estado 'waiting_answer'. Ignorando e notificando.`
+          );
+        }
+      }
+    } else if (ticket.chatFlowStatus === "in_progress") {
+      logger.info(
+        `[Telegram] Ticket ${ticket.id} em atendimento normal. Verificando passos.`
       );
       await VerifyStepsChatFlowTicket(
         { fromMe, body, type: "reply_markup" },

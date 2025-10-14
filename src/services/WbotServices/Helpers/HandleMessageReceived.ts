@@ -22,6 +22,7 @@ import User from "../../../models/User";
 import { redisClient } from "../../../lib/redis";
 import ShowWhatsAppService from "../../WhatsappService/ShowWhatsAppService";
 import Whatsapp from "../../../models/Whatsapp";
+import { isValidFlowAnswer } from "../../../utils/isValidFlowAnswer";
 
 interface Session extends wbot {
   id: number;
@@ -38,7 +39,7 @@ const REDIS_KEYS = {
 };
 const TTL = {
   CACHE: 5 * 60, // 5 minutos para caches gerais
-  LOCK: 25, // 15 segundos para um lock de criação de ticket
+  LOCK: 10, // 15 segundos para um lock de criação de ticket
 };
 
 const commonIncludes = [
@@ -151,7 +152,6 @@ export const findOrCreateTicketSafe = async (params: {
       `[whatsapp] Lock para ${lockKey} já existe. Aguardando ticket...`
     );
     // Espera um pouco para dar tempo ao primeiro processo de criar o ticket
-    await new Promise((resolve) => setTimeout(resolve, 500)); // Delay de 500ms
 
     // Busca o ticket que o outro processo DEVE ter criado
     const ticket = await Ticket.findOne({
@@ -257,11 +257,30 @@ export const HandleMessageReceived = async (
       );
 
       await VerifyStepsChatFlowTicket(msg, ticket);
-    } else {
+      await ticket.update({ chatFlowStatus: "waiting_answer" });
+    } else if (ticket.chatFlowStatus === "waiting_answer") {
       logger.info(
-        `[WhatsApp] Ticket ${ticket.id} em atendimento normal. Verificando passos do ChatFlow.`
+        `[WhatsApp] Ticket ${ticket.id} está aguardando resposta. Processando...`
       );
-      await VerifyStepsChatFlowTicket(msg, ticket);
+      const chatFlow = await ticket.getChatFlow();
+      const step = chatFlow?.flow.nodeList.find(
+        (node: any) => node.id === ticket.stepChatFlow
+      );
+      if (step) {
+        if (isValidFlowAnswer(msg, step)) {
+          // A RESPOSTA É VÁLIDA! Agora sim, processamos o fluxo.
+          logger.info(
+            `[whatsapp] Ticket ${ticket.id}: Resposta inicial válida. Processando passo.`
+          );
+          await VerifyStepsChatFlowTicket(msg, ticket);
+          // E finalmente, mudamos o estado para o fluxo normal.
+          await ticket.update({ chatFlowStatus: "in_progress" });
+        } else {
+          logger.warn(
+            `[whatsapp] Ticket ${ticket.id}: Resposta inválida recebida no estado 'waiting_answer'. Ignorando e notificando.`
+          );
+        }
+      }
     }
 
     const apiConfig: any = ticket.apiConfig || {};

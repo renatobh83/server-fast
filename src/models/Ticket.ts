@@ -49,6 +49,7 @@ export class Ticket extends Model {
   declare apiConfig: object | null;
   declare user: User;
   declare sendWelcomeFlow: boolean;
+  declare chatFlowStatus: string;
 
   // getter virtual
   get protocol(): string {
@@ -69,6 +70,10 @@ export class Ticket extends Model {
         status: {
           type: DataTypes.STRING,
           defaultValue: "pending",
+        },
+        chatFlowStatus: {
+          type: DataTypes.ENUM("not_started", "waiting_answer", "in_progress"),
+          defaultValue: "not_started",
         },
         unreadMessages: DataTypes.INTEGER,
         lastMessage: DataTypes.STRING,

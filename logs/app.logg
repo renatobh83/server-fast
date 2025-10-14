@@ -7638,3 +7638,59 @@
   level: 'error',
   timestamp: '2025-10-14T10:08:02.898Z'
 }
+{
+  message: '[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-14T10:16:03.434Z'
+}
+{
+  message: '[Telegram] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-14T10:16:03.435Z'
+}
+{
+  level: 'error',
+  message: 'Erro fatal no HandleMessage: Function not implemented.',
+  stack: 'Error: Function not implemented.\n' +
+    '    at isValidFlowAnswer (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:233:11)\n' +
+    '    at HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:200:17)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:20:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\p-timeout\\index.js:50:13',
+  timestamp: '2025-10-14T10:55:01.016Z'
+}
+{
+  message: '[Telegram] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-14T11:12:11.050Z'
+}
+{
+  message: '[Telegram] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-14T11:12:11.052Z'
+}
+{
+  message: '[whatsapp] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-14T11:21:12.377Z'
+}
+{
+  message: '[whatsapp] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-14T11:21:12.384Z'
+}
+{
+  message: '[whatsapp] Aguardou pelo lock, mas o ticket não foi encontrado. Isso pode indicar uma falha na criação pelo processo líder.',
+  level: 'error',
+  timestamp: '2025-10-14T11:22:58.954Z'
+}
+{
+  message: '[whatsapp] Falha crítica ao criar ou obter ticket.',
+  level: 'error',
+  timestamp: '2025-10-14T11:22:58.957Z'
+}

@@ -65,7 +65,6 @@ const handleBusinessHoursCheck = async (ticket: Ticket): Promise<boolean> => {
 
 // Função auxiliar para extrair o corpo da mensagem de forma padronizada
 const getMessageBody = (msg: WbotMessage | any): string => {
-  
   if (msg.type === "reply_markup") {
     return msg.body.toLowerCase().trim();
   }
@@ -349,7 +348,7 @@ const MIN_DELAY = 5000; // 2 segundos
 const VerifyStepsChatFlowTicket = async (
   msg: WbotMessage | any,
   ticket: Ticket | any
-): Promise<void> => {
+): Promise<boolean> => {
   try {
     // Condições iniciais para processar o fluxo de chat
 
@@ -360,16 +359,14 @@ const VerifyStepsChatFlowTicket = async (
       ticket.isGroup ||
       ticket.answered
     ) {
-      return;
+      return false;
     }
-
 
     const chatFlow = await ticket.getChatFlow();
 
-  
     if (!chatFlow) {
       logger.warn(`ChatFlow não encontrado para o ticket ${ticket.id}`);
-      return;
+      return false;
     }
 
     let celularTeste: string | undefined;
@@ -384,7 +381,7 @@ const VerifyStepsChatFlowTicket = async (
       logger.warn(
         `Passo do ChatFlow não encontrado para o ticket ${ticket.id} e stepChatFlow ${ticket.stepChatFlow}`
       );
-      return;
+      return false;
     }
 
     const flowConfig = chatFlow.flow.nodeList.find(
@@ -397,7 +394,7 @@ const VerifyStepsChatFlowTicket = async (
       !ticket.isCreated &&
       (await isAnswerCloseTicket(flowConfig, ticket, getMessageBody(msg)))
     ) {
-      return;
+      return false;
     }
     if (stepCondition && !ticket.isCreated) {
       // Verificar se é um contato de teste e sair se for
@@ -405,9 +402,9 @@ const VerifyStepsChatFlowTicket = async (
       if (
         await IsContactTest(ticket.contact.number, celularTeste, ticket.channel)
       ) {
-        return;
+        return false;
       }
-      if (await isRetriesLimit(ticket, flowConfig)) return;
+      if (await isRetriesLimit(ticket, flowConfig)) return false;
       // Processar a condição encontrada
       await handleNextStep(ticket, chatFlow, stepCondition, msg);
       await handleQueueAssignment(ticket, flowConfig, stepCondition);
@@ -429,12 +426,17 @@ const VerifyStepsChatFlowTicket = async (
 
         if (isBusinessHours) await sendWelcomeMessage(ticket, flowConfig);
       }
+      // Se chegamos aqui, a resposta foi válida e o fluxo avançou.
+      logger.info(
+        `[whatsapp] Ticket ${ticket.id}: Resposta válida encontrada. Fluxo avançou.`
+      );
+      return true; // <--- RETORNO DE SUCESSO
     } else {
       // Se nenhuma condição foi encontrada e não é a primeira interação (isCreated)
       // ou se o ticket já foi criado e não encontrou condição (caso de retry)
 
       if (!ticket.isCreated) {
-        if (await isRetriesLimit(ticket, flowConfig)) return;
+        if (await isRetriesLimit(ticket, flowConfig)) return false;
 
         const defaultMessage =
           "Desculpe! Não entendi sua resposta. Vamos tentar novamente! Escolha uma opção válida.";
@@ -475,7 +477,6 @@ const VerifyStepsChatFlowTicket = async (
             });
           }
 
-          
           logger.info(
             `Mensagem de boas-vindas enviada com sucesso para o ticket ${ticket.id} e estado atualizado.`
           );
@@ -486,6 +487,7 @@ const VerifyStepsChatFlowTicket = async (
           );
         }
       }
+      return false;
     }
   } catch (error: any) {
     if (error instanceof AppError) {
