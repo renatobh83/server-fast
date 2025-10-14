@@ -5,6 +5,9 @@ import socketEmit from "../../helpers/socketEmit";
 // import BuildSendMessageService, { MessageType } from "../ChatFlowServices/BuildSendMessageService";
 import Contact from "../../models/Contact";
 import User from "../../models/User";
+import BuildSendMessageService, {
+  MessageType,
+} from "../ChatFlowServices/BuildSendMessageService";
 
 const FindUpdateTicketsInactiveChatBot = async (): Promise<void> => {
   const query = `
@@ -58,7 +61,7 @@ const FindUpdateTicketsInactiveChatBot = async (): Promise<void> => {
         const messageField = {
           data: { message: item.message },
           id: uuidv4(),
-          // type: MessageType.MediaField,
+          type: MessageType.MediaField,
         };
         const sendMessageParams = {
           msg: messageField,
@@ -66,7 +69,7 @@ const FindUpdateTicketsInactiveChatBot = async (): Promise<void> => {
           ticket: ticket,
         };
 
-        // await BuildSendMessageService(sendMessageParams);
+        await BuildSendMessageService(sendMessageParams);
         ticket.update({
           status: "closed",
           chatFlowId: null,
