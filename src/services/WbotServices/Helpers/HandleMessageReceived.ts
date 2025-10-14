@@ -7,7 +7,10 @@ import FindOrCreateTicketService from "../../TicketServices/FindOrCreateTicketSe
 import VerifyMessage from "../VerifyMessage";
 import VerifyContact from "./VerifyContact";
 import VerifyMediaMessage from "./VerifyMediaMessage";
-import VerifyStepsChatFlowTicket from "../../ChatFlowServices/VerifyStepsChatFlowTicket";
+import VerifyStepsChatFlowTicket, {
+  isRetriesLimit,
+  sendBotMessage,
+} from "../../ChatFlowServices/VerifyStepsChatFlowTicket";
 import { getCache, setCache } from "../../../utils/cacheRedis";
 import { RedisKeys } from "../../../constants/redisKeys";
 
@@ -255,7 +258,6 @@ export const HandleMessageReceived = async (
       logger.info(
         `[whatsapp] Ticket ${ticket.id} é novo. Iniciando ChatFlow de boas-vindas.`
       );
-
       await VerifyStepsChatFlowTicket(msg, ticket);
       await ticket.update({ chatFlowStatus: "waiting_answer" });
     } else if (ticket.chatFlowStatus === "waiting_answer") {
@@ -279,8 +281,25 @@ export const HandleMessageReceived = async (
           logger.warn(
             `[whatsapp] Ticket ${ticket.id}: Resposta inválida recebida no estado 'waiting_answer'. Ignorando e notificando.`
           );
+          const flowConfig = chatFlow.flow.nodeList.find(
+            (node: any) => node.type === "configurations"
+          );
+          if (await isRetriesLimit(ticket, flowConfig)) return;
+
+          const defaultMessage =
+            "Por favor, escolha uma das opções do menu para continuar.";
+          const messageBody =
+            flowConfig?.data?.notOptionsSelectMessage?.message ||
+            defaultMessage;
+          await sendBotMessage(ticket.tenantId, ticket, messageBody); // Usando a função auxiliar que você já tem.
+          await ticket.update({ botRetries: ticket.botRetries + 1 });
         }
       }
+    } else if (ticket.chatFlowStatus === "in_progress") {
+      logger.info(
+        `[Telegram] Ticket ${ticket.id} em atendimento normal. Verificando passos.`
+      );
+      await VerifyStepsChatFlowTicket(msg, ticket);
     }
 
     const apiConfig: any = ticket.apiConfig || {};

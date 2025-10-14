@@ -77,7 +77,7 @@ const getMessageBody = (msg: WbotMessage | any): string => {
 };
 
 // Função auxiliar para enviar mensagens do bot
-const sendBotMessage = async (
+export const sendBotMessage = async (
   tenantId: number,
   ticket: Ticket,
   messageBody: string
@@ -342,8 +342,6 @@ const ticketMemory = new Map<
     menuSentAt?: number;
   }
 >();
-
-const MIN_DELAY = 5000; // 2 segundos
 
 const VerifyStepsChatFlowTicket = async (
   msg: WbotMessage | any,

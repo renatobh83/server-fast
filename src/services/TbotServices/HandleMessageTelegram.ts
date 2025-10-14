@@ -4,7 +4,10 @@ import VerifyContact from "./TelegramVerifyContact";
 import FindOrCreateTicketService from "../TicketServices/FindOrCreateTicketService";
 import VerifyMediaMessage from "./TelegramVerifyMediaMessage";
 import VerifyMessage from "./TelegramVerifyMessage";
-import VerifyStepsChatFlowTicket from "../ChatFlowServices/VerifyStepsChatFlowTicket";
+import VerifyStepsChatFlowTicket, {
+  isRetriesLimit,
+  sendBotMessage,
+} from "../ChatFlowServices/VerifyStepsChatFlowTicket";
 import { logger } from "../../utils/logger";
 import Ticket from "../../models/Ticket";
 import Contact from "../../models/Contact";
@@ -277,6 +280,18 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
           logger.warn(
             `[Telegram] Ticket ${ticket.id}: Resposta inválida recebida no estado 'waiting_answer'. Ignorando e notificando.`
           );
+          const flowConfig = chatFlow.flow.nodeList.find(
+            (node: any) => node.type === "configurations"
+          );
+          if (await isRetriesLimit(ticket, flowConfig)) return;
+
+          const defaultMessage =
+            "Por favor, escolha uma das opções do menu para continuar.";
+          const messageBody =
+            flowConfig?.data?.notOptionsSelectMessage?.message ||
+            defaultMessage;
+          await sendBotMessage(ticket.tenantId, ticket, messageBody); // Usando a função auxiliar que você já tem.
+          await ticket.update({ botRetries: ticket.botRetries + 1 });
         }
       }
     } else if (ticket.chatFlowStatus === "in_progress") {
