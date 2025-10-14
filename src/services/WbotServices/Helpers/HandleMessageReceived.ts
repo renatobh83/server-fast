@@ -38,7 +38,7 @@ const REDIS_KEYS = {
 };
 const TTL = {
   CACHE: 5 * 60, // 5 minutos para caches gerais
-  LOCK: 15, // 15 segundos para um lock de criação de ticket
+  LOCK: 25, // 15 segundos para um lock de criação de ticket
 };
 
 const commonIncludes = [
