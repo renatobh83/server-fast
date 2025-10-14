@@ -221,7 +221,7 @@ const start = async (client: Session, io: any) => {
     const isReady = await client.isAuthenticated();
     if (isReady) {
       logger.info(`Session: ${sessionName} AUTHENTICATED`);
-
+      client.startTyping;
       const profileSession = await waitForApiValue(client, 1000);
       await whatsappSession.update({
         status: "CONNECTED",

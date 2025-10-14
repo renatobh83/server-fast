@@ -7,6 +7,8 @@ import { Message } from "wbotconnect";
 import ShowTicketService from "../services/TicketServices/ShowTicketService";
 import { CreateMessageSystemService } from "../services/MessageServices/CreateMessageSystemService";
 import CreateForwardMessageService from "../services/MessageServices/CreateForwardMessageService";
+import { startTypingWbot } from "../services/WbotServices/StartTypingWbot";
+import { stopTypingWbot } from "../services/WbotServices/StopTypingWbot";
 
 type IndexQuery = {
   pageNumber: string;
@@ -125,5 +127,43 @@ export const forward = async (
   } catch (error) {
     console.log(error);
     return handleServerError(reply, error);
+  }
+};
+
+export const startTyping = async (
+  request: FastifyRequest<{
+    Body: {
+      messages: any[];
+      contact: any;
+    };
+  }>,
+  reply: FastifyReply
+) => {
+  const { ticketId } = request.params as any;
+  try {
+    await startTypingWbot(ticketId);
+    return reply.code(STANDARD.OK.statusCode).send({ message: "stratTyping" });
+  } catch (error) {
+    console.log(error);
+    return reply.code(STANDARD.OK.statusCode).send({ message: "stratTyping" });
+  }
+};
+
+export const stopTyping = async (
+  request: FastifyRequest<{
+    Body: {
+      messages: any[];
+      contact: any;
+    };
+  }>,
+  reply: FastifyReply
+) => {
+  const { ticketId } = request.params as any;
+  try {
+    await stopTypingWbot(ticketId);
+    return reply.code(STANDARD.OK.statusCode).send({ message: "stopTyping" });
+  } catch (error) {
+    console.log(error);
+    return reply.code(STANDARD.OK.statusCode).send({ message: "stopTyping" });
   }
 };
