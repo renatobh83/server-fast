@@ -26,15 +26,15 @@ import Whatsapp from "../../../models/Whatsapp";
 interface Session extends wbot {
   id: number;
 }
-
 // Constantes para chaves Redis e TTLs
 const REDIS_KEYS = {
-  channel: (id: number) => `cache:channel:${id}`,
-  botInstance: (id: number) => `cache:bot:${id}`,
-  contact: (whatsappId: number, userId: number) =>
-    `cache:contact:${whatsappId}:${userId}`,
+  channel: (id: number) => `cache:wpp:channel:${id}`,
+  contact: (whatsappId: number, serializedId: string) =>
+    `cache:wpp:contact:${whatsappId}:${serializedId}`,
   ticketLock: (whatsappId: number, contactId: number) =>
-    `lock:ticket:${whatsappId}:${contactId}`,
+    `lock:wpp:ticket:${whatsappId}:${contactId}`,
+  settingIgnoreGroup: (tenantId: number | string) =>
+    `cache:wpp:setting:ignoreGroup:${tenantId}`,
 };
 const TTL = {
   CACHE: 5 * 60, // 5 minutos para caches gerais
@@ -51,37 +51,50 @@ const commonIncludes = [
 // FUNÇÕES DE CACHE REESCRITAS COM REDIS
 // ========================================================================
 
-const getCachedChannel = async (whatsappId: number): Promise<Whatsapp> => {
+const getCachedChannel = async (
+  whatsappId: number
+): Promise<Whatsapp | null> => {
   const key = REDIS_KEYS.channel(whatsappId);
-  const cached = await redisClient.get(key);
-  if (cached) {
-    return JSON.parse(cached);
-  }
+  try {
+    const cached = await redisClient.get(key);
+    if (cached) return JSON.parse(cached);
 
-  const channel = await ShowWhatsAppService({ id: whatsappId });
-  if (channel) {
-    await redisClient.set(key, JSON.stringify(channel), "EX", TTL.CACHE);
+    const channel = await ShowWhatsAppService({ id: whatsappId });
+    if (channel) {
+      await redisClient.set(key, JSON.stringify(channel), "EX", TTL.CACHE);
+    }
+    return channel;
+  } catch (error) {
+    logger.error(
+      `Erro ao buscar canal (ID: ${whatsappId}) do cache ou DB:`,
+      error
+    );
+    return null;
   }
-  return channel;
 };
 
 const getCachedContact = async (
-  chat: any,
+  chat: Chat,
   tenantId: number,
-  whatsappId: number,
-  contatoNumber: string
-): Promise<any> => {
-  const key = REDIS_KEYS.contact(whatsappId, +contatoNumber);
-  const cached = await redisClient.get(key);
-  if (cached) {
-    return JSON.parse(cached);
-  }
+  whatsappId: number
+): Promise<Contact | null> => {
+  const key = REDIS_KEYS.contact(whatsappId, chat.id._serialized);
+  try {
+    const cached = await redisClient.get(key);
+    if (cached) return JSON.parse(cached);
 
-  const contact = await VerifyContact(chat, tenantId);
-  if (contact) {
-    await redisClient.set(key, JSON.stringify(contact), "EX", TTL.CACHE);
+    const contact = await VerifyContact(chat, tenantId);
+    if (contact) {
+      await redisClient.set(key, JSON.stringify(contact), "EX", TTL.CACHE);
+    }
+    return contact;
+  } catch (error) {
+    logger.error(
+      `Erro ao buscar contato (ID: ${chat.id._serialized}) do cache ou DB:`,
+      error
+    );
+    return null;
   }
-  return contact;
 };
 // FUNÇÃO MELHORADA: Buscar ou criar ticket com prevenção de duplicação E verificação de status
 export const findOrCreateTicketSafe = async (params: {
@@ -109,7 +122,7 @@ export const findOrCreateTicketSafe = async (params: {
     try {
       // Verifica se um ticket aberto já existe (pode ter sido criado em uma interação anterior)
       const existingTicket = await Ticket.findOne({
-        where: { contactId: contact.id, whatsappId, status: "open" },
+        where: { contactId: contact.id, whatsappId, status: "pending" },
         include: commonIncludes,
       });
       if (existingTicket) {
@@ -142,7 +155,7 @@ export const findOrCreateTicketSafe = async (params: {
 
     // Busca o ticket que o outro processo DEVE ter criado
     const ticket = await Ticket.findOne({
-      where: { contactId: contact.id, whatsappId, status: "pennding" },
+      where: { contactId: contact.id, whatsappId, status: "pending" },
       order: [["createdAt", "DESC"]], // Pega o mais recente para garantir
       include: commonIncludes,
     });
@@ -162,48 +175,36 @@ export const HandleMessageReceived = async (
   msg: Message,
   wbot: Session
 ): Promise<void> => {
-  const whatsapp = await getCachedChannel(wbot.id);
-  const { tenantId } = whatsapp;
-
   if (!isValidMsg(msg)) {
     return;
   }
-
   try {
+    const whatsapp = await getCachedChannel(wbot.id);
+    if (!whatsapp) {
+      logger.error(
+        `[whatsapp] Canal ${wbot.id} não encontrado ou falha ao buscar. Abortando.`
+      );
+      return;
+    }
+    const { tenantId } = whatsapp;
+
     const chat: Chat = await wbot.getChatById(msg.from);
 
-    let Settingdb: Setting;
-
-    Settingdb = (await getCache(
-      RedisKeys.settingsIgnoreGroupMsg(tenantId)
-    )) as Setting;
-
-    if (!Settingdb) {
-      Settingdb = (await Setting.findOne({
+    // Lógica para ignorar grupos
+    const settingKey = REDIS_KEYS.settingIgnoreGroup(tenantId);
+    let ignoreGroup = await redisClient.get(settingKey);
+    if (!ignoreGroup) {
+      const settingDb = await Setting.findOne({
         where: { key: "ignoreGroupMsg", tenantId },
-      })) as Setting;
-      await setCache(RedisKeys.settingsIgnoreGroupMsg(+tenantId), Settingdb);
+      });
+      ignoreGroup = settingDb?.value || "disabled";
+      await redisClient.set(settingKey, ignoreGroup, "EX", TTL.CACHE);
     }
-
     if (
-      Settingdb?.value === "enabled" &&
+      ignoreGroup === "enabled" &&
       (chat.isGroup || msg.from === "status@broadcast")
     ) {
       return;
-    }
-
-    const contact: Contact = await getCachedContact(
-      chat,
-      tenantId,
-      whatsapp.id,
-      chat.id._serialized
-    );
-
-    let authorGrupMessage: any = "";
-
-    if (msg.isGroupMsg) {
-      const number = await GetContactByLid(msg.author, wbot);
-      authorGrupMessage = number;
     }
 
     const integracaoMessage = await IntegracaoGenesisConfirmacao.findOne({
@@ -214,6 +215,20 @@ export const HandleMessageReceived = async (
     if (integracaoMessage) {
       ProcessReturnMessage(msg, tenantId);
       return;
+    }
+    const contact = await getCachedContact(chat, tenantId, whatsapp.id);
+    if (!contact) {
+      logger.error(
+        `[whatsapp] Falha ao obter ou criar contato para ${chat.id._serialized}. Abortando.`
+      );
+      return;
+    }
+
+    let authorGrupMessage: any = "";
+
+    if (msg.isGroupMsg) {
+      const number = await GetContactByLid(msg.author, wbot);
+      authorGrupMessage = number;
     }
 
     const { ticket, isNew } = await findOrCreateTicketSafe({

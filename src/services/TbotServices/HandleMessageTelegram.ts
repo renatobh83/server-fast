@@ -18,12 +18,12 @@ interface Session extends Telegraf {
 
 // Constantes para chaves Redis e TTLs
 const REDIS_KEYS = {
-  channel: (id: number) => `cache:channel:${id}`,
+  channel: (id: number) => `cache:tbot:channel:${id}`,
   botInstance: (id: number) => `cache:bot:${id}`,
   contact: (whatsappId: number, userId: number) =>
-    `cache:contact:${whatsappId}:${userId}`,
+    `cache:tbot:contact:${whatsappId}:${userId}`,
   ticketLock: (whatsappId: number, contactId: number) =>
-    `lock:ticket:${whatsappId}:${contactId}`,
+    `lock:tbot:ticket:${whatsappId}:${contactId}`,
 };
 const TTL = {
   CACHE: 5 * 60, // 5 minutos para caches gerais
