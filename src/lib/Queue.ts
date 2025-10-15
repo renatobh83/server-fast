@@ -41,7 +41,20 @@ redisClient.on("reconnecting", () => {
 
 // Cria as filas com tipagem melhorada
 export const queues: JobQueue[] = Object.values(jobs).map((job: any) => {
-  const bullQueue = new Queue(job.key, { connection: redisClient });
+  const bullQueue = new Queue(job.key, { connection: redisClient,
+                                       defaultJobOptions: {
+    attempts: 3,
+    backoff: {
+      type: "exponential"
+    },
+    removeOnComplete: {
+      age: 1 * 3600,
+      count: 1,
+    },
+    removeOnFail: {
+      age: 7 * 24 * 3600,
+    },
+  }});
 
   // Configura listeners de forma consistente
   // bullQueue.on("waiting", QueueListener.onWaiting);
