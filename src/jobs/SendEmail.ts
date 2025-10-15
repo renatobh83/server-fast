@@ -12,10 +12,6 @@ export default {
     removeOnFail: 5,
   },
   async handle(data: any) {
-    logger.info("SendEmail Initiated");
-
-    logger.info("Dados recebidos pelo job:", JSON.stringify(data, null, 2));
-
     const { tenantId } = data;
     const { transporter, emailConfig } = await createTransporter(tenantId);
 

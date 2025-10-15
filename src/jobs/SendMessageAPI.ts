@@ -27,10 +27,6 @@ export default {
     attempts: 2,
     removeOnComplete: 2,
     removeOnFail: 5,
-    backoff: {
-      type: "fixed",
-      delay: 60000 * 3, // 3 min
-    },
   },
   async handle(data: dataProps) {
     try {

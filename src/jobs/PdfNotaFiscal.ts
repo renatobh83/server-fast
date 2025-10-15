@@ -13,10 +13,6 @@ export default {
       age: 86400, // mantém falhas por 1 dia
     },
     attempts: 3,
-    backoff: {
-      type: "exponential",
-      delay: 5000,
-    },
     timeout: 120000,
   },
   async handle(data: any) {

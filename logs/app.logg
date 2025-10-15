@@ -7694,3 +7694,201 @@
   level: 'error',
   timestamp: '2025-10-14T11:22:58.957Z'
 }
+{
+  message: 'Erro em processamento do job VerifyTicketsChatBotInactives (ID: repeat:VerifyTicketsChatBotInactives:1760524960000)',
+  error: 'job.updateProgress is not a function',
+  stack: 'TypeError: job.updateProgress is not a function\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:98:31)\n' +
+    '    at bullmq_1.Worker [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:191:38)\n' +
+    '    at Worker.callProcessJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:139:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:43\n' +
+    '    at trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\utils\\index.js:258:16)\n' +
+    '    at Worker.trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue-base.js:153:34)\n' +
+    '    at Worker.processJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:481:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:66\n' +
+    '    at Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:30)\n' +
+    '    at Worker.mainLoop (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:41)',
+  level: 'error',
+  timestamp: '2025-10-15T10:44:58.679Z'
+}
+{
+  error: TypeError: job.updateProgress is not a function
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:98:31)
+      at bullmq_1.Worker [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:191:38)
+      at Worker.callProcessJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:139:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:43
+      at trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\utils\index.js:258:16)
+      at Worker.trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\queue-base.js:153:34)
+      at Worker.processJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:481:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:66
+      at Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:30)
+      at Worker.mainLoop (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:41),
+  level: 'error',
+  message: '[Worker VerifyTicketsChatBotInactives] Job repeat:VerifyTicketsChatBotInactives:1760524960000 falhou. Erro: job.updateProgress is not a function',
+  timestamp: '2025-10-15T10:44:58.924Z'
+}
+{
+  message: 'Erro em processamento do job VerifyTicketsConfirmacaoInactives (ID: repeat:VerifyTicketsConfirmacaoInactives:1760524640000)',
+  error: 'job.updateProgress is not a function',
+  stack: 'TypeError: job.updateProgress is not a function\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:98:31)\n' +
+    '    at bullmq_1.Worker [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:191:38)\n' +
+    '    at Worker.callProcessJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:139:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:43\n' +
+    '    at trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\utils\\index.js:258:16)\n' +
+    '    at Worker.trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue-base.js:153:34)\n' +
+    '    at Worker.processJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:481:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:66\n' +
+    '    at Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:30)\n' +
+    '    at Worker.mainLoop (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:41)',
+  level: 'error',
+  timestamp: '2025-10-15T10:44:58.926Z'
+}
+{
+  error: TypeError: job.updateProgress is not a function
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:98:31)
+      at bullmq_1.Worker [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:191:38)
+      at Worker.callProcessJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:139:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:43
+      at trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\utils\index.js:258:16)
+      at Worker.trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\queue-base.js:153:34)
+      at Worker.processJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:481:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:66
+      at Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:30)
+      at Worker.mainLoop (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:41),
+  level: 'error',
+  message: '[Worker VerifyTicketsConfirmacaoInactives] Job repeat:VerifyTicketsConfirmacaoInactives:1760524640000 falhou. Erro: job.updateProgress is not a function',
+  timestamp: '2025-10-15T10:44:59.161Z'
+}
+{
+  message: 'Erro em processamento do job VerifyTicketsChatBotInactives (ID: repeat:VerifyTicketsChatBotInactives:1760524960000)',
+  error: 'job.updateProgress is not a function',
+  stack: 'TypeError: job.updateProgress is not a function\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:98:31)\n' +
+    '    at bullmq_1.Worker [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:191:38)\n' +
+    '    at Worker.callProcessJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:139:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:43\n' +
+    '    at trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\utils\\index.js:258:16)\n' +
+    '    at Worker.trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue-base.js:153:34)\n' +
+    '    at Worker.processJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:481:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:66\n' +
+    '    at Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:30)\n' +
+    '    at Worker.mainLoop (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:41)',
+  level: 'error',
+  timestamp: '2025-10-15T10:45:01.448Z'
+}
+{
+  message: 'Erro em processamento do job VerifyTicketsConfirmacaoInactives (ID: repeat:VerifyTicketsConfirmacaoInactives:1760524640000)',
+  error: 'job.updateProgress is not a function',
+  stack: 'TypeError: job.updateProgress is not a function\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:98:31)\n' +
+    '    at bullmq_1.Worker [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:191:38)\n' +
+    '    at Worker.callProcessJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:139:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:43\n' +
+    '    at trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\utils\\index.js:258:16)\n' +
+    '    at Worker.trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue-base.js:153:34)\n' +
+    '    at Worker.processJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:481:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:66\n' +
+    '    at Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:30)\n' +
+    '    at Worker.mainLoop (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:41)',
+  level: 'error',
+  timestamp: '2025-10-15T10:45:01.661Z'
+}
+{
+  error: TypeError: job.updateProgress is not a function
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:98:31)
+      at bullmq_1.Worker [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:191:38)
+      at Worker.callProcessJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:139:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:43
+      at trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\utils\index.js:258:16)
+      at Worker.trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\queue-base.js:153:34)
+      at Worker.processJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:481:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:66
+      at Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:30)
+      at Worker.mainLoop (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:41),
+  level: 'error',
+  message: '[Worker VerifyTicketsChatBotInactives] Job repeat:VerifyTicketsChatBotInactives:1760524960000 falhou. Erro: job.updateProgress is not a function',
+  timestamp: '2025-10-15T10:45:01.683Z'
+}
+{
+  error: TypeError: job.updateProgress is not a function
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:98:31)
+      at bullmq_1.Worker [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:191:38)
+      at Worker.callProcessJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:139:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:43
+      at trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\utils\index.js:258:16)
+      at Worker.trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\queue-base.js:153:34)
+      at Worker.processJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:481:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:66
+      at Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:30)
+      at Worker.mainLoop (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:41),
+  level: 'error',
+  message: '[Worker VerifyTicketsConfirmacaoInactives] Job repeat:VerifyTicketsConfirmacaoInactives:1760524640000 falhou. Erro: job.updateProgress is not a function',
+  timestamp: '2025-10-15T10:45:01.900Z'
+}
+{
+  message: 'Erro em processamento do job VerifyTicketsChatBotInactives (ID: repeat:VerifyTicketsChatBotInactives:1760524960000)',
+  error: 'job.updateProgress is not a function',
+  stack: 'TypeError: job.updateProgress is not a function\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:98:31)\n' +
+    '    at bullmq_1.Worker [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:191:38)\n' +
+    '    at Worker.callProcessJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:139:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:43\n' +
+    '    at trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\utils\\index.js:258:16)\n' +
+    '    at Worker.trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue-base.js:153:34)\n' +
+    '    at Worker.processJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:481:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:66\n' +
+    '    at Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:30)\n' +
+    '    at Worker.mainLoop (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:41)',
+  level: 'error',
+  timestamp: '2025-10-15T10:45:06.155Z'
+}
+{
+  message: 'Erro em processamento do job VerifyTicketsConfirmacaoInactives (ID: repeat:VerifyTicketsConfirmacaoInactives:1760524640000)',
+  error: 'job.updateProgress is not a function',
+  stack: 'TypeError: job.updateProgress is not a function\n' +
+    '    at handle (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:98:31)\n' +
+    '    at bullmq_1.Worker [as processFn] (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:191:38)\n' +
+    '    at Worker.callProcessJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:139:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:498:43\n' +
+    '    at trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\utils\\index.js:258:16)\n' +
+    '    at Worker.trace (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue-base.js:153:34)\n' +
+    '    at Worker.processJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:481:21)\n' +
+    '    at C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:66\n' +
+    '    at Worker.retryIfFailed (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:776:30)\n' +
+    '    at Worker.mainLoop (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\worker.js:266:41)',
+  level: 'error',
+  timestamp: '2025-10-15T10:45:06.375Z'
+}
+{
+  error: TypeError: job.updateProgress is not a function
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:98:31)
+      at bullmq_1.Worker [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:191:38)
+      at Worker.callProcessJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:139:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:43
+      at trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\utils\index.js:258:16)
+      at Worker.trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\queue-base.js:153:34)
+      at Worker.processJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:481:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:66
+      at Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:30)
+      at Worker.mainLoop (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:41),
+  level: 'error',
+  message: '[Worker VerifyTicketsChatBotInactives] Job repeat:VerifyTicketsChatBotInactives:1760524960000 falhou. Erro: job.updateProgress is not a function',
+  timestamp: '2025-10-15T10:45:06.413Z'
+}
+{
+  error: TypeError: job.updateProgress is not a function
+      at handle (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:98:31)
+      at bullmq_1.Worker [as processFn] (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\dist\lib\Queue.js:191:38)
+      at Worker.callProcessJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:139:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:498:43
+      at trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\utils\index.js:258:16)
+      at Worker.trace (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\queue-base.js:153:34)
+      at Worker.processJob (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:481:21)
+      at C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:66
+      at Worker.retryIfFailed (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:776:30)
+      at Worker.mainLoop (C:\Users\suporte2\Documents\Programacao\Nodejs\Fastify\node_modules\bullmq\dist\cjs\classes\worker.js:266:41),
+  level: 'error',
+  message: '[Worker VerifyTicketsConfirmacaoInactives] Job repeat:VerifyTicketsConfirmacaoInactives:1760524640000 falhou. Erro: job.updateProgress is not a function',
+  timestamp: '2025-10-15T10:45:06.616Z'
+}

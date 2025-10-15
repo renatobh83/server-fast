@@ -14,16 +14,11 @@ export default {
     attempts: 1,
     removeOnComplete: 2,
     removeOnFail: 5,
-    backoff: {
-      type: "fixed",
-      delay: 1000, // 3 min
-    },
   },
 
   async handle(data: any) {
     try {
-      logger.info("SendMessageChamado Initiated");
-
+      let message: any | null = null;
       const {
         tenantId,
         sendTo,
@@ -71,7 +66,7 @@ export default {
                 }
               );
             } else if (mimeType && mimeType.startsWith("video/")) {
-              await tbot.telegram.sendVideo(
+              message = await tbot.telegram.sendVideo(
                 contact.telegramId,
                 { source: mediaPath },
                 {
@@ -79,7 +74,7 @@ export default {
                 }
               );
             } else if (mimeType && mimeType.startsWith("audio/")) {
-              await tbot.telegram.sendAudio(
+              message = await tbot.telegram.sendAudio(
                 contact.telegramId,
                 { source: mediaPath },
                 {
@@ -87,7 +82,7 @@ export default {
                 }
               );
             } else {
-              await tbot.telegram.sendDocument(
+              message = await tbot.telegram.sendDocument(
                 contact.telegramId,
                 { source: mediaPath },
                 {
@@ -96,7 +91,7 @@ export default {
               );
             }
           } else {
-            await tbot.telegram.sendMessage(
+            message = await tbot.telegram.sendMessage(
               contact.telegramId,
               TemplateMessageMediUrl(
                 msg,
@@ -105,7 +100,7 @@ export default {
             );
           }
         } else {
-          await tbot.telegram.sendMessage(
+          message = await tbot.telegram.sendMessage(
             contact.telegramId,
             TemplateMessage(msg)
           );
@@ -128,12 +123,16 @@ export default {
                 TemplateMessageMediUrl(msg, data.caption)
               );
             } else {
-              await wbot.sendFile(contact?.serializednumber!, mediaPath, {
-                caption: TemplateMessageMediUrl(msg, data.caption),
-              });
+              message = await wbot.sendFile(
+                contact?.serializednumber!,
+                mediaPath,
+                {
+                  caption: TemplateMessageMediUrl(msg, data.caption),
+                }
+              );
             }
           } else {
-            await wbot.sendText(
+            message = await wbot.sendText(
               contact?.serializednumber!,
               TemplateMessageMediUrl(
                 msg,
@@ -145,7 +144,7 @@ export default {
             );
           }
         } else {
-          await wbot.sendText(
+          message = await wbot.sendText(
             contact?.serializednumber!,
             TemplateMessage(msg),
             {
@@ -154,6 +153,10 @@ export default {
           );
         }
       }
+      return {
+        success: true,
+        messageId: message ? message.id | message.message_id : null,
+      };
     } catch (error: any) {
       console.log(error);
       logger.error({ message: "Error send message api", error });

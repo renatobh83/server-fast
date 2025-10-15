@@ -1,4 +1,10 @@
-import { type Job, Queue, Worker, JobSchedulerTemplateOptions } from "bullmq";
+import {
+  type Job,
+  Queue,
+  Worker,
+  JobSchedulerTemplateOptions,
+  type JobProgress,
+} from "bullmq";
 import * as jobs from "../jobs/index";
 import { logger } from "../utils/logger";
 
@@ -28,6 +34,19 @@ interface ShutdownResult {
   queueErrors: Error[];
 }
 
+// Definição das opções padrão do Worker
+const defaultWorkerOptions = {
+  // Conexão com o Redis (obrigatório)
+  connection: redisClient,
+
+  // Opções de configuração do Worker (WorkerOptions)
+  // O valor de 'concurrency' será sobrescrito pelo parâmetro da função
+  lockDuration: 60000, // Aumentado para 1 minuto (60 segundos) para evitar dupla execução
+  maxStalledCount: 3, // Aumentado para 3 para maior resiliência contra falhas temporárias
+  stalledInterval: 30000, // Mantido em 30 segundos (padrão)
+  runRetryDelay: 15000, // Mantido em 15 segundos (padrão)
+};
+
 // Monitoramento de eventos Redis
 redisClient.on("error", (err) => {
   logger.error("Erro na conexão Redis (redisForWorkers):", err);
@@ -41,27 +60,23 @@ redisClient.on("reconnecting", () => {
 
 // Cria as filas com tipagem melhorada
 export const queues: JobQueue[] = Object.values(jobs).map((job: any) => {
-  const bullQueue = new Queue(job.key, { connection: redisClient,
-                                       defaultJobOptions: {
-    attempts: 3,
-    backoff: {
-      type: "exponential"
+  const bullQueue = new Queue(job.key, {
+    connection: redisClient,
+    defaultJobOptions: {
+      attempts: 3,
+      backoff: {
+        delay: 2000,
+        type: "exponential",
+      },
+      removeOnComplete: {
+        age: 24 * 3600,
+        count: 50,
+      },
+      removeOnFail: {
+        age: 7 * 24 * 3600,
+      },
     },
-    removeOnComplete: {
-      age: 1 * 3600,
-      count: 1,
-    },
-    removeOnFail: {
-      age: 7 * 24 * 3600,
-    },
-  }});
-
-  // Configura listeners de forma consistente
-  // bullQueue.on("waiting", QueueListener.onWaiting);
-  // bullQueue.on("removed", QueueListener.onRemoved);
-  // bullQueue.on("error", QueueListener.onError);
-  // bullQueue.on("progress", QueueListener.onProgress);
-  // bullQueue.on("ioredis:close", QueueListener.onIoredis);
+  });
 
   return {
     bull: bullQueue,
@@ -170,15 +185,13 @@ export async function addJob(
  * Configura os workers para processar as filas
  * @param concurrency Número de jobs que podem ser processados simultaneamente por worker
  */
-export function processQueues(concurrency = 10) {
+export function processQueues(concurrency = 30) {
   for (const { name, handle } of queues) {
     const worker = new Worker(
       name,
       async (job: Job) => {
         try {
-          logger.info(`Processando job ${name} com ID ${job.id}`);
           const result = await handle(job.data);
-          logger.info(`Job ${name} processado com sucesso.`);
           return result;
         } catch (error) {
           const err = handleError(
@@ -188,7 +201,10 @@ export function processQueues(concurrency = 10) {
           throw err;
         }
       },
-      { connection: redisClient, concurrency }
+      {
+        ...defaultWorkerOptions, // Espalha as opções padrão
+        concurrency: concurrency, // Sobrescreve a concorrência com o valor passado na
+      }
     );
 
     setupWorkerListeners(worker, name);
@@ -308,7 +324,7 @@ export async function upsertJobScheduler(
     await queue.bull.upsertJobScheduler(queue.name, repeatOptions, {
       name: queue.name,
       data: {},
-      opts: opts || undefined,
+      opts: opts,
       ...restOptions,
     });
 

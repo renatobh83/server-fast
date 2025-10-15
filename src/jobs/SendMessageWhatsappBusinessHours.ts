@@ -8,10 +8,6 @@ export default {
     attempts: 10,
     removeOnComplete: 2,
     removeOnFail: 5,
-    backoff: {
-      type: "fixed",
-      delay: 60000 * 5, // 5 min
-    },
   },
   async handle(data: any) {
     try {
@@ -30,7 +26,10 @@ export default {
         ticket: data.ticket,
       };
 
-      return result;
+      return {
+        success: true,
+        message: JSON.stringify(result, null, 2),
+      };
     } catch (error: any) {
       logger.error(`Error enviar message business hours: ${error}`);
       throw new Error(error);

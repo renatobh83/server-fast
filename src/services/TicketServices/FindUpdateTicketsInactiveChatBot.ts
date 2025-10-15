@@ -8,6 +8,7 @@ import User from "../../models/User";
 import BuildSendMessageService, {
   MessageType,
 } from "../ChatFlowServices/BuildSendMessageService";
+import { AppError } from "../../errors/errors.helper";
 
 const FindUpdateTicketsInactiveChatBot = async (): Promise<void> => {
   const query = `
@@ -104,6 +105,7 @@ const FindUpdateTicketsInactiveChatBot = async (): Promise<void> => {
           });
         } catch (error) {
           console.log(error);
+          throw new AppError("ERR_FIND_UPDATE_INACTIVE_CHAT_BOT", 500);
         }
       }
     })

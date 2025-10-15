@@ -5,10 +5,6 @@ export default {
     attempts: 2,
     removeOnComplete: 5,
     removeOnFail: 100,
-    backoff: {
-      type: "fixed",
-      delay: 60000 * 3, // 3 min
-    },
   },
 
   async handle(data: any) {

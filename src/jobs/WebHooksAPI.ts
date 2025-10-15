@@ -15,10 +15,6 @@ export default {
     removeOnComplete: 2,
     removeOnFail: 5,
     attempts: 50,
-    backoff: {
-      type: "fixed",
-      delay: 60000 * 3, // 3 min
-    },
   },
   async handle(data: HandlerPayload) {
     try {

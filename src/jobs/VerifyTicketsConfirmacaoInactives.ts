@@ -9,9 +9,8 @@ export default {
   },
   async handle() {
     try {
-      logger.info("VerifyTicketsConfirmacaoInactives Initiated");
       await FindUpdateTicketsInactiveIntegracaoConfirmacao();
-      logger.info("Finalized VerifyTicketsConfirmacaoInactives");
+      return { success: true, message: "Ticket Closed" };
     } catch (error: any) {
       logger.error({ message: "Error send messages", error });
     }

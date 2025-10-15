@@ -9,9 +9,9 @@ export default {
   },
   async handle() {
     try {
-      logger.info("FindUpdateTicketsInactiveChatBot Initiated");
       await FindUpdateTicketsInactiveChatBot();
-      logger.info("Finalized FindUpdateTicketsInactiveChatBot");
+
+      return { success: true, message: "Ticket Closed" };
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Erro desconhecido";

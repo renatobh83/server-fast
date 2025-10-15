@@ -13,13 +13,15 @@ export default {
   },
   async handle(data: any) {
     try {
-      logger.info(`Sending Tenant Initiated: ${data.tenantId}`);
       if (sending[data.tenantId]) return;
       const wbot = getWbot(data.sessionId);
       sending[data.tenantId] = true;
       await SendMessagesSystemWbot(wbot, data.tenantId);
       sending[data.tenantId] = false;
-      logger.info(`Finalized Sending Tenant: ${data.tenantId}`);
+      return {
+        success: true,
+        message: "Mensagem enviada!",
+      };
     } catch (error: any) {
       logger.error({ message: "Error send messages", error });
       sending[data.tenantId] = false;

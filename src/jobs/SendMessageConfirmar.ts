@@ -21,16 +21,10 @@ export default {
     attempts: 2,
     removeOnComplete: 2,
     removeOnFail: 5,
-    backoff: {
-      type: "fixed",
-      delay: 60000 * 3, // 3 min
-    },
   },
   async handle(data: any) {
     const { ticket, sessionId, bodyProcessed } = data;
     try {
-      logger.info("SendMessageConfirmar Initiated");
-
       const contato = ticket.contato;
       const wbot = getWbot(sessionId);
 
@@ -116,7 +110,10 @@ export default {
         }
       }
       sending[ticket.tenantId] = false;
-      logger.info("Finalized SendMessageConfirmar");
+      return {
+        success: true,
+        message: "Mensagem Confirmacao enviada!",
+      };
     } catch (error: any) {
       throw new Error(error);
     }

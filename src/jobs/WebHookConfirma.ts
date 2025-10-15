@@ -219,7 +219,10 @@ Favor entrar em contato com a nossa central para confirma o seu exame, estamos �
       }
       await t.commit(); // Confirma todas as operações se tudo ocorrer bem
 
-      logger.info("WebHookConfirma success");
+      return {
+        success: true,
+        message: "WebHookConfirma success",
+      };
     } catch (error: any) {
       logger.error(`Error send message confirmacao response: ${error}`);
     }

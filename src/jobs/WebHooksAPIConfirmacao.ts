@@ -16,10 +16,6 @@ export default {
     attempts: 5,
     removeOnComplete: 2,
     removeOnFail: 5,
-    backoff: {
-      type: "fixed",
-      delay: 60000 * 3, // 3 min
-    },
   },
 
   async handle({ data }: HandlerPayload) {
@@ -27,7 +23,10 @@ export default {
       const payload = {};
 
       logger.info(`Queue WebHooksAPI success: Data: ${data}`);
-      return true;
+      return {
+        success: true,
+        message: "Queue WebHooksAPI",
+      };
     } catch (error) {
       logger.error(`Error send message api: ${error}`);
     }
