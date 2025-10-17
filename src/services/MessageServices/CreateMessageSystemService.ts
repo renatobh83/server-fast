@@ -80,6 +80,7 @@ export const CreateMessageSystemService = async ({
             messageData.mediaName = undefined;
             messageData.buffer = undefined;
           } else {
+            console.log("Com media");
             messageData.mediaType = detectMediaType(media.mimetype);
             messageData.mediaName = media.filename;
             messageData.buffer = media.buffer;
@@ -113,7 +114,8 @@ export const CreateMessageSystemService = async ({
               tenantId,
               body: media?.originalname || messageData.body,
               mediaUrl: media?.filename,
-              mediaType: detectMediaType(media.mimetype) || "chat",
+              mediaType:
+                media?.mimetype || media?.mimetype?.split("/")?.[0] || "chat",
             }),
           });
 
