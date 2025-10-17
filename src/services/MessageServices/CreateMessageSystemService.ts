@@ -80,7 +80,6 @@ export const CreateMessageSystemService = async ({
             messageData.mediaName = undefined;
             messageData.buffer = undefined;
           } else {
-            console.log("Com media");
             messageData.mediaType = detectMediaType(media.mimetype);
             messageData.mediaName = media.filename;
             messageData.buffer = media.buffer;
