@@ -115,7 +115,9 @@ export const CreateMessageSystemService = async ({
               body: media?.originalname || messageData.body,
               mediaUrl: media?.filename,
               mediaType:
-                media?.mimetype || media?.mimetype?.split("/")?.[0] || "chat",
+                media && media.mimeType
+                  ? detectMediaType(media.mimetype)
+                  : "chat",
             }),
           });
 
