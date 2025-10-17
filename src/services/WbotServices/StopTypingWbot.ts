@@ -15,6 +15,7 @@ export const stopTypingWbot = async (ticketId: string) => {
   if (!ticket) {
     throw new AppError("ERRO_TICKET_NO_FOUND", 404);
   }
+  if (ticket.channel !== "whatsapp") return;
 
   const wbot = await GetTicketWbot(ticket);
 

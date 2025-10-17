@@ -1,11 +1,10 @@
-import { Ack, IncomingCall, Message, Whatsapp } from "wbotconnect";
+import { IncomingCall, Message, Whatsapp } from "wbotconnect";
 import { logger } from "../../utils/logger";
 import { blockedMessages } from "../../helpers/BlockedMessages";
 import { HandleMessageSend } from "./Helpers/HandleMessageSend";
 import { HandleMessageReceived } from "./Helpers/HandleMessageReceived";
 import { VerifyCall } from "./Helpers/VerifyCall";
 import { HandleMsgReaction } from "./Helpers/HandleMsgReaction";
-// import HandleMsgAck from "./Helpers/HandleMsgAck";
 
 interface Session extends Whatsapp {
   id: number;

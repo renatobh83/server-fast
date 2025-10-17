@@ -11,6 +11,7 @@ import { AppError } from "../../errors/errors.helper";
 import Contact from "../../models/Contact";
 import SendMessageSystemProxy from "../../helpers/SendMessageSystemProxy";
 import socketEmit from "../../helpers/socketEmit";
+import { detectMediaType } from "../../utils/detectMediaType";
 
 interface MessageRequest {
   body: string;
@@ -47,7 +48,7 @@ export const CreateMessageSystemService = async ({
       fromMe: message.fromMe,
       read: true,
       mediaType: "chat",
-      mediaUrl: undefined,
+      mediaUrl: "",
       mediaName: undefined,
       timestamp: Date.now(),
       quotedMsgId: message.quotedMsg?.messageId,
@@ -79,16 +80,16 @@ export const CreateMessageSystemService = async ({
             messageData.mediaName = undefined;
             messageData.buffer = undefined;
           } else {
-            messageData.mediaType =
-              media.mimetype.split("/")[0] === "text"
-                ? "application"
-                : media.mimetype.split("/")[0];
+            messageData.mediaType = detectMediaType(media.mimetype);
             messageData.mediaName = media.filename;
             messageData.buffer = media.buffer;
+
             const filepath = `./public/${media.filename}`;
+            messageData.mediaUrl = filepath;
             const readable = Readable.from(media.buffer);
             await pipeline(readable, createWriteStream(filepath));
           }
+
           const messageSent = await SendMessageSystemProxy({
             ticket,
             messageData,
@@ -112,8 +113,7 @@ export const CreateMessageSystemService = async ({
               tenantId,
               body: media?.originalname || messageData.body,
               mediaUrl: media?.filename,
-              mediaType:
-                media?.mimetype || media?.mimetype?.split("/")?.[0] || "chat",
+              mediaType: detectMediaType(media.mimetype) || "chat",
             }),
           });
 

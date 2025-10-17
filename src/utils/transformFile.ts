@@ -1,6 +1,5 @@
 import fs from "fs/promises";
 import path from "path";
-import { v4 as uuidv4 } from "uuid";
 
 import mime from "mime-types";
 
@@ -20,15 +19,12 @@ export async function transformFile(file: {
   // Lê o conteúdo do arquivo como Buffer
   const buffer = file.buffer ? file.buffer : await fs.readFile(file.path!);
 
-  // Gera UUID
-  const id = uuidv4().replace(/-/g, "_");
-
   // Extrai extensão
   const ext = path.extname(file.filename); // ex: .pdf
   const base = path.basename(file.filename, ext);
 
   // Cria novo nome do arquivo
-  const newFilename = `${sanitizeFilename(base)}_${id}${ext}`;
+  const newFilename = `${sanitizeFilename(base)}`;
 
   // Detecta mimetype pela extensão
   const mimetype = mime.lookup(ext) || "application/octet-stream";

@@ -1,5 +1,5 @@
 import { writeFile } from "node:fs";
-import { join } from "node:path";
+import path, { join } from "node:path";
 import { promisify } from "node:util";
 import type { Message as WbotMessage, Whatsapp } from "wbotconnect";
 
@@ -9,11 +9,14 @@ import type Ticket from "../../../models/Ticket";
 import { logger } from "../../../utils/logger";
 import VerifyQuotedMessage from "./VerifyQuotedMessage";
 import CreateMessageService from "../../MessageServices/CreateMessageService";
+import { getSafeExtension } from "../../TbotServices/TelegramVerifyMediaMessage";
 
 const writeFileAsync = promisify(writeFile);
-
+interface msg extends WbotMessage {
+  filename?: string;
+}
 const VerifyMediaMessage = async (
-  msg: WbotMessage,
+  msg: msg,
   ticket: Ticket,
   contact: Contact,
   wbot: Whatsapp,
@@ -33,16 +36,13 @@ const VerifyMediaMessage = async (
 
   const fileData = Buffer.from(base64Data, "base64");
 
-  let ext = msg.mimetype.split("/")[1].split(";")[0];
+  let ext = getSafeExtension(msg.filename!, msg.mimetype);
+
   if (ext === "octet-stream" && msg.caption?.includes(".")) {
     ext = msg.caption.split(".").pop()?.trim() ?? "bin";
   }
 
-  const captionName = msg.caption?.trim();
-  const filename =
-    captionName && captionName.includes(".")
-      ? captionName
-      : `${Date.now()}.${ext}`;
+  const filename = buildFilename(msg, ext);
 
   try {
     await writeFileAsync(
@@ -92,4 +92,13 @@ const VerifyMediaMessage = async (
   });
 };
 
+function buildFilename(msg: any, ext: any) {
+  const captionName = msg.caption?.trim();
+  const baseName = msg.filename || captionName || "Arquivo";
+  // Remove extensão duplicada se já existir no nome original
+  const nameWithoutExt = path.basename(baseName, path.extname(baseName));
+  const finalName = `${nameWithoutExt}${ext}`;
+
+  return finalName;
+}
 export default VerifyMediaMessage;

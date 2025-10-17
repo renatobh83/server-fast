@@ -7892,3 +7892,50 @@
   message: '[Worker VerifyTicketsConfirmacaoInactives] Job repeat:VerifyTicketsConfirmacaoInactives:1760524640000 falhou. Erro: job.updateProgress is not a function',
   timestamp: '2025-10-15T10:45:06.616Z'
 }
+{
+  code: 'ERR_INVALID_ARG_TYPE',
+  level: 'error',
+  message: 'Erro fatal no HandleMessage: The "path" argument must be of type string. Received null',
+  stack: 'TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received null\n' +
+    '    at Object.extname (node:path:954:5)\n' +
+    '    at VerifyMediaMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\TelegramVerifyMediaMessage.js:150:40)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async HandleMessage (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\HandleMessageTelegram.js:214:13)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\TbotServices\\tbotMessageListener.js:20:9\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:519:21\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)\n' +
+    '    at async execute (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\telegraf\\lib\\composer.js:518:17)',
+  timestamp: '2025-10-17T09:57:48.158Z'
+}
+{
+  errno: -4068,
+  code: 'EISDIR',
+  syscall: 'open',
+  path: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public',
+  level: 'error',
+  message: "Erro ao salvar mídia: EISDIR: illegal operation on a directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public'",
+  stack: "Error: EISDIR: illegal operation on a directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public'",
+  timestamp: '2025-10-17T12:35:28.437Z'
+}
+{
+  errno: -4068,
+  code: 'EISDIR',
+  syscall: 'open',
+  path: 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public',
+  level: 'error',
+  message: "Erro ao salvar mídia: EISDIR: illegal operation on a directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public'",
+  stack: "Error: EISDIR: illegal operation on a directory, open 'C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\public'",
+  timestamp: '2025-10-17T12:37:09.611Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {}',
+  level: 'error',
+  timestamp: '2025-10-17T12:48:48.699Z'
+}
+{
+  message: 'SendWhatsAppMedia | Error: {}',
+  level: 'error',
+  timestamp: '2025-10-17T12:48:48.939Z'
+}

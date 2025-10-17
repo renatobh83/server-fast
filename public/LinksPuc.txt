@@ -1,0 +1,92 @@
+Visual Studio Enterprise 2019 
+chave MN8WP-CQJBT-Y9423-WKWPT-C92KR
+link donwload https://visualstudio.microsoft.com/thank-you-downloading-visual-studio-imagine/?sku=Enterprise&rel=16&src=myvs&utm_medium=microsoft&utm_source=my.visualstudio.com&utm_campaign=download&utm_content=vs+enterprise+2019
+
+***
+Windows Server 2019 Essentials (updated Sept 2019)
+chave TMPQ2-YNDWG-4CFC4-JWDXC-RVXTQ
+link http://dl.msdn.com/pr/pt_windows_server_2019_essentials_updated_sept_2019_x64_dvd_4f170f54.iso?t=dc095612-1d7d-43a7-a1e3-2f821100c546&e=1619744028&h=837c1ca7cffd0666055c34598bb28e66
+
+ptbr
+chave TMPQ2-YNDWG-4CFC4-JWDXC-RVXTQ
+link http://dl.msdn.com/pr/pt_windows_server_2019_essentials_updated_sept_2019_x64_dvd_4f170f54.iso?t=d3887f19-5586-4c75-b0ec-b92fb55e3c02&e=1619744614&h=85495cbad8c157b28065d86ccf3351b5
+
+****
+
+Windows Server 2016 Datacenter 
+chave GMH6G-DQNQB-VTWHW-6JKPT-238VR
+link https://dreamspark.download.prss.microsoft.com/pr/pt_windows_server_2016_updated_feb_2018_x64_dvd_11636693.iso?t=b827e0e6-817f-4114-a29e-1808347be521&e=1619744130&h=890fef16b004f6b0ffd0937c5c2a35edeb1e5f54c6e58f1903cb195f38519547
+
+***
+Windows 10 (consumer editions), version 2004 - DVD
+chave DKN6G-T6M2R-H9F6J-FGTD4-F6YMY
+link https://dreamspark.download.prss.microsoft.com/pr/pt_windows_10_consumer_editions_version_2004_x64_dvd_71ad3202.iso?t=397a7bb2-6a9d-47f1-bda4-c229c70da526&e=1619744174&h=88f4bc683597ad5bf8e70d67f9016f6f478bed651d1c6900d34594cceb0f8f7f
+
+****
+https://dreamspark.download.prss.microsoft.com/db/mu_windows_10_version_2004_or_20h2_10c_local_experience_packs_lxps_released_nov_2020_x86_arm64_x64_dvd_13383a39.iso?t=350c1176-68ea-45f2-b356-3f0b64c9af1e&e=1634730319&h=0f3f3234230228e55d902136c625e5b9c3bd62aa5b1ed602b23ef8977c28b6fa
+
+Windows 10 Education, version 20H2 (updated Nov 2020) - DVD
+chave DKN6G-T6M2R-H9F6J-FGTD4-F6YMY
+link https://dreamspark.download.prss.microsoft.com/pr/pt_windows_10_consumer_editions_version_20h2_updated_nov_2020_x64_dvd_5cd58571.iso?t=016fa1d2-b0d3-4f20-80df-c6920a289d82&e=1619744317&h=f25b327aa134df66c498b2e164c2c4c49b93f544020dbb2eb8ca1476835f761c
+
+***
+System Center Orchestrator 2019 
+chave BXH69-M62YX-QQD6R-3GPWX-8WMFY
+link https://dreamspark.download.prss.microsoft.com/pr/mu_system_center_orchestrator_2019_x64_dvd_98784e83.iso?t=ee3290f8-1255-417f-af1b-2bf2fcf876f9&e=1619744359&h=1aa58765d61a58a09409b6838ec33b55b683c5f09c71885f928e0752d208a9e3
+***
+
+System Center Service Manager 2019
+chave BXH69-M62YX-QQD6R-3GPWX-8WMFY
+link http://dl.msdn.com/pr/mu_system_center_service_manager_2019_x64_dvd_6281b1fe.iso?t=f5437262-5abc-425c-a6a9-1b7598eb418d&e=1619744387&h=4cd0d15fe5c846265137e58fdb205c51
+
+***
+
+System Center Virtual Machine Manager 2019
+chave BXH69-M62YX-QQD6R-3GPWX-8WMFY
+link https://dreamspark.download.prss.microsoft.com/pr/mu_system_center_virtual_machine_manager_2019_x64_dvd_06c18108.iso?t=4c607be2-4c55-42d2-8134-69c391e9b184&e=1619744433&h=ad20accd0c5964315fd569e65a1779b5e773c970e8b960e00aae7a9127e4bde9
+
+***
+
+System Center Data Protection Manager 2019
+chave BXH69-M62YX-QQD6R-3GPWX-8WMFY
+link  http://dl.msdn.com/pr/mu_system_center_data_protection_manager_2019_x64_dvd_b9964d9f.iso?t=fda58b2a-a726-4fbc-bc51-47a0db9d2468&e=1619744466&h=3adf846940d3f81f2399623d144912cb
+
+****
+
+System Center Operations Manager 2019
+chave BXH69-M62YX-QQD6R-3GPWX-8WMFY
+link https://dreamspark.download.prss.microsoft.com/pr/mu_system_center_operations_manager_2019_x64_dvd_b3488f5c.iso?t=3ac14f78-efa1-4e4a-b3bf-c65d48cd2e07&e=1619744488&h=88cfcd864c2a8df9e793aa9150601c347872538814d3f8d36873dbddc40b6fb6
+
+***
+
+Windows Server 2019 Standard (updated Sept 2019)
+chave C3H7G-MHNYC-F2D6F-67WYG-WXFBD
+link https://dreamspark.download.prss.microsoft.com/pr/en_windows_server_2019_updated_sept_2019_x64_dvd_199664ce.iso?t=3890090d-2824-4c0d-8bb0-cc2145bffb0f&e=1619744523&h=848be6eb786985286885e2dddf6426f250023fd14b01a15bd8aeb072b9e9baf3
+
+
+ptbr
+chave C3H7G-MHNYC-F2D6F-67WYG-WXFBD
+link https://dreamspark.download.prss.microsoft.com/pr/pt_windows_server_2019_updated_sept_2019_x64_dvd_76eb9a0b.iso?t=703b238a-b274-4c01-a9d1-ac30632ef093&e=1619744590&h=bf049306e0f2df86de91faea21d69e21a5e4247fbf95a8e07cf771b2d17935b6
+
+****
+
+Windows Server 2019 Datacenter (updated Sept 2019)
+chave GK8WN-Y2B8F-47W6H-9DTW6-RRJWF
+link http://dl.msdn.com/pr/en_windows_server_2019_updated_sept_2019_x64_dvd_199664ce.iso?t=73feeb26-1321-487b-ace4-19b5d4c83042&e=1619744546&h=505c8a7f964b0c1058ef0877031dcd00
+
+ptbr
+chave GK8WN-Y2B8F-47W6H-9DTW6-RRJWF
+link https://dreamspark.download.prss.microsoft.com/pr/pt_windows_server_2019_updated_sept_2019_x64_dvd_76eb9a0b.iso?t=46c5ae10-0c18-444c-bfc4-b3bc06018a37&e=1619744636&h=a3c692b838ffca3bca64784959d461357afa10945848268019e3129bd0673bd0
+
+
+*****
+Windows 11 Education N - DVD 
+https://dreamspark.download.prss.microsoft.com/pr/en-us_windows_11_consumer_editions_x64_dvd_bd3cf8df.iso?t=37a9f025-96b7-4f2a-aac6-8c690927feb3&e=1637275551&h=05c7dfbb8358d2302f1cb08409ff0617cb00c1b766cb96f94672c1b73eece03f
+chave NW2MC-TTPQQ-CXPQ3-KTYFW-TQ7Y7
+
+**
+
+Windows 11 Education - DVD 
+
+chave DKN6G-T6M2R-H9F6J-FGTD4-F6YMY
+https://dreamspark.download.prss.microsoft.com/pr/en-us_windows_11_consumer_editions_x64_dvd_bd3cf8df.iso?t=4dd776a4-a147-48d0-b5b7-4ef619fe3b6d&e=1637275631&h=796159dd57b99dc0f25d1b56dfb7e6c8465498d7914c0f0ddf61973a0f4c524d

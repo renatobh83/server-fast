@@ -16,6 +16,7 @@ export const startTypingWbot = async (ticketId: string) => {
   if (!ticket) {
     throw new AppError("ERRO_TICKET_NO_FOUND", 404);
   }
+  if (ticket.channel !== "whatsapp") return;
   // 🔒 Evita chamadas repetidas
   const canSend = setTyping(ticketId, 3000); // 3s bloqueio
   if (!canSend) {
