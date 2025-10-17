@@ -130,7 +130,7 @@ const VerifyMediaMessage = async (
   }
   const ext = getSafeExtension(mediaInfo.fileName, mediaInfo.mimeType);
 
-  const filename = `${mediaInfo.fileName || ""}_${new Date().getTime()}${ext}`;
+  const filename = buildFilename(mediaInfo, ext);
   const pathFile = join(__dirname, "..", "..", "..", "public", filename);
 
   const linkDownload = await ctx.telegram.getFileLink(mediaInfo.fileId);
@@ -253,5 +253,14 @@ export function getSafeExtension(filename: string, mimetype: any) {
   } as any;
 
   return mimeMap[mimetype] || "";
+}
+
+function buildFilename(msg: any, ext: any) {
+  const baseName = msg.fileName || "Arquivo";
+  // Remove extensão duplicada se já existir no nome original
+  const nameWithoutExt = path.basename(baseName, path.extname(baseName));
+  const finalName = `${nameWithoutExt}${ext}`;
+
+  return finalName;
 }
 export default VerifyMediaMessage;
