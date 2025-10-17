@@ -114,7 +114,7 @@ export const CreateMessageSystemService = async ({
               body: media?.originalname || messageData.body,
               mediaUrl: media?.filename,
               mediaType:
-                media && media.mimeType
+                media && media.mimetype
                   ? detectMediaType(media.mimetype)
                   : "chat",
             }),
