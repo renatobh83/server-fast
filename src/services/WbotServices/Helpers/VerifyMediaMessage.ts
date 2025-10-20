@@ -94,7 +94,8 @@ const VerifyMediaMessage = async (
 
 function buildFilename(msg: any, ext: any) {
   const captionName = msg.caption?.trim();
-  const baseName = msg.filename || captionName || `Arquivo-${new Date()}`;
+  const baseName =
+    msg.filename || captionName || `Arquivo-${new Date().getTime()}`;
   // Remove extensão duplicada se já existir no nome original
   const nameWithoutExt = path.basename(baseName, path.extname(baseName));
   const finalName = `${nameWithoutExt}${ext}`;
