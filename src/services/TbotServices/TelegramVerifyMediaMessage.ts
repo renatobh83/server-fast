@@ -256,7 +256,7 @@ export function getSafeExtension(filename: string, mimetype: any) {
 }
 
 function buildFilename(msg: any, ext: any) {
-  const baseName = msg.fileName || "Arquivo";
+  const baseName = msg.fileName || `Arquivo-${new Date()}`;
   // Remove extensão duplicada se já existir no nome original
   const nameWithoutExt = path.basename(baseName, path.extname(baseName));
   const finalName = `${nameWithoutExt}${ext}`;
