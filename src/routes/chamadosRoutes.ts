@@ -45,7 +45,6 @@ export default async function chamadoRoutes(fastify: FastifyInstance) {
       schema: {
         body: {
           type: "object",
-          required: ["contatoId"],
           properties: {
             ticketId: { type: "number" },
             descricao: { type: "string" },
