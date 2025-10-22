@@ -54,20 +54,20 @@ export default {
         quantidadeExames > 1 ? "exames agendados" : "exame agendado";
       const horarioTexto =
         quantidadeExames > 1
-          ? `a partir das ${ticket.atendimentoHora} `
+          ? `a partir das *${ticket.atendimentoHora}*`
           : `às ${ticket.atendimentoHora}`;
 
       const sendMessage = await wbot.sendListMessage(contato, {
         buttonText: "Confirmar",
         description: `
 Olá ${bodyProcessed.paciente_nome}. 😊,
-Nós, da Clínica Lume, temos um importante lembrete pra você:
+Nós, da *Clínica Lume*, temos um importante lembrete pra você:
 
 🗓 Você tem ${plural} na nossa clínica.
 
-Seu atendimento está agendado para o dia ${ticket.atendimentoData} ${horarioTexto}.
+Seu atendimento está agendado para o dia *${ticket.atendimentoData}* ${horarioTexto}.
 
-⚠ Importante:
+⚠ *Importante*:
   - Paciente deverá apresentar pedido médico, carteira do convênio e documento de identificação com foto.
   - Trazer todos os exames anteriores realizados da área a ser examinada.
                             `,
