@@ -60,18 +60,16 @@ export default {
       const sendMessage = await wbot.sendListMessage(contato, {
         buttonText: "Confirmar",
         description: `
-      Olá ${bodyProcessed.paciente_nome}. 😊,
-      Nós, da Diagnóstico Por Imagem, temos um importante lembrete pra você:
+Olá ${bodyProcessed.paciente_nome}. 😊,
+Nós, da Clínica Lume, temos um importante lembrete pra você:
 
-      🗓 Você tem ${plural} na nossa clínica.
+🗓 Você tem ${plural} na nossa clínica.
 
-      Seu atendimento está agendado para o dia ${ticket.atendimentoData} ${horarioTexto}.
+Seu atendimento está agendado para o dia ${ticket.atendimentoData} ${horarioTexto}.
 
-      ⏰ Gentileza comparecer às ${ticket.atendimentoHora} para efetuar o processo de atendimento na Recepção.
-
-      ⚠ Importante:
-          - Paciente deverá apresentar pedido médico, carteira do convênio e documento de identificação com foto.
-          - Trazer todos os exames anteriores realizados da área a ser examinada.
+⚠ Importante:
+  - Paciente deverá apresentar pedido médico, carteira do convênio e documento de identificação com foto.
+  - Trazer todos os exames anteriores realizados da área a ser examinada.
                             `,
         sections: [
           {
