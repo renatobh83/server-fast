@@ -1,6 +1,7 @@
 import { QueryTypes } from "sequelize";
 import type Ticket from "../../models/Ticket";
 import User from "../../models/User";
+import CreateLogTicketService from "../TicketServices/CreateLogTicketService";
 
 const DefinedUserBotService = async (
   ticket: Ticket,
@@ -55,12 +56,12 @@ const DefinedUserBotService = async (
       userId,
     });
 
-    // await CreateLogTicketService({
-    // 	ticketId: ticket.id,
-    // 	type: "userDefine",
-    // 	userId,
-    // 	tenantId: +tenantId
-    // });
+    await CreateLogTicketService({
+      ticketId: ticket.id,
+      type: "userDefine",
+      userId,
+      tenantId: +tenantId,
+    });
   }
 };
 

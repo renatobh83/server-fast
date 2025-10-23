@@ -1,16 +1,19 @@
 import { AppError } from "../../errors/errors.helper";
 import Ticket from "../../models/Ticket";
+import CreateLogTicketService from "./CreateLogTicketService";
 
 import ShowTicketService from "./ShowTicketService";
 
 interface Request {
   id: string | number;
   tenantId: number;
+  userId: number;
 }
 
 const DeleteTicketService = async ({
   id,
   tenantId,
+  userId,
 }: Request): Promise<Ticket> => {
   try {
     const ticket = await ShowTicketService({ id, tenantId });
@@ -20,7 +23,12 @@ const DeleteTicketService = async ({
     }
 
     await ticket.destroy();
-
+    await CreateLogTicketService({
+      userId,
+      ticketId: ticket.id,
+      type: "delete",
+      tenantId: ticket.tenantId,
+    });
     return ticket;
   } catch (error: any) {
     if (error instanceof AppError) {

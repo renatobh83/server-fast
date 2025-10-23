@@ -29,11 +29,13 @@ import Empresa from "./Empresa";
 import FastReply from "./FastReply";
 import NotaFiscalLog from "./NotafiscalLog";
 import IntegracaoGenesisConfirmacao from "./IntegracaoGenesisConfirmacao";
+import LogTicket from "./LogTicket";
 
 // recebe a instância do sequelize
 export function initModels(sequelize: Sequelize) {
   const models = {
     ApiConfig: ApiConfig.initModel(sequelize),
+
     ChatFlow: ChatFlow.initModel(sequelize),
     Integracoes: Integracoes.initModel(sequelize),
     Media: Media.initModel(sequelize),
@@ -61,6 +63,7 @@ export function initModels(sequelize: Sequelize) {
     NotaFiscal: NotaFiscal.initModel(sequelize),
     EmpresaContrato: EmpresaContrato.initModel(sequelize),
     ResultadoDDNS: ResultadoDDNS.initModel(sequelize),
+    LogTicket: LogTicket.initModel(sequelize),
     FastReply: FastReply.initModel(sequelize),
     NotaFiscalLog: NotaFiscalLog.initModel(sequelize),
   };

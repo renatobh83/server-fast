@@ -47,7 +47,7 @@ export const FindOrCreateConfirmacaoservice = async ({
         ],
       },
       raw: true,
-      logging: console.log,
+      // logging: console.log,
     });
     if (!confirmacao) {
       const novosProcedimentos: any[] = [];

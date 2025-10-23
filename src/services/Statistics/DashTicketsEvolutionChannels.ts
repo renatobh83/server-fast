@@ -81,7 +81,7 @@ const DashTicketsEvolutionChannels = async ({
         userId,
       },
       type: QueryTypes.SELECT,
-      // logging: console.log
+      // logging: console.log,
     }
   );
   return data;

@@ -7,6 +7,7 @@ import Ticket from "../../models/Ticket";
 import { getCache, setCache } from "../../utils/cacheRedis";
 
 import ShowContactService from "../ContactServices/ShowContactService";
+import CreateLogTicketService from "./CreateLogTicketService";
 import ShowTicketService from "./ShowTicketService";
 // import ShowTicketService from "./ShowTicketService";
 
@@ -77,6 +78,12 @@ const CreateTicketService = async ({
     )) as Ticket;
     if (!ticket) {
       ticket = await ShowTicketService({ id, tenantId });
+      await CreateLogTicketService({
+        userId,
+        ticketId: ticket.id,
+        type: "open",
+        tenantId: ticket.tenantId,
+      });
       await setCache(RedisKeys.ticketService(tenantId, id), ticket);
     }
 

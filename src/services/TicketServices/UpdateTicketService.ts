@@ -4,6 +4,7 @@ import { getIO } from "../../lib/socket";
 import Contact from "../../models/Contact";
 import Ticket from "../../models/Ticket";
 import User from "../../models/User";
+import CreateLogTicketService from "./CreateLogTicketService";
 
 interface TicketData {
   status?: string;
@@ -106,57 +107,56 @@ const UpdateTicketService = async ({
     data.startedAttendanceAt = new Date().getTime();
   }
 
-
   await ticket.update(data);
 
   // logar o inicio do atendimento
-  // if (oldStatus === "pending" && statusData === "open") {
-  //   await CreateLogTicketService({
-  //     userId: userIdRequest,
-  //     ticketId,
-  //     type: "open",
-  //     tenantId: ticket.tenantId,
-  //   });
-  // }
+  if (oldStatus === "pending" && statusData === "open") {
+    await CreateLogTicketService({
+      userId: userIdRequest,
+      ticketId,
+      type: "open",
+      tenantId: ticket.tenantId,
+    });
+  }
 
   // // logar ticket resolvido
-  // if (statusData === "closed") {
-  //   await CreateLogTicketService({
-  //     userId: userIdRequest,
-  //     ticketId,
-  //     type: "closed",
-  //     tenantId: ticket.tenantId,
-  //   });
-  // }
+  if (statusData === "closed") {
+    await CreateLogTicketService({
+      userId: userIdRequest,
+      ticketId,
+      type: "closed",
+      tenantId: ticket.tenantId,
+    });
+  }
 
   // // logar ticket retornado à pendente
-  // if (oldStatus === "open" && statusData === "pending") {
-  //   await CreateLogTicketService({
-  //     userId: userIdRequest,
-  //     ticketId,
-  //     type: "pending",
-  //     tenantId: ticket.tenantId,
-  //   });
-  // }
+  if (oldStatus === "open" && statusData === "pending") {
+    await CreateLogTicketService({
+      userId: userIdRequest,
+      ticketId,
+      type: "pending",
+      tenantId: ticket.tenantId,
+    });
+  }
 
-  // if (isTransference) {
-  //   // tranferiu o atendimento
-  //   await CreateLogTicketService({
-  //     userId: userIdRequest,
-  //     ticketId,
-  //     type: "transfered",
-  //     tenantId: ticket.tenantId,
-  //   });
-  //   // recebeu o atendimento tansferido
-  //   if (userId) {
-  //     await CreateLogTicketService({
-  //       userId,
-  //       ticketId,
-  //       type: "receivedTransfer",
-  //       tenantId: ticket.tenantId,
-  //     });
-  //   }
-  // }
+  if (isTransference) {
+    // tranferiu o atendimento
+    await CreateLogTicketService({
+      userId: userIdRequest,
+      ticketId,
+      type: "transfered",
+      tenantId: ticket.tenantId,
+    });
+    // recebeu o atendimento tansferido
+    if (userId) {
+      await CreateLogTicketService({
+        userId,
+        ticketId,
+        type: "receivedTransfer",
+        tenantId: ticket.tenantId,
+      });
+    }
+  }
 
   await ticket.reload();
 

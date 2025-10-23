@@ -27,6 +27,7 @@ import { obterSessaoUsuarioRedis } from "../IntegracoesServices/Genesis/Lib/sess
 import VerifyBusinessHoursFlow from "../WbotServices/Helpers/VerifyBusinessHoursFlow";
 import { CreateMessageSystemService } from "../MessageServices/CreateMessageSystemService";
 import { AppError } from "../../errors/errors.helper";
+import CreateLogTicketService from "../TicketServices/CreateLogTicketService";
 
 // Função auxiliar para atualizar o ticket e emitir o evento de socket
 const updateTicketAndEmit = async (
@@ -168,6 +169,12 @@ export const handleQueueAssignment = async (
         },
         "ticket:update_chatflow"
       );
+      await CreateLogTicketService({
+        ticketId: ticket.id,
+        type: "queue",
+        queueId: stepCondition.queueId,
+        tenantId: ticket.tenantId,
+      });
 
       if (flowConfig?.data?.autoDistributeTickets) {
         await DefinedUserBotService(
@@ -200,6 +207,12 @@ export const handleUserAssignment = async (
     });
 
     await ticket.reload();
+    await CreateLogTicketService({
+      userId: stepCondition.userIdDestination as unknown as number,
+      ticketId: ticket.id,
+      type: "userDefine",
+      tenantId: ticket.tenantId,
+    });
   }
 };
 
@@ -291,7 +304,7 @@ export const isRetriesLimit = async (
     }
 
     await updateTicketAndEmit(ticket, updatedValues, "ticket:update_chatflow");
-
+    await CreateLogTicketService(logsRetry);
     // enviar mensagem de boas vindas à fila ou usuário
     if (destinyType !== RetryDestinyType.Close) {
       await sendWelcomeMessage(ticket, flowConfig);
@@ -329,7 +342,11 @@ export const isAnswerCloseTicket = async (
       answered: false,
       status: "closed",
     });
-
+    await CreateLogTicketService({
+      ticketId: ticket.id,
+      type: "autoClose",
+      tenantId: ticket.tenantId,
+    });
     return true;
   }
   return false;

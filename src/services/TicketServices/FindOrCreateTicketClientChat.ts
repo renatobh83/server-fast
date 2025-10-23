@@ -6,6 +6,7 @@ import Empresa from "../../models/Empresa";
 import Ticket from "../../models/Ticket";
 import User from "../../models/User";
 import Whatsapp from "../../models/Whatsapp";
+import CreateLogTicketService from "./CreateLogTicketService";
 
 interface PropsClient {
   client: any;
@@ -93,6 +94,12 @@ export const FindOrCreateTicketClientChat = async ({
     };
 
     ticket = await Ticket.create(ticketObj);
+
+    await CreateLogTicketService({
+      ticketId: ticket.id,
+      tenantId,
+      type: "create",
+    });
 
     ticket.setDataValue("isCreated", true);
     // Busca novamente incluindo os dados da empresa (join)

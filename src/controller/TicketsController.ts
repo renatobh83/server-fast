@@ -14,15 +14,20 @@ import { pupa } from "../utils/pupa";
 import { CreateMessageSystemService } from "../services/MessageServices/CreateMessageSystemService";
 import Ticket from "../models/Ticket";
 import Contact from "../models/Contact";
+import CreateLogTicketService from "../services/TicketServices/CreateLogTicketService";
 
 export const apagarTicket = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const { tenantId } = request.user as any;
+  const { tenantId, id } = request.user as any;
   const { ticketId } = request.params as any;
   try {
-    const ticket = await DeleteTicketService({ id: ticketId, tenantId });
+    const ticket = await DeleteTicketService({
+      id: ticketId,
+      tenantId,
+      userId: id,
+    });
     const io = getIO();
     io.to(`${tenantId}:${ticket.status}`)
       .to(`${tenantId}:${ticketId}`)
@@ -77,7 +82,7 @@ export const mostrarTicket = async (
   reply: FastifyReply
 ) => {
   try {
-    const { tenantId } = request.user as any;
+    const { tenantId, id } = request.user as any;
     const { ticketId } = request.params as { ticketId: number };
 
     const ticket = await ShowTicketService({ id: ticketId, tenantId });
@@ -91,8 +96,13 @@ export const mostrarTicket = async (
       where,
       // logging: console.log
     });
-
     ticket.setDataValue("scheduledMessages", scheduledMessages);
+    await CreateLogTicketService({
+      userId: id,
+      ticketId,
+      tenantId: ticket.tenantId,
+      type: "access",
+    });
     return reply.code(STANDARD.OK.statusCode).send(ticket);
   } catch (error) {
     console.log(error);

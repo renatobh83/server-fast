@@ -6,6 +6,7 @@ import Ticket from "../../../models/Ticket";
 import Whatsapp from "../../../models/Whatsapp";
 import { getCache, setCache } from "../../../utils/cacheRedis";
 import IsContactTest from "../../ChatFlowServices/IsContactTest";
+import CreateLogTicketService from "../../TicketServices/CreateLogTicketService";
 import ShowWhatsAppService from "../../WhatsappService/ShowWhatsAppService";
 
 const CheckChatBotFlowWelcome = async (instance: Ticket): Promise<void> => {
@@ -60,6 +61,11 @@ const CheckChatBotFlowWelcome = async (instance: Ticket): Promise<void> => {
     // alteracao do conteudo da line de to para target
     stepChatFlow: lineFlow.target,
     lastInteractionBot: new Date(),
+  });
+  await CreateLogTicketService({
+    ticketId: instance.id,
+    tenantId: instance.tenantId,
+    type: "chatBot",
   });
 };
 

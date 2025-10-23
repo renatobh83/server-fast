@@ -12,6 +12,7 @@ import CheckChatBotFlowWelcome from "../WbotServices/Helpers/CheckChatBotFlowWel
 import { AppError } from "../../errors/errors.helper";
 
 import Message from "../../models/Message";
+import CreateLogTicketService from "./CreateLogTicketService";
 
 interface Data {
   contact: Contact;
@@ -168,7 +169,11 @@ const FindOrCreateTicketService = async ({
     }
 
     const ticketCreated = await Ticket.create(ticketObj);
-
+    await CreateLogTicketService({
+      ticketId: ticketCreated.id,
+      tenantId,
+      type: "create",
+    });
     if (
       (msg && !msg.fromMe) ||
       (!ticketCreated.userId && !msg.author) ||
@@ -190,7 +195,7 @@ const FindOrCreateTicketService = async ({
       type: "ticket:update",
       payload: finalTicket,
     });
-    
+
     return finalTicket;
   } catch (error: any) {
     if (error instanceof AppError) {
