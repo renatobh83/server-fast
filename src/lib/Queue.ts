@@ -187,6 +187,20 @@ export async function addJob(
  */
 export function processQueues(concurrency = 30) {
   for (const { name, handle } of queues) {
+   const customOptions: any = 
+      ...defaultWorkerOptions
+      concurrency
+    }
+
+    // ✅ Se for a fila de confirmação, aplica limiter especi
+    if (name === "SendMessageConfirmar") {
+      customOptions.limiter = {
+        max: 1,        // processa 1 job por ve
+        duration: 12000 // espera 12 segundos antes de iniciar o próxim
+      }
+      customOptions.concurrency = 1; // garante processamento sequencia
+    
+}
     const worker = new Worker(
       name,
       async (job: Job) => {
@@ -201,10 +215,7 @@ export function processQueues(concurrency = 30) {
           throw err;
         }
       },
-      {
-        ...defaultWorkerOptions, // Espalha as opções padrão
-        concurrency: concurrency, // Sobrescreve a concorrência com o valor passado na
-      }
+customOptions
     );
 
     setupWorkerListeners(worker, name);
