@@ -19,7 +19,7 @@ const CreateIntegracoesService = async ({
   }
 
   if (!config_json || typeof config_json !== "object") {
-    throw new AppError("JSON_INVALID", 404);
+    throw new AppError("JSON_INVALID", 400);
   }
   if (integracaoExists) {
     throw new AppError("QUEUE_ALREADY_EXISTS", 501);

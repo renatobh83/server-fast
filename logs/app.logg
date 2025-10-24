@@ -7944,3 +7944,20 @@
   level: 'error',
   timestamp: '2025-10-23T12:44:10.395Z'
 }
+{
+  message: 'Unhandled Rejection: SequelizeDatabaseError: value too long for type character varying(255)',
+  level: 'error',
+  timestamp: '2025-10-24T09:40:49.843Z'
+}
+{
+  message: 'Unhandled Rejection: SequelizeDatabaseError: value too long for type character varying(255)',
+  level: 'error',
+  timestamp: '2025-10-24T09:41:49.465Z'
+}
+{
+  level: 'error',
+  message: 'Auto Close Called',
+  session: 2,
+  type: 'client',
+  timestamp: '2025-10-24T09:41:49.940Z'
+}

@@ -12,7 +12,7 @@ export default async function integtracaoRoutes(fastify: FastifyInstance) {
           required: ["name", "config_json"],
           properties: {
             name: { type: "string" },
-            config_json: { type: "object" },
+            config_json: { type: "string" },
           },
         },
       },
@@ -25,10 +25,10 @@ export default async function integtracaoRoutes(fastify: FastifyInstance) {
       schema: {
         body: {
           type: "object",
-          required: [" name", "config_json"],
+          required: ["name", "config_json"],
           properties: {
             name: { type: "string" },
-            config_json: { type: "object" },
+            config_json: { type: "string" },
           },
         },
       },

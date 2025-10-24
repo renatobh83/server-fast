@@ -17,7 +17,7 @@ const CreateOrUpdateDadosIntegracaoService = async ({
   }
 
   if (!valores_json || typeof valores_json !== "object") {
-    throw new AppError("JSON_INVALID", 404);
+    throw new AppError("JSON_INVALID", 400);
   }
   // Verifica se a integração existe
   // const integracao = await IntegracoesDados.findOne({

@@ -12,11 +12,12 @@ export const createIntegracao = async (
   reply: FastifyReply
 ) => {
   const { tenantId } = request.user as any;
-  const { name, configJson } = request.body as any;
+  const { name, config_json } = request.body as any;
+
   try {
     const integracao = await CreateIntegracoesService({
       name,
-      config_json: configJson,
+      config_json,
       tenantId,
     });
     return reply.code(STANDARD.OK.statusCode).send(integracao);
@@ -44,11 +45,11 @@ export const updateIntegracao = async (
   reply: FastifyReply
 ) => {
   const { id } = request.params as any;
-  const { name, configJson } = request.body as any;
+  const { name, config_json } = request.body as any;
   try {
     const integracao = await UpdateIntegracoesServices({
       id,
-      config_json: configJson,
+      config_json,
       name,
     });
     return reply.code(STANDARD.OK.statusCode).send(integracao);
