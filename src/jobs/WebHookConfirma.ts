@@ -130,7 +130,7 @@ export default {
         (result) => result.status === "fulfilled"
       );
 
-      if (examesConfirmados.length > 0) {
+      if (examesConfirmados.length > 0 && status === "confirm") {
         // Apenas exames confirmados seguem para o preparo
         const preparos = ticketIntegracao.procedimentos.map((i) =>
           getPreparoExteno({ integracao, atedimento: i })
@@ -140,7 +140,8 @@ export default {
         await wbot.sendText(
           contatoSend,
           `Seu agendamento foi confirmado com sucesso!
-      🏥 Para garantir que tudo ocorra bem, confira as instruções de preparo no arquivo anexado.`
+
+🏥 Para garantir que tudo ocorra bem, confira as instruções de preparo no arquivo anexado.`
         );
 
         let mensagemPreparoEnviada = false; // Variável de controle
@@ -178,9 +179,11 @@ export default {
         await delay(3000);
         await wbot.sendText(
           contatoSend,
-          "O processo de confirmação foi concluído com sucesso. Caso tenha alguma dúvida ou precise de mais informações, entre em contato com a nossa central de atendimento. Estamos à disposição para ajudá-lo!"
+          `O processo de confirmação foi concluído com sucesso.
+Caso tenha alguma dúvida ou precise de mais informações, entre em contato com a nossa central de atendimento.
+Estamos à disposição para ajudá-lo!`
         );
-      } else if (status === "cancel") {
+      } else if (examesConfirmados.length > 0 && status === "cancel") {
         await wbot.sendText(
           contatoSend,
           "Seu exame foi cancelado com sucesso. Se precisar reagendar, entre em contato com nossa central de atendimento."
@@ -198,7 +201,9 @@ export default {
         await delay(1000);
         await wbot.sendText(
           contatoSend,
-          "O processo de confirmação foi concluído com sucesso. Caso tenha alguma dúvida ou precise de mais informações, entre em contato com a nossa central de atendimento. Estamos à disposição para ajudá-lo!"
+          `O processo de confirmação foi concluído com sucesso.
+Caso tenha alguma dúvida ou precise de mais informações, entre em contato com a nossa central de atendimento.
+Estamos à disposição para ajudá-lo!`
         );
       } else {
         await ticketIntegracao.update(
