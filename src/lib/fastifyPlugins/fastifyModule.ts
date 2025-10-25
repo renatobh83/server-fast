@@ -12,23 +12,46 @@ import fastifyStatic from "@fastify/static";
 import path from "node:path";
 import xss from "xss";
 
+
+
 const fastifyModule = fp(async (fastify) => {
   fastify.log.info("🔐 Loading production Fastify module...");
 
+
+
+
   // 1️⃣ Helmet + CSP
-  await fastify.register(helmet, {
+  await fastify.register(helmet, process.env.NODE_ENV === "production" ? {
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'"],
-        imgSrc: ["'self'", "data:"],
-        connectSrc: ["'self'"],
-        fontSrc: ["'self'", "data:"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "https:", "blob:"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https:"],
+        imgSrc: ["'self'", "data:", "https:"],
+        connectSrc: ["'self'", "wss:", "https:"],
+        fontSrc: ["'self'", "data:", "https:"],
         objectSrc: ["'none'"],
+        baseUri: ["'self'"],
+        frameAncestors: ["'none'"],
         upgradeInsecureRequests: [],
       },
     },
+    crossOriginEmbedderPolicy: true,
+    crossOriginOpenerPolicy: { policy: "same-origin" },
+    crossOriginResourcePolicy: { policy: "same-origin" },
+    referrerPolicy: { policy: "no-referrer" },
+    xPoweredBy: false,
+    strictTransportSecurity: {
+      maxAge: 63072000, // 2 anos
+      includeSubDomains: true,
+      preload: true,
+    }
+  } : {
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+    crossOriginOpenerPolicy: false,
+    crossOriginResourcePolicy: false,
+    xPoweredBy: false,
   });
 
   // 2️⃣ CORS
@@ -92,7 +115,9 @@ const fastifyModule = fp(async (fastify) => {
     if (length && parseInt(length) > 50 * 1024 * 1024) {
       reply.code(413).send({ error: "Payload too large" });
     }
+   
   });
+  
 
   // 7️⃣ HPP
   fastify.addHook("preValidation", async (req, reply) => {
@@ -111,7 +136,7 @@ const fastifyModule = fp(async (fastify) => {
 
   // 9️⃣ CSRF rotativo
   await fastify.register(csrf, {
-    cookieOpts: { signed: true, httpOnly: true, sameSite: "strict" },
+    cookieOpts: { secure: true, httpOnly: true, sameSite: "strict" },
   });
   fastify.addHook("preHandler", async (req, reply) => {
     if (req.method === "GET")

@@ -187,8 +187,9 @@ export async function addJob(
  */
 export function processQueues(concurrency = 30) {
   for (const { name, handle } of queues) {
-   const customOptions: any = 
-      ...defaultWorkerOptions
+   
+    const customOptions: any = {
+      ...defaultWorkerOptions,
       concurrency
     }
 
@@ -199,7 +200,6 @@ export function processQueues(concurrency = 30) {
         duration: 12000 // espera 12 segundos antes de iniciar o próxim
       }
       customOptions.concurrency = 1; // garante processamento sequencia
-    
 }
     const worker = new Worker(
       name,

@@ -13,6 +13,11 @@ import { configSchema } from "./configSchema";
 import { redisPlugin } from "../lib/fastifyPlugins/redis";
 import { sequelizePlugin } from "../lib/fastifyPlugins/sequelize";
 import { StartAllWhatsAppsSessions } from "../services/WbotServices/StartAllWhatsAppsSessions";
+import { shutdown } from "../lib/Queue";
+
+
+
+
 
 export async function buildServer(
   config: FastifyServerOptions = {}
@@ -24,7 +29,7 @@ export async function buildServer(
         target: "pino-pretty", // saída mais legível
       },
     },
-    trustProxy: true,
+    trustProxy: process.env.NODE_ENV !== "production"
   });
 
   await server.register(fastifyEnv, {
@@ -35,6 +40,7 @@ export async function buildServer(
   await server.register(redisPlugin);
   await server.register(fastifyModule);
   await server.register(sequelizePlugin);
+
 
   await server.register(jwt, {
     secret: process.env.JWT_SECRET!,
@@ -64,6 +70,7 @@ export async function buildServer(
     }
   );
 
+
   await server.register(routes);
 
   server.setNotFoundHandler((request, reply) => {
@@ -80,6 +87,7 @@ export async function buildServer(
     process.on(signal, async () => {
       try {
         await server.close();
+        await shutdown()
         server.log.error(`Closed application on ${signal}`);
         process.exit(0);
       } catch (err: any) {

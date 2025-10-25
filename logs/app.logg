@@ -7961,3 +7961,107 @@
   type: 'client',
   timestamp: '2025-10-24T09:41:49.940Z'
 }
+{
+  error: FastifyError [Error]: The decorator 'serializeCookie' has already been added!
+      at decorate (/Users/renato/Desktop/Dev/server-fast/node_modules/fastify/lib/decorate.js:21:11)
+      at Object.decorateFastify [as decorate] (/Users/renato/Desktop/Dev/server-fast/node_modules/fastify/lib/decorate.js:77:3)
+      at plugin (/Users/renato/Desktop/Dev/server-fast/node_modules/@fastify/cookie/plugin.js:125:11)
+      at Plugin.exec (/Users/renato/Desktop/Dev/server-fast/node_modules/avvio/lib/plugin.js:125:28)
+      at Boot._loadPlugin (/Users/renato/Desktop/Dev/server-fast/node_modules/avvio/boot.js:432:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'FST_ERR_DEC_ALREADY_PRESENT',
+    statusCode: 500
+  },
+  level: 'error',
+  message: "uncaughtException: The decorator 'serializeCookie' has already been added!\n" +
+    "FastifyError: The decorator 'serializeCookie' has already been added!\n" +
+    '    at decorate (/Users/renato/Desktop/Dev/server-fast/node_modules/fastify/lib/decorate.js:21:11)\n' +
+    '    at Object.decorateFastify [as decorate] (/Users/renato/Desktop/Dev/server-fast/node_modules/fastify/lib/decorate.js:77:3)\n' +
+    '    at plugin (/Users/renato/Desktop/Dev/server-fast/node_modules/@fastify/cookie/plugin.js:125:11)\n' +
+    '    at Plugin.exec (/Users/renato/Desktop/Dev/server-fast/node_modules/avvio/lib/plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (/Users/renato/Desktop/Dev/server-fast/node_modules/avvio/boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  stack: "FastifyError: The decorator 'serializeCookie' has already been added!\n" +
+    '    at decorate (/Users/renato/Desktop/Dev/server-fast/node_modules/fastify/lib/decorate.js:21:11)\n' +
+    '    at Object.decorateFastify [as decorate] (/Users/renato/Desktop/Dev/server-fast/node_modules/fastify/lib/decorate.js:77:3)\n' +
+    '    at plugin (/Users/renato/Desktop/Dev/server-fast/node_modules/@fastify/cookie/plugin.js:125:11)\n' +
+    '    at Plugin.exec (/Users/renato/Desktop/Dev/server-fast/node_modules/avvio/lib/plugin.js:125:28)\n' +
+    '    at Boot._loadPlugin (/Users/renato/Desktop/Dev/server-fast/node_modules/avvio/boot.js:432:10)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)',
+  exception: true,
+  date: 'Sat Oct 25 2025 17:45:44 GMT-0300 (Brasilia Standard Time)',
+  process: {
+    pid: 1583,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/renato/Desktop/Dev/server-fast',
+    execPath: '/opt/homebrew/Cellar/node/24.8.0/bin/node',
+    version: 'v24.8.0',
+    argv: [
+      '/opt/homebrew/Cellar/node/24.8.0/bin/node',
+      '/Users/renato/Desktop/Dev/server-fast/dist/server.js'
+    ],
+    memoryUsage: {
+      rss: 275808256,
+      heapTotal: 221609984,
+      heapUsed: 96993616,
+      external: 4594203,
+      arrayBuffers: 4997131
+    }
+  },
+  os: {
+    loadavg: [ 2.51416015625, 16.06640625, 21.25732421875 ],
+    uptime: 710
+  },
+  trace: [
+    {
+      column: 11,
+      file: '/Users/renato/Desktop/Dev/server-fast/node_modules/fastify/lib/decorate.js',
+      function: 'decorate',
+      line: 21,
+      method: null,
+      native: false
+    },
+    {
+      column: 3,
+      file: '/Users/renato/Desktop/Dev/server-fast/node_modules/fastify/lib/decorate.js',
+      function: 'Object.decorateFastify [as decorate]',
+      line: 77,
+      method: 'decorateFastify [as decorate]',
+      native: false
+    },
+    {
+      column: 11,
+      file: '/Users/renato/Desktop/Dev/server-fast/node_modules/@fastify/cookie/plugin.js',
+      function: 'plugin',
+      line: 125,
+      method: null,
+      native: false
+    },
+    {
+      column: 28,
+      file: '/Users/renato/Desktop/Dev/server-fast/node_modules/avvio/lib/plugin.js',
+      function: 'Plugin.exec',
+      line: 125,
+      method: 'exec',
+      native: false
+    },
+    {
+      column: 10,
+      file: '/Users/renato/Desktop/Dev/server-fast/node_modules/avvio/boot.js',
+      function: 'Boot._loadPlugin',
+      line: 432,
+      method: '_loadPlugin',
+      native: false
+    },
+    {
+      column: 21,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 90,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-10-25T20:45:44.154Z'
+}
