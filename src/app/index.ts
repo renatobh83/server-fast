@@ -29,7 +29,7 @@ export async function buildServer(
         target: "pino-pretty", // saída mais legível
       },
     },
-    trustProxy: process.env.NODE_ENV !== "production"
+    trustProxy: process.env.NODE_ENV !== "prod"
   });
 
   await server.register(fastifyEnv, {
@@ -69,6 +69,7 @@ export async function buildServer(
       }
     }
   );
+
 
 
   await server.register(routes);

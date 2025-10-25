@@ -21,7 +21,7 @@ const fastifyModule = fp(async (fastify) => {
 
 
   // 1️⃣ Helmet + CSP
-  await fastify.register(helmet, process.env.NODE_ENV === "production" ? {
+  await fastify.register(helmet, process.env.NODE_ENV === "prod" ? {
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
