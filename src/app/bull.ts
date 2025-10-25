@@ -18,7 +18,8 @@ export async function registerBullMQ(app: ReturnType<typeof fastify>) {
   setImmediate(() => {
     upsertJobScheduler("VerifyTicketsChatBotInactives", { every: 10_60_000 });
     upsertJobScheduler("VerifyTicketsConfirmacaoInactives", {
-      every: 10_60_000,
+       pattern: "0 17 * * *",
+      tz: "America/Sao_Paulo",
     });
   });
 }
