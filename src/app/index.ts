@@ -15,10 +15,6 @@ import { sequelizePlugin } from "../lib/fastifyPlugins/sequelize";
 import { StartAllWhatsAppsSessions } from "../services/WbotServices/StartAllWhatsAppsSessions";
 import { shutdown } from "../lib/Queue";
 
-
-
-
-
 export async function buildServer(
   config: FastifyServerOptions = {}
 ): Promise<FastifyInstance> {
@@ -29,7 +25,7 @@ export async function buildServer(
         target: "pino-pretty", // saída mais legível
       },
     },
-    trustProxy: true//process.env.NODE_ENV !== "prod"
+    trustProxy: true, //process.env.NODE_ENV !== "prod"
   });
 
   await server.register(fastifyEnv, {
@@ -41,9 +37,7 @@ export async function buildServer(
   await server.register(fastifyModule);
   await server.register(sequelizePlugin);
 
-
   await server.register(jwt, {
-    
     secret: process.env.JWT_SECRET!,
   });
 
@@ -72,8 +66,6 @@ export async function buildServer(
     }
   );
 
-
-
   await server.register(routes);
 
   server.setNotFoundHandler((request, reply) => {
@@ -90,7 +82,7 @@ export async function buildServer(
     process.on(signal, async () => {
       try {
         await server.close();
-        await shutdown()
+        await shutdown();
         server.log.error(`Closed application on ${signal}`);
         process.exit(0);
       } catch (err: any) {
@@ -106,6 +98,7 @@ export async function start() {
 
   try {
     await app.listen({ port: 3000, host: "0.0.0.0" });
+    app.server.keepAliveTimeout = 5 * 60 * 1000;
     initSocket(app.server);
     setupSocketListeners();
     await StartAllWhatsAppsSessions();

@@ -76,6 +76,7 @@ export const initWbot = async (whatsapp: any): Promise<Session> => {
             status: "qrcode",
             retries: attempts,
           });
+
           const response = {
             type: matches[1],
             data: Buffer.from(matches[2], "base64"),
@@ -196,6 +197,7 @@ async function waitForApiValue(apiCall: Session, interval = 1000) {
     const checkValue = async () => {
       try {
         const profileSession = await apiCall.getProfileName();
+
         const wbotVersion = await apiCall.getWAVersion();
         const number = await apiCall.getWid();
         const result = {

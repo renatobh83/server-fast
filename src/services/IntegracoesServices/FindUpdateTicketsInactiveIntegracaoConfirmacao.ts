@@ -34,20 +34,16 @@ WHERE
         if (!ticket) return;
         const whatsapp = await GetDefaultWhatsApp(ticket.tenantId);
         const wbot = getWbot(whatsapp.id);
-
-        const sendMessage = await wbot.sendText(
+        await wbot.sendText(
           ticket.contato,
           "Olá, percebemos que ainda não tivemos sua confirmação. Para concluir o seu atendimento, pedimos que entre em contato com a nossa central para confirmar o agendamento do seu exame. Estamos à disposição para qualquer dúvida. Agradecemos sua atenção!"
         );
-
-        if (sendMessage) {
-          await ticket.update({
-            status: STATUS_CONFIRMACAO.SEM_RESPOSTA,
-            closedAt: new Date().getTime(),
-            lastMessage: "sem retorno",
-            lastMessageAt: new Date().getTime(),
-          });
-        }
+        await ticket.update({
+          status: STATUS_CONFIRMACAO.SEM_RESPOSTA,
+          closedAt: new Date().getTime(),
+          lastMessage: "sem retorno",
+          lastMessageAt: new Date().getTime(),
+        });
       })
     );
   };
