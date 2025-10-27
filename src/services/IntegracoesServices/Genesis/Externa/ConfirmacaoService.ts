@@ -42,7 +42,7 @@ export const ConfirmacaoIntegracaoService = async ({
   });
 
   if (whatsapp.status === "DISCONNECTED") {
-    throw new AppError("ERR_SENDING_WAPP_MSG", 404);
+    throw new AppError("ERR_SENDING_WAPP_MSG_CHANNEL_DISCONNECTED", 400);
   }
 
   const wbot = getWbot(apiConfig.get("sessionId"));
@@ -51,7 +51,7 @@ export const ConfirmacaoIntegracaoService = async ({
   const idNumber = await wbot.checkNumberStatus(contato);
 
   if (!idNumber.numberExists) {
-    return;
+    throw new AppError("ERR_SENDING_WAPP_NUMBER_NO_FOUND", 404);
   }
 
   const ticket = await FindOrCreateConfirmacaoservice({
@@ -63,7 +63,7 @@ export const ConfirmacaoIntegracaoService = async ({
   });
 
   if (ticket.enviada) {
-    return;
+    throw new AppError("ERR_SENDING_WAPP_MESSAGE_ALREADY_SENDED", 400);
   }
 
   const dataToJob = {
