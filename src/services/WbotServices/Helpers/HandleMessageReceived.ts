@@ -11,8 +11,6 @@ import VerifyStepsChatFlowTicket, {
   isRetriesLimit,
   sendBotMessage,
 } from "../../ChatFlowServices/VerifyStepsChatFlowTicket";
-import { getCache, setCache } from "../../../utils/cacheRedis";
-import { RedisKeys } from "../../../constants/redisKeys";
 
 import IntegracaoGenesisConfirmacao from "../../../models/IntegracaoGenesisConfirmacao";
 import { Op } from "sequelize";
@@ -55,7 +53,7 @@ const commonIncludes = [
 // FUNÇÕES DE CACHE REESCRITAS COM REDIS
 // ========================================================================
 
-const getCachedChannel = async (
+export const getCachedChannel = async (
   whatsappId: number
 ): Promise<Whatsapp | null> => {
   const key = REDIS_KEYS.channel(whatsappId);

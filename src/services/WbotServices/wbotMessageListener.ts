@@ -2,7 +2,10 @@ import { IncomingCall, Message, Whatsapp } from "wbotconnect";
 import { logger } from "../../utils/logger";
 import { blockedMessages } from "../../helpers/BlockedMessages";
 import { HandleMessageSend } from "./Helpers/HandleMessageSend";
-import { HandleMessageReceived } from "./Helpers/HandleMessageReceived";
+import {
+  getCachedChannel,
+  HandleMessageReceived,
+} from "./Helpers/HandleMessageReceived";
 import { VerifyCall } from "./Helpers/VerifyCall";
 import { HandleMsgReaction } from "./Helpers/HandleMsgReaction";
 
@@ -36,6 +39,7 @@ export const wbotMessageListener = async (wbot: Session): Promise<void> => {
     }
     if (msg.chatId === "status@broadcast") return;
     if (!msg.fromMe) return;
+
     if (msg.type === "list") return;
     const messageContent = msg.body || msg.caption || ""; // Garante que sempre haverá uma string
     const isBlocked = blockedMessages.some((blocked) => {
@@ -43,6 +47,11 @@ export const wbotMessageListener = async (wbot: Session): Promise<void> => {
     });
     if (msg.fromMe && isBlocked) return;
     msg.ack = 2;
+
+    const wServices = await getCachedChannel(wbot.id);
+
+    if (wServices && messageContent.includes(wServices.farewellMessage)) return;
+
     await HandleMessageSend(msg, wbot);
   });
   // tratar mensagem recebida

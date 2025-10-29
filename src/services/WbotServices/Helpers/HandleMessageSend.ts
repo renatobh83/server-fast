@@ -10,6 +10,9 @@ import verifyBusinessHours from "./VerifyBusinessHours";
 import { RedisKeys } from "../../../constants/redisKeys";
 import { getCache, setCache } from "../../../utils/cacheRedis";
 import Contact from "../../../models/Contact";
+import { getCachedChannel } from "./HandleMessageReceived";
+import Whatsapp from "../../../models/Whatsapp";
+import { AppError } from "../../../errors/errors.helper";
 
 interface Session extends wbot {
   id: number;
@@ -19,8 +22,10 @@ export const HandleMessageSend = async (
   message: Message,
   wbot: Session
 ): Promise<void> => {
-  const whatsapp = await ShowWhatsAppService({ id: wbot.id });
-
+  const whatsapp = await getCachedChannel(wbot.id);
+  if (!whatsapp) {
+    throw new AppError("SESSION_NO_FOUND", 404);
+  }
   const { tenantId } = whatsapp;
 
   if (!isValidMsg(message)) {

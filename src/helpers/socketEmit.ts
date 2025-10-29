@@ -18,7 +18,8 @@ type Events =
   | "ChatClientDesconectado"
   | "chamado:create"
   | "chamado:delete"
-  | "chamado:update";
+  | "chamado:update"
+  | "message:create";
 
 interface ObjEvent {
   tenantId: number | string;

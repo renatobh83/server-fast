@@ -42,7 +42,7 @@ const CreateLogTicketService = async ({
   } catch (error) {
     console.log("Erro na criacao do log", error);
   }
-  console.log("TESTE");
+
   // socketEmit({
   //   tenantId,
   //   type: "ticket:update",
