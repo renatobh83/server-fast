@@ -65,14 +65,10 @@ export const removeSessionChannel = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  console.log(request.body);
   const { whatsappId } = request.params as any;
   const { tenantId } = request.user as any;
-  // const { isQrcode, id } = request.body as any;
+
   try {
-    // if (isQrcode) {
-    //   await removeWbot(id);
-    // }
     const channel = await ShowWhatsAppService({ id: whatsappId, tenantId });
     const io = getIO();
     if (channel.type === "whatsapp") {
