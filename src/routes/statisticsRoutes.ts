@@ -3,6 +3,7 @@ import * as RelatorioController from "../controller/RelatorioController";
 import * as StatisticsController from "../controller/StatisticsController";
 import * as StatisticsPerUsersController from "../controller/Statistics/StatisticsPerUsersController";
 import * as DashController from "../controller/Statistics/DashController";
+import * as DnsController from "../controller/DnsController";
 
 export default async function statisticsRoutes(fastify: FastifyInstance) {
   fastify.post(
@@ -40,6 +41,7 @@ export default async function statisticsRoutes(fastify: FastifyInstance) {
   fastify.get("/dash-tickets-queues", StatisticsController.DashTicketsQueues);
   fastify.get("/contacts-report", StatisticsController.ContactsReport);
   fastify.get("/statistics-per-users", StatisticsPerUsersController.index);
+  fastify.get("/resultado-ddns", DnsController.getDDNStatus);
   fastify.get(
     "/statistics-tickets-times",
     DashController.getDashTicketsAndTimes

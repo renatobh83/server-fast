@@ -14,6 +14,8 @@ import { redisPlugin } from "../lib/fastifyPlugins/redis";
 import { sequelizePlugin } from "../lib/fastifyPlugins/sequelize";
 import { StartAllWhatsAppsSessions } from "../services/WbotServices/StartAllWhatsAppsSessions";
 import { shutdown } from "../lib/Queue";
+import Setting from "../models/Setting";
+import { CheckDDNSservices } from "../services/DnsServices/CheckDDNSservices";
 
 export async function buildServer(
   config: FastifyServerOptions = {}
@@ -102,6 +104,16 @@ export async function start() {
     initSocket(app.server);
     setupSocketListeners();
     await StartAllWhatsAppsSessions();
+
+    const timeDns = await Setting.findOne({
+      where: {
+        key: "DNSTrackingTime",
+      },
+      raw: true,
+    });
+    if (Number(timeDns?.value) > 0) {
+      setInterval(CheckDDNSservices, Number(timeDns?.value) * 60 * 1000);
+    }
   } catch (err) {
     app.log.error(err);
     process.exit(1);
