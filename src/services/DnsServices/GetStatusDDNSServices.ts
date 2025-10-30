@@ -6,6 +6,7 @@ export const GetStatusDDNSservices = async () => {
     include: {
       model: Empresa,
       attributes: ["name"],
+      as: "empresa",
     },
     order: [
       ["empresaId", "ASC"],
