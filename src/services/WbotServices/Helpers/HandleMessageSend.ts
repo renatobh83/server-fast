@@ -11,7 +11,7 @@ import { RedisKeys } from "../../../constants/redisKeys";
 import { getCache, setCache } from "../../../utils/cacheRedis";
 import Contact from "../../../models/Contact";
 import { getCachedChannel } from "./HandleMessageReceived";
-import Whatsapp from "../../../models/Whatsapp";
+
 import { AppError } from "../../../errors/errors.helper";
 
 interface Session extends wbot {
