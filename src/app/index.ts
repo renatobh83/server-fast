@@ -16,6 +16,7 @@ import { StartAllWhatsAppsSessions } from "../services/WbotServices/StartAllWhat
 import { shutdown } from "../lib/Queue";
 import Setting from "../models/Setting";
 import { CheckDDNSservices } from "../services/DnsServices/CheckDDNSservices";
+import { scheduleOrUpdateDnsJob } from "../utils/scheduleDnsJob";
 
 export async function buildServer(
   config: FastifyServerOptions = {}
@@ -105,15 +106,7 @@ export async function start() {
     setupSocketListeners();
     await StartAllWhatsAppsSessions();
 
-    const timeDns = await Setting.findOne({
-      where: {
-        key: "DNSTrackingTime",
-      },
-      raw: true,
-    });
-    if (Number(timeDns?.value) > 0) {
-      setInterval(CheckDDNSservices, Number(timeDns?.value) * 60 * 1000);
-    }
+    await scheduleOrUpdateDnsJob();
   } catch (err) {
     app.log.error(err);
     process.exit(1);

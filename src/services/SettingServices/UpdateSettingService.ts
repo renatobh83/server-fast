@@ -1,5 +1,6 @@
 import { AppError } from "../../errors/errors.helper";
 import Setting from "../../models/Setting";
+import { scheduleOrUpdateDnsJob } from "../../utils/scheduleDnsJob";
 
 interface Request {
   key: string;
@@ -22,7 +23,7 @@ const UpdateSettingService = async ({
     }
 
     await setting.update({ value });
-
+    await scheduleOrUpdateDnsJob();
     return setting;
   } catch (error: any) {
     if (error instanceof AppError) {
