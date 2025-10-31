@@ -40,7 +40,7 @@ export const UpdateBotMessage = async (
       existingMessage = await Message.create({
         ...messageData,
         ...messageSent,
-        id: uuidV4(),
+        id: messageSent.id || messageSent.messageId || uuidV4(),
         messageId: messageSent.id || messageSent.messageId || null,
         mediaType: "bot",
       });

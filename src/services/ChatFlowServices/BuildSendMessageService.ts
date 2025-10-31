@@ -161,7 +161,7 @@ const BuildSendMessageService = async ({
             ? msg.data?.type.substr(0, msg.data.type.indexOf("/"))
             : "chat",
           ...messageSent,
-          id: uuidV4(),
+          id: messageSent?.id ?? messageSent?.messageId ?? uuidV4(),
           messageId: messageSent?.id ?? messageSent?.messageId ?? "",
         }),
       });
@@ -248,7 +248,7 @@ const BuildSendMessageService = async ({
         defaults: filterValidAttributes({
           ...messageData,
           ...messageSent,
-          id: uuidV4(),
+          id: messageSent.id || messageSent.messageId || uuidV4(),
           messageId: messageSent.id || messageSent.messageId || null,
           mediaType: "bot",
         }),
@@ -336,7 +336,7 @@ const BuildSendMessageService = async ({
           status: "pending",
           tenantId,
           ...messageSent,
-          id: uuidV4(),
+          id: messageSent?.id ?? messageSent?.messageId ?? uuidV4(),
           messageId: messageSent?.id ?? messageSent?.messageId ?? "",
           mediaType: "bot",
         }),

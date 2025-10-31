@@ -97,6 +97,8 @@ export const CreateMessageSystemService = async ({
             userId,
           });
 
+          // if (ticket.channel === "whatsapp") return;
+
           const [msgCreated, created] = await Message.findOrCreate({
             where: {
               messageId:
@@ -106,7 +108,7 @@ export const CreateMessageSystemService = async ({
             defaults: filterValidAttributes({
               ...messageData,
               ...messageSent,
-              id: uuidv4(),
+              id: messageSent.id || messageSent.messageId || uuidv4(),
               userId,
               tenantId,
               body: media?.originalname || messageData.body,
