@@ -37,6 +37,7 @@ export const wbotMessageListener = async (wbot: Session): Promise<void> => {
     if (isSyncing) {
       return;
     }
+
     if (msg.chatId === "status@broadcast") return;
     if (!msg.fromMe) return;
 
@@ -49,8 +50,13 @@ export const wbotMessageListener = async (wbot: Session): Promise<void> => {
     msg.ack = 2;
 
     const wServices = await getCachedChannel(wbot.id);
-
-    if (wServices && messageContent.includes(wServices.farewellMessage)) return;
+    if (
+      wServices &&
+      wServices.farewellMessage && // garante que não é string vazia, null ou undefined
+      messageContent.includes(wServices.farewellMessage)
+    ) {
+      return;
+    }
 
     await HandleMessageSend(msg, wbot);
   });

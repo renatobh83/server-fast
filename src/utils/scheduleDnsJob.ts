@@ -23,6 +23,7 @@ export async function scheduleOrUpdateDnsJob() {
     // Remove o agendamento se o valor for 0
     if (intervalMinutes <= 0) {
       const jobs = await queue.bull.getRepeatableJobs();
+
       for (const job of jobs) {
         if (job.name === queueName) {
           await queue.bull.removeRepeatableByKey(job.key);

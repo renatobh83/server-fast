@@ -97,8 +97,6 @@ export const CreateMessageSystemService = async ({
             userId,
           });
 
-          if (ticket.channel === "whatsapp") return;
-
           const [msgCreated, created] = await Message.findOrCreate({
             where: {
               messageId:
