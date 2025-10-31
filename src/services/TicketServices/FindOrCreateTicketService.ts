@@ -40,7 +40,7 @@ const FindOrCreateTicketService = async ({
 }: Data): Promise<Ticket | any> => {
   try {
     if (msg.fromMe) {
-      await sleep(500);
+      await sleep(2000);
       const farewellMessage = await Message.findOne({
         where: {
           messageId: msg.id || msg.id?.id || msg.message_id || msg.item_id,
