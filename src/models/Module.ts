@@ -39,20 +39,13 @@ class Module extends Model {
       {
         sequelize,
         tableName: "Modules",
-        modelName: "Module",
+        modelName: "Modules",
         timestamps: true,
         freezeTableName: true,
       }
     );
 
     return Module;
-  }
-
-  // Nenhuma associação direta neste caso,
-  // mas deixamos o método pronto para manter o padrão do projeto
-  static associate() {
-    // Exemplo (se futuramente tiver relação com outras tabelas):
-    // Module.hasMany(Route, { foreignKey: "moduleId", as: "routes" });
   }
 }
 

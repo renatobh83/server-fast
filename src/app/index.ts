@@ -37,7 +37,6 @@ async function checkModuleStatus(request: FastifyRequest, reply: FastifyReply) {
 
   if (moduleName) {
     const isActive = await getModuleStatusByName(moduleName);
-
     if (isActive === null) {
       // Módulo não encontrado no banco de dados
       reply.code(404).send({ error: `Módulo '${moduleName}' não encontrado.` });

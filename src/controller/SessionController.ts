@@ -7,6 +7,8 @@ import { STANDARD } from "../constants/request";
 import { sendPasswordReset } from "../services/UserServices/SendPasswordResetService";
 import User from "../models/User";
 import { getIO } from "../lib/socket";
+import { ValidateTokenResetService } from "../services/AuthServices/ValidTokenResetSenha";
+import { RefreshTokenService } from "../services/AuthServices/RefreshTokenService";
 
 export const StoreLoginHandler = async (
   request: FastifyRequest,
@@ -133,11 +135,10 @@ export const refreshToken = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  console.log(request);
   try {
-    // const payload = await ValidateTokenResetService(token);
+    const token = await RefreshTokenService(request);
     // const user = await UpdateUserResetPassword(payload, newPassword);
-    reply.code(STANDARD.OK.statusCode).send("teste");
+    reply.code(STANDARD.OK.statusCode).send(token);
   } catch (error) {
     return handleServerError(reply, error);
   }

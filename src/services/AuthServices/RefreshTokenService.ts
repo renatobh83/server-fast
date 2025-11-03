@@ -1,37 +1,11 @@
-// import { verify } from "jsonwebtoken";
-// import { AppError } from "../../errors/errors.helper";
+import { FastifyRequest } from "fastify";
 
-// interface RefreshTokenPayload {
-//   id: string;
-//   tokenVersion: number;
-// }
+export const RefreshTokenService = async (
+  request: FastifyRequest
+): Promise<string> => {
+  const decoded = await request.jwtVerify();
 
-// interface Response {
-//   newToken: string;
-//   refreshToken: string;
-// }
+  const refreshToken = request.server.jwt.sign(decoded, { expiresIn: "3d" });
 
-// export const RefreshTokenService = async (token: string): Promise<Response> => {
-//   let decoded;
-
-//   if (!token) {
-//     throw new AppError("ERR_COOKIE_NO_FOUND", 401);
-//   }
-//   try {
-//     decoded = verify(token, authConfig.refreshSecret);
-//   } catch (err) {
-//     throw new AppError("ERR_SESSION_EXPIRED", 403);
-//   }
-
-//   const { id, tokenVersion } = decoded as RefreshTokenPayload;
-
-//   // const user = await ShowUserService(id, 1);
-
-//   if (user.tokenVersion !== tokenVersion) {
-//     throw new AppError("ERR_SESSION_EXPIRED", 403);
-//   }
-
-//   const newToken = createAccessToken(user);
-//   const refreshToken = createRefreshToken(user);
-//   return { newToken, refreshToken };
-// };
+  return refreshToken;
+};
