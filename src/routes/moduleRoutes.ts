@@ -28,6 +28,7 @@ import integtracaoRoutes from "./integracaoRoutes";
 import notaFiscalRoutes from "./notafiscalRoutes";
 import chatFlowRoutes from "./ChatFlowRoutes";
 import auxiliarRoutes from "./auxiliarRoutes";
+import channelRoutes from "./channelSessionRoutes";
 
 // Definição de tipo para o módulo
 interface Module {
@@ -107,7 +108,7 @@ export const moduleRoutes = {
   notaFiscal: createModulePlugin("notaFiscal", notaFiscalRoutes, {
     isPrivate: true,
   }),
-  whatsappsession: createModulePlugin("whatsappsession", whastappRoutes, {
+  whatsappsession: createModulePlugin("whatsappsession", channelRoutes, {
     isPrivate: true,
   }),
   chatFlow: createModulePlugin("chatFlow", chatFlowRoutes, {

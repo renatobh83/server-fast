@@ -8,4 +8,5 @@ export default async function channelRoutes(
   fastify.post("/:whatsappId", ChannelSessionController.startSessionChannel);
   fastify.put("/:whatsappId", ChannelSessionController.updateSessionChannel);
   fastify.delete("/:whatsappId", ChannelSessionController.removeSessionChannel);
+  done();
 }
