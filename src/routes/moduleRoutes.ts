@@ -107,7 +107,7 @@ export const moduleRoutes = {
   notaFiscal: createModulePlugin("notaFiscal", notaFiscalRoutes, {
     isPrivate: true,
   }),
-  whatsappsession: createModulePlugin("whatsappsession", chamadoRoutes, {
+  whatsappsession: createModulePlugin("whatsappsession", whastappRoutes, {
     isPrivate: true,
   }),
   chatFlow: createModulePlugin("chatFlow", chatFlowRoutes, {
