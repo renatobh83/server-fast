@@ -1,6 +1,7 @@
 import "dotenv/config";
 import Fastify, {
   FastifyInstance,
+  FastifyReply,
   FastifyRequest,
   FastifyServerOptions,
 } from "fastify";
@@ -18,6 +19,40 @@ import Setting from "../models/Setting";
 import { CheckDDNSservices } from "../services/DnsServices/CheckDDNSservices";
 import { scheduleOrUpdateDnsJob } from "../utils/scheduleDnsJob";
 import { routes } from "../routes/moduleRoutes";
+import { getModuleStatusByName } from "../services/ModuleServices";
+
+/**
+ * Hook preHandler para verificar o status do módulo antes de processar a requisição.
+ * Esta função será executada para todas as rotas registradas.
+ */
+async function checkModuleStatus(request: FastifyRequest, reply: FastifyReply) {
+  // A rota de controle e a rota de saúde não devem ser verificadas
+  if (request.url.startsWith("/modules") || request.url === "/health") {
+    return;
+  }
+
+  // Tenta obter o nome do módulo a partir do decorador da instância do Fastify
+  // O decorador foi adicionado no plugin de rota do módulo (moduleRoutes.ts)
+  const moduleName = request.moduleName;
+
+  if (moduleName) {
+    const isActive = await getModuleStatusByName(moduleName);
+
+    if (isActive === null) {
+      // Módulo não encontrado no banco de dados
+      reply.code(404).send({ error: `Módulo '${moduleName}' não encontrado.` });
+    } else if (!isActive) {
+      // Módulo encontrado, mas inativo
+      reply.code(403).send({
+        error: `Acesso negado. O módulo '${moduleName}' está inativo.`,
+      });
+    }
+    // Se isActive for true, a execução continua normalmente
+  } else {
+    // Se a rota não tiver um moduleName, ela é tratada como uma rota padrão (ex: 404 se não for encontrada)
+    // Para este exemplo, vamos apenas deixar passar se não for uma rota de módulo
+  }
+}
 
 export async function buildServer(
   config: FastifyServerOptions = {}
@@ -57,6 +92,7 @@ export async function buildServer(
       error: error.message || "Erro interno no servidor",
     });
   });
+  server.addHook("preHandler", checkModuleStatus);
   // decorador para verificar se o usuário está autenticado
   server.decorate(
     "authenticate",
