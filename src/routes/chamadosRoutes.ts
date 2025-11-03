@@ -34,10 +34,10 @@ export default async function chamadoRoutes(
     ChamadoController.createChamado
   );
   fastify.get("/", ChamadoController.listaTodosChamados);
-  fastify.get(":empresaId/time", ChamadoController.listaTempoChamados);
+  fastify.get("/:empresaId/time", ChamadoController.listaTempoChamados);
   fastify.put("/:chamadoId/anexo", ChamadoController.updateAnexoChamado);
   fastify.put(
-    ":chamadoId",
+    "/:chamadoId",
     {
       schema: {
         body: {
@@ -91,7 +91,7 @@ export default async function chamadoRoutes(
     ChamadoController.associarTicketChamado
   );
   fastify.put(
-    ":ticketId/tempoChamado",
+    "/:ticketId/tempoChamado",
     {
       schema: {
         body: {
