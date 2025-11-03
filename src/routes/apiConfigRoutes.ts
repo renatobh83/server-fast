@@ -1,9 +1,12 @@
 import { FastifyInstance } from "fastify";
 import * as ApiConfigController from "../controller/ApiConfigController";
 
-export default async function apiConfiRoutes(fastify: FastifyInstance) {
+export default async function apiConfiRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
   fastify.post(
-    "/api-config",
+    "/",
     {
       schema: {
         body: {
@@ -22,9 +25,9 @@ export default async function apiConfiRoutes(fastify: FastifyInstance) {
     },
     ApiConfigController.createApiConfig
   );
-  fastify.get("/api-config", ApiConfigController.listApiConfig);
+  fastify.get("/", ApiConfigController.listApiConfig);
   fastify.put(
-    "/api-config/:apiId",
+    "/:apiId",
     {
       schema: {
         body: {
@@ -43,9 +46,7 @@ export default async function apiConfiRoutes(fastify: FastifyInstance) {
     },
     ApiConfigController.listApiConfig
   );
-  fastify.put(
-    "/api-config/renew-token/:apiId",
-    ApiConfigController.RenewTokenApiConfig
-  );
-  fastify.delete("/api-config/:apiId", ApiConfigController.DeleteApiConfig);
+  fastify.put("/renew-token/:apiId", ApiConfigController.RenewTokenApiConfig);
+  fastify.delete("/:apiId", ApiConfigController.DeleteApiConfig);
+  done();
 }

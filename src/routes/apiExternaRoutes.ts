@@ -1,16 +1,20 @@
 import { FastifyInstance } from "fastify";
 import * as ApiExternaController from "../controller/ApiExternaController";
 
-export default async function apiExternaRoutes(fastify: FastifyInstance) {
+export default async function apiExternaRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
   fastify.post(
-    "/:apiId",
+    "/api/external/:apiId",
     { preHandler: [fastify.authenticate] },
     ApiExternaController.sendMenssageApi
   );
 
   fastify.post(
-    "/:apiId/:idIntegracao/:authToken",
+    "/api/external/:apiId/:idIntegracao/:authToken",
     { preHandler: [] },
     ApiExternaController.integracaoConfirmacao
   );
+  done();
 }

@@ -1,9 +1,12 @@
 import { FastifyInstance } from "fastify/types/instance";
 import * as NfeController from "../controller/NfeController";
 
-export default async function notaFiscalRoutes(fastify: FastifyInstance) {
+export default async function notaFiscalRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
   fastify.post(
-    "/nota-fiscal",
+    "/",
     {
       schema: {
         body: {
@@ -29,12 +32,10 @@ export default async function notaFiscalRoutes(fastify: FastifyInstance) {
     },
     NfeController.gerarNotaFiscal
   );
-  fastify.get("/nota-fiscal/:empresaId", NfeController.consultaNotaFiscal);
-  fastify.get("/nota-fiscal/nota/:rps", NfeController.gerarPdfRPS);
-  fastify.post("/nota-fiscal/nota/:rps", NfeController.cancelarNfe);
-  fastify.get(
-    "/nota-fiscal/pdf/status/:jobId",
-    NfeController.verificarStatusPDF
-  );
-  fastify.get("/nota-fiscal/pdf/download/:jobId", NfeController.baixarPDF);
+  fastify.get("/:empresaId", NfeController.consultaNotaFiscal);
+  fastify.get("/nota/:rps", NfeController.gerarPdfRPS);
+  fastify.post("/nota/:rps", NfeController.cancelarNfe);
+  fastify.get("/pdf/status/:jobId", NfeController.verificarStatusPDF);
+  fastify.get("/pdf/download/:jobId", NfeController.baixarPDF);
+  done();
 }

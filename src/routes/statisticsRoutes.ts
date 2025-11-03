@@ -5,7 +5,10 @@ import * as StatisticsPerUsersController from "../controller/Statistics/Statisti
 import * as DashController from "../controller/Statistics/DashController";
 import * as DnsController from "../controller/DnsController";
 
-export default async function statisticsRoutes(fastify: FastifyInstance) {
+export default async function statisticsRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
   fastify.post(
     "/relatorio-chamado",
     {
@@ -63,4 +66,5 @@ export default async function statisticsRoutes(fastify: FastifyInstance) {
     DashController.getDashTicketsPerUsersDetail
   );
   fastify.get("/statistics-tickets-queue", DashController.getDashTicketsQueue);
+  done();
 }

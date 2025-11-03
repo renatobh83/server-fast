@@ -1,9 +1,12 @@
 import { FastifyInstance } from "fastify";
 import * as ChamadoController from "../controller/ChamadoController";
 
-export default async function chamadoRoutes(fastify: FastifyInstance) {
+export default async function chamadoRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
   fastify.post(
-    "/chamados",
+    "/",
     {
       schema: {
         body: {
@@ -30,17 +33,11 @@ export default async function chamadoRoutes(fastify: FastifyInstance) {
     },
     ChamadoController.createChamado
   );
-  fastify.get("/chamados", ChamadoController.listaTodosChamados);
-  fastify.get(
-    "/chamados/:empresaId/time",
-    ChamadoController.listaTempoChamados
-  );
+  fastify.get("/", ChamadoController.listaTodosChamados);
+  fastify.get(":empresaId/time", ChamadoController.listaTempoChamados);
+  fastify.put("/:chamadoId/anexo", ChamadoController.updateAnexoChamado);
   fastify.put(
-    "/chamados/:chamadoId/anexo",
-    ChamadoController.updateAnexoChamado
-  );
-  fastify.put(
-    "/chamados/:chamadoId",
+    ":chamadoId",
     {
       schema: {
         body: {
@@ -75,13 +72,10 @@ export default async function chamadoRoutes(fastify: FastifyInstance) {
     },
     ChamadoController.updateChamado
   );
-  fastify.get("/chamados/:chamadoId", ChamadoController.detailsChamado);
-  fastify.get(
-    "/chamados/empresa/:empresaId",
-    ChamadoController.listaChamadosEmpresa
-  );
+  fastify.get("/:chamadoId", ChamadoController.detailsChamado);
+  fastify.get("/empresa/:empresaId", ChamadoController.listaChamadosEmpresa);
   fastify.put(
-    "/chamados/empresa/:empresaId",
+    "/empresa/:empresaId",
     {
       schema: {
         body: {
@@ -97,7 +91,7 @@ export default async function chamadoRoutes(fastify: FastifyInstance) {
     ChamadoController.associarTicketChamado
   );
   fastify.put(
-    "/chamados/:ticketId/tempoChamado",
+    ":ticketId/tempoChamado",
     {
       schema: {
         body: {
@@ -112,11 +106,9 @@ export default async function chamadoRoutes(fastify: FastifyInstance) {
     },
     ChamadoController.editarTempoChamado
   );
-  fastify.get("/chamado/media/:id/arquivo", ChamadoController.getMediaChamado);
-  fastify.delete("/chamados/media/:id", ChamadoController.removeMediaChamado);
-  fastify.post("/chamados/media/", ChamadoController.updateFileChamado);
-  fastify.post(
-    "/chamado/:chamadoId/sendMessage",
-    ChamadoController.sendMessageChamado
-  );
+  fastify.get("/media/:id/arquivo", ChamadoController.getMediaChamado);
+  fastify.delete("/media/:id", ChamadoController.removeMediaChamado);
+  fastify.post("/media/", ChamadoController.updateFileChamado);
+  fastify.post("/:chamadoId/sendMessage", ChamadoController.sendMessageChamado);
+  done();
 }

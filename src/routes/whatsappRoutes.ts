@@ -1,9 +1,12 @@
 import { FastifyInstance } from "fastify";
 import * as WhatsappController from "../controller/WhatsappController";
-export async function whastappRoutes(fastify: FastifyInstance) {
+export async function whastappRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
   // rota criar canal
   fastify.post(
-    "/whatsapp",
+    "/",
     {
       schema: {
         body: {
@@ -25,11 +28,11 @@ export async function whastappRoutes(fastify: FastifyInstance) {
     WhatsappController.createCanal
   );
 
-  fastify.get("/whatsapp", WhatsappController.listaCanais);
-  fastify.get("/whatsapp/:whatsappId", WhatsappController.detalhesCanal);
-  fastify.delete("/whatsapp/:whatsappId", WhatsappController.deletarCanal);
+  fastify.get("/", WhatsappController.listaCanais);
+  fastify.get("/:whatsappId", WhatsappController.detalhesCanal);
+  fastify.delete("/:whatsappId", WhatsappController.deletarCanal);
   fastify.put(
-    "/whatsapp/:whatsappId",
+    "/:whatsappId",
     {
       schema: {
         body: {
@@ -56,4 +59,5 @@ export async function whastappRoutes(fastify: FastifyInstance) {
     },
     WhatsappController.updateCanal
   );
+  done();
 }

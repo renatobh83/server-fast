@@ -2,11 +2,14 @@ import { FastifyInstance } from "fastify";
 import * as EmpresaContatoController from "../controller/EmpresaContatoController";
 import * as EmpresaController from "../controller/EmpresaController";
 
-export default async function empresaRoutes(fastify: FastifyInstance) {
-  fastify.get("/empresas", EmpresaController.listaEmpresas);
+export default async function empresaRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
+  fastify.get("/", EmpresaController.listaEmpresas);
 
   fastify.post(
-    "/empresas",
+    "/",
     {
       schema: {
         body: {
@@ -27,9 +30,9 @@ export default async function empresaRoutes(fastify: FastifyInstance) {
     },
     EmpresaController.createEmpresa
   );
-  fastify.delete("/empresas/:empresaId", EmpresaController.deleteEmpresa);
+  fastify.delete("/:empresaId", EmpresaController.deleteEmpresa);
   fastify.put(
-    "/empresas/:empresaId",
+    "/:empresaId",
     {
       schema: {
         body: {
@@ -52,7 +55,7 @@ export default async function empresaRoutes(fastify: FastifyInstance) {
   );
 
   fastify.post(
-    "/empresas/:empresaId/contrato",
+    "/:empresaId/contrato",
     {
       schema: {
         body: {
@@ -70,12 +73,9 @@ export default async function empresaRoutes(fastify: FastifyInstance) {
 
   // Rotas empresa contato
 
-  fastify.get(
-    "/empresas/:empresaId/contacts",
-    EmpresaContatoController.ListContact
-  );
+  fastify.get("/:empresaId/contacts", EmpresaContatoController.ListContact);
   fastify.put(
-    "/empresas/:empresaId/contacts",
+    "/:empresaId/contacts",
     {
       schema: {
         body: {
@@ -93,11 +93,12 @@ export default async function empresaRoutes(fastify: FastifyInstance) {
     EmpresaContatoController.addContactsEmpresa
   );
   fastify.delete(
-    "/empresas/:empresaId/contacts/:contactId",
+    "/:empresaId/contacts/:contactId",
     EmpresaContatoController.removeContatoEmpresa
   );
   fastify.delete(
-    "/empresas/:empresaId/deleteall/contacts",
+    "/:empresaId/deleteall/contacts",
     EmpresaContatoController.removeAllContatoEmpresa
   );
+  done();
 }

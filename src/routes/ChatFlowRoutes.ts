@@ -1,9 +1,12 @@
 import { FastifyInstance } from "fastify";
 import * as ChatFlowController from "../controller/ChatFlowController";
 
-export default async function chatFlowRoutes(fastify: FastifyInstance) {
+export default async function chatFlowRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
   fastify.post(
-    "/chat-flow",
+    "/",
     {
       schema: {
         body: {
@@ -19,10 +22,10 @@ export default async function chatFlowRoutes(fastify: FastifyInstance) {
     },
     ChatFlowController.createChatFlow
   );
-  fastify.get("/chat-flow", ChatFlowController.listAllChatFlow);
-  fastify.delete("/chat-flow/:chatFlowId", ChatFlowController.removeChatFlow);
+  fastify.get("/", ChatFlowController.listAllChatFlow);
+  fastify.delete("/:chatFlowId", ChatFlowController.removeChatFlow);
   fastify.put(
-    "/chat-flow/:chatFlowId",
+    "/:chatFlowId",
     {
       schema: {
         body: {
@@ -41,4 +44,5 @@ export default async function chatFlowRoutes(fastify: FastifyInstance) {
   );
   fastify.get("/chat-flow-export/:chatFlowId", ChatFlowController.exportFlow);
   fastify.put("/chat-flow-import/:chatFlowId", ChatFlowController.importFlow);
+  done();
 }

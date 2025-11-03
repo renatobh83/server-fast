@@ -1,11 +1,14 @@
 import { FastifyInstance } from "fastify";
 import * as TicketsController from "../controller/TicketsController";
 
-export default async function ticketRoutes(fastify: FastifyInstance) {
-  fastify.get("/tickets", TicketsController.listarTickets);
-  fastify.get("/tickets/:ticketId", TicketsController.mostrarTicket);
+export default async function ticketRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
+  fastify.get("/", TicketsController.listarTickets);
+  fastify.get("/:ticketId", TicketsController.mostrarTicket);
   fastify.post(
-    "/tickets",
+    "/",
     {
       schema: {
         body: {
@@ -24,7 +27,7 @@ export default async function ticketRoutes(fastify: FastifyInstance) {
     TicketsController.createTicket
   );
   fastify.put(
-    "/tickets/:ticketId",
+    "/:ticketId",
     {
       schema: {
         body: {
@@ -41,5 +44,6 @@ export default async function ticketRoutes(fastify: FastifyInstance) {
     },
     TicketsController.updateTicket
   );
-  fastify.delete("/tickets/:ticketId", TicketsController.apagarTicket);
+  fastify.delete("/:ticketId", TicketsController.apagarTicket);
+  done();
 }

@@ -1,10 +1,13 @@
 import { FastifyInstance } from "fastify/types/instance";
 import * as IntegracaoController from "../controller/IntegracaoController";
 
-export default async function integtracaoRoutes(fastify: FastifyInstance) {
-  fastify.get("/integracoes", IntegracaoController.listIntegracao);
+export default async function integtracaoRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
+  fastify.get("/", IntegracaoController.listIntegracao);
   fastify.post(
-    "/integracoes",
+    "/",
     {
       schema: {
         body: {
@@ -20,7 +23,7 @@ export default async function integtracaoRoutes(fastify: FastifyInstance) {
     IntegracaoController.createIntegracao
   );
   fastify.put(
-    "/integracoes/:id",
+    "/:id",
     {
       schema: {
         body: {
@@ -36,7 +39,7 @@ export default async function integtracaoRoutes(fastify: FastifyInstance) {
     IntegracaoController.updateIntegracao
   );
   fastify.post(
-    "/integracoes/dados/:id",
+    "/dados/:id",
     {
       schema: {
         body: {
@@ -52,8 +55,6 @@ export default async function integtracaoRoutes(fastify: FastifyInstance) {
     },
     IntegracaoController.createOrUpdateDadosIntegracao
   );
-  fastify.delete(
-    "/integracoes/:integracaoId",
-    IntegracaoController.deleteIntegracao
-  );
+  fastify.delete("/:integracaoId", IntegracaoController.deleteIntegracao);
+  done();
 }

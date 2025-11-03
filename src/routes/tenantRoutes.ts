@@ -1,7 +1,10 @@
 import { FastifyInstance } from "fastify";
 import * as TenantController from "../controller/TenantController";
 
-export default async function tenantRoutes(fastify: FastifyInstance) {
+export default async function tenantRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
   fastify.get("/", TenantController.listInfoTenant);
   fastify.post(
     "/nf-dados",
@@ -26,4 +29,5 @@ export default async function tenantRoutes(fastify: FastifyInstance) {
     TenantController.updateMessageBusinessHours
   );
   fastify.get("/business-hours", TenantController.showBusinessHoursAndMessage);
+  done();
 }

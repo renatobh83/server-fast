@@ -1,7 +1,10 @@
 import { FastifyInstance } from "fastify";
 import * as SessionController from "../controller/SessionController";
 
-export default async function authRoutes(fastify: FastifyInstance) {
+export default async function authRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
   fastify.post(
     "/login",
     {
@@ -66,4 +69,5 @@ export default async function authRoutes(fastify: FastifyInstance) {
   );
   fastify.post("/valid_token", SessionController.validaToken);
   fastify.post("/refresh_token", SessionController.refreshToken);
+  done();
 }

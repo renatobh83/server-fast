@@ -1,12 +1,15 @@
 import { FastifyInstance } from "fastify";
 import * as ContactController from "../controller/ContactController";
 
-export default async function contactRoutes(fastify: FastifyInstance) {
-  fastify.get("/contacts", ContactController.listaContatos);
-  fastify.get("/contacts/:contactId", ContactController.detalhesContato);
+export default async function contactRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
+  fastify.get("/", ContactController.listaContatos);
+  fastify.get("/:contactId", ContactController.detalhesContato);
 
   fastify.post(
-    "/contacts",
+    "/",
     {
       schema: {
         body: {
@@ -41,7 +44,7 @@ export default async function contactRoutes(fastify: FastifyInstance) {
     ContactController.store
   );
   fastify.put(
-    "/contacts/:contactId",
+    "/:contactId",
     {
       schema: {
         body: {
@@ -71,7 +74,7 @@ export default async function contactRoutes(fastify: FastifyInstance) {
     ContactController.updateContato
   );
   fastify.put(
-    "/contacts/:contactId/socket",
+    "/:contactId/socket",
     {
       schema: {
         body: {
@@ -108,5 +111,6 @@ export default async function contactRoutes(fastify: FastifyInstance) {
   );
   //   fastify.put("/users/:userId", AdminController.updateUser);
   //   fastify.put("/users/:userId", AdminController.updateUser);
-  fastify.delete("/contacts/:contactId", ContactController.removeContato);
+  fastify.delete("/:contactId", ContactController.removeContato);
+  done();
 }

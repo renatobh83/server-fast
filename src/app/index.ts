@@ -6,7 +6,7 @@ import Fastify, {
 } from "fastify";
 import fastifyEnv from "@fastify/env";
 import jwt from "@fastify/jwt";
-import routes from "../routes";
+// import routes from "../routes";
 import fastifyModule from "../lib/fastifyPlugins/fastifyModule";
 import { initSocket, setupSocketListeners } from "../lib/socket";
 import { configSchema } from "./configSchema";
@@ -17,6 +17,7 @@ import { shutdown } from "../lib/Queue";
 import Setting from "../models/Setting";
 import { CheckDDNSservices } from "../services/DnsServices/CheckDDNSservices";
 import { scheduleOrUpdateDnsJob } from "../utils/scheduleDnsJob";
+import { routes } from "../routes/moduleRoutes";
 
 export async function buildServer(
   config: FastifyServerOptions = {}

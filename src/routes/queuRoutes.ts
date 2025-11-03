@@ -1,9 +1,12 @@
 import { FastifyInstance } from "fastify";
 import * as QueueController from "../controller/QueueController";
 
-export default async function queueRoutes(fastify: FastifyInstance) {
+export default async function queueRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
   fastify.post(
-    "/queue",
+    "/",
     {
       schema: {
         body: {
@@ -18,10 +21,10 @@ export default async function queueRoutes(fastify: FastifyInstance) {
     },
     QueueController.createFila
   );
-  fastify.get("/queue", QueueController.listFilas);
-  fastify.delete("/queue/:queueId", QueueController.deleteFila);
+  fastify.get("/", QueueController.listFilas);
+  fastify.delete("/:queueId", QueueController.deleteFila);
   fastify.put(
-    "/queue/:queueId",
+    "/:queueId",
     {
       schema: {
         body: {
@@ -36,4 +39,5 @@ export default async function queueRoutes(fastify: FastifyInstance) {
     },
     QueueController.updateFila
   );
+  done();
 }

@@ -30,6 +30,7 @@ import FastReply from "./FastReply";
 import NotaFiscalLog from "./NotafiscalLog";
 import IntegracaoGenesisConfirmacao from "./IntegracaoGenesisConfirmacao";
 import LogTicket from "./LogTicket";
+import Module from "./Module";
 
 // recebe a instância do sequelize
 export function initModels(sequelize: Sequelize) {
@@ -66,6 +67,7 @@ export function initModels(sequelize: Sequelize) {
     LogTicket: LogTicket.initModel(sequelize),
     FastReply: FastReply.initModel(sequelize),
     NotaFiscalLog: NotaFiscalLog.initModel(sequelize),
+    Module: Module.initModel(sequelize),
   };
 
   // associações

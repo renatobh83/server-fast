@@ -1,10 +1,13 @@
 import { FastifyInstance } from "fastify";
 import * as FastReplyController from "../controller/FastReplyController";
 
-export default async function fastReplyRoutes(fastify: FastifyInstance) {
-  fastify.get("/fastreply", FastReplyController.listaFastReply);
+export default async function fastReplyRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
+  fastify.get("/", FastReplyController.listaFastReply);
   fastify.post(
-    "/fastreply",
+    "/",
     {
       schema: {
         body: {
@@ -20,7 +23,7 @@ export default async function fastReplyRoutes(fastify: FastifyInstance) {
     FastReplyController.createFastReply
   );
   fastify.put(
-    "/fastreply/:fastReplyId",
+    "/:fastReplyId",
     {
       schema: {
         body: {
@@ -35,8 +38,6 @@ export default async function fastReplyRoutes(fastify: FastifyInstance) {
     },
     FastReplyController.updateFastReply
   );
-  fastify.delete(
-    "/fastreply/:fastReplyId",
-    FastReplyController.deleteFastReply
-  );
+  fastify.delete("/:fastReplyId", FastReplyController.deleteFastReply);
+  done();
 }

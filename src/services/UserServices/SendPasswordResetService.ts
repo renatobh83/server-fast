@@ -2,19 +2,16 @@ import { nanoid } from "nanoid";
 import jwt from "jsonwebtoken";
 import { SendEmailServices } from "../EmailServices/SendEmailServices";
 
-
 interface Request {
   user: any;
   redis: any;
 }
 
 export async function sendPasswordReset({ user, redis }: Request) {
-  
   const resetToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET_FORGOT!, {
     expiresIn: "15m",
   });
 
-  
   const fullUrl = `${process.env.FRONTEND_URL}/reset-password?token=${resetToken}`;
 
   //   // Encurta com Redis
@@ -23,7 +20,7 @@ export async function sendPasswordReset({ user, redis }: Request) {
 
   await redis.setex(`short:${code}`, expireSeconds, fullUrl);
 
-  const shortUrl = `${process.env.BACKEND_URL}/r/${code}`;
+  const shortUrl = `${process.env.BACKEND_URL}/aux/r/${code}`;
   await SendEmailServices({
     tenantId: user.tenantId,
     to: user.email,

@@ -1,7 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import * as UserController from "../controller/UserController";
 // Rotas de usuários
-async function userRoutes(fastify: FastifyInstance) {
+async function userRoutes(fastify: FastifyInstance, done: () => void) {
   fastify.get("/", UserController.listUserController);
   fastify.post(
     "/",
@@ -60,6 +60,7 @@ async function userRoutes(fastify: FastifyInstance) {
     UserController.updateIsOnline
   );
   fastify.get("/users/:userId", UserController.showUser);
+  done();
 }
 
 export default userRoutes;

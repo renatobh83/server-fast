@@ -1,10 +1,13 @@
 import { FastifyInstance } from "fastify";
 import * as EmailController from "../controller/EmailController";
 
-export default async function emailRoutes(fastify: FastifyInstance) {
-  fastify.get("/email", EmailController.listEmailConfiguracao);
+export default async function emailRoutes(
+  fastify: FastifyInstance,
+  done: () => void
+) {
+  fastify.get("/", EmailController.listEmailConfiguracao);
   fastify.post(
-    "/email",
+    "/",
     {
       schema: {
         body: {
@@ -24,7 +27,7 @@ export default async function emailRoutes(fastify: FastifyInstance) {
     EmailController.createEmail
   );
   fastify.post(
-    "/email/send",
+    "/send",
     {
       schema: {
         body: {
@@ -42,7 +45,7 @@ export default async function emailRoutes(fastify: FastifyInstance) {
     EmailController.sendEmailController
   );
   fastify.post(
-    "/email/send/teste",
+    "/send/teste",
     {
       schema: {
         body: {
@@ -57,9 +60,7 @@ export default async function emailRoutes(fastify: FastifyInstance) {
     },
     EmailController.sendEmailController
   );
-  fastify.post(
-    "/email/send/:chamadoId/close",
-    EmailController.sendEmailChamadoClose
-  );
-  fastify.post("/email/send/test", EmailController.sendEmailControllerTest);
+  fastify.post("/send/:chamadoId/close", EmailController.sendEmailChamadoClose);
+  fastify.post("/send/test", EmailController.sendEmailControllerTest);
+  done();
 }

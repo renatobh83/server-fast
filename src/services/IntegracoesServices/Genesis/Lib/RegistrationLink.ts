@@ -29,7 +29,7 @@ export const generateRegistrationLink = async (
 
   await redisClient.setex(`short:${code}`, expireSeconds, fullUrl);
 
-  const shortUrl = `${BACKEND_URL}/r/${code}`;
+  const shortUrl = `${BACKEND_URL}/aux/r/${code}`;
 
   return shortUrl;
 };
@@ -45,7 +45,7 @@ export const generateLinkPdf = async (plano: number, integracao: any) => {
   );
 
   // Link original com o token
-  const fullUrl = `${BACKEND_URL}/pdf/${plano}?token=${token}`;
+  const fullUrl = `${BACKEND_URL}/aux/pdf/${plano}?token=${token}`;
 
   const nanoidSafe = customAlphabet(
     "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
@@ -57,7 +57,7 @@ export const generateLinkPdf = async (plano: number, integracao: any) => {
 
   await redisClient.setex(`short:${code}`, expireSeconds, fullUrl);
 
-  const shortUrl = `${BACKEND_URL}/r/${code}`;
+  const shortUrl = `${BACKEND_URL}/aux//r/${code}`;
 
   return shortUrl;
 };
