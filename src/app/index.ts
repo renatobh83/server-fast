@@ -142,8 +142,7 @@ export async function start() {
     app.server.keepAliveTimeout = 5 * 60 * 1000;
     initSocket(app.server);
     setupSocketListeners();
-    // await StartAllWhatsAppsSessions();
-
+    await StartAllWhatsAppsSessions();
     await scheduleOrUpdateDnsJob();
   } catch (err) {
     app.log.error(err);
