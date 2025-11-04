@@ -8289,3 +8289,111 @@
   message: '[Worker VerifyTicketsConfirmacaoInactives] Erro geral no worker: connect ETIMEDOUT',
   timestamp: '2025-10-30T09:31:19.237Z'
 }
+{
+  message: 'Erro em upsertJobScheduler para fila CheckDDNSservices',
+  error: 'Either .pattern or .every options must be defined for this repeatable job',
+  stack: 'Error: Either .pattern or .every options must be defined for this repeatable job\n' +
+    '    at JobScheduler.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\job-scheduler.js:22:19)\n' +
+    '    at Queue.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue.js:251:42)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:294:9)\n' +
+    '    at async scheduleOrUpdateDnsJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\utils\\scheduleDnsJob.js:37:9)\n' +
+    '    at async UpdateSettingService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\SettingServices\\UpdateSettingService.js:18:9)\n' +
+    '    at async Object.updateSettings (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\controller\\SettingController.js:29:25)',
+  level: 'error',
+  timestamp: '2025-11-04T14:12:27.205Z'
+}
+{
+  level: 'error',
+  message: '❌ Erro ao agendar job DNS: Either .pattern or .every options must be defined for this repeatable job',
+  stack: 'Error: Either .pattern or .every options must be defined for this repeatable job\n' +
+    '    at JobScheduler.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\job-scheduler.js:22:19)\n' +
+    '    at Queue.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue.js:251:42)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:294:9)\n' +
+    '    at async scheduleOrUpdateDnsJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\utils\\scheduleDnsJob.js:37:9)\n' +
+    '    at async UpdateSettingService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\SettingServices\\UpdateSettingService.js:18:9)\n' +
+    '    at async Object.updateSettings (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\controller\\SettingController.js:29:25)',
+  timestamp: '2025-11-04T14:12:27.212Z'
+}
+{
+  message: 'Erro em upsertJobScheduler para fila CheckDDNSservices',
+  error: 'Either .pattern or .every options must be defined for this repeatable job',
+  stack: 'Error: Either .pattern or .every options must be defined for this repeatable job\n' +
+    '    at JobScheduler.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\job-scheduler.js:22:19)\n' +
+    '    at Queue.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue.js:251:42)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:294:9)\n' +
+    '    at async scheduleOrUpdateDnsJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\utils\\scheduleDnsJob.js:37:9)\n' +
+    '    at async UpdateSettingService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\SettingServices\\UpdateSettingService.js:18:9)\n' +
+    '    at async Object.updateSettings (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\controller\\SettingController.js:29:25)',
+  level: 'error',
+  timestamp: '2025-11-04T14:12:29.334Z'
+}
+{
+  level: 'error',
+  message: '❌ Erro ao agendar job DNS: Either .pattern or .every options must be defined for this repeatable job',
+  stack: 'Error: Either .pattern or .every options must be defined for this repeatable job\n' +
+    '    at JobScheduler.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\job-scheduler.js:22:19)\n' +
+    '    at Queue.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue.js:251:42)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:294:9)\n' +
+    '    at async scheduleOrUpdateDnsJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\utils\\scheduleDnsJob.js:37:9)\n' +
+    '    at async UpdateSettingService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\SettingServices\\UpdateSettingService.js:18:9)\n' +
+    '    at async Object.updateSettings (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\controller\\SettingController.js:29:25)',
+  timestamp: '2025-11-04T14:12:29.337Z'
+}
+{
+  message: 'Erro em upsertJobScheduler para fila CheckDDNSservices',
+  error: 'Either .pattern or .every options must be defined for this repeatable job',
+  stack: 'Error: Either .pattern or .every options must be defined for this repeatable job\n' +
+    '    at JobScheduler.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\job-scheduler.js:22:19)\n' +
+    '    at Queue.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue.js:251:42)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:294:9)\n' +
+    '    at async scheduleOrUpdateDnsJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\utils\\scheduleDnsJob.js:37:9)\n' +
+    '    at async UpdateSettingService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\SettingServices\\UpdateSettingService.js:18:9)\n' +
+    '    at async Object.updateSettings (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\controller\\SettingController.js:29:25)',
+  level: 'error',
+  timestamp: '2025-11-04T14:12:47.989Z'
+}
+{
+  level: 'error',
+  message: '❌ Erro ao agendar job DNS: Either .pattern or .every options must be defined for this repeatable job',
+  stack: 'Error: Either .pattern or .every options must be defined for this repeatable job\n' +
+    '    at JobScheduler.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\job-scheduler.js:22:19)\n' +
+    '    at Queue.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue.js:251:42)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:294:9)\n' +
+    '    at async scheduleOrUpdateDnsJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\utils\\scheduleDnsJob.js:37:9)\n' +
+    '    at async UpdateSettingService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\SettingServices\\UpdateSettingService.js:18:9)\n' +
+    '    at async Object.updateSettings (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\controller\\SettingController.js:29:25)',
+  timestamp: '2025-11-04T14:12:47.993Z'
+}
+{
+  message: 'Erro em upsertJobScheduler para fila CheckDDNSservices',
+  error: 'Either .pattern or .every options must be defined for this repeatable job',
+  stack: 'Error: Either .pattern or .every options must be defined for this repeatable job\n' +
+    '    at JobScheduler.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\job-scheduler.js:22:19)\n' +
+    '    at Queue.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue.js:251:42)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:294:9)\n' +
+    '    at async scheduleOrUpdateDnsJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\utils\\scheduleDnsJob.js:37:9)\n' +
+    '    at async UpdateSettingService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\SettingServices\\UpdateSettingService.js:18:9)\n' +
+    '    at async Object.updateSettings (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\controller\\SettingController.js:29:25)',
+  level: 'error',
+  timestamp: '2025-11-04T14:12:52.037Z'
+}
+{
+  level: 'error',
+  message: '❌ Erro ao agendar job DNS: Either .pattern or .every options must be defined for this repeatable job',
+  stack: 'Error: Either .pattern or .every options must be defined for this repeatable job\n' +
+    '    at JobScheduler.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\job-scheduler.js:22:19)\n' +
+    '    at Queue.upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\bullmq\\dist\\cjs\\classes\\queue.js:251:42)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async upsertJobScheduler (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\lib\\Queue.js:294:9)\n' +
+    '    at async scheduleOrUpdateDnsJob (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\utils\\scheduleDnsJob.js:37:9)\n' +
+    '    at async UpdateSettingService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\SettingServices\\UpdateSettingService.js:18:9)\n' +
+    '    at async Object.updateSettings (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\controller\\SettingController.js:29:25)',
+  timestamp: '2025-11-04T14:12:52.038Z'
+}

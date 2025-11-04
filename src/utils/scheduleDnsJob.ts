@@ -32,12 +32,39 @@ export async function scheduleOrUpdateDnsJob() {
       }
       return;
     }
+    const newInterval = intervalMinutes * 60 * 1000;
 
+    // 🔍 Verifica se já existe um job com esse nome
+    const jobs = await queue.bull.getRepeatableJobs();
+    const existingJob = jobs.find((j) => j.name === queueName);
+
+    // 🧹 Remove o job antigo se o intervalo mudou
+    if (existingJob) {
+      const oldEvery = Number(existingJob.every || 0);
+      if (oldEvery !== newInterval) {
+        await queue.bull.removeRepeatableByKey(existingJob.key);
+        logger.info(
+          `♻️ Job "${queueName}" removido para atualizar intervalo (${
+            oldEvery / 60000
+          } → ${intervalMinutes} min)`
+        );
+      }
+    }
     // Define o agendamento (repeat)
-    await upsertJobScheduler(
+    // await upsertJobScheduler(
+    //   queueName,
+    //   { every: newInterval },
+    //   {
+    //     removeOnComplete: true,
+    //     removeOnFail: true,
+    //   }
+    // );
+    // 🕒 Adiciona novo agendamento
+    await queue.bull.add(
       queueName,
-      { every: intervalMinutes * 60 * 1000 },
+      {},
       {
+        repeat: { every: newInterval },
         removeOnComplete: true,
         removeOnFail: true,
       }
