@@ -18,7 +18,7 @@ import { shutdown } from "../lib/Queue";
 import Setting from "../models/Setting";
 import { CheckDDNSservices } from "../services/DnsServices/CheckDDNSservices";
 import { scheduleOrUpdateDnsJob } from "../utils/scheduleDnsJob";
-import { routes } from "../routes/moduleRoutes";
+import { controlRoutes, routes } from "../routes/moduleRoutes";
 import { getModuleStatusByName } from "../services/ModuleServices";
 
 /**
@@ -92,6 +92,8 @@ export async function buildServer(
     });
   });
   server.addHook("preHandler", checkModuleStatus);
+
+  server.register(controlRoutes);
   // decorador para verificar se o usuário está autenticado
   server.decorate(
     "authenticate",
