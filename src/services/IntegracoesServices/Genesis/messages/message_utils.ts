@@ -64,8 +64,8 @@ export function generateServiceSelectionMessage(
       },
     ];
     return generateWhatsAppOptions(
-      "👉 Clique Aqui 👈",
-      "Para qual serviço deseja atendimento.",
+      " Opções ",
+      "🤖 Para qual serviço deseja atendimento.",
       [
         {
           title: "Selecione uma opção",
@@ -94,7 +94,7 @@ export function generateServiceSelectionMessage(
       },
     ]);
     return generateTelegramOptions(
-      "Para qual serviço deseja atendimento.",
+      "🤖 Para qual serviço deseja atendimento.",
       rowsListMessage
     );
   }
@@ -124,7 +124,7 @@ export function generateAppointmentListMessage(
 }
 
 export function generateNoAppointmentMessage() {
-  let message = `Olá! 😊 Queremos avisá-lo que, no momento, você não tem nenhum agendamento conosco.
+  let message = `🤖 Queremos avisá-lo que, no momento, você não tem nenhum agendamento conosco.
 Se precisar marcar um horário ou tiver qualquer dúvida, estamos à disposição para ajudar! É só nos chamar. 📅✨\n\n`;
   message += "📞 9 - Falar com o suporte.\n";
   message += "🔙 7 - Para menu anterior.\n";
@@ -237,7 +237,7 @@ export function generatePreparoSelectionMessage(
 export function generatePatientNotFoundMessage(channel: string) {
   if (channel === "whatsapp") {
     const options = {
-      buttonText: "📌 Como podemos seguir?",
+      buttonText: "🤖 Como podemos seguir?",
       description: "Desculpe, não localizei seu cadastro. 😔",
       sections: [
         {
@@ -300,7 +300,7 @@ export function generateWelcomeMessage(patientName: string, channel: string) {
   if (channel === "whatsapp") {
     const options = {
       buttonText: "📌 Escolha uma opção",
-      description: `Olá, ${patientName}! Como podemos te ajudar hoje?`,
+      description: `🤖 Olá, ${patientName}! Como podemos te ajudar hoje?`,
       sections: [
         {
           title: "📍 Menu Principal",
@@ -349,7 +349,7 @@ export function generateWelcomeMessage(patientName: string, channel: string) {
     ]);
 
     const options = {
-      body: `Olá, ${patientName}! Como podemos te ajudar hoje?`,
+      body: `🤖 Olá, ${patientName}! Como podemos te ajudar hoje?`,
       hasButtons: true,
       reply_markup: {
         inline_keyboard: rows,
@@ -374,8 +374,8 @@ export function generatePeriodoMessage(periodos: string[], channel: string) {
     ];
 
     const options = {
-      buttonText: "👉 Clique Aqui 👈",
-      description: "Selecione para qual periodo deseja agendar.",
+      buttonText: " Opções ",
+      description: "🤖 Selecione para qual periodo deseja agendar.",
       sections: [
         {
           title: "Selecione uma opção",
@@ -395,7 +395,7 @@ export function generatePeriodoMessage(periodos: string[], channel: string) {
 
     rowsListMessage.push([{ text: "⬅️ Voltar", callback_data: "2" }]);
     const options = {
-      body: "Selecione para qual periodo deseja agendar.",
+      body: "🤖 Selecione para qual periodo deseja agendar.",
       hasButtons: true,
       reply_markup: {
         inline_keyboard: rowsListMessage,
@@ -427,11 +427,11 @@ export function generateSendPreparoMessage(preparos: any[]) {
 export function generateConfirmaMessage(confirmacoes: any[]) {
   const message =
     confirmacoes.length > 0
-      ? `Exame(s) confirmado com sucesso.\n\n
+      ? `🤖 Exame(s) confirmado com sucesso.\n\n
 🔄 2 - Retornar ao menu.\n
 ❌ 3 - Encerrar o atendimento.\n\n
 _Digite o número da opção desejada_.`
-      : `Infelizamente não conseguimos confirmar o exame selecionado.\n\n
+      : `🤖 Infelizamente não conseguimos confirmar o exame selecionado.\n\n
 Se precisar favor entrar em contato com a nossa central, estamos à disposição.\n
 📞 1 - Falar com o suporte.\n
 🔄 2 - Retornar ao menu.\n
@@ -480,7 +480,7 @@ export function generateAgendamentoMessage(
     }
 
     const options = {
-      body: "Para unidade você deseja agendar?",
+      body: "🤖 Para unidade você deseja agendar?",
       hasButtons: true,
       reply_markup: {
         inline_keyboard: rowsListMessage,
@@ -506,7 +506,7 @@ export function generatePlanosMessage(channel: string, planos: any[]) {
     const options = {
       buttonText: "📋 Selecionar o plano",
       description:
-        "Aqui está a lista de planos disponíveis para agendamento. Por favor, selecione o plano desejado diretamente na lista abaixo.",
+        "🤖 Aqui está a lista de planos disponíveis para agendamento. Por favor, selecione o plano desejado diretamente na lista abaixo.",
       sections: [
         {
           title: "Por favor, selecione o seu plano de saúde:",
@@ -532,7 +532,7 @@ export function generatePlanosMessage(channel: string, planos: any[]) {
       { text: "⬅️ Voltar", callback_data: "voltar_plano" },
     ]);
     const options = {
-      body: "Aqui está a lista de planos disponíveis para agendamento. Por favor, selecione o plano desejado diretamente na lista abaixo.",
+      body: "🤖 Aqui está a lista de planos disponíveis para agendamento. Por favor, selecione o plano desejado diretamente na lista abaixo.",
       hasButtons: true,
       reply_markup: {
         inline_keyboard: rowsListMessage,
@@ -547,8 +547,8 @@ export function generateObsPlanoSelecionado(
   channel: string
 ) {
   const textoFinal = texto
-    ? `${texto}\n\nAs instruções acima descrevem como o pedido médico deve estar. Está tudo conforme para prosseguirmos?`
-    : "Este plano não possui instruções específicas. Podemos continuar?";
+    ? `🤖 ${texto}\n\nAs instruções acima descrevem como o pedido médico deve estar. Está tudo conforme para prosseguirmos?`
+    : "🤖 Este plano não possui instruções específicas. Podemos continuar?";
 
   if (channel === "whatsapp") {
     const rowsListMessage = [
@@ -565,7 +565,7 @@ export function generateObsPlanoSelecionado(
     ];
 
     return generateWhatsAppOptions(
-      "👉 Escolha uma opção 👈",
+      " Opções ",
       textoFinal,
       [
         {
@@ -609,7 +609,7 @@ export function generateProcedimentosMessage(
       botRetries: ticket.botRetries + 1,
       lastInteractionBot: new Date(),
     });
-    let message = `Não conseguimos localizar o exame que você digitou.
+    let message = `🤖 Não conseguimos localizar o exame que você digitou.
 Pode verificar se houve algum erro de digitação?
 Caso contrário, esse exame pode não estar disponível para agendamento no momento.
 Favor digitar novamente o exame que deseja agendar.\n\n`;
@@ -646,9 +646,9 @@ Favor digitar novamente o exame que deseja agendar.\n\n`;
     ];
 
     const options = {
-      buttonText: "👉 Clique Aqui 👈",
+      buttonText: " Opções ",
       description:
-        "Aqui está a lista de exames disponíveis para agendamento. Por favor, selecione o exame desejado diretamente na lista abaixo.",
+        "🤖 Aqui está a lista de exames disponíveis para agendamento. Por favor, selecione o exame desejado diretamente na lista abaixo.",
       sections: [
         {
           title: "Selecione uma opção",
@@ -678,7 +678,7 @@ Favor digitar novamente o exame que deseja agendar.\n\n`;
     ]);
     rowsListMessage.push([{ text: "⬅️ Voltar", callback_data: "2" }]);
     const options = {
-      body: "Aqui está a lista de exames disponíveis para agendamento. Por favor, selecione o exame desejado diretamente na lista abaixo.",
+      body: "🤖 Aqui está a lista de exames disponíveis para agendamento. Por favor, selecione o exame desejado diretamente na lista abaixo.",
       hasButtons: true,
       reply_markup: {
         inline_keyboard: rowsListMessage,
@@ -756,7 +756,7 @@ export function generateIntervaloHorarioMessage(
     ];
 
     const options = {
-      buttonText: "👉 Clique Aqui 👈",
+      buttonText: " Opções ",
       description: "Selecione para qual intervalo deseja agendar.",
       sections: [
         {
@@ -795,7 +795,7 @@ export async function generateHorariosDisponivelMessage(
     (horario: { cod: string }) => horario.cod.trim() !== ""
   );
   if (horariosDisponiveis.length === 0) {
-    const texto = `Não conseguimos localizar horario disponivel para o(s) exame(s) que você selecionou.
+    const texto = `🤖 Não conseguimos localizar horario disponivel para o(s) exame(s) que você selecionou.
 Se precisar de ajuda ou quiser conferir outras opções, estou aqui para auxiliar!
 Como devemos prosseguir?`;
     if (channel === "whatsapp") {
@@ -877,7 +877,7 @@ Como devemos prosseguir?`;
     const options = {
       buttonText: "📅  Horários clique aqui",
       description:
-        "Aqui está a lista de horarios disponíveis para agendamento. Por favor, selecione o horario desejado diretamente na lista abaixo.",
+        "🤖 Aqui está a lista de horarios disponíveis para agendamento. Por favor, selecione o horario desejado diretamente na lista abaixo.",
       sections: [
         {
           title: "Por favor, selecione o seu horário:",
@@ -917,7 +917,7 @@ Como devemos prosseguir?`;
       { text: "+ 20 minutos", callback_data: "mais" },
     ]);
     const options = {
-      body: "Aqui está a lista de horarios disponíveis para agendamento. Por favor, selecione o horario desejado diretamente na lista abaixo.",
+      body: "🤖 Aqui está a lista de horarios disponíveis para agendamento. Por favor, selecione o horario desejado diretamente na lista abaixo.",
       hasButtons: true,
       reply_markup: {
         inline_keyboard: rowsListMessage,
@@ -964,7 +964,7 @@ _Digite o número da opção desejada_.
 export function generateConcluirAgendamento(response: any[]) {
   if (response.length > 0 && response[0].cd_atendimento) {
     return (
-      `Agendamento realizado com suscesso!
+      `🤖 Agendamento realizado com suscesso!
 Podemos ajudar em algo ?\n\n` +
       "1 - 📞 Falar com o suporte.\n" +
       "3 - ❌ Finalizar atendimento.\n\n" +
@@ -972,7 +972,7 @@ Podemos ajudar em algo ?\n\n` +
     );
   } else {
     return (
-      `Não conseguimos concluir o seu agendamento.
+      `🤖 Não conseguimos concluir o seu agendamento.
 Favor acessar o nosso suporte!
 Como devemos prosseguir?\n\n` +
       "1 - 📞 Falar com o suporte.\n" +

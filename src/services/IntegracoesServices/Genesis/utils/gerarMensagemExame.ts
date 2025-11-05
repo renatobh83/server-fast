@@ -74,7 +74,7 @@ export function gerarMensagemExame(
 
 export function gerarMensagemListaMedicos(exames: any[]) {
   return {
-    texto: `Selecione o médico de sua preferência:`,
+    texto: `🤖 Selecione o médico de sua preferência:`,
     opcoes: exames.map((medico, index) => ({
       id: `medico_${medico.cd_medico}`, // ou `${medico.cd_medico}`
       texto: medico.ds_medico,
@@ -84,7 +84,7 @@ export function gerarMensagemListaMedicos(exames: any[]) {
 }
 export function gerarMensagemLoopProcedimento() {
   return {
-    texto: "Perfeito! Você deseja agendar mais algum outro exame?",
+    texto: "🤖 Perfeito! Você deseja agendar mais algum outro exame?",
     opcoes: [
       {
         id: "sim",

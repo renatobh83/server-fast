@@ -61,7 +61,7 @@ const tbotMessageListener = (tbot: Session): void => {
       });
       return;
     }
-    ctx.reply("Só um momento que estamos processando a sua solicitação!");
+    ctx.reply(" 🤖 Só um momento que estamos processando a sua solicitação!");
 
     await HandleMessageTelegram(ctx, tbot);
   });

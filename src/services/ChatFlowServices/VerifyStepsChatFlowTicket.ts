@@ -221,7 +221,11 @@ export const handleCloseTicket = async (
   actionDetails: StepCondition
 ): Promise<void> => {
   if (actionDetails.action === ChatFlowAction.CloseTicket) {
-    const closeTicketMessage = { message: actionDetails.closeTicket };
+    const closeTicketMessage = {
+      message:
+        actionDetails.closeTicket ||
+        "🤖 Estamos finalizando o seu atendimento.",
+    };
 
     const messageField = {
       data: closeTicketMessage,

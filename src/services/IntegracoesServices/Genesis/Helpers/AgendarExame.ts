@@ -9,11 +9,13 @@ const agendaSemanal = "doAgendaSemanal";
 
 export const ListarUnidades = async (integracao: any, token: string) => {
   const url = `/${unidades}`;
-  const URL_FINAL = `${integracao.config_json.baseUrl}${url}?token=${token}`;
+  const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
+  const body = new URLSearchParams();
+  body.append("token", token);
 
   try {
     const instanceApi = await getApiInstance(integracao, true);
-    const { data } = await instanceApi.post(URL_FINAL, {});
+    const { data } = await instanceApi.post(URL_FINAL, body);
     return data;
   } catch (error) {
     console.error("Erro ao confirmar exame:", error);
@@ -23,11 +25,13 @@ export const ListarUnidades = async (integracao: any, token: string) => {
 
 export const ListarPlanos = async (integracao: any, token: string) => {
   const url = `/${planos}`;
-  const URL_FINAL = `${integracao.config_json.baseUrl}${url}?token=${token}`;
+  const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
+  const body = new URLSearchParams();
+  body.append("token", token);
 
   try {
     const instanceApi = await getApiInstance(integracao, true);
-    const { data } = await instanceApi.post(URL_FINAL, {});
+    const { data } = await instanceApi.post(URL_FINAL, body);
     return data;
   } catch (error) {
     console.error("Erro ao confirmar exame:", error);
@@ -73,17 +77,22 @@ interface GetListProcedimento {
   cdEmpresa: number;
   token: string;
 }
+
 export const getListaProcedimento = async ({
   integracao,
   cdPlano,
   cdEmpresa,
   token,
 }: GetListProcedimento) => {
-  const url = `${procedimento}?cd_plano=${cdPlano}&cd_empresa=${cdEmpresa}&token=${token}`;
+  const url = `${procedimento}`;
   const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
+  const body = new URLSearchParams();
+  body.append("cd_plano", cdPlano.toString());
+  body.append("cd_empresa", cdEmpresa.toString());
+  body.append("token", token);
   try {
     const instanceApi = await getApiInstance(integracao, true);
-    const { data } = await instanceApi.post(URL_FINAL, {});
+    const { data } = await instanceApi.post(URL_FINAL, body);
 
     return data;
   } catch (error) {
@@ -182,7 +191,6 @@ export const doAgendaSemanal = async ({
   form.append("dt_hora_fim", dadosPesquisa.dt_hora_fim); // '23:49'
   form.append("js_exame", JSON.stringify(dadosPesquisa.js_exame));
   try {
-    console.log(form);
     const instanceApi = await getApiInstance(integracao, true);
     const { data } = await instanceApi.post(URL_FINAL, form, {
       headers: {

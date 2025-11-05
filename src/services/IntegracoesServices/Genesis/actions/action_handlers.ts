@@ -173,7 +173,7 @@ export async function handleConsulta({
   });
   const erro = getError(consultaAPI);
   if (erro === "Senha inválida !") {
-    return "Para continuar, por favor, digite sua senha de acesso.";
+    return "🤖 Para continuar, por favor, digite sua senha de acesso.";
   } else if (erro === "Cadastro não encontrado !") {
     return generatePatientNotFoundMessage(ticket.channel);
   } else if (erro) {
@@ -216,14 +216,14 @@ export async function handleSolicitarSenha({
     });
     sessao.errosResponse = sessao.errosResponse + 1;
     if (sessao.errosResponse === 1 || sessao.errosResponse === 2) {
-      return "Dados inseridos inválido, favor conferir e enviar novamente.";
+      return "🤖 Dados inseridos inválido, favor conferir e enviar novamente.";
     } else if (sessao.errosResponse >= 3) {
       await ticket.update({
         stepChatFlow: PREVIOUS_STEPID,
         lastInteractionBot: new Date(),
       });
       sessao.errosResponse = 0;
-      return "Os dados fornecidos não conferem. Favor digitar *recuperar* para cadastrar uma nova senha.";
+      return "🤖 Os dados fornecidos não conferem. Favor digitar *recuperar* para cadastrar uma nova senha.";
     }
   }
 
@@ -253,7 +253,7 @@ export async function handleLinkCadastro({
     lastInteractionBot: new Date(),
   });
   sessao.errosResponse = 0;
-  return `Clique no link para se cadastrar:\n\n${link}\n\nO link irá expirar em 15minutos.\nEsse atendimento sera encerrado.`;
+  return `🤖 Clique no link para se cadastrar:\n\n${link}\n\nO link irá expirar em 15minutos.\nEsse atendimento sera encerrado.`;
 }
 
 export async function handleServicoEscolhido({
@@ -518,7 +518,7 @@ export function handleSelecionarUnidade({
     sessao.unidadeSelecionada = unidade;
   }
 
-  return "Digite o nome do seu plano de saúde para que possamos encontrar as opções corretas.";
+  return "🤖 Digite o nome do seu plano de saúde para que possamos encontrar as opções corretas.";
 }
 
 export function handleGetPlanos({
@@ -540,7 +540,7 @@ export function handleGetPlanos({
       lastInteractionBot: new Date(),
     });
     sessao.errosResponse = sessao.errosResponse + 1;
-    return "O nome do plano está muito curto. Tente digitar o nome completo ou uma parte mais significativa dele.";
+    return "🤖 O nome do plano está muito curto. Tente digitar o nome completo ou uma parte mais significativa dele.";
   }
   if (pesquisaFuse.length === 0) {
     ticket.update({
@@ -549,7 +549,7 @@ export function handleGetPlanos({
       lastInteractionBot: new Date(),
     });
     sessao.errosResponse = sessao.errosResponse + 1;
-    return "Ops! Não localizamos nenhum plano com base no que foi digitado. Por favor, revise as informações e tente novamente.";
+    return "🤖 Ops! Não localizamos nenhum plano com base no que foi digitado. Por favor, revise as informações e tente novamente.";
   }
   PREVIOUS_STEPID = ticket.stepChatFlow;
   sessao.errosResponse = 0;
@@ -577,6 +577,7 @@ export async function handleObsPlanoSelecionado({
       .trim()
       .split("_")[1];
   }
+
   const ListaProcedimentoEmpresa = await redisClient.exists(
     `${sessao.unidadeSelecionada}:Procedimentos`
   );
@@ -594,6 +595,7 @@ export async function handleObsPlanoSelecionado({
       "EX",
       3600
     );
+
     sessao.listaExames = listaProcedimentos;
   } else {
     const listaProcedimentosRedis = await redisClient.get(
@@ -660,7 +662,7 @@ export function handleSelectProcedimento({
       lastInteractionBot: new Date(),
     });
     sessao.errosResponse = sessao.errosResponse + 1;
-    return "O nome do procedimento está muito curto. Tente digitar o nome completo ou uma parte mais significativa dele.";
+    return "🤖 O nome do procedimento está muito curto. Tente digitar o nome completo ou uma parte mais significativa dele.";
   }
   sessao.errosResponse = 0;
   return generateProcedimentosMessage(
@@ -771,7 +773,7 @@ export function handleConfirmarHorarioAutoAgendamento({
       .split("_")[1];
   }
   sessao.intervaloSelecionado = intervaloSelecionado;
-  const message = `Podemos proseguir com a pesquisa de horarios para o intervalo ${intervaloSelecionado}\n
+  const message = `🤖 Podemos proseguir com a pesquisa de horarios para o intervalo ${intervaloSelecionado}\n
 1 - Continuar.
 2 - Cancelar.
 _Digite o número da opção desejada_.`;

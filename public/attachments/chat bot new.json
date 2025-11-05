@@ -85,18 +85,14 @@
               "type": "MessageField",
               "id": "77446a02-f0b3-444a-a14d-a6b9da82412d",
               "data": {
-                "message": "Olá, {{name}} {{greeting}} Seja bem-vindo! \nComo podemos te ajudar hoje?"
+                "message": " 🤖 Olá, {{name}} {{greeting}} Seja bem-vindo! \nComo podemos te ajudar hoje?"
               }
             }
           ],
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "consultaChamado",
-                "consulta",
-                "consultar"
-              ],
+              "condition": ["consultaChamado", "consulta", "consultar"],
               "id": "509c590d-e459-4e7c-9ace-5306c07ae94b",
               "action": 0,
               "nextStepId": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
@@ -107,11 +103,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "AbrirChamado",
-                "abrir",
-                "novo"
-              ],
+              "condition": ["AbrirChamado", "abrir", "novo"],
               "id": "46fd1da8-68b1-48fb-8c57-65e0c830c4a0",
               "action": 1,
               "nextStepId": null,
@@ -121,9 +113,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "3"
-              ],
+              "condition": ["3"],
               "id": "a5e7ea0d-e77e-4159-8f04-bd6d2efe13f5",
               "action": 3,
               "nextStepId": "",
@@ -139,10 +129,7 @@
               "nextStepId": "b9541322-6ba5-48f7-b7cf-01841a4292f7",
               "userIdDestination": null,
               "queueId": null,
-              "condition": [
-                "ext",
-                "1"
-              ],
+              "condition": ["ext", "1"],
               "inputValue": ""
             }
           ],
@@ -179,9 +166,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "empresa_"
-              ],
+              "condition": ["empresa_"],
               "id": "4e7a7f9a-abde-48c9-a77b-5503d1a6e706",
               "action": 0,
               "nextStepId": "66de1dd5-4546-42e7-af5b-bc67376468f1",
@@ -191,9 +176,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "chamado_"
-              ],
+              "condition": ["chamado_"],
               "id": "060b9798-2ddd-401c-9801-035bf500af84",
               "action": 0,
               "nextStepId": "9a49289a-8cc8-4463-8b53-c1ce3462d0e6",
@@ -203,9 +186,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "3"
-              ],
+              "condition": ["3"],
               "id": "0828d032-5bc3-4a39-bab1-b5ca5dda2086",
               "action": 3,
               "nextStepId": "",
@@ -221,9 +202,7 @@
               "nextStepId": null,
               "userIdDestination": 24,
               "queueId": null,
-              "condition": [
-                "suporte"
-              ],
+              "condition": ["suporte"],
               "inputValue": ""
             }
           ],
@@ -258,9 +237,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "chamado_"
-              ],
+              "condition": ["chamado_"],
               "id": "91c76f67-7b9e-4151-bd79-b06f6de66e54",
               "action": 0,
               "nextStepId": "9a49289a-8cc8-4463-8b53-c1ce3462d0e6",
@@ -270,9 +247,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "3"
-              ],
+              "condition": ["3"],
               "id": "70963d7b-00ec-4cac-8604-8215482da232",
               "action": 3,
               "nextStepId": "",
@@ -283,9 +258,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "suporte"
-              ],
+              "condition": ["suporte"],
               "id": "19b8c9e1-218f-421e-94b3-dcf5752c0211",
               "action": 1,
               "nextStepId": null,
@@ -295,9 +268,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "voltar"
-              ],
+              "condition": ["voltar"],
               "id": "cb143044-9681-4ab8-894d-0839a965c386",
               "action": 0,
               "nextStepId": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
@@ -341,20 +312,12 @@
               "nextStepId": "92b6e6fb-5043-4eea-ba10-516c7c3e117a",
               "userIdDestination": null,
               "queueId": null,
-              "condition": [
-                "1",
-                "voltar",
-                "anterior"
-              ],
+              "condition": ["1", "voltar", "anterior"],
               "inputValue": ""
             },
             {
               "type": "R",
-              "condition": [
-                "3",
-                "encerar",
-                "fechar"
-              ],
+              "condition": ["3", "encerar", "fechar"],
               "id": "390b527d-2362-40ef-aee9-209484a3d6a3",
               "action": 3,
               "nextStepId": "",
@@ -365,10 +328,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "Suporte",
-                "suporte"
-              ],
+              "condition": ["Suporte", "suporte"],
               "id": "e367b943-99b7-4a79-8e0f-d81ac028e1d2",
               "action": 1,
               "nextStepId": null,
@@ -405,7 +365,7 @@
             {
               "type": "MessageField",
               "data": {
-                "message": "Olá, {{name}}, seja muito bem-vindo(a)! \nPara continuar, preciso te identificar. Por favor, digite o *CPF*. \n\n`Apenas números`"
+                "message": " 🤖 Olá, {{name}}, seja muito bem-vindo(a)! \nPara continuar, preciso te identificar. Por favor, digite o *CPF*. \n\n`Apenas números`"
               },
               "id": "4d3ac058-1235-4dc6-8b42-15a61d01d242"
             },
@@ -423,9 +383,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "recuperar"
-              ],
+              "condition": ["recuperar"],
               "id": "c840c335-2f7b-4f3d-9afb-1c4385bb39d0",
               "action": 0,
               "nextStepId": "224482e2-10a5-4d62-867e-f98b24f25d6a",
@@ -440,18 +398,12 @@
               "nextStepId": null,
               "userIdDestination": null,
               "queueId": 13,
-              "condition": [
-                "abrir",
-                "suporte"
-              ],
+              "condition": ["abrir", "suporte"],
               "inputValue": ""
             },
             {
               "type": "R",
-              "condition": [
-                "finalizar",
-                "fim"
-              ],
+              "condition": ["finalizar", "fim"],
               "id": "ad01b86b-5e4f-4c4f-aba2-a373861070c4",
               "action": 3,
               "nextStepId": "",
@@ -506,16 +458,12 @@
               "nextStepId": "d8f70c55-22e9-476a-8720-908cb646436d",
               "userIdDestination": null,
               "queueId": null,
-              "condition": [
-                "agendamentos"
-              ],
+              "condition": ["agendamentos"],
               "inputValue": ""
             },
             {
               "type": "R",
-              "condition": [
-                "laudo"
-              ],
+              "condition": ["laudo"],
               "id": "1e5b0eb5-203b-4ef1-8af3-ddccfa8bb698",
               "action": 0,
               "nextStepId": "ca4dced9-55e6-4fd0-a655-7a5b38e7630c",
@@ -525,9 +473,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "suporte"
-              ],
+              "condition": ["suporte"],
               "id": "c3966cd5-5d91-4d58-8f71-1b1e090f7f66",
               "action": 1,
               "nextStepId": null,
@@ -537,9 +483,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "3"
-              ],
+              "condition": ["3"],
               "id": "1637c036-873d-4157-a93e-84aa0ade633f",
               "action": 3,
               "nextStepId": "",
@@ -580,13 +524,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"
-              ],
+              "condition": ["1", "2", "3", "4", "5"],
               "id": "ff27716e-27c6-4599-98a7-a0ba43ec8ae4",
               "action": 0,
               "nextStepId": "9a7c7a6f-b14a-4a81-b191-f805e99c4d5c",
@@ -596,9 +534,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "6"
-              ],
+              "condition": ["6"],
               "id": "8a1bd2dd-da0f-4232-bd1d-4f4a6f916c4f",
               "action": 0,
               "nextStepId": "48470ea8-0254-400c-a436-95ece2c533b1",
@@ -608,9 +544,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "7"
-              ],
+              "condition": ["7"],
               "id": "a1b83514-8e06-436f-80d9-553e64e0b062",
               "action": 0,
               "nextStepId": "706313a6-863a-43b4-8a30-ea2e9bac6c8a",
@@ -620,9 +554,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "8"
-              ],
+              "condition": ["8"],
               "id": "a07f2a63-ee58-495f-aa8b-4811961c70e8",
               "action": 3,
               "nextStepId": "",
@@ -633,10 +565,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "9",
-                "suporte"
-              ],
+              "condition": ["9", "suporte"],
               "id": "88ce6e39-9000-441c-a601-c8776d384712",
               "action": 1,
               "nextStepId": null,
@@ -691,13 +620,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"
-              ],
+              "condition": ["1", "2", "3", "4", "5"],
               "id": "612a816f-e068-4d7a-9367-bd16602684d4",
               "action": 0,
               "nextStepId": "08550817-da6a-4823-981e-cd8a2deea762",
@@ -707,9 +630,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "9"
-              ],
+              "condition": ["9"],
               "id": "a78bea87-22d2-45f8-9c3c-0ed2893470cc",
               "action": 1,
               "nextStepId": null,
@@ -719,9 +640,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "7"
-              ],
+              "condition": ["7"],
               "id": "fd66ed5f-a28b-4ce9-a089-eb558b03820b",
               "action": 3,
               "nextStepId": "",
@@ -732,9 +651,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "6"
-              ],
+              "condition": ["6"],
               "id": "8d214881-f3e4-4cf2-9c4f-a98560b832a2",
               "action": 0,
               "nextStepId": "706313a6-863a-43b4-8a30-ea2e9bac6c8a",
@@ -774,10 +691,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "9",
-                "suporte"
-              ],
+              "condition": ["9", "suporte"],
               "id": "bc048b64-9a9c-4967-895a-5fd955300da4",
               "action": 1,
               "nextStepId": null,
@@ -787,9 +701,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "6"
-              ],
+              "condition": ["6"],
               "id": "46dd1367-e3f8-4b33-8824-821f767893a1",
               "action": 0,
               "nextStepId": "ca4dced9-55e6-4fd0-a655-7a5b38e7630c",
@@ -799,11 +711,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "7",
-                "encerar",
-                "fechar"
-              ],
+              "condition": ["7", "encerar", "fechar"],
               "id": "d7670718-c43e-4c69-bb4d-696ae1b6fb3b",
               "action": 3,
               "nextStepId": "",
@@ -845,9 +753,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "Preparo_"
-              ],
+              "condition": ["Preparo_"],
               "id": "95c9d4a4-acd5-4b00-8617-4a9f836709b1",
               "action": 0,
               "nextStepId": "67f53216-e996-428b-82a7-d99a77446769",
@@ -858,10 +764,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "9",
-                "suporte"
-              ],
+              "condition": ["9", "suporte"],
               "id": "07a01a97-1252-4a5c-bc7b-c80569d10315",
               "action": 1,
               "nextStepId": null,
@@ -872,10 +775,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "3",
-                "7"
-              ],
+              "condition": ["3", "7"],
               "id": "e65a7d84-85e0-47b2-a046-73961c934df3",
               "action": 3,
               "nextStepId": "",
@@ -916,10 +816,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "9",
-                "suporte"
-              ],
+              "condition": ["9", "suporte"],
               "id": "472eeb77-69b7-4add-95e6-610fa3126aa3",
               "action": 1,
               "nextStepId": null,
@@ -929,9 +826,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "6"
-              ],
+              "condition": ["6"],
               "id": "a69239a0-c999-44b8-aaa9-3ebbf0dff6b5",
               "action": 0,
               "nextStepId": "48470ea8-0254-400c-a436-95ece2c533b1",
@@ -941,9 +836,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "7"
-              ],
+              "condition": ["7"],
               "id": "60506e19-4936-4bce-87d9-c93e4ef778b3",
               "action": 3,
               "nextStepId": "",
@@ -984,9 +877,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "3"
-              ],
+              "condition": ["3"],
               "id": "90bf5f30-006e-42a2-b1c9-44c49ad0ca28",
               "action": 3,
               "nextStepId": "",
@@ -997,9 +888,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "2"
-              ],
+              "condition": ["2"],
               "id": "485c92f0-3ac9-4948-ba58-e4510d33a825",
               "action": 0,
               "nextStepId": "d8f70c55-22e9-476a-8720-908cb646436d",
@@ -1113,9 +1002,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "voltar_unidades"
-              ],
+              "condition": ["voltar_unidades"],
               "id": "ad247a39-fe7c-49e5-a287-9bb555226a71",
               "action": 0,
               "nextStepId": "3dcf3ea6-e8a1-409b-acba-1985c601aca9",
@@ -1125,9 +1012,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "empresa_"
-              ],
+              "condition": ["empresa_"],
               "id": "94997dd5-d201-4367-bf10-db949010fb41",
               "action": 0,
               "nextStepId": "60f5eed4-b311-4585-a791-d6743555a760",
@@ -1205,9 +1090,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "voltar_plano"
-              ],
+              "condition": ["voltar_plano"],
               "id": "157275bc-c973-4ce0-a5b1-2e73e02a03d0",
               "action": 0,
               "nextStepId": "60f5eed4-b311-4585-a791-d6743555a760",
@@ -1217,9 +1100,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "plano_"
-              ],
+              "condition": ["plano_"],
               "id": "c9cc49d4-a133-4317-be3f-fb2230c0e7dc",
               "action": 0,
               "nextStepId": "0ef1a893-426a-470c-be5a-294399a7c1ef",
@@ -1304,12 +1185,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "SIM",
-                "sim",
-                "continuar",
-                "1"
-              ],
+              "condition": ["SIM", "sim", "continuar", "1"],
               "id": "4e30b3fe-d8a1-4594-9098-f1acaffec9e4",
               "action": 0,
               "nextStepId": "3d34cb56-51cc-4c05-8a3a-74a459eb293c",
@@ -1319,12 +1195,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "nao",
-                "não",
-                "cancelar",
-                "2"
-              ],
+              "condition": ["nao", "não", "cancelar", "2"],
               "id": "a85abc64-e40c-43a5-9f2c-d6f17f0f88c5",
               "action": 3,
               "nextStepId": "",
@@ -1365,9 +1236,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "exame_"
-              ],
+              "condition": ["exame_"],
               "id": "51223545-3833-48c2-849c-442b8b680c03",
               "action": 0,
               "nextStepId": "8747be46-a374-42ec-afa2-230135059023",
@@ -1378,10 +1247,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "1",
-                "suporte"
-              ],
+              "condition": ["1", "suporte"],
               "id": "ee3daba5-e803-44d7-9282-0bf5c2513b32",
               "action": 1,
               "nextStepId": null,
@@ -1391,9 +1257,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "3"
-              ],
+              "condition": ["3"],
               "id": "9e152065-3da3-4406-88d1-d34493bdbb7b",
               "action": 3,
               "nextStepId": "",
@@ -1404,9 +1268,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "2"
-              ],
+              "condition": ["2"],
               "id": "344bda8f-ec64-40c9-8f6d-2fbe75b920ab",
               "action": 0,
               "nextStepId": "3d34cb56-51cc-4c05-8a3a-74a459eb293c",
@@ -1446,9 +1308,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "sim"
-              ],
+              "condition": ["sim"],
               "id": "440b102d-7050-4b16-9fdb-fd7cdeb21b35",
               "action": 0,
               "nextStepId": "3d34cb56-51cc-4c05-8a3a-74a459eb293c",
@@ -1464,10 +1324,7 @@
               "userIdDestination": null,
               "queueId": null,
               "closeTicket": "Estamos finalizando o seu atendimento. 👋",
-              "condition": [
-                "nao",
-                "não"
-              ],
+              "condition": ["nao", "não"],
               "inputValue": ""
             }
           ],
@@ -1508,18 +1365,12 @@
               "userIdDestination": null,
               "queueId": null,
               "closeTicket": "Estamos finalizando o seu atendimento. 👋",
-              "condition": [
-                "1",
-                "continuar"
-              ],
+              "condition": ["1", "continuar"],
               "inputValue": ""
             },
             {
               "type": "R",
-              "condition": [
-                "2",
-                "voltar"
-              ],
+              "condition": ["2", "voltar"],
               "id": "4e4dae1f-9a8d-46f0-837d-e0996a26b376",
               "action": 0,
               "nextStepId": "ff6061f6-3bb8-4f66-83b0-d9670a530f5b",
@@ -1529,9 +1380,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "3"
-              ],
+              "condition": ["3"],
               "id": "8839ca85-d118-4441-962a-6a6207d178c3",
               "action": 3,
               "nextStepId": "",
@@ -1578,17 +1427,13 @@
               "userIdDestination": null,
               "queueId": null,
               "closeTicket": "Estamos finalizando o seu atendimento. 👋",
-              "condition": [
-                "horario_"
-              ],
+              "condition": ["horario_"],
               "inputValue": "",
               "action": 0
             },
             {
               "type": "R",
-              "condition": [
-                "next"
-              ],
+              "condition": ["next"],
               "id": "de7f72d2-cea8-4b05-936d-a95ceb7424bc",
               "action": 0,
               "nextStepId": "d3e46bfa-7e2c-40f0-9fff-56c242dbbba7",
@@ -1598,10 +1443,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "1",
-                "suporte"
-              ],
+              "condition": ["1", "suporte"],
               "id": "de18e0cd-d9a5-4bc3-b4a8-f69041b970fa",
               "action": 1,
               "nextStepId": null,
@@ -1611,10 +1453,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "2",
-                "voltar"
-              ],
+              "condition": ["2", "voltar"],
               "id": "577ba8f6-295d-4b6e-a2ee-fb4ec25bc272",
               "action": 1,
               "nextStepId": null,
@@ -1624,11 +1463,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "3",
-                "encerar",
-                "cancelar"
-              ],
+              "condition": ["3", "encerar", "cancelar"],
               "id": "d6132358-5d78-4886-93e0-023a645a6f70",
               "action": 3,
               "nextStepId": "",
@@ -1639,9 +1474,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "mais"
-              ],
+              "condition": ["mais"],
               "id": "02cd830f-8a01-48d8-bebe-381125f4be75",
               "action": 0,
               "nextStepId": "d3e46bfa-7e2c-40f0-9fff-56c242dbbba7",
@@ -1687,17 +1520,12 @@
               "userIdDestination": null,
               "queueId": null,
               "closeTicket": "Estamos finalizando o seu atendimento. 👋",
-              "condition": [
-                "confirmar",
-                "1"
-              ],
+              "condition": ["confirmar", "1"],
               "inputValue": ""
             },
             {
               "type": "R",
-              "condition": [
-                "2"
-              ],
+              "condition": ["2"],
               "id": "205ad21e-2275-4348-b65f-9734f7bdf46b",
               "action": 3,
               "nextStepId": "",
@@ -1745,12 +1573,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "Reenvi",
-                "Reenvia",
-                "reenvia",
-                "reenviar"
-              ],
+              "condition": ["Reenvi", "Reenvia", "reenvia", "reenviar"],
               "id": "89aa7e4c-7e22-4bb9-abd2-5f155f142afb",
               "action": 0,
               "nextStepId": "f965ca07-34d4-4010-8097-0f367be7af4e",
@@ -1799,9 +1622,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "3"
-              ],
+              "condition": ["3"],
               "id": "83e010af-02ca-48a9-9134-91187e3d7813",
               "action": 3,
               "nextStepId": "",
@@ -1812,9 +1633,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "1"
-              ],
+              "condition": ["1"],
               "id": "ea9b2b7f-e008-48c6-9785-cc594a6f9671",
               "action": 1,
               "nextStepId": null,
@@ -1854,10 +1673,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "cadastrar",
-                "cadastro"
-              ],
+              "condition": ["cadastrar", "cadastro"],
               "id": "646f4d36-3287-4ce3-b40f-9b7a74895cf9",
               "action": 0,
               "nextStepId": "f965ca07-34d4-4010-8097-0f367be7af4e",
@@ -1872,12 +1688,7 @@
               "nextStepId": "224482e2-10a5-4d62-867e-f98b24f25d6a",
               "userIdDestination": null,
               "queueId": null,
-              "condition": [
-                "recuperar",
-                "Recuperar",
-                "Recupera",
-                "recupera"
-              ],
+              "condition": ["recuperar", "Recuperar", "Recupera", "recupera"],
               "inputValue": ""
             },
             {
@@ -1920,10 +1731,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "suporte",
-                "atendimento"
-              ],
+              "condition": ["suporte", "atendimento"],
               "id": "e1b5d032-0641-4429-bed9-d81f66e6e8f2",
               "action": 1,
               "nextStepId": null,
@@ -1933,11 +1741,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "servicos",
-                "servico",
-                "serviço"
-              ],
+              "condition": ["servicos", "servico", "serviço"],
               "id": "4a434bde-a7be-45a6-b184-0e377d279485",
               "action": 0,
               "nextStepId": "706313a6-863a-43b4-8a30-ea2e9bac6c8a",
@@ -1947,11 +1751,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "Recuperar",
-                "recupera",
-                "recuperae"
-              ],
+              "condition": ["Recuperar", "recupera", "recuperae"],
               "id": "584248f7-b2b7-4a28-a53e-12d6519407c0",
               "action": 0,
               "nextStepId": "224482e2-10a5-4d62-867e-f98b24f25d6a",
@@ -1961,11 +1761,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "3",
-                "fim",
-                "encerar"
-              ],
+              "condition": ["3", "fim", "encerar"],
               "id": "b4a905d1-b790-477f-87e7-00998c104178",
               "action": 3,
               "nextStepId": "",
@@ -2011,9 +1807,7 @@
               "nextStepId": "bd4b85e6-3fb1-4300-9493-5af4413532ac",
               "userIdDestination": null,
               "queueId": null,
-              "condition": [
-                "periodo_"
-              ],
+              "condition": ["periodo_"],
               "inputValue": ""
             }
           ],
@@ -2053,9 +1847,7 @@
               "userIdDestination": null,
               "queueId": null,
               "action": 0,
-              "condition": [
-                "intervalo_"
-              ],
+              "condition": ["intervalo_"],
               "inputValue": ""
             }
           ],
@@ -2090,10 +1882,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "continuar",
-                "1"
-              ],
+              "condition": ["continuar", "1"],
               "id": "dab15008-8287-41c5-ae55-5f8299e1dec9",
               "action": 0,
               "nextStepId": "d3e46bfa-7e2c-40f0-9fff-56c242dbbba7",
@@ -2133,9 +1922,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "suporte"
-              ],
+              "condition": ["suporte"],
               "id": "5fe2940c-dcdd-4ddf-be1e-256b00bb9e67",
               "action": 1,
               "nextStepId": null,
@@ -2145,9 +1932,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "medico_"
-              ],
+              "condition": ["medico_"],
               "id": "ee38c547-1dd8-4155-a27f-19fd4a8d22e5",
               "action": 0,
               "nextStepId": "ff6061f6-3bb8-4f66-83b0-d9670a530f5b",
@@ -2187,9 +1972,7 @@
           "conditions": [
             {
               "type": "R",
-              "condition": [
-                "selecionarMedico"
-              ],
+              "condition": ["selecionarMedico"],
               "id": "cd6ec361-1818-4509-ba90-a36eaa6958ba",
               "action": 0,
               "nextStepId": "6a471351-262a-4e63-9e5e-80f02d731bdf",
@@ -2199,10 +1982,7 @@
             },
             {
               "type": "R",
-              "condition": [
-                "continuar",
-                "naoSelecionar"
-              ],
+              "condition": ["continuar", "naoSelecionar"],
               "id": "1d9ca2e2-cf18-4076-b4dc-ffed7e89da01",
               "action": 0,
               "nextStepId": "ff6061f6-3bb8-4f66-83b0-d9670a530f5b",
@@ -2217,10 +1997,7 @@
               "nextStepId": "",
               "userIdDestination": "",
               "queueId": "",
-              "condition": [
-                "3",
-                "cancelar"
-              ],
+              "condition": ["3", "cancelar"],
               "inputValue": "",
               "closeTicket": "Estamos finalizando o seu atendimento. 👋"
             }

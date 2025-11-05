@@ -22,7 +22,7 @@ export const PrecoExame = async ({
   body.append("cd_plano", planoSelecionado);
   const url = `doProcedimentoValor`;
   const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
-
+  console.log(URL_FINAL);
   const instanceApi = await getApiInstance(integracao, true);
   try {
     const { data } = await instanceApi.post(URL_FINAL, body, {
