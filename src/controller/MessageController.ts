@@ -9,6 +9,9 @@ import { CreateMessageSystemService } from "../services/MessageServices/CreateMe
 import CreateForwardMessageService from "../services/MessageServices/CreateForwardMessageService";
 import { startTypingWbot } from "../services/WbotServices/StartTypingWbot";
 import { stopTypingWbot } from "../services/WbotServices/StopTypingWbot";
+import { getWbot } from "../lib/wbot";
+import modelMessage from "../models/Message";
+import { SendReactionMessage } from "../services/WbotServices/Helpers/SendReactionMessage";
 
 type IndexQuery = {
   pageNumber: string;
@@ -165,5 +168,19 @@ export const stopTyping = async (
   } catch (error) {
     console.log(error);
     return reply.code(STANDARD.OK.statusCode).send({ message: "stopTyping" });
+  }
+};
+
+export const messageReaction = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  const { messageid, emoji } = request.body as any;
+  try {
+    await SendReactionMessage(messageid, emoji);
+    return reply.code(STANDARD.OK.statusCode).send(true);
+  } catch (error) {
+    console.log(error);
+    return reply.code(STANDARD.OK.statusCode).send({ message: "sendReaction" });
   }
 };

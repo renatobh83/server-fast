@@ -221,6 +221,7 @@ async function waitForApiValue(apiCall: Session, interval = 1000) {
 const start = async (client: Session, io: any) => {
   try {
     const isReady = await client.isAuthenticated();
+
     if (isReady) {
       logger.info(`Session: ${sessionName} AUTHENTICATED`);
       client.startTyping;

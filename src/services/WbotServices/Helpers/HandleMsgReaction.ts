@@ -1,6 +1,9 @@
+import { Queue } from "bullmq";
 import socketEmit from "../../../helpers/socketEmit";
+import Contact from "../../../models/Contact";
 import Message from "../../../models/Message";
 import Ticket from "../../../models/Ticket";
+import User from "../../../models/User";
 
 export async function HandleMsgReaction(msg: any) {
   try {
@@ -21,25 +24,31 @@ export async function HandleMsgReaction(msg: any) {
       ],
     });
     if (messageToUpdate) {
-      const { ticket } = messageToUpdate;
-      if (msg.id.fromMe) {
-        const updateData = { reactionFromMe: msg.reactionText };
-        await messageToUpdate.update(updateData);
-        socketEmit({
-          tenantId: ticket.tenantId,
-          type: "chat:update",
-          payload: messageToUpdate,
-        });
-      }
-      if (!msg.id.fromMe) {
-        const updateData = { reaction: msg.reactionText };
-        await messageToUpdate.update(updateData);
-        socketEmit({
-          tenantId: ticket.tenantId,
-          type: "chat:update",
-          payload: messageToUpdate,
-        });
-      }
+      const updateData = msg.id.fromMe
+        ? { reactionFromMe: msg.reactionText }
+        : { reaction: msg.reactionText };
+
+      await messageToUpdate.update(updateData);
+
+      // Recarrega com include do ticket
+      const updatedMessage = await messageToUpdate.reload({
+        include: [
+          {
+            model: Ticket,
+            as: "ticket",
+            include: [
+              { model: Contact, as: "contact" },
+              { model: User, as: "user" },
+            ],
+          },
+        ],
+      });
+
+      socketEmit({
+        tenantId: updatedMessage.ticket.tenantId,
+        type: "chat:update",
+        payload: updatedMessage,
+      });
     }
   } catch (_error) {}
 }

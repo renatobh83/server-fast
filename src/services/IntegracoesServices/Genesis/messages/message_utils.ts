@@ -158,7 +158,11 @@ export function generateNoLaudoMessage() {
   let message =
     "⚠️ *Não encontramos exames recentes com laudo disponível.*\n\n" +
     "📞 Por favor, entre em contato com a nossa *central de atendimento* para mais informações.\n\n" +
-    "🙏 Agradecemos pela sua compreensão!";
+    "🙏 Agradecemos pela sua compreensão!" +
+    "📞 9 - Falar com o suporte.\n" +
+    "🔄 6 - Retornar ao menu.\n" +
+    "❌ 7 - Encerrar o atendimento.\n\n" +
+    "_Digite o número da opção desejada_.";
   return message;
 }
 
