@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+       "start": "node dist/server.js",
     "build": "tsc && npm run copy-static",
     "run-dev": "tsc-watch --onSuccess \"node --inspect --trace-warnings dist/server.js\"",
     "dev": "./start-tunnel.sh && npm run run-dev",
