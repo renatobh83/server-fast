@@ -8673,3 +8673,35 @@
   ],
   timestamp: '2025-11-06T15:51:17.069Z'
 }
+{
+  level: 'error',
+  message: 'Auto Close Called',
+  session: 2,
+  type: 'client',
+  timestamp: '2025-11-08T12:14:37.398Z'
+}
+{
+  message: "Erro no bot Telegram | ctx: message_reaction | err: TypeError: Cannot read properties of undefined (reading 'message_id')",
+  level: 'error',
+  timestamp: '2025-11-08T12:23:12.534Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message_reaction | err: SequelizeDatabaseError: operator does not exist: text = integer',
+  level: 'error',
+  timestamp: '2025-11-08T12:46:14.300Z'
+}
+{
+  message: 'Erro no bot Telegram | ctx: message_reaction | err: SequelizeDatabaseError: operator does not exist: text = integer',
+  level: 'error',
+  timestamp: '2025-11-08T12:46:22.225Z'
+}
+{
+  message: "Erro no bot Telegram | ctx: message_reaction | err: TypeError: Cannot read properties of undefined (reading 'emoji')",
+  level: 'error',
+  timestamp: '2025-11-08T12:52:57.982Z'
+}
+{
+  message: "Erro no bot Telegram | ctx: message_reaction | err: TypeError: Cannot read properties of undefined (reading 'emoji')",
+  level: 'error',
+  timestamp: '2025-11-08T12:53:19.381Z'
+}

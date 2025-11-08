@@ -92,12 +92,12 @@ const TelegramSendMessagesSystem = async (
       });
       logger.info("sendMessage text");
     }
-
+    
     // enviar old_id para substituir no front a mensagem corretamente
     const messageToUpdate = {
       ...message,
       ...sendedMessage,
-      id: uuidv4(),
+      id: sendedMessage.message_id,
       timestamp: sendedMessage.date * 1000, // compatibilizar JS
       messageId: sendedMessage.message_id,
       status: "sended",

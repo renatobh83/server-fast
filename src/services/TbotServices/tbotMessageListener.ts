@@ -2,6 +2,7 @@ import { Telegraf } from "telegraf";
 import HandleMessageTelegram from "./HandleMessageTelegram";
 import { listaUnidades } from "../IntegracoesServices/Genesis/actions/action_handlers";
 import { logger } from "../../utils/logger";
+import { HandleReactionTelegram } from "./HandleReactionTelegram";
 
 interface Session extends Telegraf {
   id: number;
@@ -20,7 +21,15 @@ const tbotMessageListener = (tbot: Session): void => {
 
     await HandleMessageTelegram(ctx, tbot);
   });
+  
+tbot.on("message_reaction", async(ctx: any)=>{
+  await HandleReactionTelegram(ctx, tbot)  
 
+  // console.log(`Received a reaction on message ${JSON.stringify(messageId, null,2)} in chat ${chatId}`);
+});
+// tbot.on("message_reaction_count", (ctx)=>{
+// console.log(ctx)
+// })
   tbot.on("callback_query", async (ctx: any) => {
     const data = ctx.update.callback_query.data;
 

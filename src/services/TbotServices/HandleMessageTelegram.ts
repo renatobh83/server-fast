@@ -58,7 +58,7 @@ const getCachedChannel = async (whatsappId: number): Promise<Whatsapp> => {
   return channel;
 };
 
-const getCachedBotInstance = async (ctx: any): Promise<any> => {
+export const getCachedBotInstance = async (ctx: any): Promise<any> => {
   const botId = ctx?.botInfo?.id || ctx?.me?.id;
   if (!botId) return ctx.telegram.getMe();
 
@@ -196,6 +196,7 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
     }
 
     let message = ctx?.message || ctx.update.callback_query?.message;
+  
     if (!message && ctx.update) {
       message = ctx.update.edited_message;
     }
@@ -208,6 +209,7 @@ const HandleMessage = async (ctx: any, tbot: Session): Promise<void> => {
     }
 
     const chat = message.chat;
+  
     const me = await getCachedBotInstance(ctx);
     const fromMe =
       me.id ===

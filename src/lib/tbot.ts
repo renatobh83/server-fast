@@ -33,7 +33,7 @@ export const initTbot = async (connection: Whatsapp): Promise<Session> => {
       if (sessionIndex === -1) TelegramSessions.push(tbot);
       else TelegramSessions[sessionIndex] = tbot;
 
-      tbot.launch();
+      tbot.launch({ allowedUpdates: [ "message", "message_reaction" ] });
       await connection.update({
         status: "CONNECTED",
         qrcode: "",
