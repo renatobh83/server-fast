@@ -11,6 +11,7 @@ import { CheckWappInitialized } from "../services/WbotServices/Helpers/CheckWapp
 import CheckIsValidContact from "../services/WbotServices/Helpers/CheckIsValidContact";
 import UpdateContactSocketService from "../services/ContactServices/UpdateContactSocketService";
 import DeleteContactService from "../services/ContactServices/DeleteContactService";
+import { logger } from "../utils/logger";
 
 interface ContactData {
   name: string;
@@ -51,7 +52,7 @@ export const listaContatos = async (
       .code(STANDARD.OK.statusCode)
       .send({ contacts, count, hasMore });
   } catch (error) {
-    console.log(error);
+       logger.error("Error in listaContatos",error )
     return handleServerError(reply, error);
   }
 };
@@ -70,7 +71,7 @@ export const store = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(contact);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in storeContatos",error )
     return handleServerError(reply, error);
   }
 };
@@ -92,7 +93,7 @@ export const updateContato = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(contact);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in updateContato",error )
     return handleServerError(reply, error);
   }
 };
@@ -107,6 +108,7 @@ export const detalhesContato = async (
     const contato = await ShowContactService({ id: contactId, tenantId });
     return reply.code(STANDARD.OK.statusCode).send(contato);
   } catch (error) {
+    logger.error("Error in detalhesContato",error )
     return handleServerError(reply, error);
   }
 };
@@ -135,7 +137,7 @@ export const updateContatoSocket = async (
     const contato = await UpdateContactSocketService(payload);
     return reply.code(STANDARD.OK.statusCode).send(contato);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in updateContatoSocket",error )
     return handleServerError(reply, error);
   }
 };
@@ -152,7 +154,7 @@ export const removeContato = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "Contact deleted" });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in removeContato",error )
 
     return handleServerError(reply, error);
   }

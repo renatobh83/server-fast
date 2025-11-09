@@ -22,7 +22,7 @@ export const startSessionChannel = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "Starting session." });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in startSessionChannel",error )
     return handleServerError(reply, error);
   }
 };
@@ -56,7 +56,7 @@ export const updateSessionChannel = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "Starting session." });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in updateSessionChannel",error )
     return handleServerError(reply, error);
   }
 };
@@ -97,7 +97,7 @@ export const removeSessionChannel = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "Session disconnected." });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in removeSessionChannel",error )
     return handleServerError(reply, error);
   }
 };

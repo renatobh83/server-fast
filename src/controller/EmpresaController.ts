@@ -6,6 +6,7 @@ import { CreateEmpresaServices } from "../services/EmpresaServices/CreateEmpresa
 import { DeleteEmpresaService } from "../services/EmpresaServices/DeleteEmpresaService";
 import { UpdateEmpresaServices } from "../services/EmpresaServices/UpdateEmpresaServices";
 import { InserteOrUpdateContratoService } from "../services/EmpresaServices/InserteOrUpdateContratoService";
+import { logger } from "../utils/logger";
 
 export const listaEmpresas = async (
   request: FastifyRequest,
@@ -16,6 +17,7 @@ export const listaEmpresas = async (
     const empresas = await ListEmpresaService(tenantId);
     return reply.code(STANDARD.OK.statusCode).send(empresas);
   } catch (error) {
+    logger.error("Error in listaEmpresas",error )
     return handleServerError(reply, error);
   }
 };
@@ -48,6 +50,7 @@ export const createEmpresa = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(empresa);
   } catch (error) {
+    logger.error("Error in createEmpresa",error )
     return handleServerError(reply, error);
   }
 };
@@ -74,6 +77,7 @@ export const deleteEmpresa = async (
         .code(STANDARD.OK.statusCode)
         .send({ message: "Empresa apagada." });
   } catch (error) {
+    logger.error("Error in deleteEmpresa",error )
     return handleServerError(reply, error);
   }
 };
@@ -102,6 +106,7 @@ export const updateEmpresa = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(empresa);
   } catch (error) {
+    logger.error("Error in updateEmpresa",error )
     return handleServerError(reply, error);
   }
 };
@@ -127,6 +132,7 @@ export const insertOrUpdateContrato = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(dadosContrato);
   } catch (error) {
+    logger.error("Error in insertOrUpdateContrato",error )
     return handleServerError(reply, error);
   }
 };

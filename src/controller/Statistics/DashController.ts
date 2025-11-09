@@ -9,6 +9,7 @@ import DashTicketsPerUsersDetail from "../../services/Statistics/DashTicketsPerU
 import DashTicketsQueue from "../../services/Statistics/DashTicketsQueue";
 import { getCache, setCache } from "../../utils/cacheRedis";
 import { RedisKeys } from "../../constants/redisKeys";
+import { logger } from "../../utils/logger";
 
 type IndexQuery = {
   startDate: string;
@@ -42,7 +43,7 @@ export const getDashTicketsAndTimes = async (
     }
     return reply.code(STANDARD.OK.statusCode).send(dataDash);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in getDashTicketsAndTimes",error )
     return handleServerError(reply, error);
   }
 };
@@ -74,7 +75,7 @@ export const getDashTicketsChannels = async (
     }
     return reply.code(STANDARD.OK.statusCode).send(dataDash);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in getDashTicketsChannels",error )
     return handleServerError(reply, error);
   }
 };
@@ -105,7 +106,7 @@ export const getDashTicketsEvolutionChannels = async (
     }
     return reply.code(STANDARD.OK.statusCode).send(dataDash);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in getDashTicketsEvolutionChannels",error )
     return handleServerError(reply, error);
   }
 };
@@ -137,7 +138,7 @@ export const getDashTicketsEvolutionByPeriod = async (
     }
     return reply.code(STANDARD.OK.statusCode).send(dataDash);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in getDashTicketsEvolutionByPeriod",error )
     return handleServerError(reply, error);
   }
 };
@@ -169,7 +170,7 @@ export const getDashTicketsPerUsersDetail = async (
     }
     return reply.code(STANDARD.OK.statusCode).send(dataDash);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in getDashTicketsPerUsersDetail",error )
     return handleServerError(reply, error);
   }
 };
@@ -201,7 +202,7 @@ export const getDashTicketsQueue = async (
     }
     return reply.code(STANDARD.OK.statusCode).send(dataDash);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in getDashTicketsQueue",error )
     return handleServerError(reply, error);
   }
 };

@@ -2,6 +2,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import StatisticsPerUser from "../../services/Statistics/StatisticsPerUsers";
 import { STANDARD } from "../../constants/request";
 import { handleServerError } from "../../errors/errors.helper";
+import { logger } from "../../utils/logger";
 
 type IndexQuery = {
   startDate: string;
@@ -20,7 +21,7 @@ export const index = async (request: FastifyRequest, reply: FastifyReply) => {
 
     return reply.code(STANDARD.OK.statusCode).send(data);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in StatisticsPerUsersController",error )
     return handleServerError(reply, error);
   }
 };

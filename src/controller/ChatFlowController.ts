@@ -6,6 +6,7 @@ import UpdateChatFlowService from "../services/ChatFlowServices/UpdateChatFlowSe
 import DeleteChatFlowService from "../services/ChatFlowServices/DeleteChatFlowService";
 import { ImportChatFlowService } from "../services/ChatFlowServices/ImportChatFlowService";
 import { ExportChatFlowService } from "../services/ChatFlowServices/ExportChatFlowService";
+import { logger } from "../utils/logger";
 
 interface Line {
   connector: string;
@@ -88,7 +89,7 @@ export const createChatFlow = async (
     const flow = await CreateChatFlowService(newFlow);
     return reply.code(200).send(flow);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in createChatFlow",error )
     return handleServerError(reply, error);
   }
 };
@@ -105,7 +106,7 @@ export const listAllChatFlow = async (
     const chatFlows = await ListChatFlowService({ tenantId });
     return reply.code(200).send(chatFlows);
   } catch (error) {
-    console.log(error);
+  logger.error("Error in listAllChatFlow",error )
     return handleServerError(reply, error);
   }
 };
@@ -144,7 +145,7 @@ export const updateChatFlow = async (
     });
     return reply.code(200).send(flowUpdated);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in updateChatFlow",error )
     return handleServerError(reply, error);
   }
 };
@@ -162,7 +163,7 @@ export const removeChatFlow = async (
     await DeleteChatFlowService({ id: chatFlowId, tenantId });
     return reply.code(200).send({ message: "Flow deleted" });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in removeChatFlow",error )
     return handleServerError(reply, error);
   }
 };
@@ -185,7 +186,7 @@ export const importFlow = async (
     });
     return reply.code(200).send(chatFlow);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in importFlow",error )
     return handleServerError(reply, error);
   }
 };
@@ -211,7 +212,7 @@ export const exportFlow = async (
       .code(200)
       .send(jsonFlow);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in exportFlow",error )
     return handleServerError(reply, error);
   }
 };

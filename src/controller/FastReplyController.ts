@@ -5,6 +5,7 @@ import CreateFastReplyService from "../services/FastReplyServices/CreateFastRepl
 import ListFastReplyService from "../services/FastReplyServices/ListFastReplyService";
 import UpdateFastReplyService from "../services/FastReplyServices/UpdateFastReplyService";
 import DeleteFastReplyService from "../services/FastReplyServices/DeleteFastReplyService";
+import { logger } from "../utils/logger";
 
 interface FastReplyData {
   key: string;
@@ -29,6 +30,7 @@ export const createFastReply = async (
     const respostaRapida = await CreateFastReplyService(newReply);
     return reply.code(STANDARD.OK.statusCode).send(respostaRapida);
   } catch (error) {
+    logger.error("Error in createFastReply",error )
     return handleServerError(reply, error);
   }
 };
@@ -42,6 +44,7 @@ export const listaFastReply = async (
     const respostaRapida = await ListFastReplyService({ tenantId });
     return reply.code(STANDARD.OK.statusCode).send(respostaRapida);
   } catch (error) {
+     logger.error("Error in listaFastReply",error )
     return handleServerError(reply, error);
   }
 };
@@ -69,6 +72,7 @@ export const updateFastReply = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(respostaRapida);
   } catch (error) {
+    logger.error("Error in updateFastReply",error )
     return handleServerError(reply, error);
   }
 };
@@ -92,6 +96,7 @@ export const deleteFastReply = async (
         .code(STANDARD.OK.statusCode)
         .send({ message: "Resposta rapida apagada." });
   } catch (error) {
+    logger.error("Error in deleteFastReply",error )
     return handleServerError(reply, error);
   }
 };

@@ -6,6 +6,7 @@ import { CreateEmailService } from "../services/EmailServices/CreateEmailService
 import { detailsChamadoService } from "../services/ChamadoServices/DetailsChamadoService";
 import { sendEmailOpenClose } from "../services/EmailServices/SendEmailOpenClose";
 import { SendEmailServices } from "../services/EmailServices/SendEmailServices";
+import { logger } from "../utils/logger";
 
 export const listEmailConfiguracao = async (
   request: FastifyRequest,
@@ -39,6 +40,7 @@ export const createEmail = async (
     const email = await CreateEmailService(payload);
     return reply.code(STANDARD.OK.statusCode).send(email);
   } catch (error) {
+    logger.error("Error in createEmail",error )
     return handleServerError(reply, error);
   }
 };
@@ -57,7 +59,7 @@ export const sendEmailChamadoClose = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "E-mail enviado" });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in sendEmailChamadoClose",error )
     return handleServerError(reply, error);
   }
 };
@@ -81,6 +83,7 @@ export const sendEmailController = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "E-mail enviado" });
   } catch (error) {
+    logger.error("Error in sendEmailController",error )
     return handleServerError(reply, error);
   }
 };
@@ -104,6 +107,7 @@ export const sendEmailControllerTest = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "E-mail enviado" });
   } catch (error) {
+    logger.error("Error in sendEmailControllerTest",error )
     return handleServerError(reply, error);
   }
 };

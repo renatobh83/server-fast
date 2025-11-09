@@ -8,6 +8,7 @@ import AdminUpdateUserService from "../services/AdminServices/AdminUpdateUserSer
 import AdminListTenantsService from "../services/AdminServices/AdminListTenantsService";
 import CreateWhatsAppService from "../services/WhatsappService/CreateWhatsAppService";
 import AdminListChannelsService from "../services/AdminServices/AdminListChannelsService";
+import { logger } from "../utils/logger";
 
 type IndexQuery = {
   searchParam: string;
@@ -28,11 +29,17 @@ export const ListChatFlow = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const { tenantId } = request.user as any;
-
-  const listChatFlow = await ListChatFlowService({ tenantId });
-
-  return reply.code(STANDARD.OK.statusCode).send(listChatFlow);
+  try {
+    
+    const { tenantId } = request.user as any;
+  
+    const listChatFlow = await ListChatFlowService({ tenantId });
+  
+    return reply.code(STANDARD.OK.statusCode).send(listChatFlow);
+  } catch (error) {
+    logger.error("Error in ListChatFlow",error )
+     return handleServerError(reply, error);
+  }
 };
 
 export const listUsers = async (
@@ -47,6 +54,7 @@ export const listUsers = async (
     });
     return reply.code(STANDARD.OK.statusCode).send({ users, count, hasMore });
   } catch (error) {
+      logger.error("Error in listUsers",error )
     return handleServerError(reply, error);
   }
 };
@@ -62,6 +70,7 @@ export const updateUser = async (
     const userUpdated = await AdminUpdateUserService({ userData, userId });
     return reply.code(200).send(userUpdated);
   } catch (error) {
+    logger.error("Error in updateUser",error )
     return handleServerError(reply, error);
   }
 };
@@ -74,6 +83,7 @@ export const TenantList = async (
     const tenants = await AdminListTenantsService();
     return reply.code(STANDARD.OK.statusCode).send({ tenants });
   } catch (error) {
+    logger.error("Error in TenantList",error )
     return handleServerError(reply, error);
   }
 };
@@ -99,6 +109,7 @@ export const createCanal = async (
     const createdChannel = await CreateWhatsAppService(payload);
     return reply.code(STANDARD.OK.statusCode).send(createdChannel);
   } catch (error) {
+    logger.error("Error in createCanal",error )
     return handleServerError(reply, error);
   }
 };
@@ -112,6 +123,7 @@ export const listaCanais = async (
     const channels = await AdminListChannelsService({ tenantId });
     return reply.code(STANDARD.OK.statusCode).send(channels);
   } catch (error) {
+    logger.error("Error in listaCanais",error )
     return handleServerError(reply, error);
   }
 };

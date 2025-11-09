@@ -31,7 +31,7 @@ export const ListEmpresaService = async (
 
     return empresas;
   } catch (error: any) {
-    console.log(error);
+
     throw new AppError("ERR_LIST_CONMPANY_SERVICE", 500);
   }
 };

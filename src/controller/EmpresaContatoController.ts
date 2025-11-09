@@ -5,6 +5,7 @@ import { handleServerError } from "../errors/errors.helper";
 import { associateContactsEmpresaService } from "../services/EmpresaContatoServices/AssociateContactsEmpresaService";
 import { DeleteContatoEmpresaService } from "../services/EmpresaContatoServices/DeleteContatoEmpresaService";
 import { DeleteAllEmpresaContactsService } from "../services/EmpresaContatoServices/DeleteAllEmpresaContactsService";
+import { logger } from "../utils/logger";
 
 //  Empresa Contatos Routes
 export const addContactsEmpresa = async (
@@ -20,6 +21,7 @@ export const addContactsEmpresa = async (
     );
     return reply.code(STANDARD.OK.statusCode).send(contatos);
   } catch (error) {
+        logger.error("Error in addContactsEmpresa",error )
     return handleServerError(reply, error);
   }
 };
@@ -33,6 +35,7 @@ export const ListContact = async (
     const contacts = await ListContactEmpresaService(empresaId);
     return reply.code(STANDARD.OK.statusCode).send(contacts);
   } catch (error) {
+    logger.error("Error in ListContactEmpresa",error )
     return handleServerError(reply, error);
   }
 };
@@ -51,6 +54,7 @@ export const removeContatoEmpresa = async (
         .code(STANDARD.OK.statusCode)
         .send({ message: "Contato excluido" });
   } catch (error) {
+    logger.error("Error in removeContatoEmpresa",error )
     return handleServerError(reply, error);
   }
 };
@@ -66,6 +70,7 @@ export const removeAllContatoEmpresa = async (
         .code(STANDARD.OK.statusCode)
         .send({ message: "Contatos excluido" });
   } catch (error) {
+    logger.error("Error in removeAllContatoEmpresa",error )
     return handleServerError(reply, error);
   }
 };

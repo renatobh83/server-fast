@@ -5,6 +5,7 @@ import { sendMenssageApiService } from "../services/ApiExternaService/SendMessag
 import { ConfirmacaoIntegracaoService } from "../services/IntegracoesServices/Genesis/Externa/ConfirmacaoService";
 import { checkBotIntegracaoService } from "../services/IntegracoesServices/checkBotIntegracaoService";
 import { botRequest } from "telegraf/typings/button";
+import { logger } from "../utils/logger";
 
 export const sendMenssageApi = async (
   request: FastifyRequest<{
@@ -29,7 +30,7 @@ export const sendMenssageApi = async (
     await sendMenssageApiService(payload);
     return reply.code(STANDARD.OK.statusCode).send({ message: "Add job " });
   } catch (error) {
-    console.log(error);
+      logger.error("Error in sendMenssageApi",error )
     return handleServerError(reply, error);
   }
 };
@@ -49,7 +50,7 @@ export const integracaoConfirmacao = async (
     await checkBotIntegracaoService(dadosConfirmacao, payload);
     return reply.code(STANDARD.OK.statusCode).send({ message: "Add job " });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in integracaoConfirmacao",error )
     return handleServerError(reply, error);
   }
 };

@@ -6,6 +6,7 @@ import ListApiConfigService from "../services/ApiConfigServices/ListApiConfigSer
 import UpdateApiConfigService from "../services/ApiConfigServices/UpdateApiConfigService";
 import DeleteApiConfigService from "../services/ApiConfigServices/DeleteApiConfigService";
 import RenewApiConfigTokenService from "../services/ApiConfigServices/RenewApiConfigTokenService";
+import { logger } from "../utils/logger";
 
 interface ApiData {
   name: string;
@@ -34,7 +35,7 @@ export const createApiConfig = async (
     const api = await CreateApiConfigService(payload);
     return reply.code(STANDARD.OK.statusCode).send(api);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in createApiConfig",error )
     return handleServerError(reply, error);
   }
 };
@@ -53,6 +54,7 @@ export const listApiConfig = async (
     const apiList = await ListApiConfigService({ tenantId });
     return reply.code(STANDARD.OK.statusCode).send(apiList);
   } catch (error) {
+      logger.error("Error in listApiConfig",error )
     return handleServerError(reply, error);
   }
 };
@@ -73,6 +75,7 @@ export const UpdateApiConfig = async (
     const api = await UpdateApiConfigService({ apiData, apiId, tenantId });
     return reply.code(STANDARD.OK.statusCode).send(api);
   } catch (error) {
+      logger.error("Error in updateApiConfig",error )
     return handleServerError(reply, error);
   }
 };
@@ -92,6 +95,7 @@ export const DeleteApiConfig = async (
     await DeleteApiConfigService({ apiId, tenantId });
     return reply.code(STANDARD.OK.statusCode).send({ message: "Api Excluida" });
   } catch (error) {
+      logger.error("Error in deleteApiConfig",error )
     return handleServerError(reply, error);
   }
 };
@@ -121,6 +125,7 @@ export const RenewTokenApiConfig = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(newToken);
   } catch (error) {
+      logger.error("Error in renoveTokenApiConfig",error )
     return handleServerError(reply, error);
   }
 };

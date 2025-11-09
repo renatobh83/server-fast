@@ -20,6 +20,7 @@ import { SendMessageChamadoServices } from "../services/ChamadoServices/SendMess
 import { UpdateMediaDadosService } from "../services/ChamadoServices/UpdateMediaDadosService";
 import { updateChamadoMediaServices } from "../services/ChamadoServices/updateChamadoMediaServices";
 import { listaChamadoEmpresaService } from "../services/ChamadoServices/ListaChamadoEmpresaService";
+import { logger } from "../utils/logger";
 
 const ATTACHMENTSFOLDER = path.join(process.cwd(), "public", "attachments");
 // Garantir que a pasta existe
@@ -45,7 +46,7 @@ export const createChamado = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(chamado);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in createChamado",error )
     return handleServerError(reply, error);
   }
 };
@@ -66,7 +67,7 @@ export const listaTodosChamados = async (
       hasMore,
     });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in listAllChamado",error )
     return handleServerError(reply, error);
   }
 };
@@ -80,7 +81,7 @@ export const listaChamadosEmpresa = async (
     const chamados = await listaChamadoEmpresaService(empresaId);
     return reply.code(STANDARD.OK.statusCode).send(chamados);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in listChamadoEmpresa",error )
     return handleServerError(reply, error);
   }
 };
@@ -94,6 +95,7 @@ export const listaTempoChamados = async (
     const tempoChamado = await ListTempoChamado(empresaId);
     return reply.code(STANDARD.OK.statusCode).send(tempoChamado);
   } catch (error) {
+    logger.error("Error in listTimeChamado",error )
     return handleServerError(reply, error);
   }
 };
@@ -127,7 +129,7 @@ export const updateChamado = async (
     const chamado = await updateChamadoService(payload);
     return reply.code(STANDARD.OK.statusCode).send(chamado.toJSON());
   } catch (error) {
-    console.log(error);
+    logger.error("Error in updateChamado",error )
     return handleServerError(reply, error);
   }
 };
@@ -152,6 +154,7 @@ export const updateAnexoChamado = async (
 
     return reply.code(STANDARD.OK.statusCode).send(saved);
   } catch (error) {
+    logger.error("Error in updateAnexoChamado",error )
     return handleServerError(reply, error);
   }
 };
@@ -166,7 +169,7 @@ export const detailsChamado = async (
 
     return reply.code(STANDARD.OK.statusCode).send(detalhesChamado);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in detalhesChamado",error )
     return handleServerError(reply, error);
   }
 };
@@ -185,6 +188,7 @@ export const associarTicketChamado = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(Chamado);
   } catch (error) {
+    logger.error("Error in ticketChamado",error )
     return handleServerError(reply, error);
   }
 };
@@ -202,6 +206,7 @@ export const editarTempoChamado = async (
       .send({ message: "Tempo chamado ajustado" });
   try {
   } catch (error) {
+    logger.error("Error in editarTempoChamado",error )
     return handleServerError(reply, error);
   }
 };
@@ -215,6 +220,7 @@ export const getMediaChamado = async (
 
     return reply.code(STANDARD.OK.statusCode).send(data);
   } catch (error) {
+    logger.error("Error in getMediaChamado",error )
     return handleServerError(reply, error);
   }
 };
@@ -228,6 +234,7 @@ export const removeMediaChamado = async (
     await RemoveMidaChamadoService(id);
     return reply.code(STANDARD.OK.statusCode).send({ message: "Sucess" });
   } catch (error) {
+    logger.error("Error in removeMediaChamado",error )
     return handleServerError(reply, error);
   }
 };
@@ -244,6 +251,7 @@ export const sendMessageChamado = async (
     await SendMessageChamadoServices(payload);
     return reply.code(STANDARD.OK.statusCode).send({ message: "Sucess" });
   } catch (error) {
+    logger.error("Error in sendMessageChamado",error )
     return handleServerError(reply, error);
   }
 };
@@ -257,6 +265,7 @@ export const updateFileChamado = async (
     await UpdateMediaDadosService(dataBody);
     return reply.code(STANDARD.OK.statusCode).send({ message: "Sucess" });
   } catch (error) {
+    logger.error("Error in updateFileChamado",error )
     return handleServerError(reply, error);
   }
 };

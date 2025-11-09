@@ -2,6 +2,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import { LoadInitialAplicationService } from "../services/AplicationServices/LoadInitialAplicationService";
 import { STANDARD } from "../constants/request";
 import { handleServerError } from "../errors/errors.helper";
+import { logger } from "../utils/logger";
 
 export const loadInicial = async (
   request: FastifyRequest,
@@ -17,7 +18,7 @@ export const loadInicial = async (
 
     return reply.code(STANDARD.OK.statusCode).send(data);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in loadInicial",error )
     return handleServerError(reply, error);
   }
 };

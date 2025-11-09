@@ -5,6 +5,7 @@ import { FindEmpresaByIdentifierServices } from "../services/EmpresaServices/Fin
 import { sign } from "jsonwebtoken";
 import { saveFile } from "../utils/saveFile";
 import path from "node:path";
+import { logger } from "../utils/logger";
 
 export const createTokenChatClient = async (
   request: FastifyRequest<{
@@ -35,7 +36,7 @@ export const createTokenChatClient = async (
   try {
     return reply.code(STANDARD.OK.statusCode).send({ token });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in createTokenChatClient",error )
     return handleServerError(reply, error);
   }
 };
@@ -59,7 +60,7 @@ export const storeFileChatClient = async (
 
     return reply.code(STANDARD.OK.statusCode).send({ url: fileUrl });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in storeFileChatClient",error )
     return handleServerError(reply, error);
   }
 };
@@ -74,7 +75,7 @@ export const widgetChatClient = async (
       .header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
       .sendFile("chat-widget-core.js"); // relativo ao `root`
   } catch (error) {
-    console.log(error);
+    logger.error("Error in widgetChatClient",error )
     return handleServerError(reply, error);
   }
 };
