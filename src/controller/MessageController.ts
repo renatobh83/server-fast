@@ -12,6 +12,7 @@ import { stopTypingWbot } from "../services/WbotServices/StopTypingWbot";
 import { getWbot } from "../lib/wbot";
 import modelMessage from "../models/Message";
 import { SendReactionMessage } from "../services/WbotServices/Helpers/SendReactionMessage";
+import { logger } from "../utils/logger";
 
 type IndexQuery = {
   pageNumber: string;
@@ -35,7 +36,7 @@ export const listMessages = async (
       .code(STANDARD.OK.statusCode)
       .send({ count, ticket, messages, hasMore });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in listMessages",error )
     return handleServerError(reply, error);
   }
 };
@@ -96,7 +97,7 @@ export const createMessages = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "messagem enviada" });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in createMessages",error )
     return handleServerError(reply, error);
   }
 };
@@ -128,7 +129,7 @@ export const forward = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "messagem enviada" });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in forwardMessages",error )
     return handleServerError(reply, error);
   }
 };
@@ -147,7 +148,7 @@ export const startTyping = async (
     await startTypingWbot(ticketId);
     return reply.code(STANDARD.OK.statusCode).send({ message: "stratTyping" });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in startTyping",error )
     return reply.code(STANDARD.OK.statusCode).send({ message: "stratTyping" });
   }
 };
@@ -166,7 +167,7 @@ export const stopTyping = async (
     await stopTypingWbot(ticketId);
     return reply.code(STANDARD.OK.statusCode).send({ message: "stopTyping" });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in stopTyping",error )
     return reply.code(STANDARD.OK.statusCode).send({ message: "stopTyping" });
   }
 };
@@ -180,7 +181,7 @@ export const messageReaction = async (
     await SendReactionMessage(messageid, emoji);
     return reply.code(STANDARD.OK.statusCode).send(true);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in messageReaction",error )
     return reply.code(STANDARD.OK.statusCode).send({ message: "sendReaction" });
   }
 };

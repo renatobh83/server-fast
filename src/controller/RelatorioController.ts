@@ -3,6 +3,7 @@ import { ChamadosByPeriodo } from "../services/RelatorioService/ChamadosByPeriod
 import { STANDARD } from "../constants/request";
 import { handleServerError } from "../errors/errors.helper";
 import { generateAndDownloadPDF } from "../services/RelatorioService/generateAndDownloadPDFservice";
+import { logger } from "../utils/logger";
 
 export const relatorioChamado = async (
   request: FastifyRequest,
@@ -14,7 +15,7 @@ export const relatorioChamado = async (
 
     return reply.code(STANDARD.OK.statusCode).send(data);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in relatorioChamado",error )
     return handleServerError(reply, error);
   }
 };
@@ -29,7 +30,7 @@ export const reportGenerateByCompany = async (
 
     return reply.code(STANDARD.OK.statusCode);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in reportGenerateByCompany",error )
     return handleServerError(reply, error);
   }
 };

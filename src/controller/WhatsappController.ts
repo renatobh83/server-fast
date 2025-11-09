@@ -6,6 +6,7 @@ import ListWhatsAppsService from "../services/WhatsappService/ListWhatsAppsServi
 import ShowWhatsAppService from "../services/WhatsappService/ShowWhatsAppService";
 import UpdateWhatsAppService from "../services/WhatsappService/UpdateWhatsAppService";
 import DeleteWhatsAppService from "../services/WhatsappService/DeleteWhatsAppService";
+import { logger } from "../utils/logger";
 
 export const createCanal = async (
   request: FastifyRequest<{
@@ -28,6 +29,7 @@ export const createCanal = async (
 
     return reply.code(STANDARD.OK.statusCode).send(createdChannel);
   } catch (error) {
+    logger.error("Error in createCanal",error )
     return handleServerError(reply, error);
   }
 };
@@ -41,6 +43,7 @@ export const listaCanais = async (
     const channels = await ListWhatsAppsService(tenantId);
     return reply.code(STANDARD.OK.statusCode).send(channels);
   } catch (error) {
+    logger.error("Error in listaCanais",error )
     return handleServerError(reply, error);
   }
 };
@@ -55,6 +58,7 @@ export const detalhesCanal = async (
     const channel = await ShowWhatsAppService({ tenantId, id: whatsappId });
     return reply.code(STANDARD.OK.statusCode).send(channel);
   } catch (error) {
+    logger.error("Error in detalhesCanal",error )
     return handleServerError(reply, error);
   }
 };
@@ -87,6 +91,7 @@ export const updateCanal = async (
     const channel = await UpdateWhatsAppService(payload);
     return reply.code(STANDARD.OK.statusCode).send(channel);
   } catch (error) {
+    logger.error("Error in updateCanal",error )
     return handleServerError(reply, error);
   }
 };
@@ -101,6 +106,7 @@ export const deletarCanal = async (
     await DeleteWhatsAppService(whatsappId, tenantId);
     return reply.code(STANDARD.OK.statusCode).send({ message: "Sucess" });
   } catch (error) {
+    logger.error("Error in updateCanal",error )
     return handleServerError(reply, error);
   }
 };

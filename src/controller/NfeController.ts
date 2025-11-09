@@ -7,6 +7,7 @@ import { QueueNotaFiscalService } from "../services/NotaFiscalServices/QueueNota
 import { CancelarNotaFiscalService } from "../services/NotaFiscalServices/CancelarNotaFiscalService";
 import { getJobById } from "../lib/Queue";
 import { redisClient } from "../lib/redis";
+import { logger } from "../utils/logger";
 
 export const gerarNotaFiscal = async (
   request: FastifyRequest<{
@@ -27,6 +28,7 @@ export const gerarNotaFiscal = async (
     await GerarNotaFiscalService({ data: request.body, tenantId, reply });
     return reply.code(STANDARD.OK.statusCode).send();
   } catch (error) {
+    logger.error("Error in gerarNotaFiscal",error )
     return handleServerError(reply, error);
   }
 };
@@ -44,6 +46,7 @@ export const consultaNotaFiscal = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(notafiscal);
   } catch (error) {
+    logger.error("Error in consultaNotaFiscal",error )
     return handleServerError(reply, error);
   }
 };
@@ -60,6 +63,7 @@ export const gerarPdfRPS = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "Inicio geracao PDF" });
   } catch (error) {
+    logger.error("Error in gerarPdfRPS",error )
     return handleServerError(reply, error);
   }
 };
@@ -75,6 +79,7 @@ export const cancelarNfe = async (
     const nfeCancelada = await CancelarNotaFiscalService({ tenantId, rps });
     return reply.code(STANDARD.OK.statusCode).send(nfeCancelada);
   } catch (error) {
+    logger.error("Error in cancelarNfe",error )
     return handleServerError(reply, error);
   }
 };
@@ -118,6 +123,7 @@ export const verificarStatusPDF = async (
         });
     }
   } catch (error) {
+    logger.error("Error in verificarStatusPDF",error )
     return handleServerError(reply, error);
   }
 };
@@ -138,6 +144,7 @@ export const baixarPDF = async (
     }
     return reply.code(STANDARD.OK.statusCode).send(resultString);
   } catch (error) {
+    logger.error("Error in baixarPDF",error )
     return handleServerError(reply, error);
   }
 };

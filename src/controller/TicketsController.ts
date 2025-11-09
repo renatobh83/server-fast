@@ -15,6 +15,7 @@ import { CreateMessageSystemService } from "../services/MessageServices/CreateMe
 import Ticket from "../models/Ticket";
 import Contact from "../models/Contact";
 import CreateLogTicketService from "../services/TicketServices/CreateLogTicketService";
+import { logger } from "../utils/logger";
 
 export const apagarTicket = async (
   request: FastifyRequest,
@@ -41,6 +42,7 @@ export const apagarTicket = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "ticket deleted" });
   } catch (error) {
+    logger.error("Error in apagarTicket",error )
     return handleServerError(reply, error);
   }
 };
@@ -73,7 +75,7 @@ export const listarTickets = async (
     const tickets = await ListTicketsService(payload);
     return reply.code(STANDARD.OK.statusCode).send(tickets);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in listarTickets",error )
     return handleServerError(reply, error);
   }
 };
@@ -105,7 +107,7 @@ export const mostrarTicket = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(ticket);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in mostrarTicket",error )
     return handleServerError(reply, error);
   }
 };
@@ -174,7 +176,7 @@ export const updateTicket = async (
 
     return reply.code(STANDARD.OK.statusCode).send(ticket);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in updateTicket",error )
     return handleServerError(reply, error);
   }
 };
@@ -214,7 +216,7 @@ export const createTicket = async (
     }
     return reply.code(STANDARD.OK.statusCode).send(ticket);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in createTicket",error )
     return handleServerError(reply, error);
   }
 };

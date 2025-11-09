@@ -8,6 +8,7 @@ import ListDadosTenantService from "../services/TenantServices/ListDadosTenantSe
 import UpdateDadosTenantService from "../services/TenantServices/UpdateDadosTenantService";
 import UpdateBusinessHoursService from "../services/TenantServices/UpdateBusinessHoursService";
 import UpdateMessageBusinessHoursService from "../services/TenantServices/UpdateMessageBusinessHoursService";
+import { logger } from "../utils/logger";
 
 export const updateBusinessHours = async (
   request: FastifyRequest,
@@ -55,6 +56,7 @@ export const updateBusinessHours = async (
     try {
       await schema.validate(businessHours);
     } catch (error: any) {
+      logger.error("Error in validateBusinessHours",error )
       return reply
         .code(ERRORS.UnprocessableEntity.statusCode)
         .send(ERRORS.UnprocessableEntity.message);
@@ -67,6 +69,7 @@ export const updateBusinessHours = async (
 
     reply.code(STANDARD.OK.statusCode).send(newBusinessHours);
   } catch (error) {
+    logger.error("Error in UpdateBusinessHoursService",error )
     return handleServerError(reply, error);
   }
 };
@@ -98,6 +101,7 @@ export const updateMessageBusinessHours = async (
 
     reply.code(STANDARD.OK.statusCode).send(newBusinessHours);
   } catch (error) {
+    logger.error("Error in updateMessageBusinessHours",error )
     return handleServerError(reply, error);
   }
 };
@@ -113,6 +117,7 @@ export const showBusinessHoursAndMessage = async (
 
     reply.code(STANDARD.OK.statusCode).send(tenant);
   } catch (error) {
+    logger.error("Error in showBusinessHoursAndMessage",error )
     return handleServerError(reply, error);
   }
 };
@@ -133,6 +138,7 @@ export const udpateDadosNf = async (
 
     reply.code(STANDARD.OK.statusCode).send(tenant);
   } catch (error) {
+    logger.error("Error in udpateDadosNf",error )
     return handleServerError(reply, error);
   }
 };
@@ -148,6 +154,7 @@ export const listInfoTenant = async (
 
     reply.code(STANDARD.OK.statusCode).send(tenant);
   } catch (error) {
+    logger.error("Error in listInfoTenant",error )
     return handleServerError(reply, error);
   }
 };

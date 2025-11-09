@@ -5,6 +5,7 @@ import CreateQueueService from "../services/QueueServices/CreateQueueService";
 import ListQueueService from "../services/QueueServices/ListQueueService";
 import UpdateQueueService from "../services/QueueServices/UpdateQueueService";
 import DeleteQueueService from "../services/QueueServices/DeleteQueueService";
+import { logger } from "../utils/logger";
 
 interface QueueData {
   queue: string;
@@ -24,7 +25,7 @@ export const createFila = async (
     const queue = await CreateQueueService(newQueue);
     return reply.code(STANDARD.OK.statusCode).send(queue);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in createFila",error )
     return handleServerError(reply, error);
   }
 };
@@ -40,7 +41,7 @@ export const listFilas = async (
 
     return reply.code(STANDARD.OK.statusCode).send(queues);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in listFilas",error )
     return handleServerError(reply, error);
     
   }
@@ -64,7 +65,7 @@ export const updateFila = async (
 
     return reply.code(STANDARD.OK.statusCode).send(queueUpdated);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in updateFila",error )
     return handleServerError(reply, error);
   }
 };
@@ -85,6 +86,7 @@ export const deleteFila = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "Fila apagada." });
   } catch (error) {
+    logger.error("Error in deleteFila",error )
     return handleServerError(reply, error);
   }
 };

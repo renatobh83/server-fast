@@ -6,6 +6,7 @@ import ListIntegracoesService from "../services/IntegracoesServices/ListIntegrac
 import UpdateIntegracoesServices from "../services/IntegracoesServices/UpdateIntegracoesServices";
 import CreateOrUpdateDadosIntegracaoService from "../services/IntegracoesServices/CreateOrUpdateDadosIntegracaoService";
 import DeleteIntegracaoService from "../services/IntegracoesServices/DeleteIntegracaoServices";
+import { logger } from "../utils/logger";
 
 export const createIntegracao = async (
   request: FastifyRequest,
@@ -22,6 +23,7 @@ export const createIntegracao = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(integracao);
   } catch (error) {
+    logger.error("Error in createIntegracao",error )
     return handleServerError(reply, error);
   }
 };
@@ -36,6 +38,7 @@ export const listIntegracao = async (
     const integracoes = await ListIntegracoesService({ tenantId });
     return reply.code(STANDARD.OK.statusCode).send(integracoes);
   } catch (error) {
+    logger.error("Error in listIntegracao",error )
     return handleServerError(reply, error);
   }
 };
@@ -54,6 +57,7 @@ export const updateIntegracao = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(integracao);
   } catch (error) {
+    logger.error("Error in updateIntegracao",error )
     return handleServerError(reply, error);
   }
 };
@@ -72,6 +76,7 @@ export const createOrUpdateDadosIntegracao = async (
 
     return reply.code(STANDARD.OK.statusCode).send(integracao);
   } catch (error) {
+    logger.error("Error in createOrUpdateDadosIntegracao",error )
     return handleServerError(reply, error);
   }
 };
@@ -93,6 +98,7 @@ export const deleteIntegracao = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "Integracao Apagada." });
   } catch (error) {
+    logger.error("Error in deleteIntegracao",error )
     return handleServerError(reply, error);
   }
 };

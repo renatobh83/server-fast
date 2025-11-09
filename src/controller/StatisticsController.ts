@@ -4,6 +4,7 @@ import { handleServerError } from "../errors/errors.helper";
 import StatisticsPerUser from "../services/Statistics/StatisticsPerUsers";
 import TicketsQueuesService from "../services/Statistics/TicketsQueuesService";
 import ContactsReportService from "../services/Statistics/ContactsReportService";
+import { logger } from "../utils/logger";
 
 type IndexQuery = {
   dateStart: string;
@@ -41,7 +42,7 @@ export const DashTicketsQueues = async (
 
     return reply.code(STANDARD.OK.statusCode).send(tickets);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in DashTicketsQueues",error )
     return handleServerError(reply, error);
   }
 };
@@ -66,7 +67,7 @@ export const ContactsReport = async (
     const tickets = await ContactsReportService(payload);
     return reply.code(STANDARD.OK.statusCode).send(tickets);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in ContactsReport",error )
     return handleServerError(reply, error);
   }
 };

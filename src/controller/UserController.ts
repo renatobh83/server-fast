@@ -8,6 +8,7 @@ import { getIO } from "../lib/socket";
 import DeleteUserService from "../services/UserServices/DeleteUserService";
 import { UpdateUserIsOnlineService } from "../helpers/UpdateUserIsOnlineService";
 import ShowUserService from "../services/UserServices/ShowUserService";
+import { logger } from "../utils/logger";
 
 type IndexQuery = {
   searchParam: string;
@@ -27,7 +28,7 @@ export const listUserController = async (
     });
     return reply.code(STANDARD.OK.statusCode).send({ users, count, hasMore });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in listUserController",error )
     return handleServerError(reply, error);
   }
 };
@@ -59,7 +60,7 @@ export const createUser = async (
 
     return reply.code(STANDARD.OK.statusCode).send(user);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in createUser",error )
     return handleServerError(reply, error);
   }
 };
@@ -98,7 +99,7 @@ export const update = async (
     });
     return reply.code(STANDARD.OK.statusCode).send(user);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in updateeUser",error )
     return handleServerError(reply, error);
   }
 };
@@ -124,7 +125,7 @@ export const removeUser = async (
     });
     return reply.code(STANDARD.OK.statusCode).send({ message: "User deleted" });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in removeUser",error )
     return handleServerError(reply, error);
   }
 };
@@ -151,7 +152,7 @@ export const updateIsOnline = async (
     io.emit(tenantId + ":user", updateMessage);
     return reply.code(STANDARD.OK.statusCode).send(updatedUser);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in updateIsOnlineUser",error )
     return handleServerError(reply, error);
   }
 };
@@ -166,7 +167,7 @@ export const showUser = async (
     const user = await ShowUserService(userId, tenantId);
     return reply.code(STANDARD.OK.statusCode).send(user);
   } catch (error) {
-    console.log(error);
+    logger.error("Error in showUser",error )
     return handleServerError(reply, error);
   }
 };

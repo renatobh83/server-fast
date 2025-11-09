@@ -9,6 +9,7 @@ import User from "../models/User";
 import { getIO } from "../lib/socket";
 import { ValidateTokenResetService } from "../services/AuthServices/ValidTokenResetSenha";
 import { RefreshTokenService } from "../services/AuthServices/RefreshTokenService";
+import { logger } from "../utils/logger";
 
 export const StoreLoginHandler = async (
   request: FastifyRequest,
@@ -16,16 +17,17 @@ export const StoreLoginHandler = async (
 ) => {
   const { email, password } = request.body as any;
   const server = request;
-
+try {
+  
   const { token, user, refreshToken, usuariosOnline } = await AuthUserService({
     reply: response,
     email,
     password,
     server,
   });
-
-  await SendRefreshToken(response, refreshToken);
-
+  
+  SendRefreshToken(response, refreshToken);
+  
   const io = getIO();
   const params = {
     token,
@@ -48,8 +50,13 @@ export const StoreLoginHandler = async (
       lastLogin: new Date(),
     },
   });
-
+  
   return response.code(200).send(params);
+} catch (error) {
+  
+  logger.error("Error in StoreLoginHandler",error )
+  return handleServerError(response, error);
+}
 };
 
 export const LogoutUser = async (
@@ -79,7 +86,7 @@ export const LogoutUser = async (
       })
       .send({ message: "Logout realizado com sucesso" });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in LogoutUser",error )
     return handleServerError(reply, error);
   }
 };
@@ -113,7 +120,7 @@ export const forgotPassword = async (
       .code(STANDARD.OK.statusCode)
       .send({ message: "E-mail enviado com link de redefinição" });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in forgotPassword",error )
     return handleServerError(reply, error);
   }
 };
@@ -126,7 +133,7 @@ export const validaToken = async (
     await request.jwtVerify();
     return reply.code(STANDARD.OK.statusCode).send({ valid: true });
   } catch (error) {
-    console.log(error);
+    logger.error("Error in validaToken",error )
     return handleServerError(reply, error);
   }
 };
@@ -140,6 +147,7 @@ export const refreshToken = async (
     // const user = await UpdateUserResetPassword(payload, newPassword);
     reply.code(STANDARD.OK.statusCode).send(token);
   } catch (error) {
+    logger.error("Error in refreshToken",error )
     return handleServerError(reply, error);
   }
 };
