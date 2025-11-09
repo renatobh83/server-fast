@@ -2,6 +2,7 @@ import { FastifyReply } from "fastify";
 import { addJob } from "../../lib/Queue";
 import { ConsultaNfseRpsEnvio } from "../IntegracoesServices/NFE";
 import { handleServerError } from "../../errors/errors.helper";
+import { logger } from "../../utils/logger";
 
 export const QueueNotaFiscalService = async (
   rps: string,
@@ -22,7 +23,7 @@ export const QueueNotaFiscalService = async (
       jobId,
     });
   } catch (error) {
-    console.log(error);
+     logger.error("Error in consultaNotaFiscal",error )
     return handleServerError(res, error);
   }
 };

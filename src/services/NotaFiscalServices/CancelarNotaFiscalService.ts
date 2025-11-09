@@ -32,6 +32,7 @@ export const CancelarNotaFiscalService = async ({ tenantId, rps }: Request) => {
     InscricaoMunicipal: tenant.dadosNfe.inscricaoMunicipal,
     CodigoMunicipio: tenant.dadosNfe.ibge,
   };
+  
   const response = await cancelarNfe(dadosNotaParaCancelar);
   if (response.sucesso) {
     await NotaFiscal.update(
