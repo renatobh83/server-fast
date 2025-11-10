@@ -1,7 +1,5 @@
 import { Telegraf } from "telegraf";
 
-
-
 import Whatsapp from "../models/Whatsapp";
 import { logger } from "../utils/logger";
 import { getIO } from "./socket";
@@ -21,64 +19,75 @@ export const initTbot = async (connection: Whatsapp): Promise<Session> => {
       const { tenantId } = connection;
       const tbot = new Telegraf(connection.tokenTelegram, {}) as Session;
 
-
-
       tbot.id = connection.id;
-
       tbot.catch((err: any, ctx: any) => {
-        logger.error(`Erro no bot ${sessionName} | ctx: ${ctx?.updateType} | err: ${err}`);
+        logger.error(
+          `Erro no bot ${sessionName} | ctx: ${ctx?.updateType} | err: ${err}`
+        );
       });
 
-      const sessionIndex = TelegramSessions.findIndex(s => s.id === connection.id);
+      const sessionIndex = TelegramSessions.findIndex(
+        (s) => s.id === connection.id
+      );
       if (sessionIndex === -1) TelegramSessions.push(tbot);
       else TelegramSessions[sessionIndex] = tbot;
 
-      tbot.launch({ allowedUpdates: [ "message", "message_reaction" ] });
+      tbot.launch({
+        allowedUpdates: [
+          "message",
+          "message_reaction",
+          "callback_query",
+          "inline_query",
+          "shipping_query",
+        ],
+      });
       await connection.update({
         status: "CONNECTED",
         qrcode: "",
-        retries: 0
+        retries: 0,
       });
 
       io.emit(`${tenantId}:whatsappSession`, {
         action: "update",
-        session: connection
+        session: connection,
       });
 
       logger.info(`Session TELEGRAM: ${sessionName} - READY `);
 
       registerProcessHandlers();
       resolve(tbot);
-
     } catch (error) {
       // se falhar ao lançar, remover a sessão guardada (cleanup)
-      const idx = TelegramSessions.findIndex(s => s.id === connection.id);
+      const idx = TelegramSessions.findIndex((s) => s.id === connection.id);
       if (idx !== -1) TelegramSessions.splice(idx, 1);
 
-      await connection.update({ status: "DISCONNECTED", qrcode: "", retries: 0 });
+      await connection.update({
+        status: "DISCONNECTED",
+        qrcode: "",
+        retries: 0,
+      });
       logger.error(`initTbot error | ${error}`);
       reject(new Error("Error starting telegram session."));
     }
   });
 };
 
-
 export const getTbot = (whatsappId: number, checkState = true): Session => {
-
   logger.info(`whatsappId: ${whatsappId} | checkState: ${checkState}`);
-  const sessionIndex = TelegramSessions.findIndex(s => s.id === whatsappId);
+  const sessionIndex = TelegramSessions.findIndex((s) => s.id === whatsappId);
 
   return TelegramSessions[sessionIndex];
 };
 
 export const requireTbot = (whatsappId: number): Session => {
   const tbot = getTbot(whatsappId);
-  if (!tbot) throw new Error(`Telegram bot da sessão ${whatsappId} não encontrado`);
+  if (!tbot)
+    throw new Error(`Telegram bot da sessão ${whatsappId} não encontrado`);
   return tbot;
 };
 export const removeTbot = (whatsappId: number): void => {
   try {
-    const sessionIndex = TelegramSessions.findIndex(s => s.id === whatsappId);
+    const sessionIndex = TelegramSessions.findIndex((s) => s.id === whatsappId);
     const sessionSet: any = TelegramSessions[sessionIndex];
     if (sessionIndex !== -1) {
       // Enable graceful stop
@@ -97,8 +106,12 @@ function registerProcessHandlers() {
 
   const shutdown = (signal: string) => {
     logger.warn(`⚠️ Recebido sinal ${signal}, encerrando sessões Telegram...`);
-    TelegramSessions.forEach(bot => {
-      try { bot.stop(signal); } catch (e) { logger.warn(`failed stop bot: ${e}`); }
+    TelegramSessions.forEach((bot) => {
+      try {
+        bot.stop(signal);
+      } catch (e) {
+        logger.warn(`failed stop bot: ${e}`);
+      }
     });
     process.exit(0);
   };

@@ -317,10 +317,11 @@ const BuildSendMessageService = async ({
         media: null,
         userId: null,
       });
-
+      let rawMessageId = messageSent?.id ?? messageSent?.messageId ?? "";
+      const messageId = rawMessageId != null ? String(rawMessageId) : "";
       const [existingMessage, created] = await Message.findOrCreate({
         where: {
-          messageId: messageSent.id || messageSent.messageId || null,
+          messageId,
         },
         defaults: filterValidAttributes({
           ticketId: ticket.id,

@@ -21,15 +21,12 @@ const tbotMessageListener = (tbot: Session): void => {
 
     await HandleMessageTelegram(ctx, tbot);
   });
-  
-tbot.on("message_reaction", async(ctx: any)=>{
-  await HandleReactionTelegram(ctx, tbot)  
 
-  // console.log(`Received a reaction on message ${JSON.stringify(messageId, null,2)} in chat ${chatId}`);
-});
-// tbot.on("message_reaction_count", (ctx)=>{
-// console.log(ctx)
-// })
+  tbot.on("message_reaction", async (ctx: any) => {
+    await HandleReactionTelegram(ctx, tbot);
+    // console.log(`Received a reaction on message ${JSON.stringify(messageId, null,2)} in chat ${chatId}`);
+  });
+
   tbot.on("callback_query", async (ctx: any) => {
     const data = ctx.update.callback_query.data;
 
@@ -70,6 +67,7 @@ tbot.on("message_reaction", async(ctx: any)=>{
       });
       return;
     }
+
     ctx.reply(" 🤖 Só um momento que estamos processando a sua solicitação!");
 
     await HandleMessageTelegram(ctx, tbot);

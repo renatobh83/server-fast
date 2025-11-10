@@ -25,9 +25,12 @@ export const UpdateBotMessage = async (
       status: "pending",
       tenantId: ticket.tenantId,
     };
-
+    let rawMessageId = messageSent?.id ?? messageSent?.messageId ?? "";
+    const messageId = rawMessageId != null ? String(rawMessageId) : "";
     let existingMessage = await Message.findOne({
-      where: { messageId: messageSent.id || messageSent.messageId || null },
+      where: {
+        messageId,
+      },
     });
 
     if (existingMessage) {
@@ -40,8 +43,8 @@ export const UpdateBotMessage = async (
       existingMessage = await Message.create({
         ...messageData,
         ...messageSent,
-        id: messageSent.id || messageSent.messageId || uuidV4(),
-        messageId: messageSent.id || messageSent.messageId || null,
+        id: messageId || uuidV4(),
+        messageId: messageId,
         mediaType: "bot",
       });
     }
