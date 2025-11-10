@@ -242,16 +242,17 @@ const BuildSendMessageService = async ({
           userId: null,
         });
       }
-
+      let rawMessageId = messageSent?.id ?? messageSent?.messageId ?? "";
+      const messageId = rawMessageId != null ? String(rawMessageId) : "";
       const [existingMessage] = await Message.findOrCreate({
         where: {
-          messageId: messageSent.id || messageSent.messageId || null,
+          messageId,
         },
         defaults: filterValidAttributes({
           ...messageData,
           ...messageSent,
-          id: messageSent.id || messageSent.messageId || uuidV4(),
-          messageId: messageSent.id || messageSent.messageId || null,
+          id: messageId || uuidV4(),
+          messageId: messageId,
           mediaType: "bot",
         }),
         ignoreDuplicates: true,
@@ -321,6 +322,7 @@ const BuildSendMessageService = async ({
       });
       let rawMessageId = messageSent?.id ?? messageSent?.messageId ?? "";
       const messageId = rawMessageId != null ? String(rawMessageId) : "";
+
       const [existingMessage, created] = await Message.findOrCreate({
         where: {
           messageId,
