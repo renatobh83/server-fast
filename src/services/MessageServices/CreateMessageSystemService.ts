@@ -98,17 +98,18 @@ export const CreateMessageSystemService = async ({
           });
 
           // if (ticket.channel === "whatsapp") return;
+          let rawMessageId = messageSent?.id ?? messageSent?.messageId ?? "";
+          const messageId = rawMessageId != null ? String(rawMessageId) : "";
 
           const [msgCreated, created] = await Message.findOrCreate({
             where: {
-              messageId:
-                String(messageSent.id) || messageSent.messageId || null,
+              messageId,
               tenantId,
             },
             defaults: filterValidAttributes({
               ...messageData,
               ...messageSent,
-              id: messageSent.id || messageSent.messageId || uuidv4(),
+              id: messageId || uuidv4(),
               userId,
               tenantId,
               body: media?.originalname || messageData.body,

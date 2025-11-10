@@ -139,9 +139,11 @@ const BuildSendMessageService = async ({
         media,
         userId,
       });
+      let rawMessageId = messageSent?.id ?? messageSent?.messageId ?? "";
+      const messageId = rawMessageId != null ? String(rawMessageId) : "";
       const [existingMessage, created] = await Message.findOrCreate({
         where: {
-          messageId: messageSent.id || messageSent.messageId || null,
+          messageId,
         },
         defaults: filterValidAttributes({
           ticketId: ticket.id,
@@ -161,8 +163,8 @@ const BuildSendMessageService = async ({
             ? msg.data?.type.substr(0, msg.data.type.indexOf("/"))
             : "chat",
           ...messageSent,
-          id: messageSent?.id ?? messageSent?.messageId ?? uuidV4(),
-          messageId: messageSent?.id ?? messageSent?.messageId ?? "",
+          id: messageId ?? uuidV4(),
+          messageId: messageId,
         }),
       });
 
