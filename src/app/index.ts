@@ -7,19 +7,20 @@ import Fastify, {
 } from "fastify";
 import fastifyEnv from "@fastify/env";
 import jwt from "@fastify/jwt";
-// import routes from "../routes";
 import fastifyModule from "../lib/fastifyPlugins/fastifyModule";
-import { initSocket, setupSocketListeners } from "../lib/socket";
+import fastifySocketIO from "fastify-socket.io";
 import { configSchema } from "./configSchema";
 import { redisPlugin } from "../lib/fastifyPlugins/redis";
 import { sequelizePlugin } from "../lib/fastifyPlugins/sequelize";
 import { StartAllWhatsAppsSessions } from "../services/WbotServices/StartAllWhatsAppsSessions";
 import { shutdown } from "../lib/Queue";
-import Setting from "../models/Setting";
-import { CheckDDNSservices } from "../services/DnsServices/CheckDDNSservices";
 import { scheduleOrUpdateDnsJob } from "../utils/scheduleDnsJob";
 import { controlRoutes, routes } from "../routes/moduleRoutes";
 import { getModuleStatusByName } from "../services/ModuleServices";
+import { setupSocket } from "../lib/socket";
+import { JsonWebTokenError } from "jsonwebtoken";
+import User from "../models/User";
+import decodeTokenSocket from "../utils/decodeTokenSocket";
 
 /**
  * Hook preHandler para verificar o status do módulo antes de processar a requisição.
@@ -78,6 +79,16 @@ export async function buildServer(
   await server.register(jwt, {
     secret: process.env.JWT_SECRET!,
   });
+  // 1. REGISTRAR O PLUGIN FASTIFY-SOCKET.IO
+  await server.register(fastifySocketIO, {
+    cors: {
+      origin: ["http://localhost:5173", "*"],
+      credentials: true,
+      methods: ["GET", "POST"],
+    },
+    pingTimeout: 180000,
+    pingInterval: 60000,
+  });
 
   server.setErrorHandler((error, request, reply) => {
     request.log.error(error);
@@ -132,6 +143,71 @@ export async function buildServer(
       }
     });
   });
+
+  // 2. CONFIGURAR O SOCKET.IO APÓS O FASTIFY ESTAR PRONTO
+  server.ready((err) => {
+    if (err) throw err;
+
+    // 3. APLICAR O MIDDLEWARE DE AUTENTICAÇÃO DO SOCKET.IO
+    server.io.use(async (socket, next) => {
+      try {
+        const token =
+          socket?.handshake?.auth?.token ||
+          socket?.handshake?.headers?.authorization?.split(" ")[1];
+
+        if (!token) {
+          return next(new Error("token ausente"));
+        }
+
+        const verifyValid = decodeTokenSocket(token);
+        if (!verifyValid.isValid) return next(new Error("invalid token"));
+        const data = verifyValid.data;
+
+        if (data.type === "chat-client") {
+          socket.handshake.auth = {
+            ...data,
+            tenantId: String(verifyValid.data.tenantId),
+          };
+          return next();
+        }
+
+        const auth = socket?.handshake?.auth;
+        socket.handshake.auth = {
+          ...auth,
+          ...verifyValid.data,
+          id: String(verifyValid.data.id),
+          tenantId: String(verifyValid.data.tenantId),
+        };
+        const user = await User.findByPk(verifyValid.data.id, {
+          attributes: [
+            "id",
+            "tenantId",
+            "name",
+            "email",
+            "profile",
+            "status",
+            "lastLogin",
+            "lastOnline",
+          ],
+        });
+
+        socket.handshake.auth.user = user;
+        return next();
+      } catch (err) {
+        if (err instanceof JsonWebTokenError) {
+          console.warn(`Token inválido no socket ${socket.id}: ${err.message}`);
+        } else {
+          console.error(`Erro inesperado no socket ${socket.id}:`, err);
+        }
+        socket.emit(`tokenInvalid:${socket.id}`);
+        next(new Error("authentication error"));
+      }
+    });
+
+    // 4. CONFIGURAR OS LISTENERS DE EVENTOS DO SOCKET.IO
+    setupSocket(server.io);
+  });
+
   return server;
 }
 export async function start() {
@@ -140,8 +216,7 @@ export async function start() {
   try {
     await app.listen({ port: 3000, host: "0.0.0.0" });
     app.server.keepAliveTimeout = 5 * 60 * 1000;
-    initSocket(app.server);
-    setupSocketListeners();
+
     await StartAllWhatsAppsSessions();
     await scheduleOrUpdateDnsJob();
   } catch (err) {

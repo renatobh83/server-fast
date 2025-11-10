@@ -81,7 +81,7 @@ const VerifyMediaMessage = async (
   };
 
   await ticket.update({
-    lastMessage: msg.caption || filename,
+    lastMessage: msg.caption?.slice(0, 250) + "..." || filename,
     lastMessageAt: Date.now(),
     answered: !!msg.fromMe,
   });
