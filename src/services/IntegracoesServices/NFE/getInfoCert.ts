@@ -1,9 +1,15 @@
 import forge from "node-forge";
 import config from "./config";
 import fs from "node:fs";
+import { logger } from "../../../utils/logger";
 
 export const extractPfxToPem = (): any => {
   try {
+    const fileExists = config.certificadoPath;
+    if (!fs.existsSync(fileExists)) {
+      logger.error("Certificado não disponivel");
+      return;
+    }
     const pfxBuffer = fs.readFileSync(config.certificadoPath);
 
     //converter o buffer para objs ASN.1
