@@ -2,13 +2,17 @@ import forge from "node-forge";
 import config from "./config";
 import fs from "node:fs";
 import { logger } from "../../../utils/logger";
+import { AppError } from "../../../errors/errors.helper";
 
 export const extractPfxToPem = (): any => {
   try {
     const fileExists = config.certificadoPath;
     if (!fs.existsSync(fileExists)) {
-      logger.error("Certificado não disponivel");
-      return;
+      logger.error(
+        "Certificado não disponivel",
+        new Error(config.certificadoPath)
+      );
+      throw new AppError("Certificado não disponivel", 900);
     }
     const pfxBuffer = fs.readFileSync(config.certificadoPath);
 

@@ -101,6 +101,7 @@ export async function GerarNFE(dadosNota: any) {
 export async function ConsultaNfseRpsEnvio(rps: number) {
   const keyPath = path.join(tmpDir, "cert_key.pem");
   const certPath = path.join(tmpDir, "cert_cert.pem");
+
   const xml = gerarXmlConsulta(rps);
   const args = {
     nfseCabecMsg:

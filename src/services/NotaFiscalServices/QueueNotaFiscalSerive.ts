@@ -23,7 +23,6 @@ export const QueueNotaFiscalService = async (
       jobId,
     });
   } catch (error) {
-     logger.error("Error in consultaNotaFiscal",error )
     return handleServerError(res, error);
   }
 };
