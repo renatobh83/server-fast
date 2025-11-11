@@ -28,5 +28,6 @@ export async function sendPasswordReset({ user, redis }: Request) {
     html: `<p>Você solicitou a recuperação de senha. Clique abaixo para redefinir:</p>
            <a href="${shortUrl}">Redefinir Senha</a>
            <p>Este link expira em 15 minutos.</p>`,
+    isForgot: true,
   });
 }

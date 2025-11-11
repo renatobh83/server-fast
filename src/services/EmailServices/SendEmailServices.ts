@@ -11,6 +11,7 @@ interface EmailOptions {
   html?: any;
   tenantId?: number;
   attachmentUrl?: string;
+  isForgot?: boolean;
 }
 
 export const SendEmailServices = async ({
@@ -20,8 +21,21 @@ export const SendEmailServices = async ({
   html,
   attachmentUrl,
   tenantId,
+  isForgot,
 }: EmailOptions) => {
   try {
+    if (isForgot) {
+      const mailOptions = {
+        tenantId,
+        to,
+        subject,
+        text,
+        html,
+        attachmentUrl,
+      };
+      await addJob("SendEmail", mailOptions);
+      return;
+    }
     if (Array.isArray(to)) {
       const emailsParaEnviar: any[] = []; // Armazena as opções de email
 
@@ -45,7 +59,7 @@ export const SendEmailServices = async ({
       });
 
       // Verificar emails gerados corretamente
-
+      console.log(emailsParaEnviar);
       // Enviar os emails (descomentar para usar)
       emailsParaEnviar.forEach((options) => addJob("SendEmail", options));
     } else {
@@ -62,7 +76,6 @@ export const SendEmailServices = async ({
             : gerarTemplateEmail(html, html.username),
         attachmentUrl,
       };
-
       await addJob("SendEmail", mailOptions);
     }
   } catch (error) {
