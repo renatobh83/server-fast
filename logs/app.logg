@@ -1,0 +1,26 @@
+{
+  errno: -4078,
+  code: 'ECONNREFUSED',
+  syscall: 'connect',
+  address: '109.199.105.36',
+  port: 6379,
+  level: 'error',
+  message: 'Erro na conexão Redis (redisForWorkers): connect ECONNREFUSED 109.199.105.36:6379',
+  stack: 'Error: connect ECONNREFUSED 109.199.105.36:6379\n' +
+    '    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)',
+  timestamp: '2025-11-11T10:00:34.310Z'
+}
+{
+  level: 'error',
+  message: "Error in consultaNotaFiscal Cannot destructure property 'certificatePem' of '(0 , getInfoCert_1.extractPfxToPem)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'certificatePem' of '(0 , getInfoCert_1.extractPfxToPem)(...)' as it is undefined.\n" +
+    '    at ConsultaNfseRpsEnvio (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\IntegracoesServices\\NFE\\index.js:127:13)\n' +
+    '    at QueueNotaFiscalService (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\services\\NotaFiscalServices\\QueueNotaFiscalSerive.js:10:59)\n' +
+    '    at Object.gerarPdfRPS (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\dist\\controller\\NfeController.js:43:66)\n' +
+    '    at preHandlerCallbackInner (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\fastify\\lib\\handleRequest.js:157:24)\n' +
+    '    at preHandlerCallback (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\fastify\\lib\\handleRequest.js:125:5)\n' +
+    '    at next (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\fastify\\lib\\hooks.js:236:9)\n' +
+    '    at handleResolve (C:\\Users\\suporte2\\Documents\\Programacao\\Nodejs\\Fastify\\node_modules\\fastify\\lib\\hooks.js:253:7)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)',
+  timestamp: '2025-11-11T10:01:46.205Z'
+}
