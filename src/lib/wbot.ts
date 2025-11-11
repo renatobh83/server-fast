@@ -72,7 +72,7 @@ export const initWbot = async (whatsapp: any): Promise<Session> => {
           );
 
           await whatsapp.update({
-            qrcode: urlCode,
+            qrcode: extrairParteWhatsApp(urlCode),
             status: "qrcode",
             retries: attempts,
           });
@@ -175,6 +175,7 @@ export const initWbot = async (whatsapp: any): Promise<Session> => {
             }
           }
         },
+
         logger: logger,
       })
     )) as unknown as Session;
@@ -258,7 +259,9 @@ async function removeSession(session: string) {
       "userDataDir",
       session
     );
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     // Verifique se a pasta existe
+
     try {
       await promises.access(sessionPath); // Verifica se o caminho é acessível
     } catch {
@@ -267,7 +270,8 @@ async function removeSession(session: string) {
     }
 
     // Remova a pasta e todos os seus arquivos
-    await promises.rm(sessionPath, { recursive: true, force: true }); // Aguarda a remoção
+
+    fs.rmSync(sessionPath, { recursive: true, force: true });
   } catch (error) {
     logger.error(`Erro ao remover a pasta da sessão ${session}:`, error);
   }
@@ -277,6 +281,8 @@ export const removeWbot = async (whatsappId: number): Promise<void> => {
     const io = getIO();
     const sessionIndex = sessions.findIndex((s) => s.id === whatsappId);
     if (sessionIndex !== -1) {
+      const wbot = sessions[sessionIndex];
+      await wbot.waPage.close();
       removeSession(whatsappSession.name);
       whatsappSession.update({
         status: "DISCONNECTED",
@@ -304,3 +310,10 @@ export const getWbot = (whatsappId: number): Session => {
   }
   return sessions[sessionIndex];
 };
+
+function extrairParteWhatsApp(str: string) {
+  if (!str) return null;
+
+  // remove o prefixo da URL, se existir
+  return str.replace(/^https:\/\/wa\.me\/settings\/linked_devices#/, "");
+}

@@ -216,7 +216,6 @@ export async function start() {
   try {
     await app.listen({ port: 3000, host: "0.0.0.0" });
     app.server.keepAliveTimeout = 5 * 60 * 1000;
-
     await StartAllWhatsAppsSessions();
     await scheduleOrUpdateDnsJob();
   } catch (err) {
