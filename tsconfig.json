@@ -12,6 +12,7 @@
     "sourceMap": true,
     // "declaration": true,
     // "declarationMap": true,
+    "useUnknownInCatchVariables": false,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
     "exactOptionalPropertyTypes": false,
