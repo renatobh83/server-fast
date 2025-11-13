@@ -144,6 +144,20 @@ export async function buildServer(
     });
   });
 
+  signals.forEach((signal) => {
+    process.on(signal, async () => {
+      try {
+        await server.close();
+        await shutdown();
+        server.log.error(`Closed application on ${signal}`);
+        process.exit(0);
+      } catch (err: any) {
+        server.log.error(`Error closing application on ${signal}`, err);
+        process.exit(1);
+      }
+    });
+  });
+
   // 2. CONFIGURAR O SOCKET.IO APÓS O FASTIFY ESTAR PRONTO
   server.ready((err) => {
     if (err) throw err;
@@ -193,7 +207,7 @@ export async function buildServer(
 
         socket.handshake.auth.user = user;
         return next();
-      } catch (err) {
+      } catch (err: any) {
         if (err instanceof JsonWebTokenError) {
           console.warn(`Token inválido no socket ${socket.id}: ${err.message}`);
         } else {
@@ -218,7 +232,7 @@ export async function start() {
     app.server.keepAliveTimeout = 5 * 60 * 1000;
     await StartAllWhatsAppsSessions();
     await scheduleOrUpdateDnsJob();
-  } catch (err) {
+  } catch (err: any) {
     app.log.error(err);
     process.exit(1);
   }
