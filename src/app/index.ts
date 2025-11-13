@@ -1,5 +1,6 @@
 import "dotenv/config";
 import Fastify, {
+  FastifyError,
   FastifyInstance,
   FastifyReply,
   FastifyRequest,
@@ -90,10 +91,9 @@ export async function buildServer(
     pingInterval: 60000,
   });
 
-  server.setErrorHandler((error, request, reply) => {
+  server.setErrorHandler((error: FastifyError, request, reply) => {
     request.log.error(error);
 
-    // Se for erro de CORS ou validação, não mata o servidor
     if (error.code === "FST_CORS_ERROR") {
       return reply.status(400).send({ error: "CORS não permitido" });
     }
