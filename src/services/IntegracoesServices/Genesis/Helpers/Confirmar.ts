@@ -11,8 +11,7 @@ export const Confirmar = async ({
   const body = new URLSearchParams();
   body.append("cd_atendimento", cdAtendimento.toString());
 
-  const url = `/doAgendaConfirmar?cd_atendimento=${cdAtendimento}`;
-  const URL_FINAL = `${integracao.config_json.baseUrl}${url}`;
+  const URL_FINAL = `${integracao.config_json.baseUrl}doAgendaConfirmar`;
 
   try {
     const instanceApi = await getApiInstance(integracao, true);

@@ -109,6 +109,7 @@ export const CreateMessageSystemService = async ({
             defaults: filterValidAttributes({
               ...messageData,
               ...messageSent,
+              ack: 2,
               id: messageId || uuidv4(),
               userId,
               tenantId,
