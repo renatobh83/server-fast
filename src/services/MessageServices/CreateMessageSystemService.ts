@@ -122,44 +122,36 @@ export const CreateMessageSystemService = async ({
             }),
           });
 
-          if (created) {
-            const reloadedMessage = await Message.findByPk(msgCreated.id, {
-              include: [
-                {
-                  model: Ticket,
-                  as: "ticket",
-                  where: { tenantId },
-                  include: ["contact"],
-                },
-                {
-                  model: Message,
-                  as: "quotedMsg",
-                  include: ["contact"],
-                },
-                {
-                  model: Contact,
-                  as: "contact",
-                },
-              ],
-            });
+          // Recarregar com includes, independente se created for true ou false
+          const reloadedMessage = await Message.findByPk(msgCreated.id, {
+            include: [
+              {
+                model: Ticket,
+                as: "ticket",
+                where: { tenantId },
+                include: ["contact"],
+              },
+              {
+                model: Message,
+                as: "quotedMsg",
+                include: ["contact"],
+              },
+              {
+                model: Contact,
+                as: "contact",
+              },
+            ],
+          });
 
-            if (!reloadedMessage) {
-              // Isso é um caso improvável, mas é bom ter uma verificação.
-              throw new AppError("ERR_RELOAD_MESSAGE", 501);
-            }
-            socketEmit({
-              tenantId,
-              type: "chat:create",
-              payload: reloadedMessage,
-            });
-          } else {
-            console.log(msgCreated);
-            socketEmit({
-              tenantId,
-              type: "chat:create",
-              payload: msgCreated,
-            });
+          if (!reloadedMessage) {
+            throw new AppError("ERR_RELOAD_MESSAGE", 501);
           }
+
+          socketEmit({
+            tenantId,
+            type: "chat:create",
+            payload: reloadedMessage,
+          });
         }
       )
     );
