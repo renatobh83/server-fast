@@ -153,6 +153,7 @@ export const CreateMessageSystemService = async ({
               payload: reloadedMessage,
             });
           } else {
+            console.log(msgCreated);
             socketEmit({
               tenantId,
               type: "chat:create",
