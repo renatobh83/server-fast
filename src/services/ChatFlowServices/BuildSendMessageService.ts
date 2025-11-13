@@ -27,7 +27,6 @@ export interface MessageData {
   userId?: number;
   tenantId?: number;
   quotedMsgId?: string;
-  // status?: string;
   scheduleDate?: Date;
   sendType?: string;
   status?: string;
@@ -37,12 +36,14 @@ interface WebhookProps {
   apiId: string;
   acao: string;
 }
+
 export enum MessageType {
   MessageField = "MessageField",
   MessageOptionsField = "MessageOptionsField",
   MediaField = "MediaField",
   WebhookField = "WebhookField",
 }
+
 interface MessageRequest {
   data: {
     message?: any;
@@ -65,6 +66,25 @@ interface Request {
   userId?: number;
 }
 
+// 🔁 Função auxiliar para recarregar a mensagem com includes
+async function reloadMessageWithIncludes(messageId: string, tenantId: number) {
+  return Message.findByPk(messageId, {
+    include: [
+      {
+        model: Ticket,
+        as: "ticket",
+        where: { tenantId },
+        include: ["contact"],
+      },
+      {
+        model: Message,
+        as: "quotedMsg",
+        include: ["contact"],
+      },
+    ],
+  });
+}
+
 const BuildSendMessageService = async ({
   msg,
   tenantId,
@@ -80,24 +100,23 @@ const BuildSendMessageService = async ({
       read: true,
       mediaType: "chat",
       mediaUrl: undefined,
-      timestamp: new Date().getTime(),
-      quotedMsgId: undefined,
+      timestamp: Date.now(),
       userId,
-      scheduleDate: undefined,
       sendType: "bot",
       status: "pending",
       tenantId,
     };
-    const modelAttributes = Object.keys(Message.rawAttributes);
 
-    const filterValidAttributes = (data: any) => {
-      return Object.fromEntries(
+    const modelAttributes = Object.keys(Message.rawAttributes);
+    const filterValidAttributes = (data: any) =>
+      Object.fromEntries(
         Object.entries(data).filter(([key]) => modelAttributes.includes(key))
       );
-    };
 
+    // ------------------------------------------------------------
+    // 🧩 1. MEDIA FIELD
+    // ------------------------------------------------------------
     if (msg.type === "MediaField" && msg.data.mediaUrl) {
-      // Verifica se o caminho contém ":\", indicando um caminho absoluto do Windows
       const isAbsolutePath =
         msg.data.mediaUrl.includes(":\\") || msg.data.mediaUrl.includes(":/");
 
@@ -106,32 +125,16 @@ const BuildSendMessageService = async ({
         : msg.data.mediaUrl.split("/");
 
       const message = {
-        ticketId: ticket.id,
-        contactId: ticket.contactId,
-        fromMe: true,
-        read: true,
-        timestamp: new Date().getTime(),
-        quotedMsgId: undefined,
-        userId,
-        scheduleDate: undefined,
-        sendType: "bot",
-        status: "pending",
-        tenantId,
+        ...messageData,
         body: msg.data.name,
-        mediaName: urlSplit[urlSplit.length - 1],
-        mediaUrl: urlSplit[urlSplit.length - 1],
-        mediaType: msg.data.message.mediaType
-          ? msg.data.message.mediaType
-          : "chat",
+        mediaName: urlSplit.at(-1),
+        mediaUrl: urlSplit.at(-1),
+        mediaType: msg.data.message?.mediaType || "chat",
       };
 
       const customPath = join(__dirname, "..", "..", "..", "public");
-      const mediaPath = join(customPath, message.mediaUrl);
-
-      const media = {
-        path: mediaPath,
-        filename: message.mediaName,
-      };
+      const mediaPath = join(customPath, message.mediaUrl || "");
+      const media = { path: mediaPath, filename: message.mediaName };
 
       const messageSent = await SendMessageSystemProxy({
         ticket,
@@ -139,72 +142,45 @@ const BuildSendMessageService = async ({
         media,
         userId,
       });
-      let rawMessageId = messageSent?.id ?? messageSent?.messageId ?? "";
-      const messageId = rawMessageId != null ? String(rawMessageId) : "";
-      const [existingMessage, created] = await Message.findOrCreate({
-        where: {
-          messageId,
-        },
+
+      const rawMessageId = messageSent?.id ?? messageSent?.messageId ?? "";
+      const messageId = String(rawMessageId || uuidV4());
+
+      const [existingMessage] = await Message.findOrCreate({
+        where: { messageId },
         defaults: filterValidAttributes({
-          ticketId: ticket.id,
-          contactId: ticket.contactId,
-          fromMe: true,
-          read: true,
-          timestamp: new Date().getTime(),
-          userId,
-          scheduleDate: undefined,
-          sendType: "bot",
-          status: "pending",
-          tenantId,
-          body: msg.data.name,
-          mediaName: urlSplit[urlSplit.length - 1],
-          mediaUrl: urlSplit[urlSplit.length - 1],
-          mediaType: msg.data.type
-            ? msg.data?.type.substr(0, msg.data.type.indexOf("/"))
-            : "chat",
+          ...message,
           ...messageSent,
-          id: messageId ?? uuidV4(),
-          messageId: messageId,
+          id: messageId,
         }),
       });
 
-      const messageCreated = await Message.findByPk(existingMessage.id, {
-        include: [
-          {
-            model: Ticket,
-            as: "ticket",
-            where: { tenantId },
-            include: ["contact"],
-          },
-          {
-            model: Message,
-            as: "quotedMsg",
-            include: ["contact"],
-          },
-        ],
-      });
-
-      if (!messageCreated) {
+      const messageCreated = await reloadMessageWithIncludes(
+        existingMessage.id,
+        tenantId
+      );
+      if (!messageCreated)
         throw new AppError("ERR_CREATING_MESSAGE_SYSTEM", 422);
-      }
 
       await ticket.update({
         lastMessage:
           Message.decrypt(messageCreated.body).length > 255
             ? Message.decrypt(messageCreated.body).slice(0, 252) + "..."
             : Message.decrypt(messageCreated.body),
-        lastMessageAt: new Date().getTime(),
+        lastMessageAt: Date.now(),
       });
 
-      socketEmit({
-        tenantId,
-        type: "chat:create",
-        payload: messageCreated,
-      });
-    } else if (msg.type === "WebhookField") {
-      let messageSent: any;
+      socketEmit({ tenantId, type: "chat:create", payload: messageCreated });
+      return;
+    }
+
+    // ------------------------------------------------------------
+    // 🌐 2. WEBHOOK FIELD
+    // ------------------------------------------------------------
+    if (msg.type === "WebhookField") {
       let options: any;
       const integracao = msg.data.webhook?.apiId;
+
       if (!integracao) {
         options = await actionsChatFlow({
           action: msg.data.webhook?.acao,
@@ -214,8 +190,7 @@ const BuildSendMessageService = async ({
         });
       } else {
         const integracaoService = await GetIntegracao(tenantId, integracao);
-
-        if (integracaoService.name.toLocaleLowerCase().trim() === "genesis") {
+        if (integracaoService.name.toLowerCase().trim() === "genesis") {
           options = await actionsIntegracaoGenesis(
             integracaoService,
             ticket,
@@ -225,184 +200,107 @@ const BuildSendMessageService = async ({
       }
       if (!options) return;
 
+      let messageSent: any;
       if (typeof options === "object") {
-        if (ticket.channel === "telegram") {
-          messageSent = await SendTbotAppMessageList({ options, ticket });
-        } else {
-          messageSent = await SendWhatsMessageList({ options, ticket });
-        }
+        messageSent =
+          ticket.channel === "telegram"
+            ? await SendTbotAppMessageList({ options, ticket })
+            : await SendWhatsMessageList({ options, ticket });
       } else {
         messageSent = await SendMessageSystemProxy({
           ticket,
-          messageData: {
-            ...messageData,
-            body: options,
-          },
+          messageData: { ...messageData, body: options },
           media: null,
           userId: null,
         });
       }
-      let rawMessageId = messageSent?.id ?? messageSent?.messageId ?? "";
-      const messageId = rawMessageId != null ? String(rawMessageId) : "";
+
+      const messageId = String(
+        messageSent?.id ?? messageSent?.messageId ?? uuidV4()
+      );
       const [existingMessage] = await Message.findOrCreate({
-        where: {
-          messageId,
-        },
+        where: { messageId },
         defaults: filterValidAttributes({
           ...messageData,
           ...messageSent,
-          id: messageId || uuidV4(),
-          messageId: messageId,
+          id: messageId,
           mediaType: "bot",
         }),
         ignoreDuplicates: true,
       });
 
-      // Se o registro já existia, atualiza com os novos dados
-      if (!existingMessage.isNewRecord) {
-        await existingMessage.update(
-          filterValidAttributes({
-            ...messageData,
-            ...messageSent,
-            mediaType: "bot",
-          })
-        );
-      }
-      const messageCreated = await Message.findByPk(existingMessage.id, {
-        include: [
-          {
-            model: Ticket,
-            as: "ticket",
-            where: { tenantId },
-            include: ["contact"],
-          },
-          {
-            model: Message,
-            as: "quotedMsg",
-            include: ["contact"],
-          },
-        ],
-      });
-
-      if (!messageCreated) {
+      const messageCreated = await reloadMessageWithIncludes(
+        existingMessage.id,
+        tenantId
+      );
+      if (!messageCreated)
         throw new AppError("ERR_CREATING_MESSAGE_SYSTEM", 422);
-      }
 
       await ticket.update({
         lastMessage:
           Message.decrypt(messageCreated.body).length > 255
             ? Message.decrypt(messageCreated.body).slice(0, 252) + "..."
             : Message.decrypt(messageCreated.body),
-        lastMessageAt: new Date().getTime(),
+        lastMessageAt: Date.now(),
         answered: true,
       });
 
-      socketEmit({
-        tenantId,
-        type: "chat:create",
-        payload: messageCreated,
-      });
-    } else {
-      // Alter template message
-
-      msg.data.message = pupa(msg.data.message || "", {
-        // greeting: será considerado conforme data/hora da mensagem internamente na função pupa
-        protocol: ticket.protocol,
-        name: ticket.contact.name,
-      });
-
-      const messageSent = await SendMessageSystemProxy({
-        ticket,
-        messageData: {
-          ...messageData,
-          body: msg.data.message,
-        },
-        media: null,
-        userId: null,
-      });
-      let rawMessageId = messageSent?.id ?? messageSent?.messageId ?? "";
-      const messageId = rawMessageId != null ? String(rawMessageId) : "";
-
-      const [existingMessage, created] = await Message.findOrCreate({
-        where: {
-          messageId,
-        },
-        defaults: filterValidAttributes({
-          ticketId: ticket.id,
-          contactId: ticket.contactId,
-          fromMe: true,
-          read: true,
-          mediaUrl: undefined,
-          timestamp: new Date().getTime(),
-          quotedMsgId: undefined,
-          userId,
-          scheduleDate: undefined,
-          sendType: "bot",
-          status: "pending",
-          tenantId,
-          ...messageSent,
-          id: messageSent?.id ?? messageSent?.messageId ?? uuidV4(),
-          messageId: messageSent?.id ?? messageSent?.messageId ?? "",
-          mediaType: "bot",
-        }),
-      });
-
-      if (!created) {
-        await existingMessage.update(
-          filterValidAttributes({
-            contactId: ticket.contactId,
-            fromMe: true,
-            read: true,
-            mediaUrl: undefined,
-            timestamp: new Date().getTime(),
-            quotedMsgId: undefined,
-            userId,
-            scheduleDate: undefined,
-            sendType: "bot",
-            status: "pending",
-            tenantId,
-            ...messageSent,
-            mediaType: "bot",
-          })
-        );
-      }
-      const newlyCreatedMessage = await Message.findByPk(existingMessage.id, {
-        include: [
-          {
-            model: Ticket,
-            as: "ticket",
-            where: { tenantId },
-            include: ["contact"],
-          },
-          {
-            model: Message,
-            as: "quotedMsg",
-            include: ["contact"],
-          },
-        ],
-      });
-
-      if (!newlyCreatedMessage) {
-        throw new AppError("ERR_CREATING_MESSAGE_SYSTEM", 422);
-      }
-
-      await ticket.update({
-        lastMessage:
-          Message.decrypt(newlyCreatedMessage.body).length > 255
-            ? Message.decrypt(newlyCreatedMessage.body).slice(0, 252) + "..."
-            : Message.decrypt(newlyCreatedMessage.body),
-        lastMessageAt: new Date().getTime(),
-        answered: true,
-      });
-
-      socketEmit({
-        tenantId,
-        type: "chat:create",
-        payload: newlyCreatedMessage,
-      });
+      socketEmit({ tenantId, type: "chat:create", payload: messageCreated });
+      return;
     }
-  } catch (error: any) {
-    console.log(error);
+
+    // ------------------------------------------------------------
+    // 💬 3. MENSAGEM DE TEXTO (DEFAULT)
+    // ------------------------------------------------------------
+    msg.data.message = pupa(msg.data.message || "", {
+      protocol: ticket.protocol,
+      name: ticket.contact.name,
+    });
+
+    const messageSent = await SendMessageSystemProxy({
+      ticket,
+      messageData: { ...messageData, body: msg.data.message },
+      media: null,
+      userId: null,
+    });
+
+    const messageId = String(
+      messageSent?.id ?? messageSent?.messageId ?? uuidV4()
+    );
+
+    const [existingMessage] = await Message.findOrCreate({
+      where: { messageId },
+      defaults: filterValidAttributes({
+        ...messageData,
+        ...messageSent,
+        id: messageId,
+        mediaType: "bot",
+      }),
+    });
+
+    const newlyCreatedMessage = await reloadMessageWithIncludes(
+      existingMessage.id,
+      tenantId
+    );
+    if (!newlyCreatedMessage)
+      throw new AppError("ERR_CREATING_MESSAGE_SYSTEM", 422);
+
+    await ticket.update({
+      lastMessage:
+        Message.decrypt(newlyCreatedMessage.body).length > 255
+          ? Message.decrypt(newlyCreatedMessage.body).slice(0, 252) + "..."
+          : Message.decrypt(newlyCreatedMessage.body),
+      lastMessageAt: Date.now(),
+      answered: true,
+    });
+
+    socketEmit({
+      tenantId,
+      type: "chat:create",
+      payload: newlyCreatedMessage,
+    });
+  } catch (error) {
+    console.error(error);
     throw new AppError("ERR_BUILD_SEND_MESSAGE_SERVICE", 502);
   }
 };

@@ -18,16 +18,16 @@ interface MessageData {
   ack?: number;
   isForwarded?: boolean;
 }
+
 interface Request {
   messageData: MessageData;
   tenantId: number;
 }
+
 const CreateMessageService = async ({
   messageData,
   tenantId,
 }: Request): Promise<Message> => {
-  let message: Message;
-  let created: boolean;
   const modelAttributes = Object.keys(Message.rawAttributes);
 
   const filterValidAttributes = (data: any) => {
@@ -37,38 +37,13 @@ const CreateMessageService = async ({
   };
 
   try {
-    // Tenta encontrar a mensagem; se não encontrar, a cria.
-    // O 'include' aqui só é aplicado se a mensagem for ENCONTRADA.
-    [message, created] = await Message.findOrCreate({
+    const [message, created] = await Message.findOrCreate({
       where: { messageId: messageData.messageId, tenantId },
-      defaults: filterValidAttributes({ ...messageData, tenantId }), // Dados para criar se não for encontrada
-      include: [
-        {
-          model: Ticket,
-          as: "ticket",
-          where: { tenantId },
-          include: ["contact"],
-        },
-        {
-          model: Message,
-          as: "quotedMsg",
-          include: ["contact"],
-        },
-        {
-          model: Contact,
-          as: "contact",
-        },
-      ],
+      defaults: filterValidAttributes({ ...messageData, tenantId }),
       ignoreDuplicates: true,
     });
-  } catch (error: any) {
-    console.log(error);
-    throw new AppError("ERR_CREATING_MESSAGE", 501);
-  }
 
-  // Se a mensagem foi recém-criada, as associações não foram carregadas pelo findOrCreate.
-  // Precisamos recarregá-la com as associações.
-  if (created) {
+    // 🔄 Sempre recarrega com includes, mesmo que já existisse
     const reloadedMessage = await Message.findByPk(message.id, {
       include: [
         {
@@ -90,24 +65,21 @@ const CreateMessageService = async ({
     });
 
     if (!reloadedMessage) {
-      // Isso é um caso improvável, mas é bom ter uma verificação.
       throw new AppError("ERR_CREATING_MESSAGE", 501);
     }
 
-    message = reloadedMessage;
+    // 🔔 Emite evento de nova mensagem no socket
     socketEmit({
       tenantId,
       type: "chat:create",
       payload: reloadedMessage,
     });
-    // A mensagem agora contém todas as associações, seja ela encontrada ou recém-criada.
+
     return reloadedMessage;
+  } catch (error) {
+    console.error(error);
+    throw new AppError("ERR_CREATING_MESSAGE", 501);
   }
-  socketEmit({
-    tenantId,
-    type: "chat:create",
-    payload: message,
-  });
-  return message;
 };
+
 export default CreateMessageService;
